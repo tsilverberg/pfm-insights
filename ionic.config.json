@@ -1,0 +1,7 @@
+{
+  "name": "pfm-insights",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
