@@ -1,0 +1,60 @@
+.goals__month-picker {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--pfm-divider-default);
+}
+
+.goals__snapshot-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.goals__snapshot-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.goals__snapshot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.goals__snapshot-captions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.goals__category-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goals__category-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.goals__bar-captions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.goals__category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 16px;
+}
+
+.goals__security-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,0 +1,41 @@
+.balance-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.balance-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: var(--pfm-palette-blue-extra-soft, #dfe7ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance-card__label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-secondary);
+}
+
+.balance-card__amount {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 51px;
+  color: var(--pfm-text-primary);
+  display: flex;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.balance-card__euros,
+.balance-card__cents {
+  overflow: hidden;
+}

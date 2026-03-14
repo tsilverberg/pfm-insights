@@ -1,0 +1,44 @@
+.dashboard-hero {
+  background: linear-gradient(135deg, #1A2332 0%, #2E4E78 50%, #1A3A5C 100%);
+  padding: 54px var(--pfm-page-padding) 32px;
+  color: white;
+  text-align: center;
+}
+
+.dashboard-hero__selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.dashboard-hero__selector-text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: white;
+}
+
+.dashboard-hero__balance {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 51px;
+}
+
+.dashboard-hero__subtitle {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* Override quick action colors in dark hero */
+.dashboard-hero .quick-action__label {
+  color: white;
+}

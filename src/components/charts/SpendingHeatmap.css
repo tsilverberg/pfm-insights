@@ -1,0 +1,38 @@
+.heatmap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap__header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.heatmap__day-label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--pfm-text-tertiary);
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+.heatmap__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap__row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.heatmap__cell {
+  height: 32px;
+  border-radius: 4px;
+}

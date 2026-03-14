@@ -1,0 +1,41 @@
+.account-settings {
+  padding-top: 16px;
+}
+
+.account-settings__section {
+  padding: 0 var(--pfm-page-padding);
+}
+
+.account-settings__section-title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-secondary);
+  padding: 24px 0 4px;
+}
+
+.account-settings__section:first-of-type .account-settings__section-title {
+  padding-top: 16px;
+}
+
+.account-settings__footer {
+  padding: 32px var(--pfm-page-padding);
+}
+
+.account-settings__close-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--pfm-status-error-text);
+  background: none;
+  color: var(--pfm-status-error-text);
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.account-settings__close-btn:active {
+  opacity: 0.7;
+}

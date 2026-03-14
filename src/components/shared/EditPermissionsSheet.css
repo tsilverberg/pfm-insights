@@ -1,0 +1,94 @@
+.edit-permissions__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.edit-permissions__title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--pfm-text-primary);
+}
+
+.edit-permissions__search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.edit-permissions__section-label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+  margin-bottom: 8px;
+}
+
+.edit-permissions__member {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.edit-permissions__member-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-permissions__member-avatar--placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--pfm-surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--pfm-text-secondary);
+}
+
+.edit-permissions__member-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--pfm-text-primary);
+}
+
+.edit-permissions__member-role {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--pfm-text-tertiary);
+}
+
+.edit-permissions__add-btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--pfm-border-strong);
+  background: none;
+  color: var(--pfm-text-primary);
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 16px 0;
+}
+
+.edit-permissions__add-btn:active {
+  opacity: 0.7;
+}
+
+.edit-permissions__divider {
+  height: 1px;
+  background: var(--pfm-divider-default);
+  margin: 8px 0;
+}

@@ -1,0 +1,443 @@
+/* Shared component styles */
+
+/* Coach Moment Card */
+.coach-card {
+  border: 2px solid var(--pfm-pink-base);
+  border-radius: var(--pfm-card-radius);
+  padding: var(--pfm-card-padding);
+  background: var(--pfm-surface-card);
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+.coach-card__icon {
+  width: 24px;
+  height: 26px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.coach-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 28px;
+}
+
+.coach-card__title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-secondary);
+}
+
+.coach-card__title--action {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 25.5px;
+  color: var(--pfm-text-primary);
+}
+
+.coach-card__text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-secondary);
+}
+
+.coach-card__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--pfm-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coach-card__cta {
+  margin-top: 16px;
+}
+
+/* Badge */
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 25.5px;
+}
+
+.category-badge--needs {
+  background: var(--pfm-category-pink-bg);
+  border-color: var(--pfm-category-pink-border);
+  color: var(--pfm-pink-strong);
+}
+
+.category-badge--wants {
+  background: var(--pfm-category-turquoise-bg);
+  border-color: var(--pfm-category-turquoise-border);
+  color: var(--pfm-category-turquoise-text);
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  border-radius: 2px;
+  background: var(--pfm-support-subtle);
+  overflow: hidden;
+}
+
+.progress-bar--thin {
+  height: 4px;
+}
+
+.progress-bar--thick {
+  height: 12px;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Outline Button */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--pfm-action-secondary-bg);
+  border: 1px solid var(--pfm-action-secondary-border);
+  color: var(--pfm-action-secondary-text);
+  border-radius: 99px;
+  height: 32px;
+  padding: 0 16px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22.5px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btn-outline:active {
+  opacity: 0.7;
+}
+
+/* Raised Button */
+.btn-raised {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--pfm-button-secondary-bg);
+  border: 1px solid var(--pfm-button-secondary-border);
+  color: var(--pfm-button-secondary-text);
+  border-radius: 99px;
+  height: 44px;
+  padding: 0 24px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22.5px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-raised:active {
+  opacity: 0.7;
+}
+
+/* Success Banner */
+.success-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pfm-status-success-bg);
+  border: 1px solid var(--pfm-status-success-border);
+  border-radius: 8px;
+  padding: 8px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-primary);
+}
+
+.success-banner__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--pfm-green-strong);
+}
+
+/* Dotted Leader Row */
+.dotted-leader-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+}
+
+.dotted-leader-row__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 1px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.dotted-leader-row__label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--pfm-text-primary);
+  white-space: nowrap;
+}
+
+.dotted-leader-row__dots {
+  flex: 1;
+  border-bottom: 2px dotted var(--pfm-border-subtle);
+  height: 6px;
+  min-width: 20px;
+}
+
+.dotted-leader-row__value {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--pfm-text-primary);
+  white-space: nowrap;
+}
+
+/* Category List Item */
+.category-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.category-list-item__icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.category-list-item__icon-circle--needs {
+  background: var(--pfm-category-pink-bg);
+}
+
+.category-list-item__icon-circle--wants {
+  background: var(--pfm-category-turquoise-bg);
+}
+
+.category-list-item__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.category-list-item__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-list-item__label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--pfm-text-primary);
+}
+
+.category-list-item__count {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-tertiary);
+}
+
+.category-list-item__amount {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--pfm-text-primary);
+  white-space: nowrap;
+}
+
+.category-list-item__separator {
+  width: 287px;
+  height: 1px;
+  background: var(--pfm-divider-default);
+  margin-left: 56px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* Month Picker */
+.month-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pfm-surface-subtle);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.month-picker__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--pfm-text-primary);
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.month-picker__btn:active {
+  opacity: 0.6;
+}
+
+.month-picker__label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-primary);
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Time Period Pills */
+.time-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.time-pill {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--pfm-button-secondary-border);
+  background: var(--pfm-surface-subtle);
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-secondary);
+  transition: all 0.2s;
+}
+
+.time-pill--active {
+  border-color: var(--pfm-border-strong);
+  background: var(--pfm-neutral-200);
+}
+
+/* Category Filter Pills */
+.category-filter-pills {
+  display: flex;
+  gap: 8px;
+}
+
+.category-filter-pill {
+  flex: 1;
+  border: 1px solid var(--pfm-border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  background: var(--pfm-surface-card);
+  transition: opacity 0.2s;
+}
+
+.category-filter-pill:active {
+  opacity: 0.8;
+}
+
+.category-filter-pill__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-filter-pill__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.category-filter-pill__label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-secondary);
+}
+
+.category-filter-pill__value {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--pfm-text-primary);
+}
+
+.category-filter-pill__suffix {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-tertiary);
+}
+
+/* Segmented Bar */
+.segmented-bar {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  height: 12px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.segmented-bar__segment {
+  height: 100%;
+  border-radius: 2px;
+}

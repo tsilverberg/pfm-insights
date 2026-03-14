@@ -1,0 +1,20 @@
+.geography-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.geography-row__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.geography-row__flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.geography-row__country {
+  white-space: nowrap;
+}

@@ -1,0 +1,42 @@
+.path__illustration {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.path__strategy-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 25.5px;
+  color: var(--pfm-text-primary);
+  text-align: center;
+  margin: 0 0 4px;
+}
+
+.path__strategy-desc {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.path__segment-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.path__empty-text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-tertiary);
+  text-align: center;
+  margin: 0;
+  padding: 8px 0;
+}

@@ -1,19 +1,34 @@
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact
+  setupIonicReact,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+
+import InsightsPage from './pages/InsightsPage';
+import HomePage from './pages/HomePage';
+import InvestPage from './pages/InvestPage';
+import ExplorePage from './pages/ExplorePage';
+import DashboardPage from './pages/DashboardPage';
+import CardsPage from './pages/CardsPage';
+import CardPointsPage from './pages/CardPointsPage';
+import AccountDetailPage from './pages/AccountDetailPage';
+import ProfilePage from './pages/ProfilePage';
+import PocketsPage from './pages/PocketsPage';
+import SendMoneyPage from './pages/SendMoneyPage';
+import RequestMoneyPage from './pages/RequestMoneyPage';
+import QRScannerPage from './pages/QRScannerPage';
+import AccountSelectorPage from './pages/AccountSelectorPage';
+import MoreActionsPage from './pages/MoreActionsPage';
+import AccountSettingsPage from './pages/AccountSettingsPage';
+import NotificationsPage from './pages/NotificationsPage';
+import ChildAccountPage from './pages/ChildAccountPage';
+import AccessPage from './pages/AccessPage';
+import ShareAccessPage from './pages/ShareAccessPage';
+import SelectPermissionsPage from './pages/SelectPermissionsPage';
+import ReviewSummaryPage from './pages/ReviewSummaryPage';
+import FloatingTabBar from './components/layout/FloatingTabBar';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,63 +38,53 @@ import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 
-/* Optional CSS utils that can be commented out */
+/* Optional CSS utils */
 import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* import '@ionic/react/css/palettes/dark.always.css'; */
-/* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
-
-/* Theme variables */
+/* Theme */
+import './theme/tokens.css';
+import './theme/typography.css';
 import './theme/variables.css';
+import './theme/global.css';
+import './theme/components.css';
 
-setupIonicReact();
+setupIonicReact({
+  mode: 'ios',
+});
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
+      <IonRouterOutlet>
+        <Route exact path="/home" component={HomePage} />
+        <Route exact path="/dashboard" component={DashboardPage} />
+        <Route exact path="/insights" component={InsightsPage} />
+        <Route exact path="/invest" component={InvestPage} />
+        <Route exact path="/explore" component={ExplorePage} />
+        <Route exact path="/cards" component={CardsPage} />
+        <Route exact path="/cards/points" component={CardPointsPage} />
+        <Route exact path="/account/:id" component={AccountDetailPage} />
+        <Route exact path="/account/:id/more" component={MoreActionsPage} />
+        <Route exact path="/account/:id/settings" component={AccountSettingsPage} />
+        <Route exact path="/account/:id/access" component={AccessPage} />
+        <Route exact path="/account/:id/share" component={ShareAccessPage} />
+        <Route exact path="/account/:id/share/permissions" component={SelectPermissionsPage} />
+        <Route exact path="/account/:id/share/review" component={ReviewSummaryPage} />
+        <Route exact path="/notifications" component={NotificationsPage} />
+        <Route exact path="/accounts" component={AccountSelectorPage} />
+        <Route exact path="/child-account/:id" component={ChildAccountPage} />
+        <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/pockets" component={PocketsPage} />
+        <Route exact path="/send" component={SendMoneyPage} />
+        <Route exact path="/receive" component={RequestMoneyPage} />
+        <Route exact path="/qr" component={QRScannerPage} />
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+      </IonRouterOutlet>
+      <FloatingTabBar />
     </IonReactRouter>
   </IonApp>
 );

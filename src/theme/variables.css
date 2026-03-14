@@ -1,2 +1,21 @@
-/* For information on how to create your own theme, please refer to:
-http://ionicframework.com/docs/theming/ */
+/* Ionic variable overrides */
+:root {
+  --ion-font-family: 'Lato', sans-serif;
+  --ion-background-color: #FFFFFF;
+  --ion-text-color: #061223;
+  --ion-toolbar-background: transparent;
+  --ion-tab-bar-background: transparent;
+}
+
+/* Force light mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #FFFFFF;
+    --ion-text-color: #061223;
+  }
+}
+
+/* Hide default Ionic tab bar */
+ion-tab-bar {
+  display: none !important;
+}

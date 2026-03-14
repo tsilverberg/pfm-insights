@@ -1,0 +1,56 @@
+.account-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.account-item:active {
+  opacity: 0.7;
+}
+
+.account-item__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--pfm-surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.account-item__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-item__name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-primary);
+}
+
+.account-item__number {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-secondary);
+}
+
+.account-item__balance {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--pfm-text-primary);
+  white-space: nowrap;
+}

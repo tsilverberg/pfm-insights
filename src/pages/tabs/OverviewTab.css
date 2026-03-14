@@ -1,0 +1,42 @@
+.overview__wealth-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-secondary);
+  margin: 0 0 4px;
+}
+
+.overview__wealth-amount {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 51px;
+  color: var(--pfm-text-primary);
+  margin: 0;
+}
+
+.overview__wealth-detail {
+  background: var(--pfm-surface-subtle);
+  border-radius: var(--pfm-card-radius);
+  padding: var(--pfm-card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.overview__wealth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overview__wealth-expand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

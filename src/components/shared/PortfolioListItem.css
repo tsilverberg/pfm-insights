@@ -1,0 +1,41 @@
+.portfolio-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.portfolio-list-item__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.portfolio-list-item__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.portfolio-list-item__sparkline {
+  width: 89px;
+  height: 24px;
+}
+
+.portfolio-list-item__values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.portfolio-list-item__change-pill {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  white-space: nowrap;
+}

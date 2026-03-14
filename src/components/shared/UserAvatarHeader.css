@@ -1,0 +1,42 @@
+.user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 12px;
+}
+
+.user-header__avatar-btn {
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.user-header__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+.user-header__actions {
+  display: flex;
+  gap: 4px;
+}
+
+.user-header__icon-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.user-header__icon-btn:active {
+  opacity: 0.6;
+}

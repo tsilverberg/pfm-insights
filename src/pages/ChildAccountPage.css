@@ -1,0 +1,223 @@
+.child-account {
+  padding-bottom: 32px;
+}
+
+.child-account__header {
+  padding: 54px var(--pfm-page-padding) 0;
+}
+
+.child-account__child-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px var(--pfm-page-padding);
+}
+
+.child-account__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--pfm-surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--pfm-text-primary);
+  flex-shrink: 0;
+}
+
+.child-account__child-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--pfm-text-primary);
+}
+
+.child-account__child-age {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--pfm-text-tertiary);
+}
+
+.child-account__balance-label {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--pfm-text-tertiary);
+  padding: 8px var(--pfm-page-padding);
+}
+
+.child-account__balance {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 51px;
+  color: var(--pfm-text-primary);
+  padding: 0 var(--pfm-page-padding);
+}
+
+.child-account__quick-actions {
+  padding: 16px var(--pfm-page-padding);
+}
+
+.child-account__quick-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.child-account__quick-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.child-account__quick-btn:active {
+  opacity: 0.7;
+}
+
+.child-account__quick-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.child-account__quick-icon--primary {
+  background: var(--pfm-action-primary-bg);
+}
+
+.child-account__quick-icon--secondary {
+  background: var(--pfm-surface-raised);
+  color: var(--pfm-text-primary);
+}
+
+.child-account__quick-label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--pfm-text-secondary);
+}
+
+.child-account__glance {
+  padding: 16px;
+  margin: 0 var(--pfm-page-padding);
+  border: 1px solid var(--pfm-divider-default);
+  border-radius: var(--pfm-card-radius);
+}
+
+.child-account__glance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.child-account__glance-title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--pfm-text-primary);
+}
+
+.child-account__glance-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+  margin-bottom: 12px;
+}
+
+.child-account__parents {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.child-account__parent-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.child-account__parent-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--pfm-surface-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+}
+
+.child-account__parent-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--pfm-text-primary);
+}
+
+.child-account__parent-role {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--pfm-text-tertiary);
+}
+
+.child-account__coach {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--pfm-surface-raised);
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+.child-account__coach-icon {
+  flex-shrink: 0;
+  color: var(--pfm-pink-base);
+}
+
+.child-account__coach-text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+}
+
+.child-account__selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--pfm-text-secondary);
+  border: 1px solid var(--pfm-divider-default);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+}

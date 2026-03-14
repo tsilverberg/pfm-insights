@@ -1,0 +1,120 @@
+:root {
+  /* === Surface & Background === */
+  --pfm-surface-background: #FFFFFF;
+  --pfm-surface-card: #FFFFFF;
+  --pfm-surface-raised: #F3F6F9;
+  --pfm-surface-subtle: #F3F6F9;
+  --pfm-support-subtle: #E1E8EF;
+
+  /* === Text === */
+  --pfm-text-primary: #061223;
+  --pfm-text-secondary: #3A495D;
+  --pfm-text-tertiary: #7189A7;
+
+  /* === Borders & Dividers === */
+  --pfm-divider-default: #E1E8EF;
+  --pfm-border-subtle: #CCD5DF;
+  --pfm-border-strong: #061223;
+
+  /* === Actions === */
+  --pfm-action-secondary-bg: #FFFFFF;
+  --pfm-action-secondary-border: #061223;
+  --pfm-action-secondary-text: #061223;
+
+  /* === Button === */
+  --pfm-button-secondary-bg: #F3F6F9;
+  --pfm-button-secondary-border: #EBF0F5;
+  --pfm-button-secondary-text: #061223;
+
+  /* === Inverted (Tooltips) === */
+  --pfm-bg-inverted: #061223;
+  --pfm-text-inverted: #FFFFFF;
+  --pfm-shadow-inverted: rgba(16, 47, 67, 0.12);
+
+  /* === Status === */
+  --pfm-status-success-bg: #DBECE2;
+  --pfm-status-success-border: #B4D8C3;
+
+  /* === Category: Needs (Pink) === */
+  --pfm-pink-base: #ED5EA6;
+  --pfm-pink-strong: #A64274;
+  --pfm-category-pink-bg: #FCE7F2;
+  --pfm-category-pink-border: #F9CDE3;
+
+  /* === Category: Wants (Turquoise) === */
+  --pfm-turquoise-strong: #4AB2B2;
+  --pfm-turquoise-extra-strong: #3A8C8C;
+  --pfm-turquoise-base: #1ED2D2;
+  --pfm-turquoise-soft: #B9F1F1;
+  --pfm-turquoise-extra-soft: #DDF8F8;
+  --pfm-category-turquoise-bg: #DDF8F8;
+  --pfm-category-turquoise-border: #B9F1F1;
+  --pfm-category-turquoise-text: #3A8C8C;
+
+  /* === Category: Security (Green) === */
+  --pfm-green-strong: #0A5A2B;
+
+  /* === Neutral Primitives === */
+  --pfm-neutral-0: #FFFFFF;
+  --pfm-neutral-100: #EBF0F5;
+  --pfm-neutral-200: #E1E8EF;
+
+  /* === Spacing === */
+  --pfm-page-padding: 16px;
+  --pfm-section-padding: 32px;
+  --pfm-card-radius: 16px;
+  --pfm-card-padding: 16px;
+
+  /* === Header === */
+  --pfm-header-bg: rgba(255, 255, 255, 0.5);
+  --pfm-header-height: 110px;
+
+  /* === Surface: Dark === */
+  --pfm-surface-dark: #2E4E78;
+  --pfm-text-on-dark: #FFFFFF;
+
+  /* === Action Primary === */
+  --pfm-action-primary-bg: #2E4E78;
+  --pfm-action-primary-text: #FFFFFF;
+
+  /* === Status: Error === */
+  --pfm-status-error-bg: #F5DEDB;
+  --pfm-status-error-border: #EBBBB5;
+  --pfm-status-error-text: #86190B;
+
+  /* === Status: Warning === */
+  --pfm-status-warning-bg: #FFF3CD;
+  --pfm-status-warning-border: #FFE69C;
+  --pfm-status-warning-text: #664D03;
+
+  /* === Status: Success text === */
+  --pfm-status-success-text: #084722;
+
+  /* === Palette: Red === */
+  --pfm-palette-red-extra-soft: #FADCD9;
+  --pfm-palette-red-strong: #9D1000;
+
+  /* === Palette: Purple === */
+  --pfm-palette-purple-extra-soft: #E8DCF8;
+  --pfm-palette-purple-strong: #491091;
+
+  /* === Palette: Blue === */
+  --pfm-palette-blue-extra-soft: #D9E8FA;
+  --pfm-palette-blue-strong: #0047AB;
+
+  /* === Palette: Green === */
+  --pfm-palette-green-extra-soft: #DBECE2;
+  --pfm-palette-green-strong: #0A5A2B;
+
+  /* === Palette: Orange === */
+  --pfm-palette-orange-extra-soft: #FDE8D0;
+  --pfm-palette-orange-strong: #B35C00;
+
+  /* === Illustration === */
+  --pfm-illustration-extra-soft: #E1E4E7;
+
+  /* === Card Gradients === */
+  --pfm-card-gradient-blue: linear-gradient(135deg, #1A3A5C 0%, #2E4E78 50%, #4A7AB5 100%);
+  --pfm-card-gradient-dark: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  --pfm-card-gradient-gold: linear-gradient(135deg, #8B6914 0%, #B8860B 50%, #DAA520 100%);
+}

@@ -1,0 +1,148 @@
+.qr-scanner {
+  background: #0A0A0A;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.qr-scanner__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 54px 8px 16px;
+}
+
+.qr-scanner__close {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-scanner__title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: white;
+}
+
+.qr-scanner__viewfinder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 32px;
+  position: relative;
+}
+
+.qr-scanner__frame {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+}
+
+.qr-scanner__corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+
+.qr-scanner__corner--tl {
+  top: -1px;
+  left: -1px;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  border-radius: 16px 0 0 0;
+}
+
+.qr-scanner__corner--tr {
+  top: -1px;
+  right: -1px;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  border-radius: 0 16px 0 0;
+}
+
+.qr-scanner__corner--bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
+  border-radius: 0 0 0 16px;
+}
+
+.qr-scanner__corner--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+  border-radius: 0 0 16px 0;
+}
+
+.qr-scanner__line {
+  position: absolute;
+  left: calc(50% - 110px);
+  width: 220px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4AB2B2, transparent);
+  animation: scan 2.5s ease-in-out infinite;
+  border-radius: 1px;
+}
+
+@keyframes scan {
+  0%, 100% { top: calc(50% - 110px); }
+  50% { top: calc(50% + 110px); }
+}
+
+.qr-scanner__instructions {
+  text-align: center;
+  padding: 0 16px 24px;
+}
+
+.qr-scanner__instructions p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+
+.qr-scanner__sub {
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  opacity: 0.6;
+}
+
+.qr-scanner__actions {
+  display: flex;
+  gap: 32px;
+  padding: 16px 16px 48px;
+}
+
+.qr-scanner__action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 8px;
+}
+
+.qr-scanner__action-btn span {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  opacity: 0.8;
+}

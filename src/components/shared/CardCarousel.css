@@ -1,0 +1,24 @@
+.card-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-carousel__scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.card-carousel__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.card-carousel__scroll > * {
+  scroll-snap-align: start;
+}

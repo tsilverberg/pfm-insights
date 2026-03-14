@@ -1,0 +1,90 @@
+.pocket-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.pocket-card:active {
+  opacity: 0.8;
+}
+
+.pocket-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pocket-card__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pocket-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.pocket-card__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.pocket-card__name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--pfm-text-primary);
+}
+
+.pocket-card__amounts {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-primary);
+}
+
+.pocket-card__current {
+  font-weight: 600;
+}
+
+.pocket-card__separator {
+  font-weight: 600;
+}
+
+.pocket-card__target {
+  font-weight: 400;
+}
+
+.pocket-card__chevron {
+  flex-shrink: 0;
+}
+
+.pocket-card__progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pocket-card__captions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pocket-card__pct,
+.pocket-card__date {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-secondary);
+}
