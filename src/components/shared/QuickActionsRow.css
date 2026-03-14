@@ -35,7 +35,8 @@
 }
 
 .quick-action__circle--secondary {
-  background: var(--pfm-neutral-100, #EBF0F5);
+  background: #75808E;
+  color: white;
 }
 
 .quick-action__circle--outlined {

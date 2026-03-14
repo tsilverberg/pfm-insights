@@ -11,8 +11,8 @@
 }
 
 .toggle-row__icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--pfm-surface-raised);
   display: flex;
@@ -81,7 +81,7 @@
 }
 
 .toggle-row__switch input:checked + .toggle-row__slider {
-  background: var(--pfm-action-primary-bg);
+  background: var(--pfm-text-primary);
 }
 
 .toggle-row__switch input:checked + .toggle-row__slider::before {

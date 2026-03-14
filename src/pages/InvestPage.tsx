@@ -63,8 +63,8 @@ const InvestPage: React.FC = () => {
     plugins: {
       tooltip: {
         backgroundColor: '#061223',
-        titleFont: { family: 'Libre Franklin', size: 11, weight: 400 as const },
-        bodyFont: { family: 'Libre Franklin', size: 12, weight: 600 as const },
+        titleFont: { family: 'Lato', size: 11, weight: 400 as const },
+        bodyFont: { family: 'Lato', size: 12, weight: 600 as const },
         padding: 8,
         cornerRadius: 4,
         callbacks: {
@@ -84,13 +84,13 @@ const InvestPage: React.FC = () => {
         <div style={{ paddingTop: 54 }}>
           {/* Header */}
           <div style={{ padding: '0 var(--pfm-page-padding)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h1 className="typo-title2-semibold" style={{ margin: 0 }}>Invest</h1>
+            <h1 className="typo-title3" style={{ margin: 0 }}>Invest</h1>
             <div style={{ display: 'flex', gap: 4 }}>
-              <button className="icon-button" aria-label="Cards">
+              <button className="invest-icon-button" aria-label="Cards">
                 <span className="material-symbols-rounded">credit_card</span>
               </button>
-              <button className="icon-button" aria-label="Settings">
-                <span className="material-symbols-rounded">settings</span>
+              <button className="invest-icon-button" aria-label="Coach">
+                <span className="material-symbols-rounded">school</span>
               </button>
             </div>
           </div>

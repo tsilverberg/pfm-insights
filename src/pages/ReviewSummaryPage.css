@@ -3,6 +3,7 @@
   flex-direction: column;
   min-height: 100%;
   padding-top: 16px;
+  background: var(--pfm-surface-raised);
 }
 
 .review-summary__header {
@@ -11,6 +12,7 @@
   justify-content: space-between;
   padding: 12px var(--pfm-page-padding);
   border-bottom: 1px solid var(--pfm-divider-default);
+  background: white;
 }
 
 .review-summary__close {
@@ -35,6 +37,7 @@
   align-items: center;
   gap: 12px;
   padding: 16px var(--pfm-page-padding);
+  background: white;
   border-bottom: 1px solid var(--pfm-divider-default);
 }
 
@@ -57,6 +60,7 @@
 
 .review-summary__section {
   padding: 16px var(--pfm-page-padding);
+  background: white;
   border-bottom: 1px solid var(--pfm-divider-default);
 }
 
@@ -77,8 +81,8 @@
 .review-summary__account-icon {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
-  background: var(--pfm-surface-raised);
+  border-radius: 12px;
+  background: var(--pfm-palette-blue-extra-soft);
   display: flex;
   align-items: center;
   justify-content: center;

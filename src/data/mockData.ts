@@ -167,7 +167,7 @@ export const homeQuickActions: QuickAction[] = [
   { id: 'transfer', label: 'Transfer', icon: 'transfer', variant: 'primary', route: '/send' },
   { id: 'receive', label: 'Receive', icon: 'receive', variant: 'primary', route: '/receive' },
   { id: 'qr', label: 'QR code', icon: 'qr_code', variant: 'secondary', route: '/qr' },
-  { id: 'more', label: 'More', icon: 'more', variant: 'secondary' },
+  { id: 'more', label: 'More', icon: 'more', variant: 'outlined' },
 ];
 
 export const homeTransactionsData: TransactionGroup[] = [

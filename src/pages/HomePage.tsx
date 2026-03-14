@@ -50,14 +50,14 @@ const HomePage: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '8px 12px',
-                border: '1px solid var(--pfm-border-subtle)',
+                border: '1px solid #EBF0F5',
                 borderRadius: 8,
                 background: 'white',
                 cursor: 'pointer',
                 fontFamily: "'Lato', sans-serif",
-                fontWeight: 600,
-                fontSize: 13,
-                color: 'var(--pfm-text-secondary)',
+                fontWeight: 400,
+                fontSize: 16,
+                color: 'var(--pfm-text-primary)',
               }}
             >
               <span>John's main account</span>
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
           {/* Account Balance Hero */}
           <div className="section-module" style={{ textAlign: 'center' }}>
             <AccountBalanceCard account={homeAccountData} />
-            <div style={{ marginTop: 32 }}>
+            <div style={{ marginTop: 24 }}>
               <QuickActionsRow actions={homeQuickActions.map((a) =>
                 a.id === 'more' ? { ...a, route: `/account/${homeAccountData.id}/more` } : a
               )} />

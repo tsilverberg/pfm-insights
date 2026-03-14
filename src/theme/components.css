@@ -162,6 +162,10 @@
   transition: opacity 0.2s;
 }
 
+.btn-raised--sm {
+  height: 32px;
+}
+
 .btn-raised:active {
   opacity: 0.7;
 }

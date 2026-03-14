@@ -74,7 +74,7 @@
   --pfm-text-on-dark: #FFFFFF;
 
   /* === Action Primary === */
-  --pfm-action-primary-bg: #2E4E78;
+  --pfm-action-primary-bg: #3A495D;
   --pfm-action-primary-text: #FFFFFF;
 
   /* === Status: Error === */
@@ -99,7 +99,7 @@
   --pfm-palette-purple-strong: #491091;
 
   /* === Palette: Blue === */
-  --pfm-palette-blue-extra-soft: #D9E8FA;
+  --pfm-palette-blue-extra-soft: #DFE7FF;
   --pfm-palette-blue-strong: #0047AB;
 
   /* === Palette: Green === */
@@ -111,7 +111,7 @@
   --pfm-palette-orange-strong: #B35C00;
 
   /* === Illustration === */
-  --pfm-illustration-extra-soft: #E1E4E7;
+  --pfm-illustration-extra-soft: #E1E8EF;
 
   /* === Card Gradients === */
   --pfm-card-gradient-blue: linear-gradient(135deg, #1A3A5C 0%, #2E4E78 50%, #4A7AB5 100%);

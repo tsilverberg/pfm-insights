@@ -46,6 +46,9 @@ const PortfolioListItem: React.FC<PortfolioListItemProps> = ({ portfolio }) => {
 
   return (
     <div className="portfolio-list-item">
+      <div className="portfolio-list-item__icon">
+        <span className="material-symbols-rounded" style={{ fontSize: 20, color: 'var(--pfm-text-secondary)' }}>trending_up</span>
+      </div>
       <div className="portfolio-list-item__info">
         <span className="typo-callout-semibold">{portfolio.name}</span>
         <span className="typo-footnote" style={{ color: 'var(--pfm-text-secondary)' }}>{portfolio.label}</span>

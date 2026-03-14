@@ -30,15 +30,15 @@ const ReviewSummaryPage: React.FC = () => {
     history.push(`/account/${id}`);
   };
 
-  const permissionIcons: Record<string, string> = {
-    'View balance & transactions': '📋',
-    'Transaction limit': '💳',
-    'Manage cards': '💳',
-    'View account insights': '✨',
-    'Spend from this account': '💰',
-    'Initiate transfers': '🔄',
-    'Manage scheduled payments': '⏰',
-    'View statements & documents': '📄',
+  const permissionStyles: Record<string, { icon: string; bg: string; color: string }> = {
+    'View balance & transactions': { icon: 'receipt_long', bg: '#DFE7FF', color: '#0047AB' },
+    'Transaction limit': { icon: 'credit_card', bg: '#E2F5EC', color: '#0A5A2B' },
+    'Manage cards': { icon: 'credit_card', bg: '#E1E8EF', color: '#3A495D' },
+    'View account insights': { icon: 'auto_awesome', bg: '#E8DCF8', color: '#491091' },
+    'Spend from this account': { icon: 'payments', bg: '#E2F5EC', color: '#0A5A2B' },
+    'Initiate transfers': { icon: 'swap_horiz', bg: '#DFE7FF', color: '#0047AB' },
+    'Manage scheduled payments': { icon: 'schedule', bg: '#FDE8D0', color: '#B35C00' },
+    'View statements & documents': { icon: 'description', bg: '#E1E8EF', color: '#3A495D' },
   };
 
   return (
@@ -57,7 +57,9 @@ const ReviewSummaryPage: React.FC = () => {
 
           {/* Shared with banner */}
           <div className="review-summary__banner">
-            <div className="review-summary__banner-icon">🤝</div>
+            <div className="review-summary__banner-icon">
+              <span className="material-symbols-rounded" style={{ fontSize: 24, color: '#B35C00' }}>volunteer_activism</span>
+            </div>
             <div className="review-summary__banner-text">
               <span className="typo-callout-semibold">You've shared an account with</span>
               <span className="typo-callout-semibold">{contactName}</span>
@@ -68,7 +70,9 @@ const ReviewSummaryPage: React.FC = () => {
           <div className="review-summary__section">
             <div className="review-summary__section-label">Account details</div>
             <div className="review-summary__account-row">
-              <div className="review-summary__account-icon">🏦</div>
+              <div className="review-summary__account-icon" style={{ background: 'var(--pfm-palette-blue-extra-soft)' }}>
+                <span className="material-symbols-rounded" style={{ fontSize: 20, color: '#0047AB' }}>account_balance</span>
+              </div>
               <div className="review-summary__account-info">
                 <span className="typo-callout-semibold">Checking account</span>
                 <span className="typo-footnote" style={{ color: 'var(--pfm-text-secondary)' }}>****{homeAccountData.lastFour}</span>
@@ -82,8 +86,18 @@ const ReviewSummaryPage: React.FC = () => {
             <div className="review-summary__section-label">Permissions</div>
             {enabledPermissions.map((perm) => (
               <div key={perm.title} className="review-summary__perm-row">
-                <div className="review-summary__perm-icon">
-                  {permissionIcons[perm.title] || '✅'}
+                <div
+                  className="review-summary__perm-icon"
+                  style={{
+                    background: permissionStyles[perm.title]?.bg || '#E1E8EF',
+                  }}
+                >
+                  <span className="material-symbols-rounded" style={{
+                    fontSize: 20,
+                    color: permissionStyles[perm.title]?.color || '#3A495D',
+                  }}>
+                    {permissionStyles[perm.title]?.icon || 'check_circle'}
+                  </span>
                 </div>
                 <div className="review-summary__perm-info">
                   <span className="typo-callout-regular">{perm.title}</span>
@@ -109,7 +123,7 @@ const ReviewSummaryPage: React.FC = () => {
           <div className="review-summary__success">
             <div className="review-summary__success-illustration">
               <div className="review-summary__success-circle">
-                <span style={{ fontSize: 64 }}>🤝</span>
+                <span className="material-symbols-rounded" style={{ fontSize: 64, color: '#B35C00' }}>volunteer_activism</span>
               </div>
             </div>
             <h2 className="review-summary__success-title">Granted access shared!</h2>

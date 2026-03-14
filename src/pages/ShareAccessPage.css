@@ -3,6 +3,7 @@
   flex-direction: column;
   min-height: 100%;
   padding-top: 16px;
+  background: var(--pfm-surface-raised);
 }
 
 .share-access__header {
@@ -11,6 +12,7 @@
   justify-content: space-between;
   padding: 12px var(--pfm-page-padding);
   border-bottom: 1px solid var(--pfm-divider-default);
+  background: white;
 }
 
 .share-access__close {
@@ -33,6 +35,7 @@
 .share-access__search {
   padding: 0 var(--pfm-page-padding);
   border-bottom: 1px solid var(--pfm-divider-default);
+  background: white;
 }
 
 .share-access__search-input {
@@ -52,11 +55,12 @@
 
 .share-access__section {
   padding: 0 var(--pfm-page-padding);
+  background: white;
 }
 
 .share-access__section-label {
   font-family: 'Lato', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
   padding: 16px 0 4px;
@@ -99,7 +103,7 @@
   justify-content: center;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--pfm-text-secondary);
   flex-shrink: 0;
 }
@@ -111,7 +115,7 @@
 
 .share-access__contact-name {
   font-family: 'Lato', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
   color: var(--pfm-text-primary);
 }
@@ -127,7 +131,7 @@
   position: sticky;
   bottom: 0;
   padding: 16px var(--pfm-page-padding) 32px;
-  background: white;
+  background: var(--pfm-surface-raised);
 }
 
 .share-access__continue-btn {

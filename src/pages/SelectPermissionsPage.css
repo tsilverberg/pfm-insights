@@ -3,6 +3,7 @@
   flex-direction: column;
   min-height: 100%;
   padding-top: 16px;
+  background: var(--pfm-surface-raised);
 }
 
 .select-perms__header {
@@ -11,6 +12,7 @@
   justify-content: space-between;
   padding: 12px var(--pfm-page-padding);
   border-bottom: 1px solid var(--pfm-divider-default);
+  background: white;
 }
 
 .select-perms__close {
@@ -33,6 +35,7 @@
 .select-perms__section {
   padding: 16px var(--pfm-page-padding);
   border-bottom: 1px solid var(--pfm-divider-default);
+  background: white;
 }
 
 .select-perms__question {
@@ -204,7 +207,7 @@
   position: sticky;
   bottom: 0;
   padding: 16px var(--pfm-page-padding) 32px;
-  background: white;
+  background: var(--pfm-surface-raised);
   margin-top: auto;
 }
 

@@ -1,3 +1,21 @@
+.invest-icon-button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--pfm-text-primary);
+  border-radius: 50%;
+}
+
+.invest-icon-button:active {
+  opacity: 0.6;
+}
+
 .invest-hero {
   display: flex;
   flex-direction: column;

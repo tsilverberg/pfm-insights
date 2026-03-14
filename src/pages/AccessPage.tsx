@@ -40,7 +40,7 @@ const AccessPage: React.FC = () => {
             </button>
           </div>
 
-          <div style={{ height: 40 }} />
+          <div style={{ height: 32 }} />
         </div>
       </IonContent>
     </IonPage>

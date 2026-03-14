@@ -3,10 +3,15 @@
   flex-direction: column;
   min-height: 100%;
   padding-top: 16px;
+  background: var(--pfm-surface-raised);
 }
 
 .access-page__section {
   padding: 0 var(--pfm-page-padding);
+  margin: 8px var(--pfm-page-padding) 0;
+  background: white;
+  border-radius: 16px;
+  padding: 0 16px;
 }
 
 .access-page__section-label {

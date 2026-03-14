@@ -27,8 +27,8 @@ const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points })
     datasets: [
       {
         data: values,
-        borderColor: '#4AB2B2',
-        backgroundColor: 'rgba(74, 178, 178, 0.10)',
+        borderColor: '#061223',
+        backgroundColor: 'rgba(6, 18, 35, 0.06)',
         borderWidth: 2,
         fill: true,
         pointRadius: 0,
@@ -43,8 +43,8 @@ const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points })
     plugins: {
       tooltip: {
         backgroundColor: '#061223',
-        titleFont: { family: 'Libre Franklin', size: 11, weight: 400 as const },
-        bodyFont: { family: 'Libre Franklin', size: 12, weight: 600 as const },
+        titleFont: { family: 'Lato', size: 11, weight: 400 as const },
+        bodyFont: { family: 'Lato', size: 12, weight: 600 as const },
         padding: 8,
         cornerRadius: 4,
         callbacks: {
@@ -61,7 +61,7 @@ const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points })
         border: { display: false },
         ticks: {
           font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#7189A7',
+          color: '#3A495D',
           maxTicksLimit: 4,
           maxRotation: 0,
         },

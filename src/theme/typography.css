@@ -96,16 +96,25 @@
   letter-spacing: 0;
 }
 
-/* Chart tooltip fonts — Libre Franklin */
+/* Utility typography classes */
+.typo-title2-semibold {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  letter-spacing: 0;
+}
+
+/* Chart tooltip fonts — Lato */
 .typo-tooltip-label {
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 11px;
   line-height: 16px;
 }
 
 .typo-tooltip-value {
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
