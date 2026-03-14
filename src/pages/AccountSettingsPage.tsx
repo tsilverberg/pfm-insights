@@ -8,9 +8,9 @@ import './AccountSettingsPage.css';
 const AccountSettingsPage: React.FC = () => {
   return (
     <IonPage>
+      <ScreenHeader title="Settings" />
       <IonContent className="page-content">
         <div className="account-settings">
-          <ScreenHeader title="Settings" />
 
           {accountSettingsSections.map((section) => (
             <div key={section.section} className="account-settings__section">

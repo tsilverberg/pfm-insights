@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
+import ScreenHeader from '../components/shared/ScreenHeader';
 import ToggleRow from '../components/shared/ToggleRow';
 import { defaultSharingPermissions, relationshipTypes } from '../data/mockData';
 import type { SharingPermissionConfig } from '../data/types';
@@ -61,17 +62,9 @@ const SelectPermissionsPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Select permissions" closeButton />
       <IonContent className="page-content">
         <div className="select-perms">
-          <div className="select-perms__header">
-            <button className="select-perms__close" onClick={() => history.goBack()} aria-label="Close">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M18 6L6 18M6 6l12 12" stroke="var(--pfm-text-primary)" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-            <h1 className="select-perms__title">Select permissions</h1>
-            <div style={{ width: 24 }} />
-          </div>
 
           {/* Relationship Section */}
           <div className="select-perms__section">

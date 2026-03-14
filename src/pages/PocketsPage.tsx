@@ -11,9 +11,9 @@ const PocketsPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Pockets" rightLabel="New pocket" rightVariant="pill" />
       <IonContent className="page-content">
-        <div style={{ paddingTop: 16 }}>
-          <ScreenHeader title="Pockets" rightLabel="New pocket" rightVariant="pill" />
+        <div>
 
           <div style={{ padding: '0 var(--pfm-page-padding)', display: 'flex', flexDirection: 'column', gap: 8 }}>
             {pocketsListData.map((pocket) => (

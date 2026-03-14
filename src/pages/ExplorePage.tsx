@@ -1,17 +1,14 @@
 import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
+import AppHeader from '../components/layout/AppHeader';
 
 const ExplorePage: React.FC = () => (
   <IonPage>
+    <AppHeader title="Explore" />
     <IonContent className="page-content">
-      <div style={{ paddingTop: 54 }}>
-        {/* Header */}
-        <div style={{ padding: '16px var(--pfm-page-padding)' }}>
-          <h1 className="typo-title2-semibold" style={{ margin: 0 }}>Explore</h1>
-        </div>
-
+      <div>
         {/* Quick Actions */}
-        <div style={{ padding: '0 var(--pfm-page-padding)' }}>
+        <div style={{ padding: '16px var(--pfm-page-padding) 0' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             {[
               { label: 'Budgets', icon: '📊', desc: 'Track spending limits' },

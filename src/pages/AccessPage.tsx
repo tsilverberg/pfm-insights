@@ -11,9 +11,9 @@ const AccessPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Access" />
       <IonContent className="page-content">
         <div className="access-page">
-          <ScreenHeader title="Access" />
 
           <div className="access-page__section">
             <div className="access-page__section-label">Owner</div>

@@ -14,9 +14,9 @@ const GearIcon = (
 const NotificationsPage: React.FC = () => {
   return (
     <IonPage>
+      <ScreenHeader title="Notifications" rightIcon={GearIcon} />
       <IonContent className="page-content">
         <div className="notifications-page">
-          <ScreenHeader title="Notifications" rightIcon={GearIcon} />
 
           {notificationsData.map((group) => (
             <div key={group.label} className="notifications-page__group">

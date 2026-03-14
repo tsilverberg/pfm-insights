@@ -38,13 +38,13 @@ const AccountDetailPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader
+        title="Account"
+        rightIcon={GearIcon}
+        onRightAction={() => history.push(`/account/${id}/settings`)}
+      />
       <IonContent className="page-content">
-        <div style={{ paddingTop: 16 }}>
-          <ScreenHeader
-            title="Account"
-            rightIcon={GearIcon}
-            onRightAction={() => history.push(`/account/${id}/settings`)}
-          />
+        <div>
 
           {/* Balance */}
           <div className="section-module" style={{ textAlign: 'center' }}>

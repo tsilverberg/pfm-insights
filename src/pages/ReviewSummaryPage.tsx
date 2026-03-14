@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
+import ScreenHeader from '../components/shared/ScreenHeader';
 import BottomSheet from '../components/shared/BottomSheet';
 import { homeAccountData } from '../data/mockData';
 import { formatEuro } from '../data/formatters';
@@ -43,17 +44,9 @@ const ReviewSummaryPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Review summary" closeButton />
       <IonContent className="page-content">
         <div className="review-summary">
-          <div className="review-summary__header">
-            <button className="review-summary__close" onClick={() => history.goBack()} aria-label="Close">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M18 6L6 18M6 6l12 12" stroke="var(--pfm-text-primary)" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-            <h1 className="review-summary__title">Review summary</h1>
-            <div style={{ width: 24 }} />
-          </div>
 
           {/* Shared with banner */}
           <div className="review-summary__banner">

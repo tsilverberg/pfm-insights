@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
+import ScreenHeader from '../components/shared/ScreenHeader';
 import NumericKeypad from '../components/shared/NumericKeypad';
 import './SendMoneyPage.css';
 
@@ -37,17 +38,8 @@ const SendMoneyPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Send money" closeButton />
       <IonContent className="page-content">
-        {/* Header */}
-        <div className="send-header">
-          <div className="send-header__spacer" />
-          <span className="send-header__title">Send money</span>
-          <button className="send-header__close" onClick={() => history.goBack()}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M18 6L6 18M6 6l12 12" stroke="var(--pfm-text-primary)" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
 
         {/* Amount Display */}
         <div className="send-amount">

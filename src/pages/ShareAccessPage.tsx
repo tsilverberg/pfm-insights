@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory, useParams } from 'react-router-dom';
+import ScreenHeader from '../components/shared/ScreenHeader';
 import { sharingContacts } from '../data/mockData';
 import './ShareAccessPage.css';
 
@@ -29,17 +30,9 @@ const ShareAccessPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Shared access" closeButton />
       <IonContent className="page-content">
         <div className="share-access">
-          <div className="share-access__header">
-            <button className="share-access__close" onClick={() => history.goBack()} aria-label="Close">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M18 6L6 18M6 6l12 12" stroke="var(--pfm-text-primary)" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-            <h1 className="share-access__title">Shared access</h1>
-            <div style={{ width: 24 }} />
-          </div>
 
           <div className="share-access__search">
             <input

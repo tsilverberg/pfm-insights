@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
+import AppHeader from '../components/layout/AppHeader';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -78,22 +79,16 @@ const InvestPage: React.FC = () => {
     },
   };
 
+  const headerActions = [
+    { label: 'Cards', icon: <span className="material-symbols-rounded">credit_card</span> },
+    { label: 'Coach', icon: <span className="material-symbols-rounded">school</span> },
+  ];
+
   return (
     <IonPage>
+      <AppHeader title="Invest" actions={headerActions} />
       <IonContent className="page-content">
-        <div style={{ paddingTop: 54 }}>
-          {/* Header */}
-          <div style={{ padding: '0 var(--pfm-page-padding)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h1 className="typo-title3" style={{ margin: 0 }}>Invest</h1>
-            <div style={{ display: 'flex', gap: 4 }}>
-              <button className="invest-icon-button" aria-label="Cards">
-                <span className="material-symbols-rounded">credit_card</span>
-              </button>
-              <button className="invest-icon-button" aria-label="Coach">
-                <span className="material-symbols-rounded">school</span>
-              </button>
-            </div>
-          </div>
+        <div>
 
           {/* Balance Hero */}
           <div className="invest-section">

@@ -10,9 +10,9 @@ const CardPointsPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Card Points" />
       <IonContent className="page-content">
-        <div style={{ paddingTop: 54 }}>
-          <ScreenHeader title="Card Points" />
+        <div>
 
           <div className="section-module" style={{ textAlign: 'center' }}>
             <div style={{ marginBottom: 24 }}>

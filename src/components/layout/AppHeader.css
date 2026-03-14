@@ -1,56 +1,21 @@
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--pfm-header-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--pfm-divider-default);
-  padding-top: env(safe-area-inset-top, 0px);
+.app-header-ionic ion-toolbar {
+  --background: transparent;
 }
 
-.app-header__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  padding: 0 var(--pfm-page-padding);
-}
-
-.app-header__title {
+.app-header-ionic ion-title {
   font-family: 'Lato', sans-serif;
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
   color: var(--pfm-text-primary);
-  max-width: 150px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin: 0;
+  text-align: left;
+  padding-inline-start: var(--pfm-page-padding);
 }
 
-.app-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.app-header__icon-btn {
+.app-header-ionic ion-button {
+  --color: var(--pfm-text-primary);
+  --padding-start: 0;
+  --padding-end: 0;
   width: 44px;
   height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--pfm-text-primary);
-  padding: 10px;
-  border-radius: 8px;
-  transition: background 0.2s;
-}
-
-.app-header__icon-btn:active {
-  background: rgba(0, 0, 0, 0.05);
 }

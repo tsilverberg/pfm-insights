@@ -16,9 +16,9 @@ const CardsPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="Cards" rightLabel="New card" rightVariant="pill" />
       <IonContent className="page-content">
-        <div style={{ paddingTop: 16 }}>
-          <ScreenHeader title="Cards" rightLabel="New card" rightVariant="pill" />
+        <div>
 
           {/* Card Carousel */}
           <div className="section-module" style={{ overflow: 'visible' }}>

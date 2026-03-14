@@ -18,9 +18,9 @@ const MoreActionsPage: React.FC = () => {
 
   return (
     <IonPage>
+      <ScreenHeader title="More actions" rightIcon={SearchIcon} />
       <IonContent className="page-content">
         <div className="more-actions">
-          <ScreenHeader title="More actions" rightIcon={SearchIcon} />
 
           {moreActionsSections.map((section) => (
             <div key={section.section} className="more-actions__section">
