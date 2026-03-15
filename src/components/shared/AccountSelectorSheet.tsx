@@ -10,6 +10,7 @@ interface AccountSelectorSheetProps {
   accounts: Account[];
   selectedAccountId: string;
   onSelect: (accountId: string) => void;
+  onViewAll?: () => void;
 }
 
 const accountTypeLabels: Record<Account['type'], string> = {
@@ -24,6 +25,7 @@ const AccountSelectorSheet: React.FC<AccountSelectorSheetProps> = ({
   accounts,
   selectedAccountId,
   onSelect,
+  onViewAll,
 }) => {
   const modalRef = useRef<HTMLIonModalElement>(null);
 
@@ -85,6 +87,17 @@ const AccountSelectorSheet: React.FC<AccountSelectorSheetProps> = ({
             </div>
           ))}
         </div>
+        {onViewAll && (
+          <div className="account-selector__footer">
+            <button
+              className="account-selector__view-all"
+              onClick={onViewAll}
+            >
+              <span className="material-symbols-rounded">list</span>
+              View all accounts
+            </button>
+          </div>
+        )}
       </div>
     </IonModal>
   );

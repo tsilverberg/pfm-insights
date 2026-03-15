@@ -13,12 +13,12 @@ import ChildAccountCard from '../components/shared/ChildAccountCard';
 import DotIndicator from '../components/shared/DotIndicator';
 import AccountSelectorSheet from '../components/shared/AccountSelectorSheet';
 import {
-  homeAccountData,
   homeQuickActions,
   homeTransactionsData,
   homePocketsData,
   homeChildAccountData,
   allAccountsData,
+  accountTransactionsMap,
 } from '../data/mockData';
 import './HomePage.css';
 
@@ -28,8 +28,12 @@ const HomePage: React.FC = () => {
   const [showCoach, setShowCoach] = useState(true);
   const [childIdx, setChildIdx] = useState(0);
   const [showAccountSheet, setShowAccountSheet] = useState(false);
+  const [selectedAccountId, setSelectedAccountId] = useState('acc-1');
   const scrollRef = useRef<HTMLDivElement>(null);
   const revealRef = useScrollReveal();
+
+  const selectedAccount = allAccountsData.find(a => a.id === selectedAccountId) || allAccountsData[0];
+  const transactions = accountTransactionsMap[selectedAccountId] || homeTransactionsData;
 
   const handleChildScroll = () => {
     if (scrollRef.current) {
@@ -54,17 +58,17 @@ const HomePage: React.FC = () => {
               onClick={() => setShowAccountSheet(true)}
               className="home__account-selector"
             >
-              <span>John's main account</span>
+              <span>{selectedAccount.name}</span>
               <span className="material-symbols-rounded color-secondary" style={{ fontSize: 16 }}>unfold_more</span>
             </button>
           </div>
 
           {/* Account Balance Hero */}
           <div className="section-module text-center">
-            <AccountBalanceCard account={homeAccountData} />
+            <AccountBalanceCard account={selectedAccount} />
             <div className="mt-24">
               <QuickActionsRow actions={homeQuickActions.map((a) =>
-                a.id === 'more' ? { ...a, route: `/account/${homeAccountData.id}/more` } : a
+                a.id === 'more' ? { ...a, route: `/account/${selectedAccountId}/more` } : a
               )} />
             </div>
           </div>
@@ -80,7 +84,7 @@ const HomePage: React.FC = () => {
                     active={txTab}
                     onChange={setTxTab}
                   />
-                  <TransactionList groups={homeTransactionsData} />
+                  <TransactionList groups={transactions} />
                   {showCoach && (
                     <CoachMomentCard
                       title=""
@@ -139,10 +143,14 @@ const HomePage: React.FC = () => {
         isOpen={showAccountSheet}
         onDismiss={() => setShowAccountSheet(false)}
         accounts={allAccountsData}
-        selectedAccountId={homeAccountData.id}
+        selectedAccountId={selectedAccountId}
         onSelect={(accountId) => {
           setShowAccountSheet(false);
-          history.push(`/account/${accountId}`);
+          setSelectedAccountId(accountId);
+        }}
+        onViewAll={() => {
+          setShowAccountSheet(false);
+          history.push('/accounts');
         }}
       />
     </IonPage>

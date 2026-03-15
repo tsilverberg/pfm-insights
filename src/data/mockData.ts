@@ -554,6 +554,35 @@ export const allAccountsOverview = {
   totalBalance: 96864.15,
 };
 
+export const savingsTransactionsData: TransactionGroup[] = [
+  {
+    label: 'This month',
+    transactions: [
+      { id: 'st-1', name: 'Interest payment', amount: 42.15, category: 'Interest', date: 'Mar 12', nwgType: 'growth' as const },
+      { id: 'st-2', name: 'Transfer from checking', amount: 500.00, category: 'Transfer', date: 'Mar 1', nwgType: 'growth' as const },
+      { id: 'st-3', name: 'Round-up savings', amount: 23.47, category: 'Savings', date: 'Mar 5', nwgType: 'growth' as const },
+    ],
+  },
+];
+
+export const sharedTransactionsData: TransactionGroup[] = [
+  {
+    label: 'This week',
+    transactions: [
+      { id: 'sh-1', name: 'Albert Heijn', amount: -87.45, category: 'Groceries', date: 'Today', nwgType: 'need' as const },
+      { id: 'sh-2', name: 'Vattenfall Energy', amount: -142.30, category: 'Utilities', date: 'Yesterday', nwgType: 'need' as const },
+      { id: 'sh-3', name: 'IKEA', amount: -234.99, category: 'Home', date: 'Mon', nwgType: 'want' as const },
+      { id: 'sh-4', name: "Elly's contribution", amount: 750.00, category: 'Transfer', date: 'Mar 1', nwgType: 'growth' as const },
+    ],
+  },
+];
+
+export const accountTransactionsMap: Record<string, TransactionGroup[]> = {
+  'acc-1': homeTransactionsData,
+  'acc-2': savingsTransactionsData,
+  'acc-3': sharedTransactionsData,
+};
+
 export const allAccountsData: Account[] = [
   {
     id: 'acc-1',

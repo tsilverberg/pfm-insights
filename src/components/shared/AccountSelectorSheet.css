@@ -134,3 +134,28 @@
   font-size: 24px;
   color: var(--pfm-change-positive);
 }
+
+.account-selector__footer {
+  padding: 8px 16px 0;
+  border-top: 1px solid var(--pfm-divider-default);
+  margin-top: 8px;
+}
+
+.account-selector__view-all {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--pfm-action-primary-bg);
+}
+
+.account-selector__view-all .material-symbols-rounded {
+  font-size: 20px;
+}
