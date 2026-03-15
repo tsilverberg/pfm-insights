@@ -4,8 +4,10 @@ import HealthScoreMiniCard from '../../components/shared/HealthScoreMiniCard';
 import TuneRhythmModal from '../../components/shared/TuneRhythmModal';
 import PocketGoalCard from '../../components/shared/PocketGoalCard';
 import RaisedButton from '../../components/shared/RaisedButton';
+import CoachMomentCard from '../../components/shared/CoachMomentCard';
 import { pocketsListData } from '../../data/mockData';
 import { nwgBreakdownData, cashflowData, calculateRhythmImpact } from '../../data/pfmData';
+import { coachNudges } from '../../data/coachData';
 import { formatEuroShort } from '../../data/formatters';
 import { useToast } from '../../hooks/useToast';
 import type { RhythmTarget } from '../../data/types';
@@ -13,7 +15,9 @@ import './PlanTab.css';
 
 const PlanTab: React.FC = () => {
   const { showToast } = useToast();
+  const [showCoach, setShowCoach] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+  const nudge = coachNudges.find(n => n.tab === 'plan');
   const [rhythmTarget, setRhythmTarget] = useState<RhythmTarget | null>(null);
 
   const actuals = nwgBreakdownData;
@@ -54,16 +58,22 @@ const PlanTab: React.FC = () => {
 
   return (
     <div>
-      {/* Section 1: Health Score Mini Card */}
+      {/* Health score: mini card + My rhythm (rhythm is part of health score) */}
       <SectionModule title="Health score">
-        <HealthScoreMiniCard />
-      </SectionModule>
+        <div className="plan-health-section card-bordered">
+          <HealthScoreMiniCard />
 
-      {/* Section 2: My Rhythm */}
-      <SectionModule title="My rhythm" subtitle="Your spending and saving targets">
+          <div className="plan-health-section__rhythm-block" aria-labelledby="my-rhythm-heading">
+            <h3 id="my-rhythm-heading" className="plan-health-section__subheading typo-footnote color-secondary">
+              My rhythm
+            </h3>
+            <p className="plan-health-section__rhythm-hint typo-footnote color-tertiary">
+              Your spending and saving targets
+            </p>
+
         {!rhythmTarget ? (
           /* Before activation */
-          <div className="rhythm-card card-bordered">
+          <div className="rhythm-card rhythm-card--nested">
             <div className="rhythm-card__actuals">
               {([
                 { label: 'Needs', pct: actuals.needs.percentage, color: 'var(--pfm-pink-base)' },
@@ -98,7 +108,7 @@ const PlanTab: React.FC = () => {
           </div>
         ) : (
           /* After activation */
-          <div className="rhythm-card card-bordered">
+          <div className="rhythm-card rhythm-card--nested">
             {/* Target vs Actual comparison */}
             <div className="rhythm-card__compare">
               {([
@@ -162,9 +172,23 @@ const PlanTab: React.FC = () => {
             </button>
           </div>
         )}
+          </div>
+        </div>
       </SectionModule>
 
-      {/* Section 3: Savings Goals (kept as-is) */}
+      {/* Coach Nudge */}
+      {showCoach && nudge && (
+        <SectionModule title="">
+          <CoachMomentCard
+            title={nudge.title}
+            body={nudge.body}
+            ctaLabel={nudge.ctaLabel}
+            onClose={() => setShowCoach(false)}
+          />
+        </SectionModule>
+      )}
+
+      {/* Section: Savings Goals */}
       <SectionModule title="Savings goals">
         <div className="plan__goals">
           {pocketsListData.map((pocket) => (

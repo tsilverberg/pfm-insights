@@ -1,97 +1,117 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { IonModal } from '@ionic/react';
 import CoachIcon from './CoachIcon';
+import { getCoachGreeting, conversationStarters, getCannedResponse, coachNudges } from '../../data/coachData';
+import type { ConversationStarter } from '../../data/coachData';
 import './CoachSheet.css';
 
 interface CoachSheetProps {
   isOpen: boolean;
   onClose: () => void;
+  context?: string; // current route path
 }
 
 interface Message {
   id: number;
   text: string;
   sender: 'coach' | 'user';
+  quickReplies?: string[];
 }
 
-const QUICK_ACTIONS = [
-  "How's my spending?",
-  "Help me save more",
-  "Review my budget",
-  "Explain my score",
-];
+function getTabFromPath(path: string): string {
+  if (path.startsWith('/home') || path === '/') return 'home';
+  if (path.startsWith('/insights')) return 'spend';
+  if (path.startsWith('/invest')) return 'plan';
+  if (path.startsWith('/explore')) return 'more';
+  if (path.includes('health') || path.includes('pillar')) return 'plan';
+  if (path.includes('category') || path.includes('nwg')) return 'spend';
+  return 'home';
+}
 
-const COACH_RESPONSES: Record<string, string> = {
-  "How's my spending?":
-    "This month you've spent €1,240 so far, which is 8% less than the same point last month. Your biggest category is Groceries at €380. Want me to break it down further?",
-  "Help me save more":
-    "Based on your patterns, I see two opportunities: you could save around €45/month by reducing dining out frequency, and setting up an automatic transfer of €100 on payday could build your emergency fund faster. Shall I help set that up?",
-  "Review my budget":
-    "Your budget is 62% used with 16 days left in the month. You're on track in most categories, but Entertainment is at 85% already. I'd suggest holding off on subscriptions until next month. Want a detailed category view?",
-  "Explain my score":
-    "Your financial health score is 74 out of 100. Here's how it breaks down: Spending Control is 78 (up 3 pts), Savings Rate is 65, and Income Stability is 82. Your biggest opportunity is improving your savings rate. Want tips on that?",
-};
+function getContextStarters(path: string): ConversationStarter[] {
+  const tab = getTabFromPath(path);
+  // Filter for family persona (our default user) + this tab, take 4
+  const forTab = conversationStarters.filter(s => s.tab === tab && s.personaId === 'family');
+  if (forTab.length >= 4) return forTab.slice(0, 4);
+  // Fill with young-adult starters for the same tab
+  const fallback = conversationStarters.filter(s => s.tab === tab && s.personaId === 'young-adult');
+  return [...forTab, ...fallback].slice(0, 4);
+}
 
-const DEFAULT_RESPONSE =
-  "That's a great question. Let me look into your financial data and get back to you with a detailed answer. Is there anything specific you'd like me to focus on?";
+function getContextNudge(path: string): { title: string; body: string; quickReplies?: string[] } | null {
+  const tab = getTabFromPath(path);
+  const nudge = coachNudges.find(n => n.tab === tab || n.tab === 'all');
+  if (!nudge) return null;
+  return { title: nudge.title, body: nudge.body, quickReplies: nudge.quickReplies };
+}
 
-const INITIAL_MESSAGE: Message = {
-  id: 1,
-  text: "Your financial health is looking good at 74 points. Your spending control has improved by 3 points this month. Would you like to explore ways to boost your savings rate?",
-  sender: 'coach',
-};
-
-const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose }) => {
-  const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
+const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose, context = '/home' }) => {
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
+  const [starters, setStarters] = useState<ConversationStarter[]>([]);
+  const [showStarters, setShowStarters] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const nextIdRef = useRef(2);
+  const nextIdRef = useRef(1);
+
+  // Reset conversation when opened with new context
+  useEffect(() => {
+    if (isOpen) {
+      const nudge = getContextNudge(context);
+      const initialMessages: Message[] = [];
+
+      if (nudge) {
+        initialMessages.push({
+          id: nextIdRef.current++,
+          text: `**${nudge.title}**\n\n${nudge.body}`,
+          sender: 'coach',
+          quickReplies: nudge.quickReplies,
+        });
+      }
+
+      setMessages(initialMessages);
+      setStarters(getContextStarters(context));
+      setShowStarters(true);
+    }
+  }, [isOpen, context]);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  const addCoachResponse = (responseText: string) => {
+  const addCoachResponse = (userText: string) => {
     setTimeout(() => {
+      const response = getCannedResponse('family', userText);
+      const newStarters = getContextStarters(context);
       setMessages(prev => [
         ...prev,
         {
           id: nextIdRef.current++,
-          text: responseText,
+          text: response,
           sender: 'coach',
+          quickReplies: newStarters.slice(0, 3).map(s => s.text),
         },
       ]);
-    }, 500);
+    }, 600);
   };
 
   const handleSend = () => {
     const text = inputText.trim();
     if (!text) return;
-
-    const userMessage: Message = {
-      id: nextIdRef.current++,
-      text,
-      sender: 'user',
-    };
-    setMessages(prev => [...prev, userMessage]);
+    setMessages(prev => [...prev, { id: nextIdRef.current++, text, sender: 'user' }]);
     setInputText('');
-
-    addCoachResponse(COACH_RESPONSES[text] || DEFAULT_RESPONSE);
+    setShowStarters(false);
+    addCoachResponse(text);
   };
 
-  const handleQuickAction = (action: string) => {
-    const userMessage: Message = {
-      id: nextIdRef.current++,
-      text: action,
-      sender: 'user',
-    };
-    setMessages(prev => [...prev, userMessage]);
-
-    addCoachResponse(COACH_RESPONSES[action] || DEFAULT_RESPONSE);
+  const handleStarter = (starter: ConversationStarter | string) => {
+    const text = typeof starter === 'string' ? starter : starter.text;
+    setMessages(prev => [...prev, { id: nextIdRef.current++, text, sender: 'user' }]);
+    setShowStarters(false);
+    addCoachResponse(text);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -101,6 +121,8 @@ const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose }) => {
     }
   };
 
+  const greeting = getCoachGreeting('family');
+
   return (
     <IonModal
       isOpen={isOpen}
@@ -108,6 +130,7 @@ const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose }) => {
       className="coach-sheet"
       initialBreakpoint={0.75}
       breakpoints={[0, 0.5, 0.75, 1]}
+      handle={true}
     >
       <div className="coach-sheet__inner">
         <div className="coach-sheet__header">
@@ -117,49 +140,57 @@ const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose }) => {
           </div>
           <button className="coach-sheet__close" onClick={onClose} aria-label="Close">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M18 6L6 18M6 6l12 12"
-                stroke="var(--pfm-text-tertiary)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M18 6L6 18M6 6l12 12" stroke="var(--pfm-text-tertiary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
 
-        <div className="coach-sheet__greeting">
-          Hi Thomas, how can I help you today?
-        </div>
+        <div className="coach-sheet__greeting">{greeting}</div>
 
-        <div className="coach-sheet__quick-actions">
-          {QUICK_ACTIONS.map(action => (
-            <button
-              key={action}
-              className="coach-sheet__pill"
-              onClick={() => handleQuickAction(action)}
-            >
-              {action}
-            </button>
-          ))}
-        </div>
+        {/* Conversation starters */}
+        {showStarters && starters.length > 0 && (
+          <div className="coach-sheet__starters">
+            {starters.map(s => (
+              <button key={s.id} className="coach-sheet__starter-pill" onClick={() => handleStarter(s)}>
+                {s.text}
+              </button>
+            ))}
+          </div>
+        )}
 
+        {/* Messages */}
         <div className="coach-sheet__messages">
           {messages.map(msg => (
-            <div
-              key={msg.id}
-              className={`coach-sheet__message coach-sheet__message--${msg.sender}`}
-            >
+            <div key={msg.id} className={`coach-sheet__message coach-sheet__message--${msg.sender}`}>
               {msg.sender === 'coach' && (
                 <div className="coach-sheet__avatar">
                   <CoachIcon size={18} color="var(--pfm-action-primary-bg)" />
                 </div>
               )}
               <div className={`coach-sheet__bubble coach-sheet__bubble--${msg.sender}`}>
-                {msg.text}
+                {msg.text.split('\n').map((line, i) => {
+                  // Simple bold markdown
+                  const parts = line.split(/\*\*(.*?)\*\*/g);
+                  return (
+                    <span key={i}>
+                      {parts.map((part, j) => j % 2 === 1 ? <strong key={j}>{part}</strong> : part)}
+                      {i < msg.text.split('\n').length - 1 && <br />}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           ))}
+          {/* Quick replies after coach messages */}
+          {messages.length > 0 && messages[messages.length - 1].sender === 'coach' && messages[messages.length - 1].quickReplies && (
+            <div className="coach-sheet__quick-replies">
+              {messages[messages.length - 1].quickReplies!.map(reply => (
+                <button key={reply} className="coach-sheet__reply-pill" onClick={() => handleStarter(reply)}>
+                  {reply}
+                </button>
+              ))}
+            </div>
+          )}
           <div ref={messagesEndRef} />
         </div>
 
@@ -172,20 +203,9 @@ const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose }) => {
             onChange={e => setInputText(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <button
-            className="coach-sheet__send"
-            onClick={handleSend}
-            disabled={!inputText.trim()}
-            aria-label="Send"
-          >
+          <button className="coach-sheet__send" onClick={handleSend} disabled={!inputText.trim()} aria-label="Send">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>

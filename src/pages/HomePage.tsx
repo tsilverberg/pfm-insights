@@ -20,6 +20,7 @@ import {
   allAccountsData,
   accountTransactionsMap,
 } from '../data/mockData';
+import { coachNudges } from '../data/coachData';
 import './HomePage.css';
 
 const HomePage: React.FC = () => {
@@ -32,6 +33,7 @@ const HomePage: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const revealRef = useScrollReveal();
 
+  const nudge = coachNudges.find(n => n.tab === 'home' && n.insightType === 'proximity');
   const selectedAccount = allAccountsData.find(a => a.id === selectedAccountId) || allAccountsData[0];
   const transactions = accountTransactionsMap[selectedAccountId] || homeTransactionsData;
 
@@ -85,10 +87,11 @@ const HomePage: React.FC = () => {
                     onChange={setTxTab}
                   />
                   <TransactionList groups={transactions} />
-                  {showCoach && (
+                  {showCoach && nudge && (
                     <CoachMomentCard
-                      title=""
-                      body="Your largest expense this week was online shopping, mostly from Amazon."
+                      title={nudge.title}
+                      body={nudge.body}
+                      ctaLabel={nudge.ctaLabel}
                       onClose={() => setShowCoach(false)}
                     />
                   )}

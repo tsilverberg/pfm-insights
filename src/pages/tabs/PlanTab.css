@@ -1,3 +1,51 @@
+/* ── Health score composite section ─────────────────────────── */
+.plan-health-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* Embedded health mini: no border/background, inherits parent card */
+.plan-health-section .health-mini {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  margin: calc(-1 * var(--pfm-card-padding)) calc(-1 * var(--pfm-card-padding)) 0;
+  padding: var(--pfm-card-padding);
+}
+
+.plan-health-section .health-mini:active {
+  background: var(--pfm-surface-subtle);
+}
+
+.plan-health-section__rhythm-block {
+  border-top: 1px solid var(--pfm-divider-default);
+  padding-top: 16px;
+  margin-top: 0;
+}
+
+.plan-health-section__subheading {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 2px 0;
+  color: var(--pfm-text-secondary);
+}
+
+.plan-health-section__rhythm-hint {
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  color: var(--pfm-text-tertiary);
+}
+
+/* Nested rhythm card: no border, inherits parent card */
+.rhythm-card--nested {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
 /* ── Rhythm Card ────────────────────────────────────────────── */
 .rhythm-card {
   display: flex;

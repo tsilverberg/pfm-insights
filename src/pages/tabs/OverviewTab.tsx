@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import SectionModule from '../../components/shared/SectionModule';
 import HealthScoreRing from '../../components/shared/HealthScoreRing';
 import PillarStrip from '../../components/shared/PillarStrip';
 import CashflowSummary from '../../components/shared/CashflowSummary';
 import SpotlightCard from '../../components/shared/SpotlightCard';
+import CoachMomentCard from '../../components/shared/CoachMomentCard';
 import {
   healthScoreData,
   pillarStripData,
   cashflowData,
   spotlightInsights,
 } from '../../data/pfmData';
+import { coachNudges } from '../../data/coachData';
 import './OverviewTab.css';
 
 const SPOTLIGHT_ICON_MAP: Record<string, string> = {
@@ -22,6 +24,8 @@ const SPOTLIGHT_ICON_MAP: Record<string, string> = {
 
 const OverviewTab: React.FC = () => {
   const history = useHistory();
+  const [showCoach, setShowCoach] = useState(true);
+  const nudge = coachNudges.find(n => n.insightType === 'benchmark');
 
   return (
     <div>
@@ -49,6 +53,18 @@ const OverviewTab: React.FC = () => {
           upcoming={cashflowData.upcoming}
         />
       </SectionModule>
+
+      {/* Coach Nudge */}
+      {showCoach && nudge && (
+        <SectionModule title="">
+          <CoachMomentCard
+            title={nudge.title}
+            body={nudge.body}
+            ctaLabel={nudge.ctaLabel}
+            onClose={() => setShowCoach(false)}
+          />
+        </SectionModule>
+      )}
 
       {/* Spotlights */}
       <SectionModule title="Spotlights">

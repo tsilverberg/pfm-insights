@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
@@ -6,8 +6,10 @@ import SectionModule from '../components/shared/SectionModule';
 import ProgressBar from '../components/shared/ProgressBar';
 import HealthScoreRing from '../components/shared/HealthScoreRing';
 import SpotlightCard from '../components/shared/SpotlightCard';
+import CoachMomentCard from '../components/shared/CoachMomentCard';
 import TrendLineChart from '../components/charts/TrendLineChart';
 import { healthScoreData } from '../data/pfmData';
+import { coachNudges } from '../data/coachData';
 import { PILLAR_WEIGHTS, PILLAR_LABELS } from '../data/constants';
 import type { PillarScore, ImprovementAction } from '../data/types';
 import './HealthOverviewPage.css';
@@ -47,6 +49,8 @@ const TREND_COLORS: Record<string, string> = {
 
 const HealthOverviewPage: React.FC = () => {
   const history = useHistory();
+  const [showCoach, setShowCoach] = useState(true);
+  const nudge = coachNudges.find(n => n.insightType === 'nudge');
   const handleBack = () => history.push('/insights');
 
   // Compute delta from history
@@ -98,6 +102,18 @@ const HealthOverviewPage: React.FC = () => {
               Updated {healthScoreData.lastUpdated}
             </p>
           </div>
+
+          {/* Coach Nudge */}
+          {showCoach && nudge && (
+            <SectionModule title="">
+              <CoachMomentCard
+                title={nudge.title}
+                body={nudge.body}
+                ctaLabel={nudge.ctaLabel}
+                onClose={() => setShowCoach(false)}
+              />
+            </SectionModule>
+          )}
 
           {/* Section 2: Score Trend */}
           <SectionModule title="Score trend">

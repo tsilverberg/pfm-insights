@@ -1,6 +1,6 @@
 .coach-sheet {
   --border-radius: 20px 20px 0 0;
-  --background: var(--pfm-surface-page);
+  --background: var(--pfm-surface-background);
   --handle-background: var(--pfm-border-subtle);
   --handle-width: 36px;
   --handle-height: 5px;
@@ -14,8 +14,11 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
+  overflow: hidden;
   padding: 4px 0 0;
   font-family: var(--pfm-font-family);
+  background: var(--pfm-surface-background);
 }
 
 /* Header */
@@ -101,9 +104,10 @@
   background: var(--pfm-surface-raised);
 }
 
-/* Messages area */
+/* Messages area — min-height: 0 critical for flex overflow in modal */
 .coach-sheet__messages {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 0 var(--pfm-card-padding) 8px;
@@ -161,9 +165,9 @@
   align-items: center;
   gap: 8px;
   padding: 12px var(--pfm-card-padding);
-  border-top: 1px solid var(--pfm-divider);
+  border-top: 1px solid var(--pfm-divider-default);
   flex-shrink: 0;
-  background: var(--pfm-surface-page);
+  background: var(--pfm-surface-background);
 }
 
 .coach-sheet__input {
@@ -206,4 +210,56 @@
 
 .coach-sheet__send:not(:disabled):active {
   opacity: 0.8;
+}
+
+/* Conversation starters grid */
+.coach-sheet__starters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 12px;
+}
+
+.coach-sheet__starter-pill {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--pfm-action-primary-bg);
+  background: none;
+  color: var(--pfm-action-primary-bg);
+  font-family: var(--pfm-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.coach-sheet__starter-pill:active {
+  background: var(--pfm-action-primary-bg);
+  color: var(--pfm-action-primary-text);
+}
+
+/* Quick replies after coach response */
+.coach-sheet__quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 16px 8px 48px; /* align with bubble, not avatar */
+}
+
+.coach-sheet__reply-pill {
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--pfm-border-subtle);
+  background: var(--pfm-surface-raised);
+  color: var(--pfm-text-secondary);
+  font-family: var(--pfm-font-family);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.coach-sheet__reply-pill:active {
+  border-color: var(--pfm-action-primary-bg);
+  color: var(--pfm-action-primary-bg);
 }

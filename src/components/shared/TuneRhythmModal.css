@@ -135,12 +135,10 @@
 }
 
 .tune-rhythm__preset-split {
-  grid-row: 1 / 3;
   display: flex;
   gap: 2px;
   font-weight: 600;
   justify-self: end;
-  align-self: center;
 }
 
 .tune-rhythm__preset-savings {

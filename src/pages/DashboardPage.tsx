@@ -13,6 +13,7 @@ import ChildAccountCard from '../components/shared/ChildAccountCard';
 import DotIndicator from '../components/shared/DotIndicator';
 import DonutChart from '../components/charts/DonutChart';
 import { formatEuro } from '../data/formatters';
+import { coachNudges } from '../data/coachData';
 import {
   dashboardTotalBalance,
   dashboardAccountsData,
@@ -31,6 +32,7 @@ const DashboardPage: React.FC = () => {
   const [txTab, setTxTab] = useState('Latest');
   const [showCoach, setShowCoach] = useState(true);
   const [childIdx, setChildIdx] = useState(0);
+  const nudge = coachNudges.find(n => n.tab === 'home' && n.insightType === 'nudge');
 
   const dashboardQuickActions = homeQuickActions.map((action) =>
     action.id === 'more' ? { ...action, route: `/account/acc-1/more` } : action
@@ -85,10 +87,11 @@ const DashboardPage: React.FC = () => {
           <div className="flex-col gap-16">
             <TabPills options={['Latest', 'Upcoming', 'Subscriptions']} active={txTab} onChange={setTxTab} />
             <TransactionList groups={homeTransactionsData} />
-            {showCoach && (
+            {showCoach && nudge && (
               <CoachMomentCard
-                title=""
-                body="Your largest expense this week was online shopping, mostly from Amazon."
+                title={nudge.title}
+                body={nudge.body}
+                ctaLabel={nudge.ctaLabel}
                 onClose={() => setShowCoach(false)}
               />
             )}

@@ -584,3 +584,68 @@ export function getTopNudge(tab: CoachTab, _personaId: PersonaId): CoachNudge | 
 export function getCoachResponse(intentTag: string): CoachMessage | null {
   return cannedResponses[intentTag] || null;
 }
+
+/**
+ * Match user text to a canned response by checking conversation starters
+ * for the persona, then falling back to fuzzy keyword matching.
+ */
+export function getCannedResponse(personaId: PersonaId, userText: string): string {
+  const lower = userText.toLowerCase();
+
+  // 1. Exact match against conversation starter text → use its intentTag
+  const starter = conversationStarters.find(
+    s => s.text.toLowerCase() === lower,
+  );
+  if (starter) {
+    const resp = cannedResponses[starter.intentTag];
+    if (resp) return resp.text;
+  }
+
+  // 2. Fuzzy keyword match against intentTags
+  const keywordMap: Record<string, string[]> = {
+    'monthly-summary': ['month', 'doing', 'overview', 'summary', 'how am i'],
+    'priorities': ['focus', 'priorities', 'should i'],
+    'nwg-breakdown': ['needs', 'lifestyle', 'saved', 'split', 'nwg'],
+    'health-score': ['health', 'score', 'explain my score'],
+    'improve-score': ['improve', 'boost', 'raise my score', 'get to 80'],
+    'budget-check': ['budget', 'on budget', 'over budget'],
+    'spend-breakdown': ['where', 'money going', 'breakdown', 'spending'],
+    'benchmark': ['compare', 'peers', 'others', 'average'],
+    'savings-progress': ['savings', 'progress', 'goals'],
+    'afford-check': ['afford', 'holiday', 'can i'],
+    'cashback': ['cashback', 'offers', 'rewards'],
+    'sub-audit': ['subscription', 'audit', 'cut'],
+    'household-summary': ['household', 'family doing'],
+    'kids-alerts': ['kids', 'alerts', 'children'],
+    'top-spender': ['who spent', 'most', 'leaderboard'],
+    'family-budget': ['family budget', 'over budget'],
+    'dependent-spend': ['alex', 'teen spending', 'dependent'],
+    'shared-goals': ['shared', 'goals', 'on track'],
+    'kids-savings': ['kids sav', 'children sav', 'emma'],
+    'rebalance': ['rebalance', 'adjust'],
+    'mortgage': ['mortgage', 'overpay'],
+    'irregular-costs': ['irregular', 'insurance', 'upcoming cost'],
+    'exec-summary': ['executive', 'brief', 'net income'],
+    'net-worth': ['net worth', 'worth trending'],
+    'dormant-cash': ['idle', 'dormant', 'sitting'],
+    'invest-next': ['invest', 'where should'],
+    'allowance-check': ['allowance', 'next allowance'],
+    'weekly-spend': ['week', 'this week'],
+    'remaining': ['left', 'remaining', 'how much can i'],
+    'goal-progress': ['headset', 'close am i', 'goal'],
+    'save-tips': ['save faster', 'save more', 'tips'],
+    'learn-budget': ['50/30/20', 'rule', 'learn'],
+    'chore-list': ['chore', 'chores'],
+    'earn-tips': ['earn', 'more money'],
+  };
+
+  for (const [intentTag, keywords] of Object.entries(keywordMap)) {
+    if (keywords.some(kw => lower.includes(kw))) {
+      const resp = cannedResponses[intentTag];
+      if (resp) return resp.text;
+    }
+  }
+
+  // 3. Fallback
+  return "That's a great question. Let me look into your financial data. In the meantime, try one of the suggestions below — or ask about your spending, savings, budget, or financial health score.";
+}

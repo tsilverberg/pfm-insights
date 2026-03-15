@@ -10,6 +10,7 @@ import { useToast } from '../../hooks/useToast';
 import { formatEuro } from '../../data/formatters';
 import { nwgBreakdownData, topSpendingData } from '../../data/pfmData';
 import { monthlyNwgData, monthlyTopSpending } from '../../data/mockData';
+import { coachNudges } from '../../data/coachData';
 import './SpendTab.css';
 
 const SpendTab: React.FC = () => {
@@ -18,6 +19,7 @@ const SpendTab: React.FC = () => {
   const { showToast } = useToast();
   const [showCoach, setShowCoach] = useState(true);
 
+  const nudge = coachNudges.find(n => n.tab === 'spend');
   const monthKey = String(monthNav.monthIndex);
   const nwg = monthlyNwgData[monthKey] || nwgBreakdownData;
   const topCats = monthlyTopSpending[monthKey] || topSpendingData;
@@ -57,12 +59,12 @@ const SpendTab: React.FC = () => {
       </SectionModule>
 
       {/* Coach Nudge */}
-      {showCoach && (
+      {showCoach && nudge && (
         <SectionModule title="">
           <CoachMomentCard
-            title="Over budget on wants"
-            body="You've exceeded your wants budget by €150. Consider moving some dining expenses to next month."
-            ctaLabel="Move money now"
+            title={nudge.title}
+            body={nudge.body}
+            ctaLabel={nudge.ctaLabel}
             onCta={() => showToast({ type: 'info', message: 'Transfer feature coming soon' })}
             isAction
             onClose={() => setShowCoach(false)}

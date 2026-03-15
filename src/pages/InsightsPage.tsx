@@ -35,7 +35,7 @@ const InsightsPage: React.FC = () => {
         {activeTab === 'plan' && <PlanTab />}
         {activeTab === 'wealth' && <WealthTab />}
       </IonContent>
-      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} />
+      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/insights" />
     </IonPage>
   );
 };
