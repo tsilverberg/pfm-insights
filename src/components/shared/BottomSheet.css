@@ -6,12 +6,17 @@
   --handle-height: 5px;
 }
 
+/* Tighten spacing between handle and content */
+.bottom-sheet-modal .ion-content {
+  --padding-top: 8px;
+}
+
 .bottom-sheet-modal ion-backdrop {
   background: rgba(0, 0, 0, 0.4);
 }
 
 .bottom-sheet__inner {
-  padding: 8px 16px 32px;
+  padding: 4px 16px 32px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -24,7 +29,7 @@
   line-height: 25.5px;
   color: var(--pfm-text-primary);
   text-align: center;
-  margin-bottom: 16px;
+  margin: 0 0 16px 0;
 }
 
 .bottom-sheet__content {

@@ -51,6 +51,17 @@ const FloatingTabBar: React.FC = () => {
   const shouldHide = hiddenPaths.some((p) => location.pathname.startsWith(p));
   if (shouldHide) return null;
 
+  const handleTabClick = (tab: (typeof tabs)[0]) => {
+    haptics.light();
+    const isActive = location.pathname.startsWith(tab.path);
+    if (isActive) {
+      const content = document.querySelector('ion-content');
+      content?.scrollToTop(300);
+    } else {
+      history.push(tab.path);
+    }
+  };
+
   return (
     <div className="floating-tab-bar" role="navigation" aria-label="Main navigation">
       <div className="floating-tab-bar__main">
@@ -60,7 +71,7 @@ const FloatingTabBar: React.FC = () => {
             <button
               key={tab.id}
               className={`floating-tab-bar__item ${isActive ? 'floating-tab-bar__item--active' : ''}`}
-              onClick={() => { haptics.light(); history.push(tab.path); }}
+              onClick={() => handleTabClick(tab)}
               aria-label={tab.label}
               aria-current={isActive ? 'page' : undefined}
             >

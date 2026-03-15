@@ -5,6 +5,7 @@
   cursor: pointer;
   width: 100%;
   text-align: left;
+  color: var(--pfm-text-primary);
   border-bottom: 1px solid var(--pfm-divider-default);
 }
 

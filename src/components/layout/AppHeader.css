@@ -19,6 +19,10 @@
   padding: 0;
 }
 
+.app-header-ionic ion-buttons[slot="end"] {
+  gap: 4px;
+}
+
 .app-header-ionic ion-button {
   --color: var(--pfm-text-primary);
   --padding-start: 0;

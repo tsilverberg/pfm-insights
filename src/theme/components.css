@@ -12,13 +12,11 @@
 }
 
 .coach-card__icon {
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   margin-top: 2px;
-  /* Material Symbol: crisp at any DPI; use font-size for sizing */
-  font-size: 24px !important;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
+  color: var(--pfm-text-primary);
 }
 
 .coach-card__body {
@@ -54,10 +52,10 @@
 
 .coach-card__close {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
   background: none;
   border: none;
   cursor: pointer;
@@ -66,6 +64,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.coach-card__close .material-symbols-rounded {
+  font-size: 18px;
 }
 
 .coach-card__cta {

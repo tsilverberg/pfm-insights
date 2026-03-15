@@ -32,11 +32,12 @@
 
 .quick-action__circle--primary {
   background: var(--pfm-action-primary-bg);
+  color: var(--pfm-action-primary-text);
 }
 
 .quick-action__circle--secondary {
-  background: var(--pfm-icon-muted);
-  color: white;
+  background: var(--pfm-neutral-100);
+  color: var(--pfm-text-primary);
 }
 
 .quick-action__circle--outlined {
