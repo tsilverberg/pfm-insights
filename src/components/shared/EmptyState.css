@@ -1,0 +1,43 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 12px;
+}
+
+.empty-state__icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--pfm-surface-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.empty-state__icon-circle .material-symbols-rounded {
+  font-size: 32px;
+  color: var(--pfm-text-secondary);
+}
+
+.empty-state__title {
+  color: var(--pfm-text-primary);
+  text-align: center;
+}
+
+.empty-state__description {
+  color: var(--pfm-text-secondary);
+  text-align: center;
+  max-width: 280px;
+}
+
+.empty-state__action {
+  margin-top: 4px;
+}
+
+.empty-state__action .btn-outline {
+  padding: 8px 24px;
+}

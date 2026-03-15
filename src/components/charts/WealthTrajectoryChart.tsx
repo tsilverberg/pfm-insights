@@ -25,7 +25,7 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
       {
         label: 'Recommended',
         data: recommendedPath,
-        borderColor: '#4AB2B2',
+        borderColor: '#4AB2B2', // matches --pfm-turquoise-strong
         borderDash: [6, 4],
         borderWidth: 2,
         fill: false,
@@ -35,8 +35,8 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
       {
         label: 'Your path',
         data: currentPath,
-        borderColor: '#4AB2B2',
-        backgroundColor: 'rgba(74, 178, 178, 0.15)',
+        borderColor: '#4AB2B2', // matches --pfm-turquoise-strong
+        backgroundColor: 'rgba(74, 178, 178, 0.15)', // --pfm-turquoise-strong at 15% opacity
         borderWidth: 2,
         fill: true,
         pointRadius: 0,
@@ -50,7 +50,7 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
     maintainAspectRatio: false,
     plugins: {
       tooltip: {
-        backgroundColor: '#061223',
+        backgroundColor: '#061223', // matches --pfm-text-primary
         titleFont: { family: 'Libre Franklin', size: 11, weight: 400 as const },
         bodyFont: { family: 'Libre Franklin', size: 12, weight: 600 as const },
         padding: 8,
@@ -70,7 +70,7 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
         border: { display: false },
         ticks: {
           font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#7189A7',
+          color: '#7189A7', // matches --pfm-text-tertiary
           maxTicksLimit: 6,
           callback: (_val: number | string, index: number) => {
             const age = ages[index];
@@ -85,12 +85,12 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
         grid: { display: false },
         border: {
           display: true,
-          color: '#CCD5DF',
+          color: '#CCD5DF', // matches --pfm-border-subtle
           width: 1,
         },
         ticks: {
           font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#7189A7',
+          color: '#7189A7', // matches --pfm-text-tertiary
           callback: (val: number | string) => {
             const v = Number(val);
             if (v === 0) return '€0';
@@ -111,7 +111,7 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
       if (!yScale || !xScale) return;
       const r = 6;
       ctx.save();
-      ctx.strokeStyle = '#CCD5DF';
+      ctx.strokeStyle = '#CCD5DF'; // matches --pfm-border-subtle
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(xScale.left, yScale.bottom);

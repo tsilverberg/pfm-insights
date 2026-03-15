@@ -30,9 +30,6 @@
   font-size: 34px;
   line-height: 51px;
   color: var(--pfm-text-primary);
-  display: flex;
-  gap: 4px;
-  align-items: baseline;
 }
 
 .balance-card__euros,

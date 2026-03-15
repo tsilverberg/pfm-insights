@@ -164,10 +164,10 @@ export const homeAccountData: Account = {
 };
 
 export const homeQuickActions: QuickAction[] = [
-  { id: 'transfer', label: 'Transfer', icon: 'transfer', variant: 'primary', route: '/send' },
+  { id: 'transfer', label: 'Transfer', icon: 'transfer', variant: 'primary', route: '/transfer' },
   { id: 'receive', label: 'Receive', icon: 'receive', variant: 'primary', route: '/receive' },
   { id: 'qr', label: 'QR code', icon: 'qr_code', variant: 'secondary', route: '/qr' },
-  { id: 'more', label: 'More', icon: 'more', variant: 'outlined' },
+  { id: 'more', label: 'More', icon: 'more', variant: 'secondary', route: '/account/acc-1/more' },
 ];
 
 export const homeTransactionsData: TransactionGroup[] = [
@@ -444,17 +444,25 @@ export const recentContactsData: Contact[] = [
 
 export const moreActionsSections: MoreActionsSection[] = [
   {
+    section: 'Payments',
+    items: [
+      { icon: 'send', title: 'Send money', description: 'Transfer money to someone', iconBg: 'var(--pfm-palette-green-extra-soft)', route: '/send' },
+      { icon: 'download', title: 'Receive money', description: 'Request a payment from someone', iconBg: 'var(--pfm-palette-green-extra-soft)', route: '/receive' },
+      { icon: 'qr_code_2', title: 'QR code', description: 'Scan or share a QR code', iconBg: 'var(--pfm-palette-green-extra-soft)', route: '/qr' },
+    ],
+  },
+  {
     section: 'Account',
     items: [
-      { icon: 'account_details', title: 'Account details', description: 'View info, documents, and limits', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
-      { icon: 'statements', title: 'Statements & documents', description: 'Download statements and confirmations', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
-      { icon: 'card', title: 'Cards & payment methods', description: 'Manage cards linked to this account', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
+      { icon: 'description', title: 'Account details', description: 'View info, documents, and limits', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
+      { icon: 'receipt_long', title: 'Statements & documents', description: 'Download statements and confirmations', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
+      { icon: 'credit_card', title: 'Cards & payment methods', description: 'Manage cards linked to this account', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
     ],
   },
   {
     section: 'Manage',
     items: [
-      { icon: 'heart', title: 'Sharing & permissions', description: 'Invite others and manage access', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
+      { icon: 'favorite', title: 'Sharing & permissions', description: 'Invite others and manage access', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
       { icon: 'block', title: 'Account limits & controls', description: 'Set spending, transfer, or withdrawal limits', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
     ],
   },
@@ -473,22 +481,22 @@ export const accountSettingsSections: AccountSettingsSection[] = [
   {
     section: 'Personalisation',
     items: [
-      { icon: 'personalise', title: 'Personalise bank account', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
+      { icon: 'person', title: 'Personalise bank account', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
     ],
   },
   {
     section: 'Budgeting',
     items: [
-      { icon: 'budget', title: 'Easy budgeting', value: 'Off', iconBg: 'var(--pfm-palette-orange-extra-soft)' },
-      { icon: 'bell_badge', title: 'Refill notifications', value: 'Off', iconBg: 'var(--pfm-palette-orange-extra-soft)' },
+      { icon: 'savings', title: 'Easy budgeting', value: 'Off', iconBg: 'var(--pfm-palette-orange-extra-soft)' },
+      { icon: 'notification_important', title: 'Refill notifications', value: 'Off', iconBg: 'var(--pfm-palette-orange-extra-soft)' },
     ],
   },
   {
     section: 'Security',
     items: [
-      { icon: 'payment', title: 'Payment limits', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
-      { icon: 'verified', title: 'Granted access to', value: 'Off', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
-      { icon: 'eye', title: 'Discoverable as', value: '3 Aliases', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
+      { icon: 'payments', title: 'Payment limits', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
+      { icon: 'verified_user', title: 'Granted access to', value: 'Off', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
+      { icon: 'visibility', title: 'Discoverable as', value: '3 Aliases', iconBg: 'var(--pfm-palette-purple-extra-soft)' },
     ],
   },
   {
@@ -501,8 +509,8 @@ export const accountSettingsSections: AccountSettingsSection[] = [
   {
     section: 'Account statement',
     items: [
-      { icon: 'export', title: 'Export statement', iconBg: 'var(--pfm-surface-raised)' },
-      { icon: 'auto_export', title: 'Auto export statement', value: 'Off', iconBg: 'var(--pfm-surface-raised)' },
+      { icon: 'file_download', title: 'Export statement', iconBg: 'var(--pfm-surface-raised)' },
+      { icon: 'sync', title: 'Auto export statement', value: 'Off', iconBg: 'var(--pfm-surface-raised)' },
     ],
   },
 ];
@@ -513,9 +521,9 @@ export const notificationsData: NotificationGroup[] = [
   {
     label: 'Today',
     notifications: [
-      { id: 'n-1', type: 'info', title: 'Best Coffee Suppliers', description: 'Paid EUR 66.700 at Best Coffee Suppliers, Amsterdam', date: 'Today', read: false },
+      { id: 'n-1', type: 'info', title: 'Best Coffee Suppliers', description: 'Paid €66.700 at Best Coffee Suppliers, Amsterdam', date: 'Today', read: false },
       { id: 'n-2', type: 'coach', title: 'Just ask', description: 'Your financial plan is ready to review!', date: 'Today', read: false },
-      { id: 'n-3', type: 'info', title: 'Account balance', description: 'Hi John, Everyday account balance just went below $100.00', date: 'Today', read: true },
+      { id: 'n-3', type: 'info', title: 'Account balance', description: 'Hi John, Everyday account balance just went below €100,00', date: 'Today', read: true },
     ],
   },
   {
@@ -527,7 +535,7 @@ export const notificationsData: NotificationGroup[] = [
   {
     label: '6 Feb 2026',
     notifications: [
-      { id: 'n-5', type: 'info', title: 'Savings goal', description: "Congratulations, you've reached your savings goal of $2,000", date: '6 Feb 2026', read: true },
+      { id: 'n-5', type: 'info', title: 'Savings goal', description: "Congratulations, you've reached your savings goal of €2.000", date: '6 Feb 2026', read: true },
       { id: 'n-6', type: 'error', title: 'Rejected payment', description: 'Your payment to A. Smith was rejected due to insufficient funds on your checking accounts', date: '6 Feb 2026', read: true },
     ],
   },
@@ -536,13 +544,13 @@ export const notificationsData: NotificationGroup[] = [
 // === PERMISSIONS DATA ===
 
 export const permissionsData: Permission[] = [
-  { id: 'p-1', icon: 'account_details', title: 'View balance & transactions', description: 'See all account activity and history', enabled: true },
-  { id: 'p-2', icon: 'money', title: 'Spend from this account', description: "Make payments using this account's funds", enabled: true, subOptions: [{ label: 'Allow full spending', selected: true }, { label: 'Limit spending', selected: false }] },
-  { id: 'p-3', icon: 'card', title: 'Manage cards', description: 'Freeze, unfreeze, or reorder', enabled: true },
+  { id: 'p-1', icon: 'description', title: 'View balance & transactions', description: 'See all account activity and history', enabled: true },
+  { id: 'p-2', icon: 'payments', title: 'Spend from this account', description: "Make payments using this account's funds", enabled: true, subOptions: [{ label: 'Allow full spending', selected: true }, { label: 'Limit spending', selected: false }] },
+  { id: 'p-3', icon: 'credit_card', title: 'Manage cards', description: 'Freeze, unfreeze, or reorder', enabled: true },
   { id: 'p-4', icon: 'insights', title: 'View account insights', description: 'Review budgeting overview', enabled: true },
-  { id: 'p-5', icon: 'swap', title: 'Initiate transfers', description: 'Send money to contacts/ other accounts', enabled: false },
+  { id: 'p-5', icon: 'swap_horiz', title: 'Initiate transfers', description: 'Send money to contacts/ other accounts', enabled: false },
   { id: 'p-6', icon: 'schedule', title: 'Manage scheduled payments', description: 'Edit or cancel recurring payments', enabled: false },
-  { id: 'p-7', icon: 'statements', title: 'View statements & documents', description: 'Access monthly statements and files', enabled: false },
+  { id: 'p-7', icon: 'receipt_long', title: 'View statements & documents', description: 'Access monthly statements and files', enabled: false },
 ];
 
 // === CHILD ACCOUNT DETAIL DATA ===
@@ -785,17 +793,17 @@ export const investLatestNews: NewsArticle[] = [
 // === ACCOUNT SHARING DATA ===
 
 export const sharingCurrentMembers: SharedMember[] = [
-  { id: 'sm-1', name: 'J. Wallace', avatarUrl: '/assets/icons/avatar-wallace.jpg', initials: 'JW', role: 'owner' },
+  { id: 'sm-1', name: 'J. Wallace', avatarUrl: '/assets/icons/avatar-profile.jpg', initials: 'JW', role: 'owner' },
 ];
 
 export const sharingContacts: SharingContact[] = [
   { id: 'sc-1', name: 'J. Wallace', initials: 'JW', subtitle: undefined },
-  { id: 'sc-2', name: 'George Apple', avatarUrl: '/assets/icons/avatar-george.jpg', initials: 'GA', subtitle: 'Backbase' },
+  { id: 'sc-2', name: 'George Apple', initials: 'GA', subtitle: 'Backbase' },
   { id: 'sc-3', name: 'Andrea Ball', initials: 'AB', subtitle: 'Invite to Backbase' },
-  { id: 'sc-4', name: 'Catherine Cat', avatarUrl: '/assets/icons/avatar-catherine.jpg', initials: 'CC', subtitle: 'Backbase' },
-  { id: 'sc-5', name: 'Sarah Doll', avatarUrl: '/assets/icons/avatar-sarah.jpg', initials: 'SD', subtitle: 'Backbase' },
+  { id: 'sc-4', name: 'Catherine Cat', initials: 'CC', subtitle: 'Backbase' },
+  { id: 'sc-5', name: 'Sarah Doll', initials: 'SD', subtitle: 'Backbase' },
   { id: 'sc-6', name: 'Jenna Erwin', initials: 'JE', subtitle: 'Invite to Backbase' },
-  { id: 'sc-7', name: 'Holly Fan', avatarUrl: '/assets/icons/avatar-holly.jpg', initials: 'HF', subtitle: 'Backbase' },
+  { id: 'sc-7', name: 'Holly Fan', initials: 'HF', subtitle: 'Backbase' },
   { id: 'sc-8', name: 'Dennis Garden', initials: 'DG', subtitle: 'Invite to Backbase' },
   { id: 'sc-9', name: 'Andrew Henry', initials: 'AH', subtitle: 'Backbase' },
 ];
@@ -811,11 +819,11 @@ export const relationshipTypes = [
 ];
 
 export const defaultSharingPermissions: SharingPermissionConfig[] = [
-  { id: 'sp-1', icon: 'account_details', title: 'View balance & transactions', description: 'See all account activity and history', enabled: true },
-  { id: 'sp-2', icon: 'money', title: 'Spend from this account', description: "Make payments using this account's funds", enabled: false, hasSpendingLimit: true, spendingLimit: 250 },
-  { id: 'sp-3', icon: 'card', title: 'Manage cards', description: 'Freeze, unfreeze, or reorder', enabled: true },
+  { id: 'sp-1', icon: 'description', title: 'View balance & transactions', description: 'See all account activity and history', enabled: true },
+  { id: 'sp-2', icon: 'payments', title: 'Spend from this account', description: "Make payments using this account's funds", enabled: false, hasSpendingLimit: true, spendingLimit: 250 },
+  { id: 'sp-3', icon: 'credit_card', title: 'Manage cards', description: 'Freeze, unfreeze, or reorder', enabled: true },
   { id: 'sp-4', icon: 'insights', title: 'View account insights', description: 'Review budgeting overview', enabled: true },
-  { id: 'sp-5', icon: 'swap', title: 'Initiate transfers', description: 'Send money to contacts/ other accounts', enabled: false },
+  { id: 'sp-5', icon: 'swap_horiz', title: 'Initiate transfers', description: 'Send money to contacts/ other accounts', enabled: false },
   { id: 'sp-6', icon: 'schedule', title: 'Manage scheduled payments', description: 'Edit or cancel recurring payments', enabled: false },
-  { id: 'sp-7', icon: 'statements', title: 'View statements & documents', description: 'Access monthly statements and files', enabled: false },
+  { id: 'sp-7', icon: 'receipt_long', title: 'View statements & documents', description: 'Access monthly statements and files', enabled: false },
 ];

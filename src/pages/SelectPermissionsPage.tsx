@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonFooter, IonPage, IonToolbar } from '@ionic/react';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import ToggleRow from '../components/shared/ToggleRow';
@@ -145,7 +145,7 @@ const SelectPermissionsPage: React.FC = () => {
                       <div className="select-perms__limit-field">
                         <input
                           type="text"
-                          value={`€${spendingAmount.toFixed(2)}`}
+                          value={`€${spendingAmount.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
                           onChange={(e) => {
                             const num = parseFloat(e.target.value.replace(/[^0-9.]/g, ''));
                             if (!isNaN(num)) setSpendingAmount(num);
@@ -161,6 +161,10 @@ const SelectPermissionsPage: React.FC = () => {
             </div>
           )}
 
+        </div>
+      </IonContent>
+      <IonFooter translucent className="select-perms__footer-ionic">
+        <IonToolbar>
           <div className="select-perms__footer">
             <button
               className="select-perms__continue-btn"
@@ -170,8 +174,8 @@ const SelectPermissionsPage: React.FC = () => {
               Continue
             </button>
           </div>
-        </div>
-      </IonContent>
+        </IonToolbar>
+      </IonFooter>
     </IonPage>
   );
 };

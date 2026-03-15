@@ -73,7 +73,7 @@ const AccountDetailPage: React.FC = () => {
             <TransactionList groups={filteredGroups} />
           </div>
 
-          <div style={{ height: 120 }} />
+          <div className="bottom-spacer" />
         </div>
 
         <EditPermissionsSheet isOpen={showPermissions} onClose={() => setShowPermissions(false)} />

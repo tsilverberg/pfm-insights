@@ -16,7 +16,7 @@ const DetailRow: React.FC<DetailRowProps> = ({ label, value, maskedValue, showTo
   const displayValue = showToggle && !revealed && maskedValue ? maskedValue : value;
 
   return (
-    <div className="detail-row" onClick={onClick}>
+    <div className="detail-row" onClick={onClick} {...(onClick ? { role: 'button', tabIndex: 0, onKeyDown: (e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } } } : {})}>
       <span className="detail-row__label">{label}</span>
       <div className="detail-row__right">
         {icon && <span className="detail-row__icon">{icon}</span>}

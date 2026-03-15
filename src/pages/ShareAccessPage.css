@@ -126,11 +126,12 @@
   color: var(--pfm-text-tertiary);
 }
 
+.share-access__footer-ionic ion-toolbar {
+  --background: transparent;
+}
+
 .share-access__footer {
-  position: sticky;
-  bottom: 0;
-  padding: 16px var(--pfm-page-padding) 32px;
-  background: var(--pfm-surface-raised);
+  padding: 16px var(--pfm-page-padding) 16px;
 }
 
 .share-access__continue-btn {

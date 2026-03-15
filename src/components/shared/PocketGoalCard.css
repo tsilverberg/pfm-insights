@@ -1,7 +1,11 @@
 .pocket-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  padding: 16px;
+  background: var(--pfm-surface-card);
+  border: 1px solid var(--pfm-divider-default);
+  border-radius: var(--pfm-card-radius);
   cursor: pointer;
 }
 

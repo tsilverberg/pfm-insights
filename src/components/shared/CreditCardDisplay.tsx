@@ -35,6 +35,8 @@ const CreditCardDisplay: React.FC<CreditCardDisplayProps> = ({ card }) => (
   <div
     className="credit-card"
     style={{ background: `linear-gradient(135deg, ${card.gradient[0]} 0%, ${card.gradient[1]} 100%)` }}
+    role="img"
+    aria-label={`Credit card ending in ${card.lastFour}`}
   >
     {/* Decorative arc */}
     <div className="credit-card__arc" />

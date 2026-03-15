@@ -5,9 +5,10 @@ import './PortfolioListItem.css';
 
 interface PortfolioListItemProps {
   portfolio: Portfolio;
+  onClick?: () => void;
 }
 
-const PortfolioListItem: React.FC<PortfolioListItemProps> = ({ portfolio }) => {
+const PortfolioListItem: React.FC<PortfolioListItemProps> = ({ portfolio, onClick }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const PortfolioListItem: React.FC<PortfolioListItemProps> = ({ portfolio }) => {
     ctx.scale(dpr, dpr);
 
     const data = portfolio.sparklineData;
+    if (!data || data.length < 2) return;
     const min = Math.min(...data);
     const max = Math.max(...data);
     const range = max - min || 1;
@@ -37,6 +39,7 @@ const PortfolioListItem: React.FC<PortfolioListItemProps> = ({ portfolio }) => {
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     });
+    // Canvas cannot use CSS variables directly; values match --pfm-change-positive / --pfm-change-negative
     ctx.strokeStyle = portfolio.change >= 0 ? '#0A5A2B' : '#BF2310';
     ctx.lineWidth = 1.5;
     ctx.stroke();
@@ -45,13 +48,13 @@ const PortfolioListItem: React.FC<PortfolioListItemProps> = ({ portfolio }) => {
   const isNegative = portfolio.change < 0;
 
   return (
-    <div className="portfolio-list-item">
-      <div className="portfolio-list-item__icon">
-        <span className="material-symbols-rounded" style={{ fontSize: 20, color: 'var(--pfm-text-secondary)' }}>trending_up</span>
+    <div className="list-row portfolio-list-item" onClick={onClick} role={onClick ? 'button' : undefined} tabIndex={onClick ? 0 : undefined} style={onClick ? { cursor: 'pointer' } : undefined}>
+      <div className="list-row__icon portfolio-list-item__icon">
+        <span className="material-symbols-rounded portfolio-list-item__icon-symbol">trending_up</span>
       </div>
-      <div className="portfolio-list-item__info">
+      <div className="list-row__text">
         <span className="typo-callout-semibold">{portfolio.name}</span>
-        <span className="typo-footnote" style={{ color: 'var(--pfm-text-secondary)' }}>{portfolio.label}</span>
+        <span className="typo-footnote color-secondary">{portfolio.label}</span>
       </div>
       <div className="portfolio-list-item__right">
         <canvas
@@ -63,12 +66,10 @@ const PortfolioListItem: React.FC<PortfolioListItemProps> = ({ portfolio }) => {
         <div className="portfolio-list-item__values">
           <span className="typo-callout-semibold">{formatEuro(portfolio.value)}</span>
           <span
-            className="portfolio-list-item__change-pill"
-            style={{
-              backgroundColor: isNegative ? '#BF2310' : '#0A5A2B',
-            }}
+            className={`portfolio-list-item__change-pill ${isNegative ? 'portfolio-list-item__change-pill--negative' : ''}`}
+            aria-label={`${isNegative ? 'Loss' : 'Gain'}: €${Math.abs(portfolio.change).toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
           >
-            €{isNegative ? '' : '+'}{portfolio.change.toFixed(2)}
+            {isNegative ? '▼' : '▲'} €{isNegative ? '' : '+'}{portfolio.change.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
         </div>
       </div>

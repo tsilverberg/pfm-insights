@@ -48,7 +48,7 @@ const QuickActionButton: React.FC<QuickActionButtonProps> = ({ action, onClick }
         : 'quick-action__circle--outlined';
 
   return (
-    <button className="quick-action" onClick={onClick}>
+    <button className="quick-action" onClick={onClick} aria-label={action.label}>
       <div className={`quick-action__circle ${bgClass}`}>
         {iconMap[action.icon]}
       </div>

@@ -21,7 +21,7 @@ const ChildAccountCard: React.FC<ChildAccountCardProps> = ({ child }) => {
         <div className="child-card__info">
           <div className="child-card__top">
             <span className="child-card__name">{child.name}</span>
-            <span className="child-card__balance">${child.balance.toFixed(2)}</span>
+            <span className="child-card__balance">€{child.balance.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
           </div>
           <div className="child-card__bottom">
             <span className="child-card__number">•••••{child.lastFour}</span>

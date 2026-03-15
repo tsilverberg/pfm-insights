@@ -15,13 +15,15 @@ interface CategoryFilterPillsProps {
 
 const CategoryFilterPills: React.FC<CategoryFilterPillsProps> = ({ categories, active, onChange }) => {
   return (
-    <div className="category-filter-pills">
+    <div className="category-filter-pills" role="tablist">
       {categories.map((cat) => (
         <button
           key={cat.id}
           className="category-filter-pill"
           onClick={() => onChange(cat.id)}
           style={active === cat.id ? { borderColor: 'var(--pfm-border-strong)' } : undefined}
+          role="tab"
+          aria-selected={cat.id === active}
         >
           <div className="category-filter-pill__header">
             <span className="category-filter-pill__dot" style={{ backgroundColor: cat.color }} />

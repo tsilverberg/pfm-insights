@@ -12,10 +12,13 @@
 }
 
 .coach-card__icon {
-  width: 24px;
-  height: 26px;
   flex-shrink: 0;
   margin-top: 2px;
+  /* Material Symbol: crisp at any DPI; use font-size for sizing */
+  font-size: 24px !important;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .coach-card__body {
@@ -234,21 +237,9 @@
   white-space: nowrap;
 }
 
-/* Category List Item */
-.category-list-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
+/* Category List Item — extends .list-row */
 .category-list-item__icon-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 125px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  border-radius: 50%;
 }
 
 .category-list-item__icon-circle--needs {
@@ -262,36 +253,6 @@
 .category-list-item__icon {
   width: 20px;
   height: 20px;
-}
-
-.category-list-item__text {
-  flex: 1;
-  min-width: 0;
-}
-
-.category-list-item__label {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--pfm-text-primary);
-}
-
-.category-list-item__count {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 19.5px;
-  color: var(--pfm-text-tertiary);
-}
-
-.category-list-item__amount {
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--pfm-text-primary);
-  white-space: nowrap;
 }
 
 .category-list-item__separator {

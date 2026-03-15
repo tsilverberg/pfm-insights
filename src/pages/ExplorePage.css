@@ -1,0 +1,45 @@
+.explore__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.explore__grid-card {
+  padding: 16px;
+  text-align: center;
+}
+
+.explore__grid-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.explore__discover-item {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--pfm-divider-default);
+}
+
+.explore__discover-item:last-child {
+  border-bottom: none;
+}
+
+.explore__tag {
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--pfm-change-positive);
+  background: var(--pfm-palette-green-extra-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.explore__tip-card {
+  padding: 20px;
+}
+
+.explore__tip-desc {
+  line-height: 18px;
+}

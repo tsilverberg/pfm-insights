@@ -1,0 +1,26 @@
+.home__account-selector {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid var(--pfm-neutral-100);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--pfm-text-primary);
+}
+
+.home__child-section {
+  border-bottom: none;
+  padding-right: 0;
+}
+
+.home__child-card {
+  cursor: pointer;
+}
+
+.gap-24 { gap: 24px; }

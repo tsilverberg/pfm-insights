@@ -58,8 +58,12 @@
   color: var(--pfm-text-primary);
 }
 
+.access-page__footer-ionic ion-toolbar {
+  --background: transparent;
+}
+
 .access-page__footer {
-  padding: 16px var(--pfm-page-padding);
+  padding: 16px var(--pfm-page-padding) 16px;
 }
 
 .access-page__share-btn {

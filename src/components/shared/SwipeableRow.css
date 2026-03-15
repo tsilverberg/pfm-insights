@@ -1,0 +1,38 @@
+.swipeable-row {
+  position: relative;
+  overflow: hidden;
+}
+
+.swipeable-row__actions {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+}
+
+.swipeable-row__actions--left {
+  left: 0;
+}
+
+.swipeable-row__actions--right {
+  right: 0;
+}
+
+.swipeable-row__action-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.swipeable-row__content {
+  position: relative;
+  background: var(--pfm-surface-background);
+  /* transition applied via style when not swiping */
+}

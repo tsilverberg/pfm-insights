@@ -5,26 +5,29 @@ import './InvestActivityItem.css';
 
 interface InvestActivityItemProps {
   activity: InvestActivity;
+  onClick?: () => void;
 }
 
 const typeIcons: Record<string, string> = {
-  buy: '📥',
-  sell: '📤',
-  dividend: '💰',
-  transfer: '🔄',
+  buy: 'download',
+  sell: 'upload',
+  dividend: 'payments',
+  transfer: 'swap_horiz',
 };
 
-const InvestActivityItem: React.FC<InvestActivityItemProps> = ({ activity }) => {
+const InvestActivityItem: React.FC<InvestActivityItemProps> = ({ activity, onClick }) => {
   const isPositive = activity.amount > 0;
 
   return (
-    <div className="invest-activity-item">
-      <div className="invest-activity-item__icon">
-        {typeIcons[activity.type] || '📊'}
+    <div className="list-row invest-activity-item" onClick={onClick} role={onClick ? 'button' : undefined} tabIndex={onClick ? 0 : undefined} style={onClick ? { cursor: 'pointer' } : undefined}>
+      <div className="list-row__icon invest-activity-item__icon">
+        <span className="material-symbols-rounded" style={{ fontSize: 20, color: 'var(--pfm-text-secondary)' }}>
+          {typeIcons[activity.type] || 'bar_chart'}
+        </span>
       </div>
-      <div className="invest-activity-item__info">
+      <div className="list-row__text">
         <span className="typo-callout-semibold">{activity.title}</span>
-        <span className="typo-footnote" style={{ color: 'var(--pfm-text-tertiary)' }}>{activity.subtitle}</span>
+        <span className="typo-footnote color-tertiary">{activity.subtitle}</span>
       </div>
       <div className="invest-activity-item__right">
         <span
@@ -32,10 +35,10 @@ const InvestActivityItem: React.FC<InvestActivityItemProps> = ({ activity }) => 
         >
           {activity.status === 'pending' ? 'Pending' : 'Completed'}
         </span>
-        <span className="typo-callout-semibold" style={{ color: isPositive ? '#0A5A2B' : 'var(--pfm-text-primary)' }}>
+        <span className={`typo-callout-semibold ${isPositive ? 'invest-activity-item__amount--positive' : ''}`}>
           {isPositive ? '+' : ''}{formatEuro(activity.amount)}
         </span>
-        <span className="typo-caption1" style={{ color: 'var(--pfm-text-tertiary)' }}>{activity.date}</span>
+        <span className="typo-caption1 color-tertiary">{activity.date}</span>
       </div>
     </div>
   );

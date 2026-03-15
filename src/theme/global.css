@@ -15,6 +15,16 @@ body {
 /* Page content area with bottom padding for floating tab bar */
 .page-content {
   padding-bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+  --overflow: hidden auto;
+}
+
+/* Hide scrollbar in desktop browser — mobile doesn't show one */
+ion-content::part(scroll) {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+ion-content::part(scroll)::-webkit-scrollbar {
+  display: none;
 }
 
 /* Sticky sub-nav inside IonContent */
@@ -56,6 +66,89 @@ body {
 .section-module__content--large-gap {
   margin-top: 24px;
 }
+
+/* List row base — shared skeleton for icon + text + value rows */
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.list-row__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.list-row__icon--round {
+  border-radius: 50%;
+}
+
+.list-row__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-row__value {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Spacing utilities */
+.mt-2 { margin-top: 2px; }
+.mt-4 { margin-top: 4px; }
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-4 { margin-bottom: 4px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+.gap-32 { gap: 32px; }
+.pt-16 { padding-top: 16px; }
+
+/* Layout utilities */
+.flex-col { display: flex; flex-direction: column; }
+.flex-row { display: flex; align-items: center; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.text-center { text-align: center; }
+.w-full { width: 100%; }
+.overflow-visible { overflow: visible; }
+
+/* Color utilities */
+.color-secondary { color: var(--pfm-text-secondary); }
+.color-tertiary { color: var(--pfm-text-tertiary); }
+.color-primary { color: var(--pfm-text-primary); }
+
+/* Horizontal scroll container */
+.scroll-x {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
+.scroll-x > * { scroll-snap-align: start; }
+
+/* Page section padding */
+.page-pad { padding-left: var(--pfm-page-padding); padding-right: var(--pfm-page-padding); }
+
+/* Bottom spacer for floating tab bar */
+.bottom-spacer { height: 120px; }
 
 /* Card styles */
 .card-bordered {

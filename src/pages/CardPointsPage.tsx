@@ -14,37 +14,37 @@ const CardPointsPage: React.FC = () => {
       <IonContent className="page-content">
         <div>
 
-          <div className="section-module" style={{ textAlign: 'center' }}>
-            <div style={{ marginBottom: 24 }}>
-              <div className="typo-footnote" style={{ color: 'var(--pfm-text-secondary)', marginBottom: 4 }}>Total points</div>
+          <div className="section-module text-center">
+            <div className="mb-24">
+              <div className="typo-footnote color-secondary mb-4">Total points</div>
               <div className="typo-large-title">{cardPointsData.total.toLocaleString()}</div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 32 }}>
+            <div className="flex-center gap-32">
               <div>
-                <div className="typo-footnote" style={{ color: 'var(--pfm-text-tertiary)' }}>Pending</div>
+                <div className="typo-footnote color-tertiary">Pending</div>
                 <div className="typo-callout-semibold">{cardPointsData.pending}</div>
               </div>
               <div>
-                <div className="typo-footnote" style={{ color: 'var(--pfm-text-tertiary)' }}>Redeemed</div>
+                <div className="typo-footnote color-tertiary">Redeemed</div>
                 <div className="typo-callout-semibold">{cardPointsData.redeemed.toLocaleString()}</div>
               </div>
             </div>
           </div>
 
-          <div className="section-module" style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="section-module flex-center">
             <CreditCardDisplay card={card} />
           </div>
 
           <div className="section-module">
-            <div className="section-module__title" style={{ marginBottom: 16 }}>Recent activity</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <div className="section-module__title mb-16">Recent activity</div>
+            <div className="flex-col gap-24">
               {cardPointsData.transactions.map((tx) => (
                 <TransactionListItem key={tx.id} transaction={tx} />
               ))}
             </div>
           </div>
 
-          <div style={{ height: 120 }} />
+          <div className="bottom-spacer" />
         </div>
       </IonContent>
     </IonPage>

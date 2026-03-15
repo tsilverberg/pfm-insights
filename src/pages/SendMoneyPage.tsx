@@ -3,11 +3,17 @@ import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import NumericKeypad from '../components/shared/NumericKeypad';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
+import { useToast } from '../hooks/useToast';
+import { useHaptics } from '../hooks/useHaptics';
 import './SendMoneyPage.css';
 
 const SendMoneyPage: React.FC = () => {
   const history = useHistory();
+  const { showToast } = useToast();
+  const haptics = useHaptics();
   const [amount, setAmount] = useState('0');
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleKey = (key: string) => {
     if (key === '.' && amount.includes('.')) return;
@@ -28,11 +34,12 @@ const SendMoneyPage: React.FC = () => {
     }
   };
 
-  const displayAmount = amount === '0'
+  const displayAmountRaw = amount === '0'
     ? '0.00'
     : amount.includes('.')
       ? amount + '0'.repeat(Math.max(0, 2 - (amount.split('.')[1]?.length || 0)))
       : amount + '.00';
+  const displayAmount = displayAmountRaw.replace('.', ',');
 
   const hasAmount = amount !== '0';
 
@@ -45,7 +52,7 @@ const SendMoneyPage: React.FC = () => {
         <div className="send-amount">
           <div className="send-amount__display">
             <span className={`send-amount__text ${hasAmount ? 'send-amount__text--active' : ''}`}>
-              € {displayAmount}
+              €{displayAmount}
             </span>
             <div className={`send-amount__cursor ${hasAmount ? 'send-amount__cursor--active' : ''}`} />
           </div>
@@ -53,7 +60,7 @@ const SendMoneyPage: React.FC = () => {
 
         {/* From Account + Note */}
         <div className="send-options">
-          <button className="send-options__row">
+          <button className="send-options__row" onClick={() => showToast({ type: 'info', message: 'Account picker coming soon' })}>
             <div className="send-options__icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <rect x="3" y="8" width="18" height="10" rx="1.5" stroke="var(--pfm-text-secondary)" strokeWidth="2" fill="none" />
@@ -73,7 +80,7 @@ const SendMoneyPage: React.FC = () => {
         {/* Select Recipient CTA */}
         {hasAmount && (
           <div style={{ padding: '0 16px 16px' }}>
-            <button className="send-btn">Select recipient</button>
+            <button className="send-btn" onClick={() => setShowConfirm(true)}>Select recipient</button>
           </div>
         )}
 
@@ -81,6 +88,20 @@ const SendMoneyPage: React.FC = () => {
         <div style={{ padding: '0 var(--pfm-page-padding)' }}>
           <NumericKeypad onKey={handleKey} onDelete={handleDelete} />
         </div>
+        <ConfirmDialog
+          isOpen={showConfirm}
+          title="Confirm payment"
+          message={`Send €${displayAmount} from John's main account?`}
+          confirmLabel="Send"
+          cancelLabel="Cancel"
+          onConfirm={() => {
+            setShowConfirm(false);
+            haptics.success();
+            showToast({ type: 'success', message: 'Payment sent successfully' });
+            setAmount('0');
+          }}
+          onCancel={() => setShowConfirm(false)}
+        />
       </IonContent>
     </IonPage>
   );

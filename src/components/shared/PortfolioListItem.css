@@ -1,25 +1,10 @@
-.portfolio-list-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-}
-
 .portfolio-list-item__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
   background: var(--pfm-palette-purple-extra-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
 }
 
-.portfolio-list-item__info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+.portfolio-list-item__icon-symbol {
+  font-size: 20px;
+  color: var(--pfm-text-secondary);
 }
 
 .portfolio-list-item__right {
@@ -48,4 +33,9 @@
   padding: 2px 4px;
   border-radius: 2px;
   white-space: nowrap;
+  background-color: var(--pfm-change-positive);
+}
+
+.portfolio-list-item__change-pill--negative {
+  background-color: var(--pfm-change-negative);
 }

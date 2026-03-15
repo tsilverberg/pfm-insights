@@ -1,10 +1,12 @@
 import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
+import { useToast } from '../hooks/useToast';
 import './QRScannerPage.css';
 
 const QRScannerPage: React.FC = () => {
   const history = useHistory();
+  const { showToast } = useToast();
 
   return (
     <IonPage>
@@ -50,7 +52,7 @@ const QRScannerPage: React.FC = () => {
               </svg>
               <span>My QR</span>
             </button>
-            <button className="qr-scanner__action-btn">
+            <button className="qr-scanner__action-btn" onClick={() => showToast({ type: 'info', message: 'Gallery picker coming soon' })}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <rect x="3" y="3" width="18" height="18" rx="3" stroke="white" strokeWidth="1.5" />
                 <path d="M8 12h8M12 8v8" stroke="white" strokeWidth="1.5" strokeLinecap="round" />

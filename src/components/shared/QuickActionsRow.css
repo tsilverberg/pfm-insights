@@ -35,7 +35,7 @@
 }
 
 .quick-action__circle--secondary {
-  background: #75808E;
+  background: var(--pfm-icon-muted);
   color: white;
 }
 

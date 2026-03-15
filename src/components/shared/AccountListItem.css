@@ -1,7 +1,4 @@
 .account-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   padding: 12px 0;
   border: none;
   background: none;
@@ -15,42 +12,5 @@
 }
 
 .account-item__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
   background: var(--pfm-palette-blue-extra-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.account-item__text {
-  flex: 1;
-  min-width: 0;
-}
-
-.account-item__name {
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--pfm-text-primary);
-}
-
-.account-item__number {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 19.5px;
-  color: var(--pfm-text-secondary);
-}
-
-.account-item__balance {
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--pfm-text-primary);
-  white-space: nowrap;
 }

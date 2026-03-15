@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   background: var(--pfm-surface-raised);
-  border-radius: 10px;
-  padding: 2px 3px 2px 2px;
-  height: 32px;
+  border-radius: 12px;
+  padding: 3px;
+  min-height: 44px;
   overflow: hidden;
 }
 
@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 28px;
-  padding: 4px 8px;
+  min-height: 38px;
+  padding: 8px 12px;
   border-radius: 8px;
   border: none;
   background: transparent;

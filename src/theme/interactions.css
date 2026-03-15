@@ -1,0 +1,116 @@
+/* Interactive state system — banking-grade touch feedback */
+
+/* Universal transition base for interactive elements */
+button,
+[role="button"],
+a,
+.tappable {
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Press state — subtle scale-down on touch */
+button:active:not(:disabled),
+[role="button"]:active,
+a:active,
+.tappable:active {
+  transform: scale(0.97);
+}
+
+/* Focus visible — keyboard navigation ring */
+button:focus-visible,
+[role="button"]:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.tappable:focus-visible {
+  outline: 2px solid var(--pfm-action-primary-bg);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Card press states — subtle elevation change */
+.card-bordered:active,
+.card-raised:active,
+.coach-card:active {
+  transform: scale(0.985);
+  box-shadow: 0 1px 3px rgba(6, 18, 35, 0.08);
+}
+
+/* List item press state — background highlight */
+.list-row-tappable {
+  padding: 12px 0;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+.list-row-tappable:active {
+  background-color: var(--pfm-surface-subtle);
+  transform: scale(0.99);
+}
+
+/* Settings menu item press */
+.settings-item:active {
+  background-color: var(--pfm-surface-subtle);
+}
+
+/* Quick action button press — circle bounce */
+.quick-action-btn:active .quick-action-btn__circle {
+  transform: scale(0.92);
+}
+
+.quick-action-btn__circle {
+  transition: transform 0.15s ease;
+}
+
+/* Pill / chip active state */
+.time-pill:active,
+.category-filter-pill:active,
+.tab-pill:active {
+  transform: scale(0.95);
+}
+
+/* Toggle switch smooth transition */
+.toggle-row__slider {
+  transition: background-color 0.2s ease;
+}
+
+.toggle-row__knob {
+  transition: transform 0.2s ease;
+}
+
+/* Icon button hover (desktop) */
+@media (hover: hover) {
+  button:hover:not(:disabled),
+  [role="button"]:hover,
+  .tappable:hover {
+    opacity: 0.8;
+  }
+
+  .list-row-tappable:hover {
+    background-color: var(--pfm-surface-subtle);
+  }
+
+  .card-bordered:hover,
+  .card-raised:hover {
+    box-shadow: 0 2px 8px rgba(6, 18, 35, 0.08);
+  }
+
+  /* Reset opacity for elements that use scale instead */
+  .card-bordered:hover,
+  .card-raised:hover,
+  .list-row-tappable:hover {
+    opacity: 1;
+  }
+}
+
+/* Disabled state */
+button:disabled,
+.btn-outline:disabled,
+.btn-raised:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}

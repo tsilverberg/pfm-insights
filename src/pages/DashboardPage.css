@@ -1,5 +1,5 @@
 .dashboard-hero {
-  background: #E1E4E7;
+  background: var(--pfm-support-subtle);
   padding: 54px var(--pfm-page-padding) 32px;
   text-align: center;
 }
@@ -11,7 +11,7 @@
   width: 100%;
   padding: 8px 12px;
   background: white;
-  border: 1px solid #EBF0F5;
+  border: 1px solid var(--pfm-neutral-100);
   border-radius: 8px;
   margin-bottom: 16px;
   cursor: pointer;
@@ -40,4 +40,17 @@
   line-height: 22.5px;
   color: var(--pfm-text-secondary);
   margin-top: 2px;
+}
+
+.dashboard__child-section {
+  border-bottom: none;
+  padding-right: 0;
+}
+
+.dashboard__child-card {
+  cursor: pointer;
+}
+
+.dashboard__customize {
+  padding: 16px var(--pfm-page-padding) 32px;
 }

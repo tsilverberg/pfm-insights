@@ -35,11 +35,11 @@
 }
 
 .invest-hero__change--negative {
-  color: #BF2310;
+  color: var(--pfm-change-negative);
 }
 
 .invest-hero__change--positive {
-  color: #0A5A2B;
+  color: var(--pfm-change-positive);
 }
 
 .invest-hero__total {
@@ -79,8 +79,8 @@
   gap: 4px;
   width: 100%;
   height: 44px;
-  background: #F3F6F9;
-  border: 1px solid #EBF0F5;
+  background: var(--pfm-surface-raised);
+  border: 1px solid var(--pfm-neutral-100);
   border-radius: 99px;
   font-family: 'Lato', sans-serif;
   font-size: 17px;
@@ -100,8 +100,8 @@
 .invest-time-pills__bar {
   display: flex;
   align-items: center;
-  background: #F3F6F9;
-  border: 1px solid #EBF0F5;
+  background: var(--pfm-surface-raised);
+  border: 1px solid var(--pfm-neutral-100);
   border-radius: 100px;
   padding: 4px 4px 4px 16px;
   gap: 20px;
@@ -123,7 +123,7 @@
 }
 
 .invest-time-pill--active {
-  background: #CCD5DF;
+  background: var(--pfm-border-subtle);
   border-radius: 100px;
   padding: 8px 12px;
   font-weight: 600;

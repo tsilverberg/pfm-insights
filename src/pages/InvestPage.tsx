@@ -1,13 +1,17 @@
-import React, { useState, useRef, useCallback } from 'react';
-import { IonContent, IonPage } from '@ionic/react';
+import React, { useState, useRef, useCallback, lazy, Suspense } from 'react';
+import { IonContent, IonPage, IonRefresher, IonRefresherContent } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import AppHeader from '../components/layout/AppHeader';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import PortfolioLineChart from '../components/charts/PortfolioLineChart';
+import SkeletonLoader from '../components/shared/SkeletonLoader';
+
+const PortfolioLineChart = lazy(() => import('../components/charts/PortfolioLineChart'));
 import PortfolioListItem from '../components/shared/PortfolioListItem';
 import InvestActivityItem from '../components/shared/InvestActivityItem';
 import GeographyRow from '../components/shared/GeographyRow';
@@ -15,6 +19,9 @@ import NewsCard from '../components/shared/NewsCard';
 import SegmentedBar from '../components/shared/SegmentedBar';
 import DottedLeaderRow from '../components/shared/DottedLeaderRow';
 import DotIndicator from '../components/shared/DotIndicator';
+import CoachIcon from '../components/shared/CoachIcon';
+import AnimatedNumber from '../components/shared/AnimatedNumber';
+import { useToast } from '../hooks/useToast';
 import { formatEuro, formatPercent } from '../data/formatters';
 import {
   investSummary,
@@ -36,6 +43,9 @@ const InvestPage: React.FC = () => {
   const [activePeriod, setActivePeriod] = useState('All');
   const [activeNewsIndex, setActiveNewsIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const revealRef = useScrollReveal();
+  const history = useHistory();
+  const { showToast } = useToast();
 
   const handleNewsScroll = useCallback(() => {
     const el = carouselRef.current;
@@ -80,28 +90,31 @@ const InvestPage: React.FC = () => {
   };
 
   const headerActions = [
-    { label: 'Cards', icon: <span className="material-symbols-rounded">credit_card</span> },
-    { label: 'Coach', icon: <span className="material-symbols-rounded">school</span> },
+    { label: 'Cards', icon: <span className="material-symbols-rounded" style={{ fontSize: 22 }}>credit_card</span>, onClick: () => history.push('/cards') },
+    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => showToast({ type: 'info', message: 'Coach coming soon' }) },
   ];
 
   return (
     <IonPage>
       <AppHeader title="Invest" actions={headerActions} />
       <IonContent className="page-content">
-        <div>
+        <IonRefresher slot="fixed" onIonRefresh={(e) => setTimeout(() => e.detail.complete(), 800)}>
+          <IonRefresherContent />
+        </IonRefresher>
+        <div ref={revealRef}>
 
           {/* Balance Hero */}
           <div className="invest-section">
             <div className="invest-hero">
               <div className={`invest-hero__change ${isNegative ? 'invest-hero__change--negative' : 'invest-hero__change--positive'}`}>
-                <span>€{Math.abs(investSummary.change).toFixed(2)} (</span>
+                <span>€{Math.abs(investSummary.change).toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (</span>
                 <span className="material-symbols-rounded" style={{ fontSize: 16 }}>
                   {isNegative ? 'arrow_downward' : 'arrow_upward'}
                 </span>
-                <span>{isNegative ? '' : '+'}{investSummary.changePercent.toFixed(2)}%)</span>
+                <span>{isNegative ? '' : '+'}{investSummary.changePercent.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%)</span>
               </div>
               <div className="invest-hero__total">
-                € {new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(investSummary.totalValue)}
+                <AnimatedNumber value={investSummary.totalValue} prefix="€" decimals={2} duration={1000} />
               </div>
               <div className="invest-hero__label">Total available</div>
             </div>
@@ -109,7 +122,7 @@ const InvestPage: React.FC = () => {
 
           {/* Customize Dashboard Button */}
           <div className="invest-section">
-            <button className="invest-customize-btn">
+            <button className="invest-customize-btn" onClick={() => showToast({ type: 'info', message: 'Dashboard customization coming soon' })}>
               <span className="material-symbols-rounded" style={{ fontSize: 24 }}>settings</span>
               Customize dashboard
             </button>
@@ -118,7 +131,9 @@ const InvestPage: React.FC = () => {
           {/* Value Over Time */}
           <div className="invest-section">
             <h2 className="invest-section__title">Total value</h2>
-            <PortfolioLineChart data={investValueOverTime[activePeriod]} />
+            <Suspense fallback={<SkeletonLoader variant="chart" />}>
+              <PortfolioLineChart data={investValueOverTime[activePeriod]} />
+            </Suspense>
             <div className="invest-time-pills">
               <div className="invest-time-pills__bar">
                 {TIME_PERIODS.map((period) => (
@@ -135,17 +150,17 @@ const InvestPage: React.FC = () => {
           </div>
 
           {/* Portfolios */}
-          <div className="invest-section">
+          <div className="invest-section reveal">
             <h2 className="invest-section__title">Portfolios</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <div className="flex-col" style={{ gap: 24 }}>
               {investPortfolios.map((portfolio) => (
-                <PortfolioListItem key={portfolio.id} portfolio={portfolio} />
+                <PortfolioListItem key={portfolio.id} portfolio={portfolio} onClick={() => showToast({ type: 'info', message: `${portfolio.name} details coming soon` })} />
               ))}
             </div>
           </div>
 
           {/* Allocation by Type (Donut) */}
-          <div className="invest-section">
+          <div className="invest-section reveal">
             <h2 className="invest-section__title">Total allocation by type</h2>
             <div className="invest-donut-wrapper">
               <div className="invest-donut-chart">
@@ -168,12 +183,12 @@ const InvestPage: React.FC = () => {
           </div>
 
           {/* Allocation by Sector (Stacked Bar) */}
-          <div className="invest-section">
+          <div className="invest-section reveal">
             <h2 className="invest-section__title">Total allocation by sector</h2>
             <SegmentedBar
               segments={investAllocationBySector.map((s) => ({ value: s.percentage, color: s.color }))}
             />
-            <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div className="flex-col gap-8 mt-16">
               {investAllocationBySector.map((seg) => (
                 <DottedLeaderRow
                   key={seg.label}
@@ -186,17 +201,17 @@ const InvestPage: React.FC = () => {
           </div>
 
           {/* Latest Activity */}
-          <div className="invest-section">
+          <div className="invest-section reveal">
             <h2 className="invest-section__title">Latest activity</h2>
             <div className="invest-activity-list">
               {investLatestActivity.map((activity) => (
-                <InvestActivityItem key={activity.id} activity={activity} />
+                <InvestActivityItem key={activity.id} activity={activity} onClick={() => showToast({ type: 'info', message: `${activity.title} details coming soon` })} />
               ))}
             </div>
           </div>
 
           {/* Allocation by Geography */}
-          <div className="invest-section">
+          <div className="invest-section reveal">
             <h2 className="invest-section__title">Allocation by geography</h2>
             <div className="invest-geography-list">
               {investAllocationByGeography.map((geo) => (
@@ -221,7 +236,7 @@ const InvestPage: React.FC = () => {
               onScroll={handleNewsScroll}
             >
               {investLatestNews.map((article) => (
-                <NewsCard key={article.id} article={article} />
+                <NewsCard key={article.id} article={article} onReadMore={() => showToast({ type: 'info', message: 'Full article coming soon' })} />
               ))}
             </div>
             <div style={{ marginTop: 16 }}>
@@ -229,7 +244,7 @@ const InvestPage: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ height: 120 }} />
+          <div className="bottom-spacer" />
         </div>
       </IonContent>
     </IonPage>

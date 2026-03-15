@@ -1,6 +1,6 @@
 .profile-hero {
   background: linear-gradient(135deg, #1A2332 0%, #2E3A4D 50%, #3A4A5F 100%);
-  padding: 54px 16px 32px;
+  padding: calc(env(safe-area-inset-top, 16px) + 8px) 16px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
 
 .profile-hero__back {
   position: absolute;
-  top: 54px;
+  top: calc(env(safe-area-inset-top, 16px) + 8px);
   left: 8px;
   width: 44px;
   height: 44px;
@@ -61,14 +61,14 @@
 .profile-logout {
   width: 100%;
   height: 44px;
-  border: 1px solid #e01700;
+  border: 1px solid var(--pfm-status-error);
   border-radius: 99px;
-  background: #f3f6f9;
+  background: var(--pfm-surface-raised);
   cursor: pointer;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
   font-size: 17px;
-  color: #e01700;
+  color: var(--pfm-status-error);
   margin-top: 16px;
   margin-bottom: 16px;
 }

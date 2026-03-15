@@ -44,7 +44,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #FFF3E0;
+  background: var(--pfm-palette-orange-extra-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,9 +119,12 @@
   flex-direction: column;
 }
 
+.review-summary__footer-ionic ion-toolbar {
+  --background: transparent;
+}
+
 .review-summary__footer {
-  padding: 16px var(--pfm-page-padding) 32px;
-  margin-top: auto;
+  padding: 16px var(--pfm-page-padding) 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;

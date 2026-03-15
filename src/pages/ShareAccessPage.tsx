@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonFooter, IonPage, IonToolbar } from '@ionic/react';
 import { useHistory, useParams } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import { sharingContacts } from '../data/mockData';
@@ -88,6 +88,10 @@ const ShareAccessPage: React.FC = () => {
             ))}
           </div>
 
+        </div>
+      </IonContent>
+      <IonFooter translucent className="share-access__footer-ionic">
+        <IonToolbar>
           <div className="share-access__footer">
             <button
               className="share-access__continue-btn"
@@ -97,8 +101,8 @@ const ShareAccessPage: React.FC = () => {
               Continue
             </button>
           </div>
-        </div>
-      </IonContent>
+        </IonToolbar>
+      </IonFooter>
     </IonPage>
   );
 };

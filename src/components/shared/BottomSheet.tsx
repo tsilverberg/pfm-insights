@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
+import { IonModal } from '@ionic/react';
 import './BottomSheet.css';
 
 interface BottomSheetProps {
@@ -9,27 +10,30 @@ interface BottomSheetProps {
 }
 
 const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title, children }) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
+  const modalRef = useRef<HTMLIonModalElement>(null);
 
   return (
-    <div className="bottom-sheet__overlay" onClick={onClose}>
-      <div className="bottom-sheet" onClick={(e) => e.stopPropagation()}>
-        <div className="bottom-sheet__handle" />
+    <IonModal
+      ref={modalRef}
+      isOpen={isOpen}
+      onDidDismiss={onClose}
+      breakpoints={[0, 0.5, 0.85]}
+      initialBreakpoint={0.85}
+      backdropBreakpoint={0}
+      className="bottom-sheet-modal"
+      handle={true}
+      handleBehavior="cycle"
+      role="dialog"
+      aria-modal={true}
+      aria-label={title || 'Dialog'}
+    >
+      <div className="bottom-sheet__inner">
         {title && <div className="bottom-sheet__title">{title}</div>}
         <div className="bottom-sheet__content">
           {children}
         </div>
       </div>
-    </div>
+    </IonModal>
   );
 };
 

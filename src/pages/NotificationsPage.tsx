@@ -2,6 +2,7 @@ import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import NotificationItem from '../components/shared/NotificationItem';
+import { useToast } from '../hooks/useToast';
 import { notificationsData } from '../data/mockData';
 import './NotificationsPage.css';
 
@@ -12,9 +13,10 @@ const GearIcon = (
 );
 
 const NotificationsPage: React.FC = () => {
+  const { showToast } = useToast();
   return (
     <IonPage>
-      <ScreenHeader title="Notifications" rightIcon={GearIcon} />
+      <ScreenHeader title="Notifications" rightIcon={GearIcon} onRightAction={() => showToast({ type: 'info', message: 'Notification settings coming soon' })} />
       <IonContent className="page-content">
         <div className="notifications-page">
 
@@ -27,7 +29,7 @@ const NotificationsPage: React.FC = () => {
             </div>
           ))}
 
-          <div style={{ height: 120 }} />
+          <div className="bottom-spacer" />
         </div>
       </IonContent>
     </IonPage>

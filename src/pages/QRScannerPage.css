@@ -1,5 +1,5 @@
 .qr-scanner {
-  background: #0A0A0A;
+  background: var(--pfm-surface-scanner);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -94,7 +94,7 @@
   left: calc(50% - 110px);
   width: 220px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #4AB2B2, transparent);
+  background: linear-gradient(90deg, transparent, var(--pfm-turquoise-strong), transparent);
   animation: scan 2.5s ease-in-out infinite;
   border-radius: 1px;
 }

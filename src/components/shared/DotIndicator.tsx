@@ -6,7 +6,11 @@ interface DotIndicatorProps {
 }
 
 const DotIndicator: React.FC<DotIndicatorProps> = ({ count, active }) => (
-  <div style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'center' }}>
+  <div
+    style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'center' }}
+    role="status"
+    aria-label={`Page ${active + 1} of ${count}`}
+  >
     {Array.from({ length: count }, (_, i) => (
       <div
         key={i}

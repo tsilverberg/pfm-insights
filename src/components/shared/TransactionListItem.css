@@ -1,19 +1,6 @@
-.tx-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
 .tx-item__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  flex-shrink: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: var(--pfm-illustration-extra-soft, #E1E4E7);
+  overflow: hidden;
   position: relative;
 }
 
@@ -35,39 +22,8 @@
   display: none;
 }
 
-.tx-item__text {
-  flex: 1;
-  min-width: 0;
-}
-
-.tx-item__name {
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 22.5px;
-  color: var(--pfm-text-primary);
-}
-
 .tx-item__desc {
   font-weight: 400;
-}
-
-.tx-item__category {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 19.5px;
-  color: var(--pfm-text-secondary);
-}
-
-.tx-item__amount {
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--pfm-text-primary);
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .tx-item__amount--positive {

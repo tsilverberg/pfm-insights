@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BottomSheet from './BottomSheet';
 import ToggleRow from './ToggleRow';
+import { useToast } from '../../hooks/useToast';
 import { permissionsData as initialPermissions } from '../../data/mockData';
 import type { Permission } from '../../data/types';
 import './EditPermissionsSheet.css';
@@ -16,6 +17,7 @@ const members = [
 ];
 
 const EditPermissionsSheet: React.FC<EditPermissionsSheetProps> = ({ isOpen, onClose }) => {
+  const { showToast } = useToast();
   const [permissions, setPermissions] = useState<Permission[]>(initialPermissions);
 
   const handleToggle = (id: string) => {
@@ -39,7 +41,7 @@ const EditPermissionsSheet: React.FC<EditPermissionsSheetProps> = ({ isOpen, onC
       <div className="edit-permissions__header">
         <div style={{ width: 24 }} />
         <div className="edit-permissions__title">Edit permissions</div>
-        <button className="edit-permissions__search-btn" aria-label="Search">
+        <button className="edit-permissions__search-btn" aria-label="Search" onClick={() => showToast({ type: 'info', message: 'Search coming soon' })}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="var(--pfm-text-secondary)" />
           </svg>
@@ -65,7 +67,7 @@ const EditPermissionsSheet: React.FC<EditPermissionsSheetProps> = ({ isOpen, onC
         </div>
       ))}
 
-      <button className="edit-permissions__add-btn">+ Add member</button>
+      <button className="edit-permissions__add-btn" onClick={() => showToast({ type: 'info', message: 'Add member coming soon' })}>+ Add member</button>
 
       <div className="edit-permissions__divider" />
 

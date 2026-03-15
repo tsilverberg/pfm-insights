@@ -1,0 +1,51 @@
+ion-modal.confirm-dialog {
+  --width: calc(100% - 48px);
+  --max-width: 340px;
+  --height: auto;
+  --border-radius: 16px;
+}
+
+.confirm-dialog__content {
+  padding: 24px;
+}
+
+.confirm-dialog__title {
+  margin-bottom: 8px;
+}
+
+.confirm-dialog__message {
+  margin-bottom: 24px;
+}
+
+.confirm-dialog__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.confirm-dialog__btn-cancel {
+  flex: 1;
+  height: 44px;
+  border: 1px solid var(--pfm-border-default);
+  border-radius: 8px;
+  background: transparent;
+  font-weight: 600;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.confirm-dialog__btn-confirm {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: var(--pfm-action-primary-bg, #006AFF);
+  color: #fff;
+  font-weight: 600;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.confirm-dialog__btn-confirm--destructive {
+  background: var(--pfm-status-error);
+}

@@ -90,6 +90,23 @@
   /* === Status: Success text === */
   --pfm-status-success-text: #084722;
 
+  /* === Status: Semantic colors === */
+  --pfm-status-error: #E01700;
+  --pfm-status-warning: #B25A00;
+  --pfm-status-success: #0A5A2B;
+
+  /* === Invest: Change colors === */
+  --pfm-change-negative: #BF2310;
+  --pfm-change-positive: #0A5A2B;
+  --pfm-change-negative-bg: #FADCD9;
+  --pfm-change-positive-bg: #E8F5E9;
+
+  /* === Notification badge === */
+  --pfm-badge-error: #E53935;
+
+  /* === Quick action icon === */
+  --pfm-icon-muted: #75808E;
+
   /* === Palette: Red === */
   --pfm-palette-red-extra-soft: #FADCD9;
   --pfm-palette-red-strong: #9D1000;
@@ -112,6 +129,14 @@
 
   /* === Illustration === */
   --pfm-illustration-extra-soft: #E1E8EF;
+
+  /* === Surface: Scanner === */
+  --pfm-surface-scanner: #0A0A0A;
+
+  /* === Tab Bar === */
+  --pfm-tab-bar-blend: #333;
+  --pfm-tab-bar-bg-light: #F7F7F7;
+  --pfm-tab-bar-inactive: #EDEDED;
 
   /* === Card Gradients === */
   --pfm-card-gradient-blue: linear-gradient(135deg, #1A3A5C 0%, #2E4E78 50%, #4A7AB5 100%);

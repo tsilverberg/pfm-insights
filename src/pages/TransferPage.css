@@ -1,0 +1,173 @@
+.transfer-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 16px 40px;
+}
+
+.transfer-amount__display {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.transfer-amount__text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 51px;
+  color: var(--pfm-text-tertiary);
+}
+
+.transfer-amount__text--active {
+  color: var(--pfm-text-primary);
+}
+
+.transfer-amount__cursor {
+  width: 2px;
+  height: 36px;
+  background: var(--pfm-text-tertiary);
+  border-radius: 1px;
+  animation: transfer-blink 1s step-end infinite;
+}
+
+.transfer-amount__cursor--active {
+  background: var(--pfm-text-primary);
+}
+
+@keyframes transfer-blink {
+  50% { opacity: 0; }
+}
+
+/* Account selectors */
+.transfer-accounts {
+  margin: 0 16px 16px;
+  border: 1px solid var(--pfm-divider-default);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.transfer-accounts__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.transfer-accounts__row:active {
+  background: var(--pfm-surface-raised);
+}
+
+.transfer-accounts__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.transfer-accounts__icon--from {
+  background: var(--pfm-illustration-extra-soft);
+  color: var(--pfm-text-secondary);
+}
+
+.transfer-accounts__icon--to {
+  background: var(--pfm-palette-green-extra-soft, #e8f5e9);
+  color: var(--pfm-palette-green-strong, #2e7d32);
+}
+
+.transfer-accounts__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.transfer-accounts__label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--pfm-text-tertiary);
+}
+
+.transfer-accounts__name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--pfm-text-primary);
+}
+
+.transfer-accounts__swap-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 16px;
+}
+
+.transfer-accounts__divider {
+  flex: 1;
+  height: 1px;
+  background: var(--pfm-divider-default);
+}
+
+.transfer-accounts__swap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--pfm-divider-default);
+  background: var(--pfm-surface-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--pfm-text-secondary);
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.transfer-accounts__swap:active {
+  background: var(--pfm-surface-raised);
+}
+
+/* Note */
+.transfer-note {
+  padding: 0 16px 16px;
+}
+
+.transfer-note__text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--pfm-text-tertiary);
+}
+
+/* Transfer button */
+.transfer-btn {
+  width: 100%;
+  height: 44px;
+  background: var(--pfm-action-primary-bg);
+  color: white;
+  border: none;
+  border-radius: 99px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.transfer-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.transfer-btn:not(:disabled):active {
+  opacity: 0.8;
+}

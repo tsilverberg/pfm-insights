@@ -39,10 +39,17 @@ const PocketIcon: React.FC<{ icon: string; bg: string }> = ({ icon, bg }) => {
 
 const PocketGoalCard: React.FC<PocketGoalCardProps> = ({ pocket, onClick }) => {
   const pct = Math.round((pocket.currentAmount / pocket.targetAmount) * 100);
-  const formatAmount = (n: number) => `$${n.toLocaleString('en-US')}`;
+  const formatAmount = (n: number) => `€${n.toLocaleString('nl-NL')}`;
 
   return (
-    <div className="pocket-card" onClick={onClick}>
+    <div
+      className="pocket-card"
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`${pocket.name}, ${pct}% completed`}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(); } }}
+    >
       <div className="pocket-card__header">
         <div className="pocket-card__info">
           <PocketIcon icon={pocket.icon} bg={pocket.iconBg} />

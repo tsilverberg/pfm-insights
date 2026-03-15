@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import UserAvatarHeader from '../components/shared/UserAvatarHeader';
+import ScreenHeader from '../components/shared/ScreenHeader';
 import TabPills from '../components/shared/TabPills';
 import SpendingBarChart from '../components/shared/SpendingBarChart';
 import TransactionList from '../components/shared/TransactionList';
 import SettingsMenuItem from '../components/shared/SettingsMenuItem';
 import { formatEuro } from '../data/formatters';
 import { childAccountDetailData, homeTransactionsData } from '../data/mockData';
+import { useToast } from '../hooks/useToast';
 import './ChildAccountPage.css';
 
 const ChildAccountPage: React.FC = () => {
-  const history = useHistory();
+  const { showToast } = useToast();
   const child = childAccountDetailData;
   const [requestTab, setRequestTab] = useState('Pending purchases');
 
   return (
     <IonPage>
+      <ScreenHeader title="Child's Account" />
       <IonContent className="page-content">
         <div className="child-account">
-          {/* Header */}
-          <div className="child-account__header">
-            <UserAvatarHeader />
-          </div>
 
           {/* Account Selector */}
           <div style={{ padding: '8px 16px' }}>
-            <button className="child-account__selector">
+            <button className="child-account__selector" onClick={() => showToast({ type: 'info', message: 'Account switcher coming soon' })}>
               <span>Elly's Account</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M7 10l5 5 5-5" stroke="var(--pfm-text-secondary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -56,7 +53,7 @@ const ChildAccountPage: React.FC = () => {
                 { label: 'Card', icon: 'card', variant: 'secondary' },
                 { label: 'More', icon: 'more_horiz', variant: 'secondary' },
               ].map((action) => (
-                <button key={action.label} className="child-account__quick-btn">
+                <button key={action.label} className="child-account__quick-btn" onClick={() => showToast({ type: 'info', message: `${action.label} coming soon` })}>
                   <div className={`child-account__quick-icon child-account__quick-icon--${action.variant}`}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                       {action.icon === 'add_circle' && <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />}
@@ -73,7 +70,7 @@ const ChildAccountPage: React.FC = () => {
 
           {/* Approve / decline requests */}
           <div className="section-module">
-            <div className="section-module__title" style={{ marginBottom: 16 }}>Approve / decline requests</div>
+            <div className="section-module__title mb-16">Approve / decline requests</div>
             <TabPills
               options={['Pending purchases', 'Spend over limit', 'Online purchases']}
               active={requestTab}
@@ -86,9 +83,11 @@ const ChildAccountPage: React.FC = () => {
             <div className="child-account__glance">
               <div className="child-account__glance-header">
                 <div className="child-account__glance-title">At a glance</div>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65z" fill="var(--pfm-text-tertiary)" />
-                </svg>
+                <button onClick={() => showToast({ type: 'info', message: 'Spending settings coming soon' })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }} aria-label="Settings">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65z" fill="var(--pfm-text-tertiary)" />
+                  </svg>
+                </button>
               </div>
               <div className="child-account__glance-subtitle">How's {child.name} spending..</div>
               <SpendingBarChart segments={child.spendingBreakdown} />
@@ -97,7 +96,7 @@ const ChildAccountPage: React.FC = () => {
 
           {/* Parents */}
           <div className="section-module">
-            <div className="section-module__title" style={{ marginBottom: 16 }}>Parents</div>
+            <div className="section-module__title mb-16">Parents</div>
             <div className="child-account__parents">
               {child.parents.map((parent) => (
                 <div key={parent.name} className="child-account__parent-row">
@@ -128,9 +127,9 @@ const ChildAccountPage: React.FC = () => {
 
           {/* Transactions */}
           <div className="section-module">
-            <div className="section-module__title" style={{ marginBottom: 16 }}>Transactions</div>
+            <div className="section-module__title mb-16">Transactions</div>
             <TransactionList groups={homeTransactionsData} />
-            <button className="btn-raised" style={{ height: 32, marginTop: 16 }}>View all</button>
+            <button className="btn-raised" style={{ height: 32, marginTop: 16 }} onClick={() => showToast({ type: 'info', message: 'Full transaction history coming soon' })}>View all</button>
             <div className="child-account__coach">
               <div className="child-account__coach-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -143,13 +142,13 @@ const ChildAccountPage: React.FC = () => {
 
           {/* Earnings */}
           <div className="section-module" style={{ borderBottom: 'none' }}>
-            <div className="section-module__title" style={{ marginBottom: 16 }}>Earnings</div>
-            <SettingsMenuItem icon="calendar" title="Weekly allowance" description="Set a weekly allowance" />
-            <SettingsMenuItem icon="star" title="Challenges" description="Create a rewardable challenge" />
-            <button className="btn-raised" style={{ height: 32, marginTop: 16 }}>View all</button>
+            <div className="section-module__title mb-16">Earnings</div>
+            <SettingsMenuItem icon="calendar" title="Weekly allowance" description="Set a weekly allowance" onClick={() => showToast({ type: 'info', message: 'Weekly allowance coming soon' })} />
+            <SettingsMenuItem icon="star" title="Challenges" description="Create a rewardable challenge" onClick={() => showToast({ type: 'info', message: 'Challenges coming soon' })} />
+            <button className="btn-raised" style={{ height: 32, marginTop: 16 }} onClick={() => showToast({ type: 'info', message: 'Full transaction history coming soon' })}>View all</button>
           </div>
 
-          <div style={{ height: 120 }} />
+          <div className="bottom-spacer" />
         </div>
       </IonContent>
     </IonPage>

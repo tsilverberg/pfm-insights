@@ -202,12 +202,12 @@
   margin-top: 4px;
 }
 
+.select-perms__footer-ionic ion-toolbar {
+  --background: transparent;
+}
+
 .select-perms__footer {
-  position: sticky;
-  bottom: 0;
-  padding: 16px var(--pfm-page-padding) 32px;
-  background: var(--pfm-surface-raised);
-  margin-top: auto;
+  padding: 16px var(--pfm-page-padding) 16px;
 }
 
 .select-perms__continue-btn {

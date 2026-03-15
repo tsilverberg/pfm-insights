@@ -8,12 +8,14 @@ interface TabPillsProps {
 }
 
 const TabPills: React.FC<TabPillsProps> = ({ options, active, onChange }) => (
-  <div className="tab-pills">
+  <div className="tab-pills" role="tablist">
     {options.map((option) => (
       <button
         key={option}
         className={`tab-pills__item ${active === option ? 'tab-pills__item--active' : ''}`}
         onClick={() => onChange(option)}
+        role="tab"
+        aria-selected={option === active}
       >
         {option}
       </button>

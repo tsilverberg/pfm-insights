@@ -26,14 +26,19 @@
   font-size: 15px;
 }
 
-.screen-header__right-pill {
+.screen-header-ionic ion-button.screen-header__right-pill {
   --background: var(--pfm-text-primary);
-  --color: white;
+  --color: var(--pfm-text-inverted);
   --border-radius: 99px;
   --padding-start: 16px;
   --padding-end: 16px;
+  --padding-top: 6px;
+  --padding-bottom: 6px;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
   font-size: 13px;
   height: 32px;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-inline-end: 8px;
 }

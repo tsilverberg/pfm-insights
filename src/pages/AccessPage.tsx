@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonFooter, IonPage, IonToolbar } from '@ionic/react';
 import { useHistory, useParams } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import { sharingCurrentMembers } from '../data/mockData';
@@ -29,8 +29,10 @@ const AccessPage: React.FC = () => {
             ))}
           </div>
 
-          <div style={{ flex: 1 }} />
-
+        </div>
+      </IonContent>
+      <IonFooter translucent className="access-page__footer-ionic">
+        <IonToolbar>
           <div className="access-page__footer">
             <button
               className="access-page__share-btn"
@@ -39,10 +41,8 @@ const AccessPage: React.FC = () => {
               + Share access
             </button>
           </div>
-
-          <div style={{ height: 32 }} />
-        </div>
-      </IonContent>
+        </IonToolbar>
+      </IonFooter>
     </IonPage>
   );
 };

@@ -3,6 +3,7 @@ import { IonContent, IonPage } from '@ionic/react';
 import { useHistory, useParams } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import SettingsMenuItem from '../components/shared/SettingsMenuItem';
+import { useToast } from '../hooks/useToast';
 import { moreActionsSections } from '../data/mockData';
 import './MoreActionsPage.css';
 
@@ -15,6 +16,7 @@ const SearchIcon = (
 const MoreActionsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
+  const { showToast } = useToast();
 
   return (
     <IonPage>
@@ -40,6 +42,8 @@ const MoreActionsPage: React.FC = () => {
                       history.push(`/account/${id}`);
                     } else if (item.title === 'Sharing & permissions') {
                       history.push(`/account/${id}/access`);
+                    } else {
+                      showToast({ type: 'info', message: `${item.title} coming soon` });
                     }
                   }}
                 />
@@ -47,7 +51,7 @@ const MoreActionsPage: React.FC = () => {
             </div>
           ))}
 
-          <div style={{ height: 120 }} />
+          <div className="bottom-spacer" />
         </div>
       </IonContent>
     </IonPage>

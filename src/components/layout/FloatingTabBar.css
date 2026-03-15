@@ -29,7 +29,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: #333;
+  background: var(--pfm-tab-bar-blend);
   mix-blend-mode: color-dodge;
   border-radius: inherit;
   pointer-events: none;
@@ -39,7 +39,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #F7F7F7 0%, #F7F7F7 100%),
+  background: linear-gradient(90deg, var(--pfm-tab-bar-bg-light) 0%, var(--pfm-tab-bar-bg-light) 100%),
     linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
   border-radius: inherit;
   pointer-events: none;
@@ -95,7 +95,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: #EDEDED;
+  background: var(--pfm-tab-bar-inactive);
   border-radius: 100px;
 }
 
@@ -135,7 +135,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: #333;
+  background: var(--pfm-tab-bar-blend);
   mix-blend-mode: color-dodge;
   border-radius: inherit;
   pointer-events: none;
@@ -145,7 +145,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #F7F7F7 0%, #F7F7F7 100%),
+  background: linear-gradient(90deg, var(--pfm-tab-bar-bg-light) 0%, var(--pfm-tab-bar-bg-light) 100%),
     linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
   border-radius: inherit;
   pointer-events: none;

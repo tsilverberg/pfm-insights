@@ -23,12 +23,16 @@ import AccountSelectorPage from './pages/AccountSelectorPage';
 import MoreActionsPage from './pages/MoreActionsPage';
 import AccountSettingsPage from './pages/AccountSettingsPage';
 import NotificationsPage from './pages/NotificationsPage';
+import TransferPage from './pages/TransferPage';
 import ChildAccountPage from './pages/ChildAccountPage';
 import AccessPage from './pages/AccessPage';
+import TransactionSearchPage from './pages/TransactionSearchPage';
 import ShareAccessPage from './pages/ShareAccessPage';
 import SelectPermissionsPage from './pages/SelectPermissionsPage';
 import ReviewSummaryPage from './pages/ReviewSummaryPage';
 import FloatingTabBar from './components/layout/FloatingTabBar';
+import ErrorBoundary from './components/shared/ErrorBoundary';
+import { ToastProvider } from './hooks/useToast';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -49,12 +53,16 @@ import './theme/typography.css';
 import './theme/variables.css';
 import './theme/global.css';
 import './theme/components.css';
+import './theme/interactions.css';
+import './theme/scroll-reveal.css';
 
 setupIonicReact({
   mode: 'ios',
 });
 
 const App: React.FC = () => (
+  <ErrorBoundary>
+  <ToastProvider>
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
@@ -74,11 +82,14 @@ const App: React.FC = () => (
         <Route exact path="/account/:id/share/review" component={ReviewSummaryPage} />
         <Route exact path="/notifications" component={NotificationsPage} />
         <Route exact path="/accounts" component={AccountSelectorPage} />
+        <Route exact path="/transfer" component={TransferPage} />
+        <Route exact path="/child-account" render={() => <Redirect to="/child-account/child-1" />} />
         <Route exact path="/child-account/:id" component={ChildAccountPage} />
         <Route exact path="/profile" component={ProfilePage} />
         <Route exact path="/pockets" component={PocketsPage} />
         <Route exact path="/send" component={SendMoneyPage} />
         <Route exact path="/receive" component={RequestMoneyPage} />
+        <Route exact path="/search" component={TransactionSearchPage} />
         <Route exact path="/qr" component={QRScannerPage} />
         <Route exact path="/">
           <Redirect to="/home" />
@@ -87,6 +98,8 @@ const App: React.FC = () => (
       <FloatingTabBar />
     </IonReactRouter>
   </IonApp>
+  </ToastProvider>
+  </ErrorBoundary>
 );
 
 export default App;

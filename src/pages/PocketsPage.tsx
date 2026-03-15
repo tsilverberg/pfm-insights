@@ -3,19 +3,21 @@ import { IonContent, IonPage } from '@ionic/react';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import PocketGoalCard from '../components/shared/PocketGoalCard';
 import BottomSheet from '../components/shared/BottomSheet';
+import { useToast } from '../hooks/useToast';
 import { pocketsListData } from '../data/mockData';
+import './PocketsPage.css';
 
 const PocketsPage: React.FC = () => {
+  const { showToast } = useToast();
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedPocket, setSelectedPocket] = useState<string | null>(null);
 
   return (
     <IonPage>
-      <ScreenHeader title="Pockets" rightLabel="New pocket" rightVariant="pill" />
+      <ScreenHeader title="Pockets" rightLabel="New pocket" rightVariant="pill" onRightAction={() => showToast({ type: 'info', message: 'Pocket creator coming soon' })} />
       <IonContent className="page-content">
-        <div>
-
-          <div style={{ padding: '0 var(--pfm-page-padding)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div className="pockets-page">
+          <div className="pockets-page__list">
             {pocketsListData.map((pocket) => (
               <PocketGoalCard
                 key={pocket.id}
@@ -25,28 +27,11 @@ const PocketsPage: React.FC = () => {
             ))}
 
             {/* Virtual card note */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingTop: 16,
-            }}>
-              <span style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: 14,
-                color: 'var(--pfm-text-secondary)',
-              }}>
+            <div className="pockets-page__virtual-note">
+              <span className="pockets-page__virtual-note-text">
                 1 virtual card added
               </span>
-              <div style={{
-                width: 40,
-                height: 26,
-                borderRadius: 4,
-                background: 'linear-gradient(135deg, #1A2332 0%, #2E4E78 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
+              <div className="pockets-page__virtual-note-icon">
                 <svg width="20" height="12" viewBox="0 0 32 20">
                   <circle cx="11" cy="10" r="9" fill="#EB001B" opacity="0.8" />
                   <circle cx="21" cy="10" r="9" fill="#F79E1B" opacity="0.8" />
@@ -55,7 +40,7 @@ const PocketsPage: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ height: 120 }} />
+          <div className="bottom-spacer" />
         </div>
       </IonContent>
 
@@ -76,7 +61,7 @@ const PocketsPage: React.FC = () => {
               style={{ marginBottom: 8 }}
               onClick={() => setSheetOpen(false)}
             >
-              ${amount}
+              €{amount}
             </button>
           ))}
           <button

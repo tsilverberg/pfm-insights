@@ -9,25 +9,15 @@ interface AccountListItemProps {
 }
 
 const AccountListItem: React.FC<AccountListItemProps> = ({ account, onClick }) => (
-  <button className="account-item" onClick={onClick}>
-    <div className="account-item__icon">
-      {account.type === 'checking' ? (
-        <svg width="20" height="20" viewBox="0 0 19 18" fill="none">
-          <path d="M18 4.28V2C18 0.9 17.1 0 16 0H2C0.89 0 0 0.9 0 2V16C0 17.1 0.89 18 2 18H16C17.1 18 18 17.1 18 16V13.72C18.59 13.37 19 12.74 19 12V6C19 5.26 18.59 4.63 18 4.28ZM17 6V12H10V6H17ZM2 16V2H16V4H10C8.9 4 8 4.9 8 6V12C8 13.1 8.9 14 10 14H16V16H2Z" fill="var(--pfm-text-secondary)" />
-          <path d="M13 10.5C13.8284 10.5 14.5 9.82843 14.5 9C14.5 8.17157 13.8284 7.5 13 7.5C12.1716 7.5 11.5 8.17157 11.5 9C11.5 9.82843 12.1716 10.5 13 10.5Z" fill="var(--pfm-text-secondary)" />
-        </svg>
-      ) : (
-        <svg width="20" height="20" viewBox="0 0 19 18" fill="none">
-          <path d="M18 4.28V2C18 0.9 17.1 0 16 0H2C0.89 0 0 0.9 0 2V16C0 17.1 0.89 18 2 18H16C17.1 18 18 17.1 18 16V13.72C18.59 13.37 19 12.74 19 12V6C19 5.26 18.59 4.63 18 4.28ZM17 6V12H10V6H17ZM2 16V2H16V4H10C8.9 4 8 4.9 8 6V12C8 13.1 8.9 14 10 14H16V16H2Z" fill="var(--pfm-text-secondary)" />
-          <path d="M13 10.5C13.8284 10.5 14.5 9.82843 14.5 9C14.5 8.17157 13.8284 7.5 13 7.5C12.1716 7.5 11.5 8.17157 11.5 9C11.5 9.82843 12.1716 10.5 13 10.5Z" fill="var(--pfm-text-secondary)" />
-        </svg>
-      )}
+  <button className="list-row account-item" onClick={onClick}>
+    <div className="list-row__icon account-item__icon">
+      <span className="material-symbols-rounded" style={{ fontSize: 20, color: 'var(--pfm-text-secondary)' }}>account_balance_wallet</span>
     </div>
-    <div className="account-item__text">
-      <div className="account-item__name">{account.name}</div>
-      <div className="account-item__number">····{account.lastFour}</div>
+    <div className="list-row__text">
+      <span className="typo-callout-semibold">{account.name}</span>
+      <span className="typo-footnote color-secondary">····{account.lastFour}</span>
     </div>
-    <div className="account-item__balance">{formatEuro(account.balance)}</div>
+    <span className="list-row__value typo-callout-semibold">{formatEuro(account.balance)}</span>
   </button>
 );
 

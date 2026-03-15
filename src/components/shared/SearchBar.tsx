@@ -26,11 +26,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = 'Search', onSearch 
         <path d="M16 16l4 4" stroke="var(--pfm-text-tertiary)" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
       <input
-        type="text"
+        type="search"
         className="search-bar__input"
         placeholder={placeholder}
         value={query}
         onChange={handleChange}
+        aria-label="Search"
       />
       {query && (
         <button className="search-bar__clear" onClick={handleClear} aria-label="Clear">

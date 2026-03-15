@@ -13,15 +13,15 @@ interface CategoryListItemProps {
 const CategoryListItem: React.FC<CategoryListItemProps> = ({ icon, label, amount, txCount, category, showSeparator = true }) => {
   return (
     <>
-      <div className="category-list-item">
-        <div className={`category-list-item__icon-circle category-list-item__icon-circle--${category}`}>
+      <div className="list-row">
+        <div className={`list-row__icon list-row__icon--round category-list-item__icon-circle category-list-item__icon-circle--${category}`}>
           <span className="category-list-item__icon" role="img" aria-label={label}>{icon}</span>
         </div>
-        <div className="category-list-item__text">
-          <div className="category-list-item__label">{label}</div>
-          <div className="category-list-item__count">{txCount} transactions</div>
+        <div className="list-row__text">
+          <span className="typo-callout-regular">{label}</span>
+          <span className="typo-footnote color-tertiary">{txCount} transactions</span>
         </div>
-        <div className="category-list-item__amount">{formatEuro(amount)}</div>
+        <span className="list-row__value typo-callout-semibold">{formatEuro(amount)}</span>
       </div>
       {showSeparator && <div className="category-list-item__separator" />}
     </>

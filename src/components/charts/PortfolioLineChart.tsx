@@ -75,8 +75,8 @@ const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points })
   };
 
   return (
-    <div style={{ height: 215 }}>
-      <Line data={chartData} options={options} />
+    <div style={{ position: 'relative', width: '100%', height: 215 }}>
+      <Line data={chartData} options={options} redraw />
     </div>
   );
 };

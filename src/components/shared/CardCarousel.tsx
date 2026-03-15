@@ -26,7 +26,7 @@ const CardCarousel: React.FC<CardCarouselProps> = ({ cards, onCardChange }) => {
   };
 
   return (
-    <div className="card-carousel">
+    <div className="card-carousel" role="region" aria-label="Card carousel" aria-roledescription="carousel">
       <div className="card-carousel__scroll" ref={scrollRef} onScroll={handleScroll}>
         {cards.map((card) => (
           <CreditCardDisplay key={card.id} card={card} />

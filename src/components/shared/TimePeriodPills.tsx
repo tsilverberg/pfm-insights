@@ -8,12 +8,14 @@ interface TimePeriodPillsProps {
 
 const TimePeriodPills: React.FC<TimePeriodPillsProps> = ({ options, active, onChange }) => {
   return (
-    <div className="time-pills">
+    <div className="time-pills" role="tablist">
       {options.map((option) => (
         <button
           key={option}
           className={`time-pill ${active === option ? 'time-pill--active' : ''}`}
           onClick={() => onChange(option)}
+          role="tab"
+          aria-selected={option === active}
         >
           {option}
         </button>

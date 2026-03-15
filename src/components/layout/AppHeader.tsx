@@ -17,7 +17,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ title = 'Insights', actions }) =>
   return (
     <IonHeader translucent className="app-header-ionic">
       <IonToolbar>
-        <IonTitle>{title}</IonTitle>
+        <IonTitle><h1 className="app-header__h1">{title}</h1></IonTitle>
         {actions && actions.length > 0 && (
           <IonButtons slot="end">
             {actions.map((action) => (

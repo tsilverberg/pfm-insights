@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useHaptics } from '../../hooks/useHaptics';
 import './FloatingTabBar.css';
 
 const tabs = [
@@ -9,7 +10,7 @@ const tabs = [
   { id: 'explore', path: '/explore', label: 'Explore', icon: 'explore' },
 ];
 
-const hiddenPaths = ['/profile', '/cards', '/cards/points', '/account/', '/pockets', '/send', '/receive', '/qr', '/notifications', '/accounts', '/child-account/'];
+const hiddenPaths = ['/profile', '/cards', '/cards/points', '/account/', '/pockets', '/send', '/transfer', '/receive', '/qr', '/notifications', '/accounts', '/child-account/', '/search'];
 
 const TabIcon: React.FC<{ name: string }> = ({ name }) => {
   switch (name) {
@@ -45,12 +46,13 @@ const TabIcon: React.FC<{ name: string }> = ({ name }) => {
 const FloatingTabBar: React.FC = () => {
   const history = useHistory();
   const location = useLocation();
+  const haptics = useHaptics();
 
   const shouldHide = hiddenPaths.some((p) => location.pathname.startsWith(p));
   if (shouldHide) return null;
 
   return (
-    <div className="floating-tab-bar">
+    <div className="floating-tab-bar" role="navigation" aria-label="Main navigation">
       <div className="floating-tab-bar__main">
         {tabs.map((tab) => {
           const isActive = location.pathname.startsWith(tab.path);
@@ -58,7 +60,9 @@ const FloatingTabBar: React.FC = () => {
             <button
               key={tab.id}
               className={`floating-tab-bar__item ${isActive ? 'floating-tab-bar__item--active' : ''}`}
-              onClick={() => history.push(tab.path)}
+              onClick={() => { haptics.light(); history.push(tab.path); }}
+              aria-label={tab.label}
+              aria-current={isActive ? 'page' : undefined}
             >
               <div className={`floating-tab-bar__icon-wrap ${isActive ? 'floating-tab-bar__icon-wrap--active' : ''}`}>
                 <TabIcon name={tab.icon} />
@@ -68,7 +72,7 @@ const FloatingTabBar: React.FC = () => {
           );
         })}
       </div>
-      <button className="floating-tab-bar__search" aria-label="Search">
+      <button className="floating-tab-bar__search" aria-label="Search" onClick={() => { haptics.light(); history.push('/search'); }}>
         <svg width="32" height="32" viewBox="0 0 23.32 23.32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M16.6667 14.6667H15.6133L15.24 14.3067C16.5467 12.7867 17.3333 10.8133 17.3333 8.66667C17.3333 3.88 13.4533 0 8.66667 0C3.88 0 0 3.88 0 8.66667C0 13.4533 3.88 17.3333 8.66667 17.3333C10.8133 17.3333 12.7867 16.5467 14.3067 15.24L14.6667 15.6133V16.6667L21.3333 23.32L23.32 21.3333L16.6667 14.6667V14.6667ZM8.66667 14.6667C5.34667 14.6667 2.66667 11.9867 2.66667 8.66667C2.66667 5.34667 5.34667 2.66667 8.66667 2.66667C11.9867 2.66667 14.6667 5.34667 14.6667 8.66667C14.6667 11.9867 11.9867 14.6667 8.66667 14.6667Z" />
         </svg>

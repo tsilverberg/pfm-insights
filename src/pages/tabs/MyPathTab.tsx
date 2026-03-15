@@ -3,9 +3,11 @@ import SectionModule from '../../components/shared/SectionModule';
 import SegmentedBar from '../../components/shared/SegmentedBar';
 import RaisedButton from '../../components/shared/RaisedButton';
 import { financialStrategyData, milestonesData } from '../../data/mockData';
+import { useToast } from '../../hooks/useToast';
 import './MyPathTab.css';
 
 const MyPathTab: React.FC = () => {
+  const { showToast } = useToast();
   return (
     <div>
       {/* Financial Strategy */}
@@ -60,7 +62,7 @@ const MyPathTab: React.FC = () => {
           </div>
         </div>
         <div style={{ marginTop: 16 }}>
-          <RaisedButton label="Tune my rhythm" />
+          <RaisedButton label="Tune my rhythm" onClick={() => showToast({ type: 'info', message: 'Financial rhythm editor coming soon' })} />
         </div>
       </SectionModule>
 
@@ -96,7 +98,7 @@ const MyPathTab: React.FC = () => {
           ) : null}
         </div>
         <div style={{ marginTop: 16 }}>
-          <RaisedButton label="+ Add a milestone" />
+          <RaisedButton label="+ Add a milestone" onClick={() => showToast({ type: 'info', message: 'Milestone creator coming soon' })} />
         </div>
       </SectionModule>
     </div>

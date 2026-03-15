@@ -31,6 +31,10 @@
   align-items: center;
 }
 
+.overview__debt {
+  color: var(--pfm-pink-strong);
+}
+
 .overview__wealth-expand {
   display: flex;
   align-items: center;
@@ -39,4 +43,26 @@
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.overview__commentary {
+  margin: 0;
+}
+
+.overview__legend-line {
+  width: 20px;
+  height: 2px;
+  background-color: var(--pfm-turquoise-strong);
+  display: inline-block;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.overview__legend-dashed {
+  width: 20px;
+  height: 0;
+  border-top: 2px dashed var(--pfm-turquoise-strong);
+  display: inline-block;
+  flex-shrink: 0;
+  align-self: center;
 }

@@ -3,11 +3,17 @@ import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import NumericKeypad from '../components/shared/NumericKeypad';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
+import { useToast } from '../hooks/useToast';
+import { useHaptics } from '../hooks/useHaptics';
 import './RequestMoneyPage.css';
 
 const RequestMoneyPage: React.FC = () => {
   const history = useHistory();
+  const { showToast } = useToast();
+  const haptics = useHaptics();
   const [amount, setAmount] = useState('0');
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleKey = (key: string) => {
     if (key === '.' && amount.includes('.')) return;
@@ -25,11 +31,12 @@ const RequestMoneyPage: React.FC = () => {
     else setAmount(amount.slice(0, -1));
   };
 
-  const displayAmount = amount === '0'
+  const displayAmountRaw = amount === '0'
     ? '0.00'
     : amount.includes('.')
       ? amount + '0'.repeat(Math.max(0, 2 - (amount.split('.')[1]?.length || 0)))
       : amount + '.00';
+  const displayAmount = displayAmountRaw.replace('.', ',');
 
   const hasAmount = amount !== '0';
 
@@ -42,7 +49,7 @@ const RequestMoneyPage: React.FC = () => {
         <div className="request-amount">
           <div className="request-amount__display">
             <span className={`request-amount__text ${hasAmount ? 'request-amount__text--active' : ''}`}>
-              € {displayAmount}
+              €{displayAmount}
             </span>
             <div className={`request-amount__cursor ${hasAmount ? 'request-amount__cursor--active' : ''}`} />
           </div>
@@ -50,7 +57,7 @@ const RequestMoneyPage: React.FC = () => {
 
         {/* To Account + Note */}
         <div className="request-options">
-          <button className="request-options__row">
+          <button className="request-options__row" onClick={() => showToast({ type: 'info', message: 'Account picker coming soon' })}>
             <div className="request-options__icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <rect x="3" y="8" width="18" height="10" rx="1.5" stroke="var(--pfm-text-secondary)" strokeWidth="2" fill="none" />
@@ -70,13 +77,13 @@ const RequestMoneyPage: React.FC = () => {
         {/* CTAs */}
         {hasAmount && (
           <div className="request-cta-row">
-            <button className="request-btn">
+            <button className="request-btn" onClick={() => setShowConfirm(true)}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ marginRight: 6 }}>
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white" />
               </svg>
               Send link
             </button>
-            <button className="request-qr-btn">
+            <button className="request-qr-btn" onClick={() => history.push('/qr')}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <rect x="3" y="3" width="8" height="8" rx="1" stroke="var(--pfm-text-primary)" strokeWidth="1.5" />
                 <rect x="13" y="3" width="8" height="8" rx="1" stroke="var(--pfm-text-primary)" strokeWidth="1.5" />
@@ -97,6 +104,20 @@ const RequestMoneyPage: React.FC = () => {
         <div style={{ padding: '0 var(--pfm-page-padding)' }}>
           <NumericKeypad onKey={handleKey} onDelete={handleDelete} />
         </div>
+        <ConfirmDialog
+          isOpen={showConfirm}
+          title="Confirm request"
+          message={`Request €${displayAmount} to John's main account?`}
+          confirmLabel="Send request"
+          cancelLabel="Cancel"
+          onConfirm={() => {
+            setShowConfirm(false);
+            haptics.success();
+            showToast({ type: 'success', message: 'Request sent' });
+            setAmount('0');
+          }}
+          onCancel={() => setShowConfirm(false)}
+        />
       </IonContent>
     </IonPage>
   );
