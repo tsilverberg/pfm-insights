@@ -3,13 +3,13 @@ import type { Permission } from '../../data/types';
 import './ToggleRow.css';
 
 const iconColors: Record<string, { bg: string; color: string }> = {
-  description: { bg: '#DFE7FF', color: '#0047AB' },
-  payments: { bg: '#E2F5EC', color: '#0A5A2B' },
-  credit_card: { bg: '#E1E8EF', color: '#3A495D' },
-  insights: { bg: '#E8DCF8', color: '#491091' },
-  swap_horiz: { bg: '#DFE7FF', color: '#0047AB' },
-  schedule: { bg: '#FDE8D0', color: '#B35C00' },
-  receipt_long: { bg: '#E1E8EF', color: '#3A495D' },
+  description: { bg: 'var(--pfm-palette-blue-extra-soft)', color: 'var(--pfm-palette-blue-strong)' },
+  payments: { bg: 'var(--pfm-palette-green-extra-soft)', color: 'var(--pfm-green-strong)' },
+  credit_card: { bg: 'var(--pfm-neutral-200)', color: 'var(--pfm-text-secondary)' },
+  insights: { bg: 'var(--pfm-palette-purple-extra-soft)', color: 'var(--pfm-palette-purple-strong)' },
+  swap_horiz: { bg: 'var(--pfm-palette-blue-extra-soft)', color: 'var(--pfm-palette-blue-strong)' },
+  schedule: { bg: 'var(--pfm-palette-orange-extra-soft)', color: 'var(--pfm-palette-orange-strong)' },
+  receipt_long: { bg: 'var(--pfm-neutral-200)', color: 'var(--pfm-text-secondary)' },
 };
 
 interface ToggleRowProps {
@@ -28,7 +28,7 @@ const ToggleRow: React.FC<ToggleRowProps> = ({ permission, onToggle, onSubOption
           color: iconColors[permission.icon]?.color || 'var(--pfm-text-secondary)',
         }}
       >
-        <span className="material-symbols-rounded" style={{ fontSize: 18 }}>{permission.icon}</span>
+        <span className="material-symbols-rounded" style={{ fontSize: 20 }}>{permission.icon}</span>
       </div>
       <div className="list-row__text">
         <span className="typo-subhead-semibold">{permission.title}</span>

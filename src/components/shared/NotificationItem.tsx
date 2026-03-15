@@ -17,7 +17,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({ notification }) => 
   <div className="notification-item">
     <div className="notification-item__icon-wrap">
       <div className={`notification-item__icon notification-item__icon--${notification.type}`}>
-        <span className="material-symbols-rounded" style={{ fontSize: 18 }}>
+        <span className="material-symbols-rounded" style={{ fontSize: 20 }}>
           {typeIcons[notification.type] || 'info'}
         </span>
       </div>

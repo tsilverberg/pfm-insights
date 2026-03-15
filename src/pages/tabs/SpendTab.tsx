@@ -50,7 +50,7 @@ const SpendTab: React.FC = () => {
                 <ProgressBar value={cat.percentage} max={100} color="var(--pfm-action-primary-bg)" height={4} />
               </div>
               <span className="typo-callout-semibold">{formatEuro(cat.amount)}</span>
-              <span className="material-symbols-rounded color-tertiary" style={{ fontSize: 18 }}>chevron_right</span>
+              <span className="material-symbols-rounded color-tertiary" style={{ fontSize: 20 }}>chevron_right</span>
             </div>
           ))}
         </div>

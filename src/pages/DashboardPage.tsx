@@ -56,7 +56,7 @@ const DashboardPage: React.FC = () => {
         <div className="dashboard-hero">
           <button className="dashboard-hero__selector" onClick={() => showToast({ type: 'info', message: 'Account filter coming soon' })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             <span className="dashboard-hero__selector-text">All accounts</span>
-            <span className="material-symbols-rounded color-secondary" style={{ fontSize: 16 }}>expand_more</span>
+            <span className="material-symbols-rounded color-secondary" style={{ fontSize: 20 }}>expand_more</span>
           </button>
           <div className="dashboard-hero__balance">{formatEuro(dashboardTotalBalance)}</div>
           <div className="dashboard-hero__subtitle">Total available</div>
@@ -149,7 +149,7 @@ const DashboardPage: React.FC = () => {
         {/* Customize Dashboard CTA */}
         <div className="dashboard__customize">
           <button className="btn-outline w-full" onClick={() => showToast({ type: 'info', message: 'Dashboard customization coming soon' })}>
-            <span className="material-symbols-rounded" style={{ fontSize: 16 }}>settings</span>
+            <span className="material-symbols-rounded" style={{ fontSize: 20 }}>settings</span>
             Customize dashboard
           </button>
         </div>

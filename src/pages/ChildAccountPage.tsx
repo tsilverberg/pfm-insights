@@ -35,7 +35,7 @@ const ChildAccountPage: React.FC = () => {
 
           {/* Child Info */}
           <div className="child-account__child-info">
-            <div className="child-account__avatar">EW</div>
+            <img src={child.avatarUrl} alt={child.name} className="child-account__avatar" />
             <div>
               <div className="child-account__child-name">{child.name}</div>
               <div className="child-account__child-age">{child.childAge}yo</div>

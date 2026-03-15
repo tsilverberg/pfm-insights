@@ -59,7 +59,7 @@ const HomePage: React.FC = () => {
               className="home__account-selector"
             >
               <span>{selectedAccount.name}</span>
-              <span className="material-symbols-rounded color-secondary" style={{ fontSize: 16 }}>unfold_more</span>
+              <span className="material-symbols-rounded color-secondary" style={{ fontSize: 20 }}>unfold_more</span>
             </button>
           </div>
 

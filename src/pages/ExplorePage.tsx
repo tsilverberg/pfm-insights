@@ -58,7 +58,7 @@ const ExplorePage: React.FC = () => {
                   </div>
                   <div className="typo-footnote color-tertiary mt-2">{item.subtitle}</div>
                 </div>
-                <span className="material-symbols-rounded color-tertiary" style={{ fontSize: 16 }}>chevron_right</span>
+                <span className="material-symbols-rounded color-tertiary" style={{ fontSize: 20 }}>chevron_right</span>
               </div>
             ))}
           </div>

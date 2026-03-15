@@ -40,7 +40,7 @@ const ThemeSelectorSheet: React.FC<ThemeSelectorSheetProps> = ({ isOpen, onClose
                   </span>
                 </div>
                 {isActive && (
-                  <span className="material-symbols-rounded theme-selector__check">check_circle</span>
+                  <span className="material-symbols-rounded theme-selector__check" style={{ fontSize: 24 }}>check_circle</span>
                 )}
               </button>
             );
