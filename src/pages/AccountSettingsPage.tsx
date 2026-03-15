@@ -20,7 +20,7 @@ const AccountSettingsPage: React.FC = () => {
       <ScreenHeader
         title="Account Settings"
         subtitle={account?.name}
-        onBackAction={() => history.replace(`/account/${id}`)}
+        onBackAction={() => history.goBack()}
       />
       <IonContent className="page-content">
         <div className="account-settings">
