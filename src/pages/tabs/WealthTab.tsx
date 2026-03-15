@@ -78,7 +78,7 @@ const WealthTab: React.FC = () => {
       {/* Spending Health */}
       <SectionModule title="Spending health" subtitle="See how your daily spending patterns look">
         <div className="flex-center mb-16">
-          <MonthPicker month={monthNav.month} year={monthNav.year} onPrev={monthNav.goPrev} onNext={monthNav.goNext} />
+          <MonthPicker month={monthNav.month} year={monthNav.year} onPrev={monthNav.canGoPrev ? monthNav.goPrev : undefined} onNext={monthNav.canGoNext ? monthNav.goNext : undefined} />
         </div>
         <Suspense fallback={<SkeletonLoader variant="chart" />}>
           <SpendingHeatmap

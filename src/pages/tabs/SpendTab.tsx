@@ -9,6 +9,7 @@ import { useMonthNavigation } from '../../hooks/useMonthNavigation';
 import { useToast } from '../../hooks/useToast';
 import { formatEuro } from '../../data/formatters';
 import { nwgBreakdownData, topSpendingData } from '../../data/pfmData';
+import { monthlyNwgData, monthlyTopSpending } from '../../data/mockData';
 import './SpendTab.css';
 
 const SpendTab: React.FC = () => {
@@ -17,19 +18,23 @@ const SpendTab: React.FC = () => {
   const { showToast } = useToast();
   const [showCoach, setShowCoach] = useState(true);
 
+  const monthKey = String(monthNav.monthIndex);
+  const nwg = monthlyNwgData[monthKey] || nwgBreakdownData;
+  const topCats = monthlyTopSpending[monthKey] || topSpendingData;
+
   return (
     <div>
       {/* Month Picker */}
       <div className="goals__month-picker">
-        <MonthPicker month={monthNav.month} year={monthNav.year} onPrev={monthNav.goPrev} onNext={monthNav.goNext} />
+        <MonthPicker month={monthNav.month} year={monthNav.year} onPrev={monthNav.canGoPrev ? monthNav.goPrev : undefined} onNext={monthNav.canGoNext ? monthNav.goNext : undefined} />
       </div>
 
       {/* NWG Breakdown */}
       <SectionModule title="Spending breakdown">
         <NwgBreakdownBar
-          needs={nwgBreakdownData.needs}
-          wants={nwgBreakdownData.wants}
-          growth={nwgBreakdownData.growth}
+          needs={nwg.needs}
+          wants={nwg.wants}
+          growth={nwg.growth}
           onSegmentTap={(type) => history.push(`/insights/nwg/${type}`)}
         />
       </SectionModule>
@@ -37,7 +42,7 @@ const SpendTab: React.FC = () => {
       {/* Top Categories */}
       <SectionModule title="Top categories">
         <div className="spend__top-categories">
-          {topSpendingData.map((cat) => (
+          {topCats.map((cat) => (
             <div key={cat.id} className="spend__top-cat-row" onClick={() => history.push(`/insights/category/${cat.name}`)} style={{ cursor: 'pointer' }}>
               <span className="spend__top-cat-icon">{cat.icon}</span>
               <div className="spend__top-cat-info">

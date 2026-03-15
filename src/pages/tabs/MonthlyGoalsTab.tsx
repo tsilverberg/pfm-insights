@@ -36,7 +36,7 @@ const MonthlyGoalsTab: React.FC = () => {
     <div>
       {/* Month Picker */}
       <div className="goals__month-picker">
-        <MonthPicker month={monthNav.month} year={monthNav.year} onPrev={monthNav.goPrev} onNext={monthNav.goNext} />
+        <MonthPicker month={monthNav.month} year={monthNav.year} onPrev={monthNav.canGoPrev ? monthNav.goPrev : undefined} onNext={monthNav.canGoNext ? monthNav.goNext : undefined} />
       </div>
 
       {/* Monthly Snapshot */}

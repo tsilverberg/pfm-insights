@@ -436,14 +436,18 @@ export const pillarStripData = healthScoreData.pillars.map(p => ({
 // ─── Monthly data multipliers ─────────────────────────────────
 
 const MONTHLY_MULTIPLIERS: Record<number, number> = {
-  0: 0.85,  // January
-  1: 0.95,  // February
-  2: 1.0,   // March (current)
+  9: 0.90,  // October 2025 — balanced month
+  10: 1.10, // November 2025 — Black Friday / Sinterklaas
+  11: 1.25, // December 2025 — holiday peak
+  0: 0.85,  // January 2026 — post-holiday austerity
+  1: 0.95,  // February 2026 — recovering
+  2: 1.0,   // March 2026 (current)
 };
 
-export const AVAILABLE_MONTHS = Object.keys(MONTHLY_MULTIPLIERS).map(Number).sort((a, b) => a - b);
-export const MIN_MONTH_INDEX = AVAILABLE_MONTHS[0];
-export const MAX_MONTH_INDEX = AVAILABLE_MONTHS[AVAILABLE_MONTHS.length - 1];
+// Sort order for display: Oct(9), Nov(10), Dec(11), Jan(0), Feb(1), Mar(2)
+export const AVAILABLE_MONTHS = [9, 10, 11, 0, 1, 2];
+export const MIN_MONTH_INDEX = 9;
+export const MAX_MONTH_INDEX = 2;
 
 const MONTH_DATE_RANGES = [
   '1 – 31 Jan', '1 – 28 Feb', '1 – 31 Mar', '1 – 30 Apr',
