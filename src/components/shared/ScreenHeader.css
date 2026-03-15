@@ -19,6 +19,14 @@
   --color: var(--pfm-text-primary);
 }
 
+.screen-header__subtitle {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--pfm-text-secondary);
+}
+
 .screen-header__right-text {
   --color: var(--pfm-action-primary-bg);
   font-family: 'Lato', sans-serif;

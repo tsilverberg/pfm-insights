@@ -10,7 +10,7 @@ const tabs = [
   { id: 'explore', path: '/explore', label: 'Explore', icon: 'explore' },
 ];
 
-const hiddenPaths = ['/profile', '/cards', '/cards/points', '/account/', '/pockets', '/send', '/transfer', '/receive', '/qr', '/notifications', '/accounts', '/child-account/', '/search'];
+const hiddenPaths = ['/profile', '/cards', '/cards/points', '/pockets', '/send', '/transfer', '/receive', '/qr', '/notifications', '/accounts', '/child-account/', '/search', '/insights/nwg/', '/insights/category/', '/insights/health'];
 
 const TabIcon: React.FC<{ name: string }> = ({ name }) => {
   switch (name) {
@@ -48,7 +48,9 @@ const FloatingTabBar: React.FC = () => {
   const location = useLocation();
   const haptics = useHaptics();
 
-  const shouldHide = hiddenPaths.some((p) => location.pathname.startsWith(p));
+  const isAccountSubPage = location.pathname.startsWith('/account/') &&
+    location.pathname.replace(/\/$/, '').split('/').length > 3; // /account/:id = 3 segments, /account/:id/settings = 4+
+  const shouldHide = hiddenPaths.some((p) => location.pathname.startsWith(p)) || isAccountSubPage;
   if (shouldHide) return null;
 
   const handleTabClick = (tab: (typeof tabs)[0]) => {

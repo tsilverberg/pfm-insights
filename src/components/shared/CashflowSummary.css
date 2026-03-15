@@ -1,0 +1,72 @@
+.cashflow-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cashflow-summary__stats {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.cashflow-summary__stat {
+  border-left: 4px solid;
+  padding-left: 8px;
+}
+
+.cashflow-summary__stat--received {
+  border-color: #1BA97F;
+}
+
+.cashflow-summary__stat--spent {
+  border-color: #ED5EA6;
+}
+
+.cashflow-summary__stat--upcoming {
+  border-color: var(--pfm-text-tertiary);
+}
+
+.cashflow-summary__label {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+  line-height: 1.3;
+}
+
+.cashflow-summary__amount {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  line-height: 1.3;
+}
+
+.cashflow-summary__bar {
+  display: flex;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.cashflow-summary__bar-segment {
+  height: 100%;
+}
+
+.cashflow-summary__bar-segment--received {
+  background: #1BA97F;
+}
+
+.cashflow-summary__bar-segment--spent {
+  background: #ED5EA6;
+}
+
+.cashflow-summary__bar-segment--upcoming {
+  background: var(--pfm-text-tertiary);
+}
+
+.cashflow-summary__remaining {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--pfm-text-tertiary);
+}

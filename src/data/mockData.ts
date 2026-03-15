@@ -16,8 +16,8 @@ export const monthlyDistributionData = {
   averageIncome: 5800,
   categories: [
     { id: 'needs', label: 'Needs', percentage: 50, color: '#ED5EA6' },
-    { id: 'wants', label: 'Wants', percentage: 30, color: '#4AB2B2' },
-    { id: 'security', label: 'Security', percentage: 20, color: '#0A5A2B' },
+    { id: 'wants', label: 'Lifestyle', percentage: 30, color: '#4AB2B2' },
+    { id: 'security', label: 'Saved', percentage: 20, color: '#0A5A2B' },
   ],
   commentary: 'Your spending is broadly on track. Wants spending was higher in November — mainly dining out.',
 };
@@ -83,34 +83,6 @@ export const monthlyGoalsData = {
   isOnTrack: true,
 };
 
-export const needsCategoriesData = {
-  totalBudget: 3000,
-  totalSpent: 2762.50,
-  remaining: 237.50,
-  categories: [
-    { icon: '🏠', label: 'Housing', amount: 1200, txCount: 3, category: 'needs' as const },
-    { icon: '🛒', label: 'Groceries', amount: 485.30, txCount: 12, category: 'needs' as const },
-    { icon: '🚗', label: 'Transport', amount: 340, txCount: 8, category: 'needs' as const },
-    { icon: '⚡', label: 'Utilities', amount: 285.20, txCount: 5, category: 'needs' as const },
-    { icon: '💊', label: 'Healthcare', amount: 252, txCount: 4, category: 'needs' as const },
-    { icon: '📱', label: 'Phone & Internet', amount: 200, txCount: 2, category: 'needs' as const },
-  ],
-};
-
-export const wantsCategoriesData = {
-  totalBudget: 1800,
-  totalSpent: 1950,
-  remaining: -150,
-  categories: [
-    { icon: '🍽️', label: 'Dining out', amount: 620, txCount: 15, category: 'wants' as const },
-    { icon: '🛍️', label: 'Shopping', amount: 485, txCount: 8, category: 'wants' as const },
-    { icon: '🎬', label: 'Entertainment', amount: 345, txCount: 6, category: 'wants' as const },
-    { icon: '✈️', label: 'Travel', amount: 300, txCount: 2, category: 'wants' as const },
-    { icon: '💪', label: 'Fitness', amount: 120, txCount: 3, category: 'wants' as const },
-    { icon: '💇', label: 'Personal care', amount: 80, txCount: 4, category: 'wants' as const },
-  ],
-};
-
 export const securityData = {
   savingsTransfer: 600,
   targetSavings: 1200,
@@ -119,8 +91,8 @@ export const securityData = {
 export const spendCategoriesDonutData = {
   segments: [
     { label: 'Needs', value: 2762.50, color: '#ED5EA6' },
-    { label: 'Wants', value: 1950, color: '#4AB2B2' },
-    { label: 'Security', value: 600, color: '#0A5A2B' },
+    { label: 'Lifestyle', value: 1950, color: '#4AB2B2' },
+    { label: 'Saved', value: 600, color: '#0A5A2B' },
   ],
 };
 
@@ -174,15 +146,15 @@ export const homeTransactionsData: TransactionGroup[] = [
   {
     label: 'Today',
     transactions: [
-      { id: 'tx-1', name: 'Amazon', category: 'Online shopping', amount: -48.11, date: 'Today', logoUrl: '/assets/icons/merchant-amazon.png' },
-      { id: 'tx-2', name: 'Netflix', category: 'Online shopping', amount: -24.00, date: 'Today', logoUrl: '/assets/icons/merchant-netflix.png' },
+      { id: 'tx-1', name: 'Amazon', category: 'Online shopping', amount: -48.11, date: 'Today', logoUrl: '/assets/icons/merchant-amazon.png', nwgType: 'want' },
+      { id: 'tx-2', name: 'Netflix', category: 'Online shopping', amount: -24.00, date: 'Today', logoUrl: '/assets/icons/merchant-netflix.png', nwgType: 'want' },
     ],
   },
   {
     label: '15 Dec, 2025',
     transactions: [
-      { id: 'tx-3', name: 'Paul Nelson', description: 'paid you', category: 'Account transfer', amount: 100.00, date: '15 Dec, 2025', initials: 'PN', isPositive: true },
-      { id: 'tx-4', name: 'Starbucks', category: 'Food & Drinks', amount: -16.35, date: '15 Dec, 2025', logoUrl: '/assets/icons/merchant-starbucks.png' },
+      { id: 'tx-3', name: 'Paul Nelson', description: 'paid you', category: 'Account transfer', amount: 100.00, date: '15 Dec, 2025', initials: 'PN', isPositive: true, nwgType: 'growth' },
+      { id: 'tx-4', name: 'Starbucks', category: 'Food & Drinks', amount: -16.35, date: '15 Dec, 2025', logoUrl: '/assets/icons/merchant-starbucks.png', nwgType: 'want' },
     ],
   },
 ];
@@ -291,15 +263,15 @@ export const cardTransactionsData: TransactionGroup[] = [
   {
     label: 'Today',
     transactions: [
-      { id: 'ctx-1', name: 'Apple Store', category: 'Electronics', amount: -299.00, date: 'Today', logoUrl: 'https://logo.clearbit.com/apple.com' },
-      { id: 'ctx-2', name: 'Uber Eats', category: 'Food & Drinks', amount: -32.50, date: 'Today', logoUrl: 'https://logo.clearbit.com/ubereats.com' },
+      { id: 'ctx-1', name: 'Apple Store', category: 'Electronics', amount: -299.00, date: 'Today', logoUrl: 'https://logo.clearbit.com/apple.com', nwgType: 'want' },
+      { id: 'ctx-2', name: 'Uber Eats', category: 'Food & Drinks', amount: -32.50, date: 'Today', logoUrl: 'https://logo.clearbit.com/ubereats.com', nwgType: 'want' },
     ],
   },
   {
     label: '14 Dec, 2025',
     transactions: [
-      { id: 'ctx-3', name: 'H&M', category: 'Shopping', amount: -89.95, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/hm.com' },
-      { id: 'ctx-4', name: 'Spotify', category: 'Subscriptions', amount: -9.99, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/spotify.com' },
+      { id: 'ctx-3', name: 'H&M', category: 'Shopping', amount: -89.95, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/hm.com', nwgType: 'want' },
+      { id: 'ctx-4', name: 'Spotify', category: 'Subscriptions', amount: -9.99, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/spotify.com', nwgType: 'want' },
     ],
   },
 ];
@@ -342,23 +314,23 @@ export const accountTransactionsData: TransactionGroup[] = [
   {
     label: 'Today',
     transactions: [
-      { id: 'atx-1', name: 'Amazon', category: 'Online shopping', amount: -48.11, date: 'Today', logoUrl: '/assets/icons/merchant-amazon.png' },
-      { id: 'atx-2', name: 'Netflix', category: 'Entertainment', amount: -24.00, date: 'Today', logoUrl: '/assets/icons/merchant-netflix.png' },
+      { id: 'atx-1', name: 'Amazon', category: 'Online shopping', amount: -48.11, date: 'Today', logoUrl: '/assets/icons/merchant-amazon.png', nwgType: 'want' },
+      { id: 'atx-2', name: 'Netflix', category: 'Entertainment', amount: -24.00, date: 'Today', logoUrl: '/assets/icons/merchant-netflix.png', nwgType: 'want' },
     ],
   },
   {
     label: '15 Dec, 2025',
     transactions: [
-      { id: 'atx-3', name: 'Paul Nelson', description: 'paid you', category: 'Account transfer', amount: 200.00, date: '15 Dec, 2025', initials: 'PN', isPositive: true },
-      { id: 'atx-4', name: 'Starbucks', category: 'Eating out', amount: -16.35, date: '15 Dec, 2025', logoUrl: '/assets/icons/merchant-starbucks.png' },
+      { id: 'atx-3', name: 'Paul Nelson', description: 'paid you', category: 'Account transfer', amount: 200.00, date: '15 Dec, 2025', initials: 'PN', isPositive: true, nwgType: 'growth' },
+      { id: 'atx-4', name: 'Starbucks', category: 'Eating out', amount: -16.35, date: '15 Dec, 2025', logoUrl: '/assets/icons/merchant-starbucks.png', nwgType: 'want' },
     ],
   },
   {
     label: '14 Dec, 2025',
     transactions: [
-      { id: 'atx-5', name: 'Albert Heijn', category: 'Groceries', amount: -35.82, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/ah.nl' },
-      { id: 'atx-6', name: 'Spotify', category: 'Entertainment', amount: -16.35, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/spotify.com' },
-      { id: 'atx-7', name: 'Foot Locker', category: 'Shopping', amount: -79.90, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/footlocker.com' },
+      { id: 'atx-5', name: 'Albert Heijn', category: 'Groceries', amount: -35.82, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/ah.nl', nwgType: 'need' },
+      { id: 'atx-6', name: 'Spotify', category: 'Entertainment', amount: -16.35, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/spotify.com', nwgType: 'want' },
+      { id: 'atx-7', name: 'Foot Locker', category: 'Shopping', amount: -79.90, date: '14 Dec, 2025', logoUrl: 'https://logo.clearbit.com/footlocker.com', nwgType: 'want' },
     ],
   },
 ];

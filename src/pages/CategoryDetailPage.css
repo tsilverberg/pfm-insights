@@ -1,0 +1,343 @@
+/* ═══════════════════════════════════════════════════════════════
+   CategoryDetailPage — Level 3 category drill-down
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Header ─────────────────────────────────────────────────── */
+
+.cat-detail__header {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.cat-detail__icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.cat-detail__name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--pfm-text-primary);
+  margin: 0 0 8px;
+}
+
+.cat-detail__spent-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  margin: 0 0 12px;
+}
+
+.cat-detail__of-limit {
+  font-weight: 400;
+  color: var(--pfm-text-secondary);
+}
+
+.cat-detail__progress-wrap {
+  max-width: 280px;
+  margin: 0 auto 12px;
+}
+
+.cat-detail__status {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.cat-detail__status--on-track {
+  background: rgba(27, 169, 127, 0.12);
+  color: var(--pfm-status-success);
+}
+
+.cat-detail__status--warning {
+  background: rgba(245, 166, 35, 0.12);
+  color: var(--pfm-status-warning);
+}
+
+.cat-detail__status--danger {
+  background: rgba(229, 85, 59, 0.12);
+  color: var(--pfm-status-error);
+}
+
+/* ─── Monthly Trend — vertical bars ──────────────────────────── */
+
+.cat-detail__monthly-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 140px;
+  padding-top: 20px;
+}
+
+.cat-detail__month-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.cat-detail__bar-amount {
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  color: var(--pfm-text-secondary);
+  white-space: nowrap;
+}
+
+.cat-detail__bar {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background: var(--pfm-surface-subtle);
+  transition: height 0.3s ease;
+  min-height: 4px;
+}
+
+.cat-detail__bar--current {
+  background: var(--pfm-action-primary-bg);
+}
+
+.cat-detail__bar-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  color: var(--pfm-text-secondary);
+  margin-top: 4px;
+}
+
+/* ─── Weekly — horizontal bars ───────────────────────────────── */
+
+.cat-detail__weekly {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cat-detail__week-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cat-detail__week-label {
+  width: 56px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+  flex-shrink: 0;
+}
+
+.cat-detail__week-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: var(--pfm-surface-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cat-detail__week-bar {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--pfm-action-primary-bg);
+  transition: width 0.3s ease;
+}
+
+.cat-detail__week-amount {
+  width: 68px;
+  text-align: right;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  flex-shrink: 0;
+}
+
+/* ─── Transaction list ───────────────────────────────────────── */
+
+.cat-detail__tx-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.cat-detail__tx-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--pfm-divider-default);
+}
+
+.cat-detail__tx-row:last-child {
+  border-bottom: none;
+}
+
+.cat-detail__tx-icon {
+  font-size: 20px;
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.cat-detail__tx-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cat-detail__tx-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+}
+
+.cat-detail__tx-date {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  color: var(--pfm-text-secondary);
+}
+
+.cat-detail__tx-amount {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  flex-shrink: 0;
+}
+
+.cat-detail__empty {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: var(--pfm-text-secondary);
+  text-align: center;
+  padding: 16px 0;
+  margin: 0;
+}
+
+/* ─── Household split ────────────────────────────────────────── */
+
+.cat-detail__members {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cat-detail__member-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.cat-detail__member-avatar {
+  font-size: 24px;
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.cat-detail__member-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cat-detail__member-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cat-detail__member-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+}
+
+.cat-detail__member-amount {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+}
+
+.cat-detail__member-bar-wrap {
+  height: 6px;
+  background: var(--pfm-surface-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cat-detail__member-bar {
+  height: 6px;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ─── Peer comparison ────────────────────────────────────────── */
+
+.cat-detail__compare {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cat-detail__compare-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.cat-detail__compare-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: var(--pfm-text-secondary);
+}
+
+.cat-detail__compare-value {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--pfm-text-primary);
+}
+
+.cat-detail__compare-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-top: 4px;
+}
+
+.cat-detail__compare-indicator--better {
+  background: rgba(27, 169, 127, 0.08);
+}
+
+.cat-detail__compare-indicator--worse {
+  background: rgba(229, 85, 59, 0.08);
+}
+
+.cat-detail__compare-emoji {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.cat-detail__compare-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+}

@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
+import { useParams, useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import SettingsMenuItem from '../components/shared/SettingsMenuItem';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
-import { accountSettingsSections } from '../data/mockData';
+import { accountSettingsSections, accountDetailsData } from '../data/mockData';
 import { useToast } from '../hooks/useToast';
 import './AccountSettingsPage.css';
 
 const AccountSettingsPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const history = useHistory();
   const { showToast } = useToast();
   const [showCloseConfirm, setShowCloseConfirm] = useState(false);
+  const account = accountDetailsData.find((a) => a.id === id);
 
   return (
     <IonPage>
-      <ScreenHeader title="Settings" />
+      <ScreenHeader
+        title="Account Settings"
+        subtitle={account?.name}
+        onBackAction={() => history.push(`/account/${id}`)}
+      />
       <IonContent className="page-content">
         <div className="account-settings">
 

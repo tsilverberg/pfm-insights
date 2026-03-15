@@ -29,7 +29,6 @@ const AccountSelectorSheet: React.FC<AccountSelectorSheetProps> = ({
 
   const handleSelect = (accountId: string) => {
     onSelect(accountId);
-    modalRef.current?.dismiss();
   };
 
   return (
@@ -48,7 +47,12 @@ const AccountSelectorSheet: React.FC<AccountSelectorSheetProps> = ({
       aria-label="Select Account"
     >
       <div className="account-selector__inner">
-        <div className="account-selector__title typo-headline">Select Account</div>
+        <div className="account-selector__header">
+          <div className="account-selector__title typo-headline">Select Account</div>
+          <button className="account-selector__close" onClick={onDismiss} type="button" aria-label="Close">
+            <span className="material-symbols-rounded">close</span>
+          </button>
+        </div>
         <div className="account-selector__list">
           {accounts.map((account) => (
             <div

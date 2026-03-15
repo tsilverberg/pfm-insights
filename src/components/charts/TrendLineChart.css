@@ -1,0 +1,71 @@
+.trend-line-chart {
+  width: 100%;
+}
+
+.trend-line-chart__line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: drawLine 1s ease-out forwards;
+}
+
+.trend-line-chart__area {
+  opacity: 0;
+  animation: fadeInArea 0.6s ease-out 0.4s forwards;
+}
+
+.trend-line-chart__dot {
+  transition: r 0.2s ease, opacity 0.3s ease;
+  opacity: 0;
+  animation: fadeInDot 0.3s ease-out forwards;
+}
+
+.trend-line-chart__dot--highlight {
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.15));
+}
+
+.trend-line-chart__label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  fill: var(--pfm-text-tertiary);
+  user-select: none;
+}
+
+.trend-line-chart__value {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  fill: var(--pfm-text-secondary, #3A495D);
+  user-select: none;
+  opacity: 0;
+  animation: fadeInDot 0.3s ease-out forwards;
+}
+
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: var(--line-length);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInArea {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDot {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

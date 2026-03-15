@@ -1,5 +1,6 @@
 .account-selector {
   padding: 16px 0;
+  padding-top: calc(16px + env(safe-area-inset-top));
 }
 
 .account-selector__header {

@@ -1,4 +1,4 @@
-.overview__wealth-subtitle {
+.wealth__subtitle {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 15px;
@@ -7,7 +7,7 @@
   margin: 0 0 4px;
 }
 
-.overview__wealth-amount {
+.wealth__amount {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   font-size: 34px;
@@ -16,7 +16,7 @@
   margin: 0;
 }
 
-.overview__wealth-detail {
+.wealth__detail {
   background: var(--pfm-surface-subtle);
   border-radius: var(--pfm-card-radius);
   padding: var(--pfm-card-padding);
@@ -25,31 +25,17 @@
   gap: 12px;
 }
 
-.overview__wealth-row {
+.wealth__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.overview__debt {
+.wealth__debt {
   color: var(--pfm-pink-strong);
 }
 
-.overview__wealth-expand {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.overview__commentary {
-  margin: 0;
-}
-
-.overview__legend-line {
+.wealth__legend-line {
   width: 20px;
   height: 2px;
   background-color: var(--pfm-turquoise-strong);
@@ -58,36 +44,11 @@
   align-self: center;
 }
 
-.overview__legend-dashed {
+.wealth__legend-dashed {
   width: 20px;
   height: 0;
   border-top: 2px dashed var(--pfm-turquoise-strong);
   display: inline-block;
   flex-shrink: 0;
   align-self: center;
-}
-
-.overview__health-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.overview__spotlights {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 4px;
-}
-
-.overview__spotlights::-webkit-scrollbar {
-  display: none;
-}
-
-.overview__spotlights > * {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
 }

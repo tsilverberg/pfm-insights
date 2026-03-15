@@ -1,0 +1,78 @@
+.health-mini {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--pfm-surface-card);
+  border: 1px solid var(--pfm-border-subtle);
+  border-radius: var(--pfm-card-radius);
+  padding: 14px 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.health-mini:active {
+  background: var(--pfm-surface-subtle);
+}
+
+.health-mini__ring-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.health-mini__svg {
+  transform: rotate(-90deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.health-mini__score {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--pfm-text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.health-mini__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.health-mini__label {
+  color: var(--pfm-text-primary);
+}
+
+.health-mini__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.health-mini__delta {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--pfm-text-tertiary);
+}
+
+.health-mini__delta--positive {
+  color: var(--pfm-change-positive);
+}
+
+.health-mini__delta--negative {
+  color: var(--pfm-change-negative);
+}

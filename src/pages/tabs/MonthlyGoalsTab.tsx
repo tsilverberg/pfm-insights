@@ -13,11 +13,10 @@ import { useToast } from '../../hooks/useToast';
 import { formatEuro, formatPercent } from '../../data/formatters';
 import {
   monthlyGoalsData,
-  needsCategoriesData,
-  wantsCategoriesData,
   securityData,
   spendCategoriesDonutData,
 } from '../../data/mockData';
+import { getNwgCategoriesData } from '../../data/pfmData';
 import './MonthlyGoalsTab.css';
 
 const MonthlyGoalsTab: React.FC = () => {
@@ -25,6 +24,13 @@ const MonthlyGoalsTab: React.FC = () => {
   const { showToast } = useToast();
   const [showCoach, setShowCoach] = useState(true);
   const { snapshot } = monthlyGoalsData;
+
+  const needsData = getNwgCategoriesData('need');
+  const wantsData = getNwgCategoriesData('want');
+  const needsBudget = snapshot.needs.budget;
+  const wantsBudget = snapshot.wants.budget;
+  const needsRemaining = needsBudget - needsData.totalSpent;
+  const wantsRemaining = wantsBudget - wantsData.totalSpent;
 
   return (
     <div>
@@ -94,18 +100,18 @@ const MonthlyGoalsTab: React.FC = () => {
       <section className="section-module">
         <div className="goals__category-title-row">
           <h2 className="section-module__title">Needs</h2>
-          <CategoryBadge category="needs" label={`${formatEuro(needsCategoriesData.remaining)} left`} />
+          <CategoryBadge category="needs" label={`${formatEuro(needsRemaining)} ${needsRemaining >= 0 ? 'left' : 'over'}`} />
         </div>
         <div className="section-module__content">
           <div className="mt-16">
-            <ProgressBar value={needsCategoriesData.totalSpent} max={needsCategoriesData.totalBudget} color="#ED5EA6" height={4} />
+            <ProgressBar value={needsData.totalSpent} max={needsBudget} color="#ED5EA6" height={4} />
           </div>
           <div className="goals__bar-captions">
-            <span className="typo-footnote color-secondary">{formatEuro(needsCategoriesData.totalSpent)} spent</span>
-            <span className="typo-footnote color-secondary">{formatEuro(needsCategoriesData.totalBudget)} budget</span>
+            <span className="typo-footnote color-secondary">{formatEuro(needsData.totalSpent)} spent</span>
+            <span className="typo-footnote color-secondary">{formatEuro(needsBudget)} budget</span>
           </div>
           <div className="goals__category-list">
-            {needsCategoriesData.categories.map((cat, i) => (
+            {needsData.categories.map((cat, i) => (
               <CategoryListItem
                 key={cat.label}
                 icon={cat.icon}
@@ -113,7 +119,7 @@ const MonthlyGoalsTab: React.FC = () => {
                 amount={cat.amount}
                 txCount={cat.txCount}
                 category="needs"
-                showSeparator={i < needsCategoriesData.categories.length - 1}
+                showSeparator={i < needsData.categories.length - 1}
               />
             ))}
           </div>
@@ -127,18 +133,18 @@ const MonthlyGoalsTab: React.FC = () => {
       <section className="section-module">
         <div className="goals__category-title-row">
           <h2 className="section-module__title">Wants</h2>
-          <CategoryBadge category="wants" label={`${formatEuro(Math.abs(wantsCategoriesData.remaining))} over`} />
+          <CategoryBadge category="wants" label={`${formatEuro(Math.abs(wantsRemaining))} ${wantsRemaining >= 0 ? 'left' : 'over'}`} />
         </div>
         <div className="section-module__content">
           <div className="mt-16">
-            <ProgressBar value={wantsCategoriesData.totalSpent} max={wantsCategoriesData.totalBudget} color="#3A8C8C" height={4} />
+            <ProgressBar value={wantsData.totalSpent} max={wantsBudget} color="#3A8C8C" height={4} />
           </div>
           <div className="goals__bar-captions">
-            <span className="typo-footnote color-secondary">{formatEuro(wantsCategoriesData.totalSpent)} spent</span>
-            <span className="typo-footnote color-secondary">{formatEuro(wantsCategoriesData.totalBudget)} budget</span>
+            <span className="typo-footnote color-secondary">{formatEuro(wantsData.totalSpent)} spent</span>
+            <span className="typo-footnote color-secondary">{formatEuro(wantsBudget)} budget</span>
           </div>
           <div className="goals__category-list">
-            {wantsCategoriesData.categories.map((cat, i) => (
+            {wantsData.categories.map((cat, i) => (
               <CategoryListItem
                 key={cat.label}
                 icon={cat.icon}
@@ -146,7 +152,7 @@ const MonthlyGoalsTab: React.FC = () => {
                 amount={cat.amount}
                 txCount={cat.txCount}
                 category="wants"
-                showSeparator={i < wantsCategoriesData.categories.length - 1}
+                showSeparator={i < wantsData.categories.length - 1}
               />
             ))}
           </div>

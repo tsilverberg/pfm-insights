@@ -5,18 +5,19 @@ import AppHeader from '../components/layout/AppHeader';
 import CoachIcon from '../components/shared/CoachIcon';
 import SubNavTabs, { SubTab } from '../components/layout/SubNavTabs';
 import OverviewTab from './tabs/OverviewTab';
-import MonthlyGoalsTab from './tabs/MonthlyGoalsTab';
-import MyPathTab from './tabs/MyPathTab';
-import { useToast } from '../hooks/useToast';
+import SpendTab from './tabs/SpendTab';
+import PlanTab from './tabs/PlanTab';
+import WealthTab from './tabs/WealthTab';
+import CoachSheet from '../components/shared/CoachSheet';
 
 const InsightsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<SubTab>('overview');
+  const [coachOpen, setCoachOpen] = useState(false);
   const history = useHistory();
-  const { showToast } = useToast();
 
   const headerActions = [
     { label: 'Cards', icon: <span className="material-symbols-rounded" style={{ fontSize: 22 }}>credit_card</span>, onClick: () => history.push('/cards') },
-    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => showToast({ type: 'info', message: 'Coach coming soon' }) },
+    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => setCoachOpen(true) },
   ];
 
   return (
@@ -30,9 +31,11 @@ const InsightsPage: React.FC = () => {
           <SubNavTabs active={activeTab} onChange={setActiveTab} />
         </div>
         {activeTab === 'overview' && <OverviewTab />}
-        {activeTab === 'goals' && <MonthlyGoalsTab />}
-        {activeTab === 'path' && <MyPathTab />}
+        {activeTab === 'spend' && <SpendTab />}
+        {activeTab === 'plan' && <PlanTab />}
+        {activeTab === 'wealth' && <WealthTab />}
       </IonContent>
+      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} />
     </IonPage>
   );
 };

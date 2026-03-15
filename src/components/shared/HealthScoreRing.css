@@ -1,0 +1,84 @@
+.health-score-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.health-score-ring:active {
+  opacity: 0.85;
+}
+
+.health-score-ring__svg {
+  transform: rotate(-90deg);
+}
+
+.health-score-ring__track {
+  fill: none;
+  stroke: var(--pfm-support-subtle);
+  stroke-linecap: round;
+}
+
+.health-score-ring__fill {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.health-score-ring__center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.health-score-ring__score {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--pfm-text-primary);
+}
+
+.health-score-ring__rating {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--pfm-text-secondary);
+  text-transform: capitalize;
+}
+
+.health-score-ring__ring-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.health-score-ring__delta {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.health-score-ring__delta--positive {
+  color: var(--pfm-change-positive);
+}
+
+.health-score-ring__delta--negative {
+  color: var(--pfm-change-negative);
+}
+
+.health-score-ring__delta--neutral {
+  color: var(--pfm-text-tertiary);
+}

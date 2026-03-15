@@ -1,0 +1,94 @@
+import React from 'react';
+import './HealthScoreRing.css';
+
+interface HealthScoreRingProps {
+  score: number;
+  rating: string;
+  delta: number;
+  onClick?: () => void;
+}
+
+const RATING_COLORS: Record<string, string> = {
+  excellent: 'var(--pfm-status-success)',
+  good: 'var(--pfm-action-primary-bg)',
+  building: 'var(--pfm-status-warning)',
+  'needs attention': 'var(--pfm-status-error)',
+  'needs-attention': 'var(--pfm-status-error)',
+};
+
+function getRatingLabel(rating: string): string {
+  return rating
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (l) => l.toUpperCase());
+}
+
+function getDeltaInfo(delta: number): { text: string; direction: string } {
+  if (delta > 0) return { text: `\u25B2 +${delta} pts`, direction: 'positive' };
+  if (delta < 0) return { text: `\u25BC ${delta} pts`, direction: 'negative' };
+  return { text: '\u2014 0 pts', direction: 'neutral' };
+}
+
+const HealthScoreRing: React.FC<HealthScoreRingProps> = ({ score, rating, delta, onClick }) => {
+  const size = 160;
+  const strokeWidth = 10;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const pct = Math.max(0, Math.min(score / 100, 1));
+  const dashOffset = circumference * (1 - pct);
+
+  const strokeColor = RATING_COLORS[rating.toLowerCase()] || 'var(--pfm-action-primary-bg)';
+  const ratingLabel = getRatingLabel(rating);
+  const deltaInfo = getDeltaInfo(delta);
+
+  const ariaLabel = `Financial Health Score: ${score} out of 100, rated ${ratingLabel}. ${
+    delta !== 0 ? (delta > 0 ? `Up ${delta} from last month` : `Down ${Math.abs(delta)} from last month`) : 'No change from last month'
+  }`;
+
+  return (
+    <div
+      className="health-score-ring"
+      onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      aria-label={ariaLabel}
+      onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); } : undefined}
+    >
+      <div className="health-score-ring__ring-wrap">
+        <svg
+          className="health-score-ring__svg"
+          width={size}
+          height={size}
+          viewBox={`0 0 ${size} ${size}`}
+          aria-hidden="true"
+        >
+          <circle
+            className="health-score-ring__track"
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            strokeWidth={strokeWidth}
+          />
+          <circle
+            className="health-score-ring__fill"
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            strokeWidth={strokeWidth}
+            stroke={strokeColor}
+            strokeDasharray={circumference}
+            strokeDashoffset={dashOffset}
+          />
+        </svg>
+        <div className="health-score-ring__center">
+          <span className="health-score-ring__score">{score}</span>
+          <span className="health-score-ring__rating">{ratingLabel}</span>
+        </div>
+      </div>
+      <span className={`health-score-ring__delta health-score-ring__delta--${deltaInfo.direction}`}>
+        {deltaInfo.text}
+      </span>
+    </div>
+  );
+};
+
+export default HealthScoreRing;

@@ -1,0 +1,138 @@
+.wellness-journey {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+/* Vertical timeline line */
+.wellness-journey__timeline {
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: var(--pfm-divider-default);
+}
+
+.wellness-journey__stage {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  position: relative;
+}
+
+/* Status icons */
+.wellness-journey__status {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  z-index: 1;
+}
+
+.wellness-journey__status--completed {
+  background: var(--pfm-status-success-bg);
+  color: var(--pfm-status-success);
+}
+
+.wellness-journey__status--active {
+  background: var(--pfm-action-primary-bg);
+  color: var(--pfm-action-primary-text);
+}
+
+.wellness-journey__status--locked {
+  background: var(--pfm-support-subtle);
+  color: var(--pfm-text-tertiary);
+}
+
+.wellness-journey__stage-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wellness-journey__stage-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--pfm-text-primary);
+}
+
+.wellness-journey__stage-name--locked {
+  color: var(--pfm-text-tertiary);
+}
+
+.wellness-journey__stage-desc {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-secondary);
+}
+
+.wellness-journey__stage-desc--locked {
+  color: var(--pfm-text-tertiary);
+}
+
+.wellness-journey__stage-progress {
+  margin-top: 4px;
+}
+
+/* Missions (active stage only) */
+.wellness-journey__missions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--pfm-surface-subtle);
+  border-radius: 12px;
+}
+
+.wellness-journey__mission {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wellness-journey__mission-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wellness-journey__mission-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--pfm-text-primary);
+}
+
+.wellness-journey__mission-xp {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--pfm-status-success-text);
+  background: var(--pfm-status-success-bg);
+  padding: 1px 8px;
+  border-radius: 100px;
+}
+
+.wellness-journey__mission-progress-label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--pfm-text-tertiary);
+  margin-top: 2px;
+}

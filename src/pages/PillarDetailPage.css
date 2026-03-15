@@ -1,0 +1,350 @@
+/* ─── Pillar Detail Page ─────────────────────────────────── */
+
+/* ─── Hero ───────────────────────────────────────────────── */
+
+.pillar-detail__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  gap: 16px;
+}
+
+/* ─── Trend Badge ────────────────────────────────────────── */
+
+.pillar-detail__trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pillar-detail__trend-badge--improving {
+  background: rgba(27, 169, 127, 0.12);
+  color: #1BA97F;
+}
+
+.pillar-detail__trend-badge--stable {
+  background: var(--pfm-surface-subtle);
+  color: var(--pfm-text-tertiary);
+}
+
+.pillar-detail__trend-badge--declining {
+  background: rgba(229, 85, 59, 0.12);
+  color: #E5553B;
+}
+
+/* ─── Key Metrics ────────────────────────────────────────── */
+
+.pillar-detail__metrics {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-detail__metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--pfm-divider-default);
+}
+
+.pillar-detail__metric-row:last-child {
+  border-bottom: none;
+}
+
+.pillar-detail__metric-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pillar-detail__metric-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: var(--pfm-text-secondary);
+}
+
+.pillar-detail__metric-value-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.pillar-detail__metric-value {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+}
+
+.pillar-detail__metric-target {
+  font-weight: 400;
+  color: var(--pfm-text-tertiary);
+}
+
+.pillar-detail__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── Action Cards ───────────────────────────────────────── */
+
+.pillar-detail__action-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  padding: var(--pfm-card-padding, 16px);
+  margin-bottom: 12px;
+}
+
+.pillar-detail__action-card:last-child {
+  margin-bottom: 0;
+}
+
+.pillar-detail__action-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--pfm-surface-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillar-detail__action-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.pillar-detail__action-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+}
+
+.pillar-detail__action-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+  line-height: 1.4;
+}
+
+.pillar-detail__action-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* ─── Impact Badge ───────────────────────────────────────── */
+
+.pillar-detail__impact-badge {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.pillar-detail__impact-badge--high {
+  background: rgba(27, 169, 127, 0.12);
+  color: #1BA97F;
+}
+
+.pillar-detail__impact-badge--medium {
+  background: rgba(245, 166, 35, 0.12);
+  color: #F5A623;
+}
+
+.pillar-detail__impact-badge--low {
+  background: rgba(41, 94, 255, 0.12);
+  color: #295EFF;
+}
+
+/* ─── Impact Dots ────────────────────────────────────────── */
+
+.pillar-detail__impact-dots {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.pillar-detail__impact-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* ─── How This is Calculated ─────────────────────────────── */
+
+.pillar-detail__calc {
+  padding: var(--pfm-card-padding, 16px);
+}
+
+.pillar-detail__calc-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: var(--pfm-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.pillar-detail__calc-weight {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  margin: 0 0 4px;
+}
+
+.pillar-detail__factors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.pillar-detail__factors-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pfm-text-secondary);
+}
+
+.pillar-detail__factor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+  line-height: 1.4;
+}
+
+.pillar-detail__factor-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pfm-text-tertiary);
+  flex-shrink: 0;
+}
+
+/* ─── Rhythm Impact Card ────────────────────────────────── */
+
+.pillar-detail__rhythm-card {
+  padding: var(--pfm-card-padding, 16px);
+  border-left: 3px solid;
+  border-radius: 12px;
+}
+
+.pillar-detail__rhythm-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  margin: 0 0 8px;
+}
+
+.pillar-detail__rhythm-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: var(--pfm-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.pillar-detail__rhythm-actuals {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  margin-bottom: 14px;
+}
+
+.pillar-detail__rhythm-actuals-label {
+  font-weight: 400;
+  color: var(--pfm-text-secondary);
+}
+
+.pillar-detail__rhythm-separator {
+  color: var(--pfm-text-tertiary);
+  font-weight: 400;
+}
+
+/* ─── Rhythm Bars ───────────────────────────────────────── */
+
+.pillar-detail__rhythm-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.pillar-detail__rhythm-bar-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.pillar-detail__rhythm-bar-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--pfm-text-secondary);
+  width: 64px;
+  flex-shrink: 0;
+}
+
+.pillar-detail__rhythm-bar-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--pfm-divider-default);
+  overflow: hidden;
+}
+
+.pillar-detail__rhythm-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.pillar-detail__rhythm-bar-fill--actual {
+  background: var(--pfm-action-primary-bg);
+}
+
+.pillar-detail__rhythm-bar-value {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.pillar-detail__rhythm-cta-hint {
+  margin: 0;
+  font-style: italic;
+}

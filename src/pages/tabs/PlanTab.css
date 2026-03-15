@@ -1,0 +1,139 @@
+/* ── Rhythm Card ────────────────────────────────────────────── */
+.rhythm-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rhythm-card__actuals {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rhythm-card__actual-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rhythm-card__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* NWG bar (shared between before/after states) */
+.rhythm-card__bar {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  height: 10px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.rhythm-card__bar-seg {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.rhythm-card__bar-seg--needs {
+  background: var(--pfm-pink-base);
+}
+
+.rhythm-card__bar-seg--wants {
+  background: var(--pfm-turquoise-strong);
+}
+
+.rhythm-card__bar-seg--growth {
+  background: var(--pfm-status-success);
+}
+
+.rhythm-card__bar-seg--unallocated {
+  background: var(--pfm-support-subtle);
+}
+
+.rhythm-card__hint {
+  margin: 0;
+}
+
+.rhythm-card__cta {
+  width: 100%;
+}
+
+/* ── After activation: comparison rows ─────────────────────── */
+.rhythm-card__compare {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rhythm-card__compare-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rhythm-card__compare-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.rhythm-card__compare-values {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.rhythm-card__status-badge {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Dual bars (target + actual) */
+.rhythm-card__dual-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rhythm-card__bar-label {
+  margin: 0;
+}
+
+/* Adjust rhythm link button */
+.rhythm-card__adjust {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--pfm-action-primary-bg);
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rhythm-card__adjust:active {
+  opacity: 0.7;
+}
+
+/* Score impact inline text */
+.rhythm-card__score-line {
+  display: flex;
+  align-items: center;
+  padding: 6px 0 2px;
+  line-height: 1.4;
+  color: var(--pfm-text-secondary);
+}
+
+/* ── Goals ─────────────────────────────────────────────────── */
+.plan__goals {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

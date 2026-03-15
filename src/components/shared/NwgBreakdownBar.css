@@ -1,0 +1,108 @@
+.nwg-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nwg-breakdown__track {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  height: 12px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.nwg-breakdown__segment {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nwg-breakdown__segment--needs {
+  background: var(--pfm-pink-base);
+}
+
+.nwg-breakdown__segment--wants {
+  background: var(--pfm-turquoise-base);
+}
+
+.nwg-breakdown__segment--growth {
+  background: var(--pfm-status-success);
+}
+
+.nwg-breakdown__labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.nwg-breakdown__label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s;
+  text-align: left;
+}
+
+.nwg-breakdown__label:active {
+  background: var(--pfm-surface-subtle);
+}
+
+.nwg-breakdown__label-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nwg-breakdown__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.nwg-breakdown__dot--needs {
+  background: var(--pfm-pink-base);
+}
+
+.nwg-breakdown__dot--wants {
+  background: var(--pfm-turquoise-base);
+}
+
+.nwg-breakdown__dot--growth {
+  background: var(--pfm-status-success);
+}
+
+.nwg-breakdown__label-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-secondary);
+}
+
+.nwg-breakdown__label-pct {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: var(--pfm-text-primary);
+  padding-left: 14px;
+}
+
+.nwg-breakdown__label-amount {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19.5px;
+  color: var(--pfm-text-tertiary);
+  padding-left: 14px;
+}

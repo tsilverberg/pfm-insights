@@ -11,12 +11,14 @@ import CoachMomentCard from '../components/shared/CoachMomentCard';
 import PocketGoalCard from '../components/shared/PocketGoalCard';
 import ChildAccountCard from '../components/shared/ChildAccountCard';
 import DotIndicator from '../components/shared/DotIndicator';
+import AccountSelectorSheet from '../components/shared/AccountSelectorSheet';
 import {
   homeAccountData,
   homeQuickActions,
   homeTransactionsData,
   homePocketsData,
   homeChildAccountData,
+  allAccountsData,
 } from '../data/mockData';
 import './HomePage.css';
 
@@ -25,6 +27,7 @@ const HomePage: React.FC = () => {
   const [txTab, setTxTab] = useState('Latest');
   const [showCoach, setShowCoach] = useState(true);
   const [childIdx, setChildIdx] = useState(0);
+  const [showAccountSheet, setShowAccountSheet] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const revealRef = useScrollReveal();
 
@@ -48,7 +51,7 @@ const HomePage: React.FC = () => {
           {/* Account Selector */}
           <div className="page-pad">
             <button
-              onClick={() => history.push('/accounts')}
+              onClick={() => setShowAccountSheet(true)}
               className="home__account-selector"
             >
               <span>John's main account</span>
@@ -131,6 +134,17 @@ const HomePage: React.FC = () => {
           <div className="bottom-spacer" />
         </div>
       </IonContent>
+
+      <AccountSelectorSheet
+        isOpen={showAccountSheet}
+        onDismiss={() => setShowAccountSheet(false)}
+        accounts={allAccountsData}
+        selectedAccountId={homeAccountData.id}
+        onSelect={(accountId) => {
+          setShowAccountSheet(false);
+          history.push(`/account/${accountId}`);
+        }}
+      />
     </IonPage>
   );
 };

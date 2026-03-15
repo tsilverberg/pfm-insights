@@ -1,7 +1,7 @@
 import React from 'react';
 import './SubNavTabs.css';
 
-export type SubTab = 'overview' | 'goals' | 'path';
+export type SubTab = 'overview' | 'spend' | 'plan' | 'wealth';
 
 interface SubNavTabsProps {
   active: SubTab;
@@ -10,8 +10,9 @@ interface SubNavTabsProps {
 
 const tabs: { id: SubTab; label: string }[] = [
   { id: 'overview', label: 'Overview' },
-  { id: 'goals', label: 'Monthly goals' },
-  { id: 'path', label: 'My path' },
+  { id: 'spend', label: 'Spend' },
+  { id: 'plan', label: 'Plan' },
+  { id: 'wealth', label: 'Wealth' },
 ];
 
 const SubNavTabs: React.FC<SubNavTabsProps> = ({ active, onChange }) => {

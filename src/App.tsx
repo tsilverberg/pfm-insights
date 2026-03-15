@@ -30,6 +30,10 @@ import TransactionSearchPage from './pages/TransactionSearchPage';
 import ShareAccessPage from './pages/ShareAccessPage';
 import SelectPermissionsPage from './pages/SelectPermissionsPage';
 import ReviewSummaryPage from './pages/ReviewSummaryPage';
+import NwgDetailPage from './pages/NwgDetailPage';
+import CategoryDetailPage from './pages/CategoryDetailPage';
+import HealthOverviewPage from './pages/HealthOverviewPage';
+import PillarDetailPage from './pages/PillarDetailPage';
 import FloatingTabBar from './components/layout/FloatingTabBar';
 import ErrorBoundary from './components/shared/ErrorBoundary';
 import { ToastProvider } from './hooks/useToast';
@@ -90,6 +94,10 @@ const App: React.FC = () => (
         <Route exact path="/send" component={SendMoneyPage} />
         <Route exact path="/receive" component={RequestMoneyPage} />
         <Route exact path="/search" component={TransactionSearchPage} />
+        <Route exact path="/insights/nwg/:type" component={NwgDetailPage} />
+        <Route exact path="/insights/category/:name" component={CategoryDetailPage} />
+        <Route exact path="/insights/health" component={HealthOverviewPage} />
+        <Route exact path="/insights/health/:pillarId" component={PillarDetailPage} />
         <Route exact path="/qr" component={QRScannerPage} />
         <Route exact path="/">
           <Redirect to="/home" />
