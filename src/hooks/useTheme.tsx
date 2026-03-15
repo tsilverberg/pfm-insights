@@ -14,7 +14,7 @@ interface ThemeMeta {
 
 export const THEMES: ThemeMeta[] = [
   { id: 'default', name: 'Backbase', bankName: 'Backbase PFM', logo: '🏦', primaryColor: '#3A495D' },
-  { id: 'danske-bank', name: 'Danske Bank', bankName: 'Danske Bank', logo: '🇩🇰', primaryColor: '#003755', fontUrl: 'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap' },
+  { id: 'danske-bank', name: 'Danske Bank', bankName: 'Danske Bank', logo: '🇩🇰', primaryColor: '#003755', fontUrl: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap' },
   { id: 'everbank', name: 'EverBank', bankName: 'EverBank', logo: '🌿', primaryColor: '#00875A', fontUrl: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap' },
   { id: 'td-bank', name: 'TD Bank', bankName: 'TD Bank', logo: '🟢', primaryColor: '#008A00', fontUrl: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap' },
 ];

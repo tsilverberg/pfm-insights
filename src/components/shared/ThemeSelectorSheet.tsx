@@ -36,7 +36,7 @@ const ThemeSelectorSheet: React.FC<ThemeSelectorSheetProps> = ({ isOpen, onClose
                 <div className="theme-selector__info">
                   <span className="theme-selector__name">{t.bankName}</span>
                   <span className="theme-selector__font">
-                    {t.id === 'default' ? 'Lato' : t.id === 'danske-bank' ? 'Source Sans 3' : t.id === 'everbank' ? 'Inter' : 'Nunito Sans'}
+                    {t.id === 'default' ? 'Lato' : t.id === 'danske-bank' ? 'DM Sans' : t.id === 'everbank' ? 'Inter' : 'Nunito Sans'}
                   </span>
                 </div>
                 {isActive && (

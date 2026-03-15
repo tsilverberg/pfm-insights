@@ -1,7 +1,7 @@
 /* Danske Bank — Nordic blue, clean, professional */
 :root.theme-danske-bank {
   /* Font */
-  --pfm-font-family: 'Source Sans 3', 'Lato', sans-serif;
+  --pfm-font-family: 'DM Sans', 'Lato', sans-serif;
 
   /* Brand Primary */
   --pfm-action-primary-bg: #003755;
