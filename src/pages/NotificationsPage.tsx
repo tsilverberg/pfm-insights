@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import NotificationItem from '../components/shared/NotificationItem';
 import { useToast } from '../hooks/useToast';
@@ -13,10 +14,11 @@ const GearIcon = (
 );
 
 const NotificationsPage: React.FC = () => {
+  const history = useHistory();
   const { showToast } = useToast();
   return (
     <IonPage>
-      <ScreenHeader title="Notifications" rightIcon={GearIcon} onRightAction={() => showToast({ type: 'info', message: 'Notification settings coming soon' })} />
+      <ScreenHeader title="Notifications" onBackAction={() => history.push('/home')} rightIcon={GearIcon} onRightAction={() => showToast({ type: 'info', message: 'Notification settings coming soon' })} />
       <IonContent className="page-content">
         <div className="notifications-page">
 

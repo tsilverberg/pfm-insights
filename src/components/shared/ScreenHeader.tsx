@@ -45,7 +45,7 @@ const ScreenHeader: React.FC<ScreenHeaderProps> = ({
               </svg>
             </IonButton>
           ) : showBack ? (
-            <IonBackButton defaultHref="/" text="" className="screen-header__back-btn" />
+            <IonBackButton defaultHref="/home" text="" className="screen-header__back-btn" />
           ) : null}
         </IonButtons>
         <IonTitle>

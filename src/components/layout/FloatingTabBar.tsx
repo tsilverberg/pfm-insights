@@ -10,7 +10,7 @@ const tabs = [
   { id: 'explore', path: '/explore', label: 'Explore', icon: 'explore' },
 ];
 
-const hiddenPaths = ['/profile', '/cards', '/cards/points', '/pockets', '/send', '/transfer', '/receive', '/qr', '/notifications', '/accounts', '/child-account/', '/search', '/insights/nwg/', '/insights/category/', '/insights/health'];
+const hiddenPaths = ['/profile', '/cards', '/pockets', '/send', '/transfer', '/receive', '/qr', '/notifications', '/accounts', '/child-account', '/search', '/insights/nwg/', '/insights/category/', '/insights/health', '/dashboard'];
 
 const TabIcon: React.FC<{ name: string }> = ({ name }) => {
   switch (name) {

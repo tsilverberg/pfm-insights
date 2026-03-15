@@ -42,7 +42,7 @@ const RequestMoneyPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Request money" closeButton />
+      <ScreenHeader title="Request money" closeButton onBackAction={() => history.push('/home')} />
       <IonContent className="page-content">
 
         {/* Amount Display */}

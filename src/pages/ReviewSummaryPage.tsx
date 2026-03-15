@@ -47,7 +47,7 @@ const ReviewSummaryPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Review summary" closeButton />
+      <ScreenHeader title="Review summary" closeButton onBackAction={() => history.push(`/account/${id}/share/permissions`)} />
       <IonContent className="page-content">
         <div className="review-summary">
 

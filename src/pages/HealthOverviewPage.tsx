@@ -47,6 +47,7 @@ const TREND_COLORS: Record<string, string> = {
 
 const HealthOverviewPage: React.FC = () => {
   const history = useHistory();
+  const handleBack = () => history.push('/insights');
 
   // Compute delta from history
   const historyEntries = healthScoreData.history;
@@ -75,7 +76,7 @@ const HealthOverviewPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Health Score" />
+      <ScreenHeader title="Health Score" onBackAction={handleBack} />
       <IonContent className="page-content">
         <div className="health-overview">
 

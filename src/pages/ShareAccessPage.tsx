@@ -30,7 +30,7 @@ const ShareAccessPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Shared access" closeButton />
+      <ScreenHeader title="Shared access" closeButton onBackAction={() => history.push(`/account/${id}/access`)} />
       <IonContent className="page-content">
         <div className="share-access">
 

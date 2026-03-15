@@ -23,7 +23,7 @@ const MoreActionsPage: React.FC = () => {
       <ScreenHeader
         title="More actions"
         rightIcon={SearchIcon}
-        onBackAction={() => history.push(`/account/${id}`)}
+        onBackAction={() => history.replace(`/account/${id}`)}
       />
       <IonContent className="page-content">
         <div className="more-actions">

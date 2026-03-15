@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import PocketGoalCard from '../components/shared/PocketGoalCard';
 import BottomSheet from '../components/shared/BottomSheet';
@@ -8,13 +9,14 @@ import { pocketsListData } from '../data/mockData';
 import './PocketsPage.css';
 
 const PocketsPage: React.FC = () => {
+  const history = useHistory();
   const { showToast } = useToast();
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedPocket, setSelectedPocket] = useState<string | null>(null);
 
   return (
     <IonPage>
-      <ScreenHeader title="Pockets" rightLabel="New pocket" rightVariant="pill" onRightAction={() => showToast({ type: 'info', message: 'Pocket creator coming soon' })} />
+      <ScreenHeader title="Pockets" onBackAction={() => history.push('/home')} rightLabel="New pocket" rightVariant="pill" onRightAction={() => showToast({ type: 'info', message: 'Pocket creator coming soon' })} />
       <IonContent className="page-content">
         <div className="pockets-page">
           <div className="pockets-page__list">

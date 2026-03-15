@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import SectionModule from '../components/shared/SectionModule';
 import HealthScoreRing from '../components/shared/HealthScoreRing';
@@ -54,6 +54,8 @@ const PILLAR_EXPLAINERS: Record<string, { description: string; factors: string[]
 
 const PillarDetailPage: React.FC = () => {
   const { pillarId } = useParams<{ pillarId: string }>();
+  const history = useHistory();
+  const handleBack = () => history.push('/insights/health');
   const pillar = healthScoreData.pillars.find(p => p.id === pillarId);
   const pillarHistory = healthScoreData.history.map(h => ({
     label: h.month.split(' ')[0],
@@ -63,7 +65,7 @@ const PillarDetailPage: React.FC = () => {
   if (!pillar) {
     return (
       <IonPage>
-        <ScreenHeader title="Pillar" showBack />
+        <ScreenHeader title="Pillar" showBack onBackAction={handleBack} />
         <IonContent className="page-content">
           <div style={{ padding: 32, textAlign: 'center', color: 'var(--pfm-text-secondary)' }}>
             Pillar not found.
@@ -82,7 +84,7 @@ const PillarDetailPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title={pillar.label} showBack />
+      <ScreenHeader title={pillar.label} showBack onBackAction={handleBack} />
       <IonContent className="page-content" fullscreen>
         <div style={{ paddingTop: 16 }}>
 

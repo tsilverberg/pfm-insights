@@ -39,6 +39,19 @@ const DashboardPage: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="page-content">
+        {/* Back to Home */}
+        <div style={{ padding: '54px 16px 0' }}>
+          <button
+            onClick={() => history.push('/home')}
+            aria-label="Back to Home"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: 4, color: 'var(--pfm-action-primary-bg)' }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor" />
+            </svg>
+            <span className="typo-callout-semibold">Home</span>
+          </button>
+        </div>
         {/* Hero */}
         <div className="dashboard-hero">
           <button className="dashboard-hero__selector" onClick={() => showToast({ type: 'info', message: 'Account filter coming soon' })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>

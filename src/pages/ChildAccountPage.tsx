@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import TabPills from '../components/shared/TabPills';
 import SpendingBarChart from '../components/shared/SpendingBarChart';
@@ -11,13 +12,14 @@ import { useToast } from '../hooks/useToast';
 import './ChildAccountPage.css';
 
 const ChildAccountPage: React.FC = () => {
+  const history = useHistory();
   const { showToast } = useToast();
   const child = childAccountDetailData;
   const [requestTab, setRequestTab] = useState('Pending purchases');
 
   return (
     <IonPage>
-      <ScreenHeader title="Child's Account" />
+      <ScreenHeader title="Child's Account" onBackAction={() => history.push('/home')} />
       <IonContent className="page-content">
         <div className="child-account">
 

@@ -20,7 +20,7 @@ const CardsPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Cards" rightLabel="New card" rightVariant="pill" onRightAction={() => showToast({ type: 'info', message: 'New card order coming soon' })} />
+      <ScreenHeader title="Cards" onBackAction={() => history.goBack()} rightLabel="New card" rightVariant="pill" onRightAction={() => showToast({ type: 'info', message: 'New card order coming soon' })} />
       <IonContent className="page-content">
         <div>
 

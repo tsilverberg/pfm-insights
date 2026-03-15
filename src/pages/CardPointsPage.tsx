@@ -1,16 +1,18 @@
 import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import TransactionListItem from '../components/shared/TransactionListItem';
 import { cardPointsData, creditCardsData } from '../data/mockData';
 import CreditCardDisplay from '../components/shared/CreditCardDisplay';
 
 const CardPointsPage: React.FC = () => {
+  const history = useHistory();
   const card = creditCardsData[0];
 
   return (
     <IonPage>
-      <ScreenHeader title="Card Points" />
+      <ScreenHeader title="Card Points" onBackAction={() => history.push('/cards')} />
       <IonContent className="page-content">
         <div>
 

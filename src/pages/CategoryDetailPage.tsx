@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
 import SectionModule from '../components/shared/SectionModule';
 import ProgressBar from '../components/shared/ProgressBar';
@@ -31,6 +31,7 @@ const CATEGORY_TIPS: Record<string, { title: string; description: string; icon: 
 
 const CategoryDetailPage: React.FC = () => {
   const { name } = useParams<{ name: string }>();
+  const history = useHistory();
   const categoryName = decodeURIComponent(name);
 
   const displayInfo = getCategoryDisplayInfo(categoryName);
@@ -85,7 +86,7 @@ const CategoryDetailPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title={categoryName} showBack />
+      <ScreenHeader title={categoryName} showBack onBackAction={() => history.goBack()} />
       <IonContent className="page-content" fullscreen>
         <div style={{ paddingTop: 16 }}>
 
