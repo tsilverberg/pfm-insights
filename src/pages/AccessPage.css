@@ -14,7 +14,7 @@
 }
 
 .access-page__section-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;
@@ -45,14 +45,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-secondary);
 }
 
 .access-page__member-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 16px;
   color: var(--pfm-text-primary);
@@ -73,7 +73,7 @@
   border: none;
   background: var(--pfm-text-primary);
   color: white;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   cursor: pointer;

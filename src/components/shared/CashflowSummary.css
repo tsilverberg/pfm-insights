@@ -28,14 +28,14 @@
 }
 
 .cashflow-summary__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 13px;
   color: var(--pfm-text-secondary);
   line-height: 1.3;
 }
 
 .cashflow-summary__amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 20px;
   font-weight: 600;
   color: var(--pfm-text-primary);
@@ -66,7 +66,7 @@
 }
 
 .cashflow-summary__remaining {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 13px;
   color: var(--pfm-text-tertiary);
 }

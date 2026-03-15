@@ -36,10 +36,10 @@ export function getRating(score: number): Rating {
 
 export function getRatingColor(rating: Rating): string {
   switch (rating) {
-    case 'excellent': return 'var(--bb-color-feedback-success)';
-    case 'good': return 'var(--bb-color-primary-default)';
-    case 'building': return 'var(--bb-color-feedback-warning)';
-    case 'needs-attention': return 'var(--bb-color-feedback-error)';
+    case 'excellent': return 'var(--pfm-status-success)';
+    case 'good': return 'var(--pfm-action-primary-bg)';
+    case 'building': return 'var(--pfm-status-warning)';
+    case 'needs-attention': return 'var(--pfm-status-error)';
   }
 }
 

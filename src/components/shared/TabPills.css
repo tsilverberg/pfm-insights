@@ -19,7 +19,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;

@@ -24,7 +24,7 @@
 }
 
 .share-access__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   color: var(--pfm-text-primary);
@@ -42,7 +42,7 @@
   padding: 14px 0;
   border: none;
   outline: none;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 16px;
   color: var(--pfm-text-primary);
   background: transparent;
@@ -58,7 +58,7 @@
 }
 
 .share-access__section-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
@@ -100,7 +100,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   color: var(--pfm-text-secondary);
@@ -113,14 +113,14 @@
 }
 
 .share-access__contact-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 16px;
   color: var(--pfm-text-primary);
 }
 
 .share-access__contact-sub {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-tertiary);
@@ -141,7 +141,7 @@
   border: none;
   background: var(--pfm-text-primary);
   color: white;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   cursor: pointer;

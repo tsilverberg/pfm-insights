@@ -1,4 +1,7 @@
 :root {
+  /* === Font Family === */
+  --pfm-font-family: 'Lato', sans-serif;
+
   /* === Surface & Background === */
   --pfm-surface-background: #FFFFFF;
   --pfm-surface-card: #FFFFFF;

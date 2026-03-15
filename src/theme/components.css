@@ -28,7 +28,7 @@
 }
 
 .coach-card__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -43,7 +43,7 @@
 }
 
 .coach-card__text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   line-height: 22.5px;
@@ -81,7 +81,7 @@
   padding: 4px 12px;
   border-radius: 100px;
   border: 1px solid;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   line-height: 25.5px;
@@ -133,7 +133,7 @@
   border-radius: 99px;
   height: 32px;
   padding: 0 16px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -159,7 +159,7 @@
   border-radius: 99px;
   height: 44px;
   padding: 0 24px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -184,7 +184,7 @@
   border: 1px solid var(--pfm-status-success-border);
   border-radius: 8px;
   padding: 8px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;
@@ -215,7 +215,7 @@
 }
 
 .dotted-leader-row__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -231,7 +231,7 @@
 }
 
 .dotted-leader-row__value {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -295,7 +295,7 @@
 }
 
 .month-picker__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -321,7 +321,7 @@
   cursor: pointer;
   border: 1px solid var(--pfm-button-secondary-border);
   background: var(--pfm-surface-subtle);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   line-height: 22.5px;
@@ -371,7 +371,7 @@
 }
 
 .category-filter-pill__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;
@@ -379,7 +379,7 @@
 }
 
 .category-filter-pill__value {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
@@ -387,7 +387,7 @@
 }
 
 .category-filter-pill__suffix {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;

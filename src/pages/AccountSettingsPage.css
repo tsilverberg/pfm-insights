@@ -7,7 +7,7 @@
 }
 
 .account-settings__section-title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -30,7 +30,7 @@
   border: 1px solid var(--pfm-status-error-text);
   background: none;
   color: var(--pfm-status-error-text);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   cursor: pointer;

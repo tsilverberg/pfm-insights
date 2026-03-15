@@ -3,7 +3,7 @@
 }
 
 .screen-header-ionic ion-title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   line-height: 25.5px;
@@ -20,7 +20,7 @@
 }
 
 .screen-header__subtitle {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
@@ -29,7 +29,7 @@
 
 .screen-header__right-text {
   --color: var(--pfm-action-primary-bg);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
 }
@@ -42,7 +42,7 @@
   --padding-end: 16px;
   --padding-top: 6px;
   --padding-bottom: 6px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 13px;
   height: 32px;

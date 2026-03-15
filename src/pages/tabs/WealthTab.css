@@ -1,5 +1,5 @@
 .wealth__subtitle {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   line-height: 22.5px;
@@ -8,7 +8,7 @@
 }
 
 .wealth__amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 34px;
   line-height: 51px;

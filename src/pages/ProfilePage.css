@@ -51,7 +51,7 @@
 }
 
 .profile-hero__name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 22px;
   line-height: 33px;
@@ -65,7 +65,7 @@
   border-radius: 99px;
   background: var(--pfm-surface-raised);
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   color: var(--pfm-status-error);

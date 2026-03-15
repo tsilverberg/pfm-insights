@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: center;
   gap: 2px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 13px;
   font-weight: 600;
   line-height: 19.5px;
@@ -43,7 +43,7 @@
 }
 
 .invest-hero__total {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 34px;
   font-weight: 700;
   line-height: 51px;
@@ -51,7 +51,7 @@
 }
 
 .invest-hero__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 15px;
   font-weight: 400;
   line-height: 22.5px;
@@ -64,7 +64,7 @@
 }
 
 .invest-section__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 20px;
   font-weight: 600;
   line-height: 30px;
@@ -82,7 +82,7 @@
   background: var(--pfm-surface-raised);
   border: 1px solid var(--pfm-neutral-100);
   border-radius: 99px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 17px;
   font-weight: 600;
   line-height: 25.5px;
@@ -109,7 +109,7 @@
 }
 
 .invest-time-pill {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;

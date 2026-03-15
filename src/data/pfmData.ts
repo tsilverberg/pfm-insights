@@ -366,7 +366,7 @@ export const spotlightInsights: InsightCard[] = [
     title: 'Coffee habit',
     body: "You're spending €127/month on coffee — that's €1,524/year. Cutting 2 visits per week could save €55/month.",
     time: '2 days ago',
-    accentColor: 'var(--bb-color-insight-pattern)',
+    accentColor: 'var(--pfm-palette-purple-strong)',
   },
 ];
 

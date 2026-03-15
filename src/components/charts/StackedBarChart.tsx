@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import getTokens from '../../theme/chartTokens';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
@@ -19,14 +20,15 @@ interface StackedBarChartProps {
 }
 
 const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants, security, averageIncome }) => {
+  const t = getTokens();
   const data = {
     labels: months,
     datasets: [
       {
         label: 'Needs',
         data: needs,
-        backgroundColor: '#ED5EA6', // matches --pfm-pink-base
-        borderColor: '#FFFFFF', // matches --pfm-neutral-0
+        backgroundColor: t.needsColor,
+        borderColor: t.surfaceCard,
         borderWidth: { top: 2, bottom: 0, left: 0, right: 0 },
         barThickness: 24,
         borderRadius: 0,
@@ -35,8 +37,8 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
       {
         label: 'Wants',
         data: wants,
-        backgroundColor: '#4AB2B2', // matches --pfm-turquoise-strong
-        borderColor: '#FFFFFF', // matches --pfm-neutral-0
+        backgroundColor: t.wantsColor,
+        borderColor: t.surfaceCard,
         borderWidth: { top: 2, bottom: 2, left: 0, right: 0 },
         barThickness: 24,
         borderRadius: 0,
@@ -45,8 +47,8 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
       {
         label: 'Security',
         data: security,
-        backgroundColor: '#0A5A2B', // matches --pfm-green-strong
-        borderColor: '#FFFFFF', // matches --pfm-neutral-0
+        backgroundColor: t.securityColor,
+        borderColor: t.surfaceCard,
         borderWidth: { top: 0, bottom: 2, left: 0, right: 0 },
         barThickness: 24,
         borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0 },
@@ -64,7 +66,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
       if (!yScale || !xScale) return;
       const r = 6;
       ctx.save();
-      ctx.strokeStyle = '#CCD5DF'; // matches --pfm-border-subtle
+      ctx.strokeStyle = t.borderSubtle;
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(xScale.left, yScale.bottom);
@@ -87,7 +89,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
       const yPos = yScale.getPixelForValue(averageIncome);
       ctx.save();
       ctx.setLineDash([6, 4]);
-      ctx.strokeStyle = '#CCD5DF'; // matches --pfm-border-subtle
+      ctx.strokeStyle = t.borderSubtle;
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(xScale.left, yPos);
@@ -102,9 +104,9 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
     maintainAspectRatio: false,
     plugins: {
       tooltip: {
-        backgroundColor: '#061223', // matches --pfm-text-primary
-        titleFont: { family: 'Libre Franklin', size: 11, weight: 400 as const },
-        bodyFont: { family: 'Libre Franklin', size: 12, weight: 600 as const },
+        backgroundColor: t.bgInverted,
+        titleFont: { family: t.fontFamily, size: 11, weight: 400 as const },
+        bodyFont: { family: t.fontFamily, size: 12, weight: 600 as const },
         padding: 8,
         cornerRadius: 4,
       },
@@ -115,7 +117,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
         stacked: true,
         grid: {
           display: true,
-          color: '#CCD5DF', // matches --pfm-border-subtle
+          color: t.borderSubtle,
           drawOnChartArea: true,
           lineWidth: 1,
           drawTicks: false,
@@ -123,8 +125,8 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
         },
         border: { display: false, dash: [4, 4] },
         ticks: {
-          font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#7189A7', // matches --pfm-text-tertiary
+          font: { family: t.fontFamily, size: 12, weight: 400 as const },
+          color: t.textTertiary,
         },
       },
       y: {
@@ -134,12 +136,12 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({ months, needs, wants,
         grid: { display: false },
         border: {
           display: true,
-          color: '#CCD5DF', // matches --pfm-border-subtle
+          color: t.borderSubtle,
           width: 1,
         },
         ticks: {
-          font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#7189A7', // matches --pfm-text-tertiary
+          font: { family: t.fontFamily, size: 12, weight: 400 as const },
+          color: t.textTertiary,
           callback: (val: number | string) => {
             const v = Number(val);
             if (v === 0) return '€0';

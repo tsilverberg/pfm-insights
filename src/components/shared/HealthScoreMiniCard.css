@@ -33,7 +33,7 @@
 }
 
 .health-mini__score {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 16px;
   line-height: 1;
@@ -62,7 +62,7 @@
 }
 
 .health-mini__delta {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 14px;
   line-height: 1;

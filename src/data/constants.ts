@@ -4,9 +4,9 @@ export const BUDGET_THRESHOLD_DANGER = 0.85;
 
 // NWG color CSS variable references
 export const NWG_COLORS: Record<string, string> = {
-  need: 'var(--bb-color-nwg-needs)',
-  want: 'var(--bb-color-nwg-wants)',
-  growth: 'var(--bb-color-nwg-growth)',
+  need: 'var(--pfm-pink-base)',
+  want: 'var(--pfm-turquoise-strong)',
+  growth: 'var(--pfm-green-strong)',
 };
 
 export const NWG_LABELS: Record<string, string> = {
@@ -17,16 +17,16 @@ export const NWG_LABELS: Record<string, string> = {
 
 // Insight type color CSS variable references
 export const INSIGHT_TYPE_COLORS: Record<string, string> = {
-  summary: 'var(--bb-color-primary-default)',
+  summary: 'var(--pfm-action-primary-bg)',
   anomaly: 'var(--ion-color-danger)',
   celebration: 'var(--ion-color-success)',
-  offer: 'var(--bb-color-primary-default)',
+  offer: 'var(--pfm-action-primary-bg)',
   nudge: 'var(--ion-color-warning)',
-  spending: 'var(--bb-color-nwg-wants)',
+  spending: 'var(--pfm-turquoise-strong)',
   irregular: 'var(--ion-color-warning)',
   proximity: 'var(--ion-color-danger)',
-  pattern: 'var(--bb-color-insight-pattern)',
-  benchmark: 'var(--bb-color-accent-teal)',
+  pattern: 'var(--pfm-palette-purple-strong)',
+  benchmark: 'var(--pfm-turquoise-extra-strong)',
 };
 
 // ─── Health Score Constants ───────────────────────────────────

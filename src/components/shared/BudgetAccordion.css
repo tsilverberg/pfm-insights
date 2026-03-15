@@ -36,7 +36,7 @@
 }
 
 .budget-accordion__section-title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -44,7 +44,7 @@
 }
 
 .budget-accordion__section-total {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -110,7 +110,7 @@
 }
 
 .budget-accordion__item-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -121,7 +121,7 @@
 }
 
 .budget-accordion__item-budget {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;
@@ -129,7 +129,7 @@
 }
 
 .budget-accordion__item-amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;

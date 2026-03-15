@@ -24,7 +24,7 @@
 }
 
 .select-perms__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   color: var(--pfm-text-primary);
@@ -38,7 +38,7 @@
 }
 
 .select-perms__question {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   color: var(--pfm-text-primary);
@@ -46,7 +46,7 @@
 }
 
 .select-perms__question-sm {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   color: var(--pfm-text-primary);
@@ -67,7 +67,7 @@
   border-bottom: 1px solid var(--pfm-divider-default);
   background: none;
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 16px;
   color: var(--pfm-text-primary);
   text-align: left;
@@ -99,7 +99,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 15px;
   color: var(--pfm-text-primary);
   text-align: left;
@@ -145,14 +145,14 @@
 }
 
 .select-perms__access-title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-primary);
 }
 
 .select-perms__access-desc {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
@@ -168,7 +168,7 @@
 }
 
 .select-perms__limit-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-primary);
@@ -186,7 +186,7 @@
   width: 100%;
   border: none;
   outline: none;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 16px;
   color: var(--pfm-text-primary);
   text-align: right;
@@ -194,7 +194,7 @@
 }
 
 .select-perms__limit-period {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
@@ -217,7 +217,7 @@
   border: none;
   background: var(--pfm-text-primary);
   color: white;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   cursor: pointer;

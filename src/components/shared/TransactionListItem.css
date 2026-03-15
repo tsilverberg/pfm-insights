@@ -12,7 +12,7 @@
 }
 
 .tx-item__fallback {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   color: var(--pfm-text-secondary);

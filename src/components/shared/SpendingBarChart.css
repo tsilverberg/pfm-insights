@@ -38,7 +38,7 @@
 }
 
 .spending-bar__legend-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 11px;
   line-height: 16px;
@@ -46,7 +46,7 @@
 }
 
 .spending-bar__legend-pct {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 13px;
   line-height: 19.5px;

@@ -46,7 +46,7 @@
 }
 
 .quick-action__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 13px;
   line-height: 19.5px;

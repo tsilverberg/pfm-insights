@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import getTokens from '../../theme/chartTokens';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip);
 
@@ -19,13 +20,14 @@ interface WealthTrajectoryChartProps {
 }
 
 const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, currentPath, recommendedPath }) => {
+  const t = getTokens();
   const data = {
     labels: ages,
     datasets: [
       {
         label: 'Recommended',
         data: recommendedPath,
-        borderColor: '#4AB2B2', // matches --pfm-turquoise-strong
+        borderColor: t.wantsColor,
         borderDash: [6, 4],
         borderWidth: 2,
         fill: false,
@@ -35,8 +37,8 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
       {
         label: 'Your path',
         data: currentPath,
-        borderColor: '#4AB2B2', // matches --pfm-turquoise-strong
-        backgroundColor: 'rgba(74, 178, 178, 0.15)', // --pfm-turquoise-strong at 15% opacity
+        borderColor: t.wantsColor,
+        backgroundColor: t.wantsColor + '26',
         borderWidth: 2,
         fill: true,
         pointRadius: 0,
@@ -50,9 +52,9 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
     maintainAspectRatio: false,
     plugins: {
       tooltip: {
-        backgroundColor: '#061223', // matches --pfm-text-primary
-        titleFont: { family: 'Libre Franklin', size: 11, weight: 400 as const },
-        bodyFont: { family: 'Libre Franklin', size: 12, weight: 600 as const },
+        backgroundColor: t.bgInverted,
+        titleFont: { family: t.fontFamily, size: 11, weight: 400 as const },
+        bodyFont: { family: t.fontFamily, size: 12, weight: 600 as const },
         padding: 8,
         cornerRadius: 4,
         callbacks: {
@@ -69,8 +71,8 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
         grid: { display: false },
         border: { display: false },
         ticks: {
-          font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#7189A7', // matches --pfm-text-tertiary
+          font: { family: t.fontFamily, size: 12, weight: 400 as const },
+          color: t.textTertiary,
           maxTicksLimit: 6,
           callback: (_val: number | string, index: number) => {
             const age = ages[index];
@@ -85,12 +87,12 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
         grid: { display: false },
         border: {
           display: true,
-          color: '#CCD5DF', // matches --pfm-border-subtle
+          color: t.borderSubtle,
           width: 1,
         },
         ticks: {
-          font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#7189A7', // matches --pfm-text-tertiary
+          font: { family: t.fontFamily, size: 12, weight: 400 as const },
+          color: t.textTertiary,
           callback: (val: number | string) => {
             const v = Number(val);
             if (v === 0) return '€0';
@@ -111,7 +113,7 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
       if (!yScale || !xScale) return;
       const r = 6;
       ctx.save();
-      ctx.strokeStyle = '#CCD5DF'; // matches --pfm-border-subtle
+      ctx.strokeStyle = t.borderSubtle;
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(xScale.left, yScale.bottom);

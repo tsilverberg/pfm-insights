@@ -12,7 +12,7 @@
 }
 
 .transfer-amount__text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 36px;
   line-height: 51px;
@@ -91,14 +91,14 @@
 }
 
 .transfer-accounts__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 12px;
   color: var(--pfm-text-tertiary);
 }
 
 .transfer-accounts__name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 500;
   font-size: 15px;
   color: var(--pfm-text-primary);
@@ -142,7 +142,7 @@
 }
 
 .transfer-note__text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   color: var(--pfm-text-tertiary);
@@ -156,7 +156,7 @@
   color: white;
   border: none;
   border-radius: 99px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;

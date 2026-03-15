@@ -40,7 +40,7 @@
 }
 
 .pillar-strip__score {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 22px;
   line-height: 1;
@@ -48,7 +48,7 @@
 }
 
 .pillar-strip__label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
@@ -59,7 +59,7 @@
 }
 
 .pillar-strip__trend {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 11px;
   line-height: 1;

@@ -35,7 +35,7 @@
 }
 
 .child-card__name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -43,7 +43,7 @@
 }
 
 .child-card__balance {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -57,7 +57,7 @@
 }
 
 .child-card__number {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;
@@ -70,7 +70,7 @@
   justify-content: center;
   padding: 4px 8px;
   border-radius: 4px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 12px;
   line-height: normal;

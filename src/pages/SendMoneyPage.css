@@ -11,7 +11,7 @@
 }
 
 .send-header__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   color: var(--pfm-text-primary);
@@ -43,7 +43,7 @@
 }
 
 .send-amount__text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 36px;
   line-height: 51px;
@@ -102,7 +102,7 @@
 
 .send-options__label {
   flex: 1;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   color: var(--pfm-text-primary);
@@ -119,7 +119,7 @@
 }
 
 .send-options__note-text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   color: var(--pfm-text-tertiary);
@@ -132,7 +132,7 @@
   color: white;
   border: none;
   border-radius: 99px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;

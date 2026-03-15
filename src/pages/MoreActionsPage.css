@@ -7,7 +7,7 @@
 }
 
 .more-actions__section-title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;

@@ -11,6 +11,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import type { PortfolioValuePoint } from '../../data/types';
 import { formatEuro } from '../../data/formatters';
+import getTokens from '../../theme/chartTokens';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip);
 
@@ -19,6 +20,7 @@ interface PortfolioLineChartProps {
 }
 
 const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points }) => {
+  const t = getTokens();
   const labels = points.map((p) => p.date);
   const values = points.map((p) => p.value);
 
@@ -27,8 +29,8 @@ const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points })
     datasets: [
       {
         data: values,
-        borderColor: '#061223',
-        backgroundColor: 'rgba(6, 18, 35, 0.06)',
+        borderColor: t.textPrimary,
+        backgroundColor: t.textPrimary + '0F',
         borderWidth: 2,
         fill: true,
         pointRadius: 0,
@@ -42,9 +44,9 @@ const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points })
     maintainAspectRatio: false,
     plugins: {
       tooltip: {
-        backgroundColor: '#061223',
-        titleFont: { family: 'Lato', size: 11, weight: 400 as const },
-        bodyFont: { family: 'Lato', size: 12, weight: 600 as const },
+        backgroundColor: t.bgInverted,
+        titleFont: { family: t.fontFamily, size: 11, weight: 400 as const },
+        bodyFont: { family: t.fontFamily, size: 12, weight: 600 as const },
         padding: 8,
         cornerRadius: 4,
         callbacks: {
@@ -60,8 +62,8 @@ const PortfolioLineChart: React.FC<PortfolioLineChartProps> = ({ data: points })
         grid: { display: false },
         border: { display: false },
         ticks: {
-          font: { family: 'Lato', size: 12, weight: 400 as const },
-          color: '#3A495D',
+          font: { family: t.fontFamily, size: 12, weight: 400 as const },
+          color: t.textSecondary,
           maxTicksLimit: 4,
           maxRotation: 0,
         },

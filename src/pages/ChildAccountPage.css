@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 17px;
   color: var(--pfm-text-primary);
@@ -29,14 +29,14 @@
 }
 
 .child-account__child-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   color: var(--pfm-text-primary);
 }
 
 .child-account__child-age {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-tertiary);
@@ -44,7 +44,7 @@
 
 .child-account__balance-label {
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-tertiary);
@@ -53,7 +53,7 @@
 
 .child-account__balance {
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 34px;
   line-height: 51px;
@@ -106,7 +106,7 @@
 }
 
 .child-account__quick-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 12px;
   color: var(--pfm-text-secondary);
@@ -127,14 +127,14 @@
 }
 
 .child-account__glance-title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-primary);
 }
 
 .child-account__glance-subtitle {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
@@ -162,21 +162,21 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 13px;
   color: var(--pfm-text-secondary);
 }
 
 .child-account__parent-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-primary);
 }
 
 .child-account__parent-role {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-tertiary);
@@ -198,7 +198,7 @@
 }
 
 .child-account__coach-text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
@@ -209,7 +209,7 @@
   align-items: center;
   gap: 4px;
   padding: 8px 0;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   color: var(--pfm-text-secondary);

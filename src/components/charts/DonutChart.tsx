@@ -7,6 +7,7 @@ import {
 import { Doughnut } from 'react-chartjs-2';
 import DottedLeaderRow from '../shared/DottedLeaderRow';
 import { formatEuro } from '../../data/formatters';
+import getTokens from '../../theme/chartTokens';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -22,6 +23,7 @@ interface DonutChartProps {
 }
 
 const DonutChart: React.FC<DonutChartProps> = ({ segments, title }) => {
+  const t = getTokens();
   const data = {
     labels: segments.map((s) => s.label),
     datasets: [
@@ -39,9 +41,9 @@ const DonutChart: React.FC<DonutChartProps> = ({ segments, title }) => {
     maintainAspectRatio: true,
     plugins: {
       tooltip: {
-        backgroundColor: '#061223',
-        titleFont: { family: 'Libre Franklin', size: 11, weight: 400 as const },
-        bodyFont: { family: 'Libre Franklin', size: 12, weight: 600 as const },
+        backgroundColor: t.bgInverted,
+        titleFont: { family: t.fontFamily, size: 11, weight: 400 as const },
+        bodyFont: { family: t.fontFamily, size: 12, weight: 600 as const },
         padding: 8,
         cornerRadius: 4,
         callbacks: {

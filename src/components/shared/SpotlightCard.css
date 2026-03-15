@@ -31,7 +31,7 @@
 }
 
 .spotlight-card__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -39,7 +39,7 @@
 }
 
 .spotlight-card__description {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   line-height: 22.5px;
@@ -60,7 +60,7 @@
   border-radius: 100px;
   background: var(--pfm-status-success-bg);
   border: 1px solid var(--pfm-status-success-border);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 13px;
   line-height: 19.5px;

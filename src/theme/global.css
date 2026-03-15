@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   color: var(--pfm-text-primary);
   background: var(--pfm-surface-background);
   -webkit-font-smoothing: antialiased;
@@ -43,7 +43,7 @@ ion-content::part(scroll)::-webkit-scrollbar {
 }
 
 .section-module__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
@@ -51,7 +51,7 @@ ion-content::part(scroll)::-webkit-scrollbar {
 }
 
 .section-module__subtitle {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   line-height: 22.5px;

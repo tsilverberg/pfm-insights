@@ -42,7 +42,7 @@
 }
 
 .pocket-card__name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -50,7 +50,7 @@
 }
 
 .pocket-card__amounts {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 15px;
   line-height: 22.5px;
   color: var(--pfm-text-primary);
@@ -86,7 +86,7 @@
 
 .pocket-card__pct,
 .pocket-card__date {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;

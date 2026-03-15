@@ -1,6 +1,6 @@
 /* Ionic variable overrides */
 :root {
-  --ion-font-family: 'Lato', sans-serif;
+  --ion-font-family: var(--pfm-font-family);
   --ion-background-color: #FFFFFF;
   --ion-text-color: #061223;
   --ion-toolbar-background: transparent;

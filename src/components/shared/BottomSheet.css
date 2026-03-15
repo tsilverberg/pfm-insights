@@ -23,7 +23,7 @@
 }
 
 .bottom-sheet__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   line-height: 25.5px;

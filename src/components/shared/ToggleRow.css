@@ -89,7 +89,7 @@
 }
 
 .toggle-row__radio-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 15px;
   color: var(--pfm-text-primary);

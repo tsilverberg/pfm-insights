@@ -27,7 +27,7 @@
 }
 
 .explore__tag {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 10px;
   font-weight: 600;
   color: var(--pfm-change-positive);

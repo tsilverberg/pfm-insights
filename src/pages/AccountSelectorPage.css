@@ -24,7 +24,7 @@
 }
 
 .account-selector__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   line-height: 25.5px;
@@ -45,7 +45,7 @@
 }
 
 .account-selector__section-title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -107,7 +107,7 @@
 }
 
 .account-selector__card-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;
@@ -118,14 +118,14 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
 }
 
 .account-selector__card-balance {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   color: var(--pfm-text-primary);
@@ -171,7 +171,7 @@
 }
 
 .account-selector__pocket-goal {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-secondary);
@@ -205,7 +205,7 @@
 }
 
 .account-selector__family-balance {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   flex-shrink: 0;
@@ -217,7 +217,7 @@
 }
 
 .account-selector__badge {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 12px;
   padding: 4px 8px;
@@ -238,7 +238,7 @@
   background: var(--pfm-action-primary-bg);
   color: white;
   border: none;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
@@ -273,7 +273,7 @@
 }
 
 .account-selector__overview-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-primary);
@@ -281,7 +281,7 @@
 }
 
 .account-selector__overview-amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   color: var(--pfm-text-primary);

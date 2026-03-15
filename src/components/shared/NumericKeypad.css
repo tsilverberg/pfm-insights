@@ -20,7 +20,7 @@
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 24px;
   line-height: 36px;

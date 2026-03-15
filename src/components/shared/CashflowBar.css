@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   line-height: 19.5px;
@@ -75,7 +75,7 @@
 }
 
 .cashflow-bar__legend-amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   line-height: 22.5px;

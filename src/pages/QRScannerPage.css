@@ -27,7 +27,7 @@
 }
 
 .qr-scanner__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   color: white;
@@ -110,7 +110,7 @@
 }
 
 .qr-scanner__instructions p {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 16px;
   margin: 0 0 4px;
@@ -141,7 +141,7 @@
 }
 
 .qr-scanner__action-btn span {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 12px;
   opacity: 0.8;

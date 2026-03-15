@@ -17,7 +17,7 @@
 }
 
 .cat-detail__name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 700;
   font-size: 22px;
   color: var(--pfm-text-primary);
@@ -25,7 +25,7 @@
 }
 
 .cat-detail__spent-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 16px;
   font-weight: 600;
   color: var(--pfm-text-primary);
@@ -44,7 +44,7 @@
 
 .cat-detail__status {
   display: inline-block;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 13px;
   font-weight: 600;
   padding: 4px 12px;
@@ -87,7 +87,7 @@
 }
 
 .cat-detail__bar-amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 10px;
   color: var(--pfm-text-secondary);
   white-space: nowrap;
@@ -106,7 +106,7 @@
 }
 
 .cat-detail__bar-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 11px;
   color: var(--pfm-text-secondary);
   margin-top: 4px;
@@ -128,7 +128,7 @@
 
 .cat-detail__week-label {
   width: 56px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 13px;
   color: var(--pfm-text-secondary);
   flex-shrink: 0;
@@ -152,7 +152,7 @@
 .cat-detail__week-amount {
   width: 68px;
   text-align: right;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 13px;
   font-weight: 600;
   color: var(--pfm-text-primary);
@@ -194,20 +194,20 @@
 }
 
 .cat-detail__tx-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 15px;
   font-weight: 600;
   color: var(--pfm-text-primary);
 }
 
 .cat-detail__tx-date {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 12px;
   color: var(--pfm-text-secondary);
 }
 
 .cat-detail__tx-amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 15px;
   font-weight: 600;
   color: var(--pfm-text-primary);
@@ -215,7 +215,7 @@
 }
 
 .cat-detail__empty {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 14px;
   color: var(--pfm-text-secondary);
   text-align: center;
@@ -260,14 +260,14 @@
 }
 
 .cat-detail__member-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 14px;
   font-weight: 600;
   color: var(--pfm-text-primary);
 }
 
 .cat-detail__member-amount {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 13px;
   color: var(--pfm-text-secondary);
 }
@@ -301,13 +301,13 @@
 }
 
 .cat-detail__compare-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 14px;
   color: var(--pfm-text-secondary);
 }
 
 .cat-detail__compare-value {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 15px;
   font-weight: 700;
   color: var(--pfm-text-primary);
@@ -336,7 +336,7 @@
 }
 
 .cat-detail__compare-text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 14px;
   font-weight: 600;
   color: var(--pfm-text-primary);

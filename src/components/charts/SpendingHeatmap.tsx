@@ -1,5 +1,6 @@
 import React from 'react';
 import './SpendingHeatmap.css';
+import getTokens from '../../theme/chartTokens';
 
 interface SpendingHeatmapProps {
   dayLabels: string[];
@@ -7,12 +8,13 @@ interface SpendingHeatmapProps {
 }
 
 function getCellColor(value: number | null): { bg: string; border?: string } {
+  const t = getTokens();
   if (value === null) return { bg: '#EBF0F5' }; // future/inactive
   if (value === -1) return { bg: '#FFFFFF', border: '1px solid #E1E8EF' }; // no data
-  if (value <= 10) return { bg: '#DDF8F8' }; // excellent
-  if (value <= 60) return { bg: '#B9F1F1' }; // on track
-  if (value <= 120) return { bg: '#1ED2D2' }; // warning
-  return { bg: '#3A8C8C' }; // over-budget
+  if (value <= 10) return { bg: t.turquoiseExtraSoft }; // excellent
+  if (value <= 60) return { bg: t.turquoiseSoft }; // on track
+  if (value <= 120) return { bg: t.turquoiseBase }; // warning
+  return { bg: t.turquoiseExtraStrong }; // over-budget
 }
 
 const SpendingHeatmap: React.FC<SpendingHeatmapProps> = ({ dayLabels, weeks }) => {

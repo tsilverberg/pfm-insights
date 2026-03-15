@@ -17,7 +17,7 @@
 }
 
 .pockets-page__virtual-note-text {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-size: 14px;
   color: var(--pfm-text-secondary);
 }

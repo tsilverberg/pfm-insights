@@ -6,7 +6,7 @@
 }
 
 .edit-permissions__title {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 17px;
   color: var(--pfm-text-primary);
@@ -20,7 +20,7 @@
 }
 
 .edit-permissions__section-label {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 13px;
   color: var(--pfm-text-secondary);
@@ -49,21 +49,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-secondary);
 }
 
 .edit-permissions__member-name {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--pfm-text-primary);
 }
 
 .edit-permissions__member-role {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 400;
   font-size: 13px;
   color: var(--pfm-text-tertiary);
@@ -76,7 +76,7 @@
   border: 1px solid var(--pfm-border-strong);
   background: none;
   color: var(--pfm-text-primary);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--pfm-font-family);
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
