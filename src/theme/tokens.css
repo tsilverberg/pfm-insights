@@ -145,4 +145,7 @@
   --pfm-card-gradient-blue: linear-gradient(135deg, #1A3A5C 0%, #2E4E78 50%, #4A7AB5 100%);
   --pfm-card-gradient-dark: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
   --pfm-card-gradient-gold: linear-gradient(135deg, #8B6914 0%, #B8860B 50%, #DAA520 100%);
+
+  /* === Profile Hero === */
+  --pfm-profile-hero-bg: linear-gradient(135deg, #1A2332 0%, #2E3A4D 50%, #3A4A5F 100%);
 }

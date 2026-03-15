@@ -37,6 +37,7 @@ import PillarDetailPage from './pages/PillarDetailPage';
 import FloatingTabBar from './components/layout/FloatingTabBar';
 import ErrorBoundary from './components/shared/ErrorBoundary';
 import { ToastProvider } from './hooks/useToast';
+import { ThemeProvider } from './hooks/useTheme';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -59,6 +60,9 @@ import './theme/global.css';
 import './theme/components.css';
 import './theme/interactions.css';
 import './theme/scroll-reveal.css';
+import './theme/themes/danske-bank.css';
+import './theme/themes/everbank.css';
+import './theme/themes/td-bank.css';
 
 setupIonicReact({
   mode: 'ios',
@@ -66,6 +70,7 @@ setupIonicReact({
 
 const App: React.FC = () => (
   <ErrorBoundary>
+  <ThemeProvider>
   <ToastProvider>
   <IonApp>
     <IonReactRouter>
@@ -107,6 +112,7 @@ const App: React.FC = () => (
     </IonReactRouter>
   </IonApp>
   </ToastProvider>
+  </ThemeProvider>
   </ErrorBoundary>
 );
 

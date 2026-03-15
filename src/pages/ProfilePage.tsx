@@ -3,45 +3,49 @@ import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import SettingsMenuItem from '../components/shared/SettingsMenuItem';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
+import ThemeSelectorSheet from '../components/shared/ThemeSelectorSheet';
 import { profileData } from '../data/mockData';
 import { useToast } from '../hooks/useToast';
+import { useTheme } from '../hooks/useTheme';
 import './ProfilePage.css';
-
-const sections = [
-  {
-    title: 'Details',
-    items: [
-      { icon: 'person', title: 'Personal details', description: 'Manage your personal information', iconBg: 'var(--pfm-neutral-100)' },
-      { icon: 'security', title: 'Security & login', description: 'Biometrics, password, trusted devices', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
-    ],
-  },
-  {
-    title: 'Preferences',
-    items: [
-      { icon: 'palette', title: 'App preferences', description: 'Language, appearance, accessibility', iconBg: 'var(--pfm-category-pink-bg)' },
-      { icon: 'notifications', title: 'Notifications', description: 'Control how and when we notify you', iconBg: 'var(--pfm-category-pink-bg)' },
-      { icon: 'dashboard', title: 'Dashboard view', description: 'Switch to dashboard layout', iconBg: 'var(--pfm-category-turquoise-bg)' },
-    ],
-  },
-  {
-    title: 'Connections',
-    items: [
-      { icon: 'devices', title: 'Connected services / devices', description: 'Manage integrations and devices', iconBg: 'var(--pfm-category-turquoise-bg)' },
-    ],
-  },
-  {
-    title: 'Support & legal',
-    items: [
-      { icon: 'help', title: 'Help & support', description: 'Get help or contact support', iconBg: '#e2f5ec' },
-      { icon: 'gavel', title: 'Legal & privacy', description: 'Terms, privacy, data usage', iconBg: '#e2f5ec' },
-    ],
-  },
-];
 
 const ProfilePage: React.FC = () => {
   const history = useHistory();
   const { showToast } = useToast();
+  const { theme } = useTheme();
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [showThemeSheet, setShowThemeSheet] = useState(false);
+
+  const sections = [
+    {
+      title: 'Details',
+      items: [
+        { icon: 'person', title: 'Personal details', description: 'Manage your personal information', iconBg: 'var(--pfm-neutral-100)' },
+        { icon: 'security', title: 'Security & login', description: 'Biometrics, password, trusted devices', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
+      ],
+    },
+    {
+      title: 'Preferences',
+      items: [
+        { icon: 'palette', title: 'Bank theme', description: theme.bankName, iconBg: 'var(--pfm-palette-blue-extra-soft)' },
+        { icon: 'notifications', title: 'Notifications', description: 'Control how and when we notify you', iconBg: 'var(--pfm-category-pink-bg)' },
+        { icon: 'dashboard', title: 'Dashboard view', description: 'Switch to dashboard layout', iconBg: 'var(--pfm-category-turquoise-bg)' },
+      ],
+    },
+    {
+      title: 'Connections',
+      items: [
+        { icon: 'devices', title: 'Connected services / devices', description: 'Manage integrations and devices', iconBg: 'var(--pfm-category-turquoise-bg)' },
+      ],
+    },
+    {
+      title: 'Support & legal',
+      items: [
+        { icon: 'help', title: 'Help & support', description: 'Get help or contact support', iconBg: '#e2f5ec' },
+        { icon: 'gavel', title: 'Legal & privacy', description: 'Terms, privacy, data usage', iconBg: '#e2f5ec' },
+      ],
+    },
+  ];
 
   return (
     <IonPage>
@@ -79,7 +83,9 @@ const ProfilePage: React.FC = () => {
                   description={item.description}
                   iconBg={item.iconBg}
                   onClick={() => {
-                    if (item.title === 'Dashboard view') {
+                    if (item.title === 'Bank theme') {
+                      setShowThemeSheet(true);
+                    } else if (item.title === 'Dashboard view') {
                       history.push('/dashboard');
                     } else {
                       showToast({ type: 'info', message: `${item.title} coming soon` });
@@ -95,6 +101,8 @@ const ProfilePage: React.FC = () => {
         </div>
 
         <div className="bottom-spacer" />
+
+        <ThemeSelectorSheet isOpen={showThemeSheet} onClose={() => setShowThemeSheet(false)} />
 
         <ConfirmDialog
           isOpen={showLogoutConfirm}

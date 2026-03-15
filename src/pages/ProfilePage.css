@@ -1,5 +1,5 @@
 .profile-hero {
-  background: linear-gradient(135deg, #1A2332 0%, #2E3A4D 50%, #3A4A5F 100%);
+  background: var(--pfm-profile-hero-bg);
   padding: calc(env(safe-area-inset-top, 16px) + 8px) 16px 32px;
   display: flex;
   flex-direction: column;

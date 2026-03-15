@@ -1,0 +1,60 @@
+/* TD Bank — Bold green, confident, high-contrast */
+:root.theme-td-bank {
+  /* Font */
+  --pfm-font-family: 'Nunito Sans', 'Lato', sans-serif;
+
+  /* Brand Primary */
+  --pfm-action-primary-bg: #008A00;
+  --pfm-action-primary-text: #FFFFFF;
+  --pfm-action-secondary-border: #008A00;
+  --pfm-action-secondary-text: #008A00;
+  --pfm-border-strong: #008A00;
+
+  /* Surfaces */
+  --pfm-surface-dark: #1A1A1A;
+  --pfm-surface-background: #F5F5F5;
+  --pfm-surface-raised: #EEEEEE;
+
+  /* Text */
+  --pfm-text-primary: #1A1A1A;
+  --pfm-text-secondary: #424242;
+
+  /* Category: Needs (TD orange-red) */
+  --pfm-pink-base: #FF6B2B;
+  --pfm-pink-strong: #CC4E14;
+  --pfm-category-pink-bg: #FFF0E8;
+  --pfm-category-pink-border: #FFD4BC;
+
+  /* Category: Wants (TD green) */
+  --pfm-turquoise-strong: #34A853;
+  --pfm-turquoise-extra-strong: #1E8C3E;
+  --pfm-turquoise-base: #5BC879;
+  --pfm-turquoise-soft: #C6EFD0;
+  --pfm-turquoise-extra-soft: #E8F7EC;
+  --pfm-category-turquoise-bg: #E8F7EC;
+  --pfm-category-turquoise-border: #C6EFD0;
+  --pfm-category-turquoise-text: #1E8C3E;
+
+  /* Category: Security */
+  --pfm-green-strong: #006400;
+
+  /* Inverted */
+  --pfm-bg-inverted: #1A1A1A;
+
+  /* Card gradients */
+  --pfm-card-gradient-blue: linear-gradient(135deg, #004D00 0%, #008A00 50%, #34A853 100%);
+  --pfm-card-gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 50%, #424242 100%);
+
+  /* Profile hero */
+  --pfm-profile-hero-bg: linear-gradient(135deg, #004D00 0%, #008A00 50%, #34A853 100%);
+
+  /* Tab bar */
+  --pfm-tab-bar-blend: #1A1A1A;
+
+  /* Card radius — TD is more corporate */
+  --pfm-card-radius: 12px;
+
+  /* Status */
+  --pfm-status-success: #006400;
+  --pfm-change-positive: #006400;
+}

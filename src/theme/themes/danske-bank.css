@@ -1,0 +1,56 @@
+/* Danske Bank — Nordic blue, clean, professional */
+:root.theme-danske-bank {
+  /* Font */
+  --pfm-font-family: 'Source Sans 3', 'Lato', sans-serif;
+
+  /* Brand Primary */
+  --pfm-action-primary-bg: #003755;
+  --pfm-action-primary-text: #FFFFFF;
+  --pfm-action-secondary-border: #003755;
+  --pfm-action-secondary-text: #003755;
+  --pfm-border-strong: #003755;
+
+  /* Surfaces */
+  --pfm-surface-dark: #003755;
+  --pfm-surface-background: #F8FAFB;
+
+  /* Text */
+  --pfm-text-primary: #0A1929;
+  --pfm-text-secondary: #2C3E50;
+
+  /* Category: Needs (Danske blue-red) */
+  --pfm-pink-base: #D03050;
+  --pfm-pink-strong: #9B2040;
+  --pfm-category-pink-bg: #FDEDF1;
+  --pfm-category-pink-border: #F5C6D0;
+
+  /* Category: Wants (Danske teal) */
+  --pfm-turquoise-strong: #0077B6;
+  --pfm-turquoise-extra-strong: #005F8E;
+  --pfm-turquoise-base: #00A0D2;
+  --pfm-turquoise-soft: #C3E8F5;
+  --pfm-turquoise-extra-soft: #E6F4FA;
+  --pfm-category-turquoise-bg: #E6F4FA;
+  --pfm-category-turquoise-border: #C3E8F5;
+  --pfm-category-turquoise-text: #005F8E;
+
+  /* Category: Security */
+  --pfm-green-strong: #006847;
+
+  /* Inverted */
+  --pfm-bg-inverted: #0A1929;
+
+  /* Card gradients */
+  --pfm-card-gradient-blue: linear-gradient(135deg, #001D3D 0%, #003755 50%, #0077B6 100%);
+  --pfm-card-gradient-dark: linear-gradient(135deg, #0A1929 0%, #001D3D 50%, #003755 100%);
+
+  /* Profile hero */
+  --pfm-profile-hero-bg: linear-gradient(135deg, #001D3D 0%, #003755 50%, #0077B6 100%);
+
+  /* Tab bar */
+  --pfm-tab-bar-blend: #003755;
+
+  /* Status (keep accessible) */
+  --pfm-status-success: #006847;
+  --pfm-change-positive: #006847;
+}

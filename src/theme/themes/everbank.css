@@ -1,0 +1,57 @@
+/* EverBank — Fresh green, modern, approachable */
+:root.theme-everbank {
+  /* Font */
+  --pfm-font-family: 'Inter', 'Lato', sans-serif;
+
+  /* Brand Primary */
+  --pfm-action-primary-bg: #00875A;
+  --pfm-action-primary-text: #FFFFFF;
+  --pfm-action-secondary-border: #00875A;
+  --pfm-action-secondary-text: #00875A;
+  --pfm-border-strong: #00875A;
+
+  /* Surfaces */
+  --pfm-surface-dark: #004D35;
+  --pfm-surface-background: #F7FBF9;
+  --pfm-surface-raised: #EFF7F3;
+
+  /* Text */
+  --pfm-text-primary: #0D2818;
+  --pfm-text-secondary: #1A4731;
+
+  /* Category: Needs (warm coral) */
+  --pfm-pink-base: #E85D4A;
+  --pfm-pink-strong: #B54032;
+  --pfm-category-pink-bg: #FEF0EE;
+  --pfm-category-pink-border: #F9CCC5;
+
+  /* Category: Wants (teal-green) */
+  --pfm-turquoise-strong: #00A878;
+  --pfm-turquoise-extra-strong: #007A56;
+  --pfm-turquoise-base: #00CC92;
+  --pfm-turquoise-soft: #B8F0DD;
+  --pfm-turquoise-extra-soft: #E0F9F0;
+  --pfm-category-turquoise-bg: #E0F9F0;
+  --pfm-category-turquoise-border: #B8F0DD;
+  --pfm-category-turquoise-text: #007A56;
+
+  /* Category: Security */
+  --pfm-green-strong: #004D35;
+
+  /* Inverted */
+  --pfm-bg-inverted: #0D2818;
+
+  /* Card gradients */
+  --pfm-card-gradient-blue: linear-gradient(135deg, #003D28 0%, #00875A 50%, #00CC92 100%);
+  --pfm-card-gradient-dark: linear-gradient(135deg, #0D2818 0%, #004D35 50%, #00875A 100%);
+
+  /* Profile hero */
+  --pfm-profile-hero-bg: linear-gradient(135deg, #003D28 0%, #00875A 50%, #00CC92 100%);
+
+  /* Tab bar */
+  --pfm-tab-bar-blend: #004D35;
+
+  /* Status */
+  --pfm-status-success: #004D35;
+  --pfm-change-positive: #004D35;
+}
