@@ -11,14 +11,14 @@ import type { PillarId } from '../data/types';
 import './PillarDetailPage.css';
 
 const RATING_COLORS: Record<string, string> = {
-  excellent: '#1BA97F',
+  excellent: 'var(--pfm-status-success-vivid)',
   good: '#295EFF',
   building: '#F5A623',
   'needs-attention': '#E5553B',
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  ahead: '#1BA97F',
+  ahead: 'var(--pfm-status-success-vivid)',
   'on-track': '#295EFF',
   behind: '#F5A623',
 };
@@ -217,7 +217,7 @@ const PillarDetailPage: React.FC = () => {
           <SectionModule title="Actions to improve">
             {pillar.actions.map(action => {
               const fillCount = IMPACT_FILL_COUNT[action.impact] ?? 1;
-              const impactColor = action.impact === 'high' ? '#1BA97F' : action.impact === 'medium' ? '#F5A623' : '#295EFF';
+              const impactColor = action.impact === 'high' ? 'var(--pfm-status-success-vivid)' : action.impact === 'medium' ? 'var(--pfm-status-warning)' : 'var(--pfm-palette-blue-strong)';
 
               return (
                 <div className="pillar-detail__action-card card-bordered" key={action.id}>

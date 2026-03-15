@@ -108,7 +108,7 @@ export const pockets: PfmPocket[] = [
 export const insights: InsightCard[] = [
   { id: '1', type: 'summary', title: 'Morning Financial Briefing', body: 'Your finances look healthy today. Balance is up €139 from last week.', time: '8:00 AM', accentColor: '#295EFF' },
   { id: '2', type: 'anomaly', title: 'Unusual charge detected', body: '€104.09 at TechStore — higher than your typical electronics spending.', time: '9:15 AM', accentColor: '#E5553B' },
-  { id: '3', type: 'celebration', title: 'Savings milestone!', body: "You've saved €578 this month — 83% of your €694 goal.", time: '10:30 AM', accentColor: '#1BA97F' },
+  { id: '3', type: 'celebration', title: 'Savings milestone!', body: "You've saved €578 this month — 83% of your €694 goal.", time: '10:30 AM', accentColor: 'var(--pfm-status-success-vivid)' },
   { id: '4', type: 'offer', title: '5% cashback at Albert Heijn', body: 'Based on your grocery spending patterns. Valid through March 20.', time: '11:00 AM', accentColor: '#295EFF' },
   { id: '5', type: 'irregular', title: 'Car insurance due in 6 weeks', body: '€555 due Apr 15. Start setting aside €93/week?', time: '11:30 AM', accentColor: '#F5A623' },
   { id: '6', type: 'proximity', title: 'Eating out budget: 85% used', body: '€196 of €230 spent with 10 days left this month.', time: '12:00 PM', accentColor: '#E5553B' },

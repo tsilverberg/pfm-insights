@@ -11,9 +11,9 @@ import type { NwgType } from '../data/types';
 import './NwgDetailPage.css';
 
 const NWG_RAW_COLORS: Record<string, string> = {
-  need: '#ED5EA6',
-  want: '#3A8C8C',
-  growth: '#0A5A2B',
+  need: 'var(--pfm-pink-base)',
+  want: 'var(--pfm-turquoise-extra-strong)',
+  growth: 'var(--pfm-green-strong)',
 };
 
 const NWG_ICON_BG: Record<string, string> = {

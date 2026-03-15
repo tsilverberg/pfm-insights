@@ -15,9 +15,9 @@ export const monthlyDistributionData = {
   },
   averageIncome: 5800,
   categories: [
-    { id: 'needs', label: 'Needs', percentage: 50, color: '#ED5EA6' },
-    { id: 'wants', label: 'Lifestyle', percentage: 30, color: '#4AB2B2' },
-    { id: 'security', label: 'Saved', percentage: 20, color: '#0A5A2B' },
+    { id: 'needs', label: 'Needs', percentage: 50, color: 'var(--pfm-pink-base)' },
+    { id: 'wants', label: 'Lifestyle', percentage: 30, color: 'var(--pfm-turquoise-strong)' },
+    { id: 'security', label: 'Saved', percentage: 20, color: 'var(--pfm-green-strong)' },
   ],
   commentary: 'Your spending is broadly on track. Wants spending was higher in November — mainly dining out.',
 };
@@ -38,7 +38,7 @@ export const spendingHeatmapData = {
     { label: '€0–10', color: '#DDF8F8', description: 'Excellent' },
     { label: '€11–60', color: '#B9F1F1', description: 'On track' },
     { label: '€61–120', color: '#1ED2D2', description: 'Warning' },
-    { label: '€121+', color: '#3A8C8C', description: 'Over-budget' },
+    { label: '€121+', color: 'var(--pfm-turquoise-extra-strong)', description: 'Over-budget' },
   ],
 };
 
@@ -63,9 +63,9 @@ export const wealthTrajectoryData = {
 export const annualIncomeData = {
   total: 72000,
   segments: [
-    { label: 'Salary', value: 54000, color: '#ED5EA6' },
-    { label: 'Investments', value: 12600, color: '#4AB2B2' },
-    { label: 'Other', value: 5400, color: '#0A5A2B' },
+    { label: 'Salary', value: 54000, color: 'var(--pfm-pink-base)' },
+    { label: 'Investments', value: 12600, color: 'var(--pfm-turquoise-strong)' },
+    { label: 'Other', value: 5400, color: 'var(--pfm-green-strong)' },
   ],
 };
 
@@ -76,9 +76,9 @@ export const monthlyGoalsData = {
   year: 2025,
   income: 6000,
   snapshot: {
-    needs: { spent: 2762.50, budget: 3000, goalPercent: 50, color: '#ED5EA6' },
-    wants: { spent: 1950, budget: 1800, goalPercent: 30, color: '#4AB2B2' },
-    security: { spent: 600, budget: 1200, goalPercent: 20, color: '#0A5A2B' },
+    needs: { spent: 2762.50, budget: 3000, goalPercent: 50, color: 'var(--pfm-pink-base)' },
+    wants: { spent: 1950, budget: 1800, goalPercent: 30, color: 'var(--pfm-turquoise-strong)' },
+    security: { spent: 600, budget: 1200, goalPercent: 20, color: 'var(--pfm-green-strong)' },
   },
   isOnTrack: true,
 };
@@ -90,9 +90,9 @@ export const securityData = {
 
 export const spendCategoriesDonutData = {
   segments: [
-    { label: 'Needs', value: 2762.50, color: '#ED5EA6' },
-    { label: 'Lifestyle', value: 1950, color: '#4AB2B2' },
-    { label: 'Saved', value: 600, color: '#0A5A2B' },
+    { label: 'Needs', value: 2762.50, color: 'var(--pfm-pink-base)' },
+    { label: 'Lifestyle', value: 1950, color: 'var(--pfm-turquoise-strong)' },
+    { label: 'Saved', value: 600, color: 'var(--pfm-green-strong)' },
   ],
 };
 
@@ -102,9 +102,9 @@ export const financialStrategyData = {
   name: 'Steady & Secure',
   description: 'A balanced approach focused on building stability while maintaining flexibility for life\'s opportunities.',
   segments: [
-    { label: 'Needs', value: 50, color: '#ED5EA6' },
-    { label: 'Wants', value: 30, color: '#4AB2B2' },
-    { label: 'Security', value: 20, color: '#0A5A2B' },
+    { label: 'Needs', value: 50, color: 'var(--pfm-pink-base)' },
+    { label: 'Wants', value: 30, color: 'var(--pfm-turquoise-strong)' },
+    { label: 'Security', value: 20, color: 'var(--pfm-green-strong)' },
   ],
 };
 
@@ -544,7 +544,7 @@ export const childAccountDetailData: ChildAccountDetail = {
   spendingBreakdown: [
     { label: 'Spent this week', percentage: 45, color: '#2E4E78' },
     { label: 'Remaining allowance', percentage: 15, color: '#7189A7' },
-    { label: 'Top category', percentage: 40, color: '#ED5EA6' },
+    { label: 'Top category', percentage: 40, color: 'var(--pfm-pink-base)' },
   ],
   weeklyAllowance: 25,
 };
@@ -742,24 +742,24 @@ export const investPortfolios: Portfolio[] = [
 ];
 
 export const investAllocationByType: AllocationSegment[] = [
-  { label: 'Cash', value: 6.18, percentage: 62.44, color: '#4AB2B2' },
+  { label: 'Cash', value: 6.18, percentage: 62.44, color: 'var(--pfm-turquoise-strong)' },
   { label: 'Clean energy', value: 2.81, percentage: 28.45, color: '#B25A00' },
-  { label: 'Consumer goods', value: 910.45, percentage: 9.10, color: '#0A5A2B' },
+  { label: 'Consumer goods', value: 910.45, percentage: 9.10, color: 'var(--pfm-green-strong)' },
 ];
 
 export const investAllocationBySector: AllocationSegment[] = [
-  { label: 'Technology', value: 18200, percentage: 42, color: '#4AB2B2' },
-  { label: 'Healthcare', value: 8600, percentage: 20, color: '#ED5EA6' },
+  { label: 'Technology', value: 18200, percentage: 42, color: 'var(--pfm-turquoise-strong)' },
+  { label: 'Healthcare', value: 8600, percentage: 20, color: 'var(--pfm-pink-base)' },
   { label: 'Financials', value: 6450, percentage: 15, color: '#B25A00' },
-  { label: 'Commodities', value: 5160, percentage: 12, color: '#0A5A2B' },
+  { label: 'Commodities', value: 5160, percentage: 12, color: 'var(--pfm-green-strong)' },
   { label: 'Others', value: 4454.66, percentage: 11, color: '#7189A7' },
 ];
 
 export const investAllocationByGeography: GeographyAllocation[] = [
-  { country: 'United States', flagEmoji: '🇺🇸', value: 21430, percentage: 50, color: '#4AB2B2' },
-  { country: 'Europe', flagEmoji: '🇪🇺', value: 10716, percentage: 25, color: '#ED5EA6' },
+  { country: 'United States', flagEmoji: '🇺🇸', value: 21430, percentage: 50, color: 'var(--pfm-turquoise-strong)' },
+  { country: 'Europe', flagEmoji: '🇪🇺', value: 10716, percentage: 25, color: 'var(--pfm-pink-base)' },
   { country: 'Switzerland', flagEmoji: '🇨🇭', value: 4286, percentage: 10, color: '#B25A00' },
-  { country: 'Japan', flagEmoji: '🇯🇵', value: 3429, percentage: 8, color: '#0A5A2B' },
+  { country: 'Japan', flagEmoji: '🇯🇵', value: 3429, percentage: 8, color: 'var(--pfm-green-strong)' },
   { country: 'Others', flagEmoji: '🌐', value: 3003.66, percentage: 7, color: '#7189A7' },
 ];
 

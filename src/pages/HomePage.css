@@ -6,7 +6,7 @@
   padding: 8px 12px;
   border: 1px solid var(--pfm-neutral-100);
   border-radius: 8px;
-  background: white;
+  background: var(--pfm-surface-card);
   cursor: pointer;
   font-family: var(--pfm-font-family);
   font-weight: 400;

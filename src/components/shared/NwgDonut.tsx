@@ -14,9 +14,9 @@ interface NwgDonutProps {
 }
 
 const SEGMENTS = [
-  { key: 'need' as const, label: 'Needs', color: '#ED5EA6', prop: 'needs' as const },
-  { key: 'want' as const, label: 'Lifestyle', color: '#1ED2D2', prop: 'wants' as const },
-  { key: 'growth' as const, label: 'Saved', color: '#0A5A2B', prop: 'growth' as const },
+  { key: 'need' as const, label: 'Needs', color: 'var(--pfm-pink-base)', prop: 'needs' as const },
+  { key: 'want' as const, label: 'Lifestyle', color: 'var(--pfm-turquoise-extra-strong)', prop: 'wants' as const },
+  { key: 'growth' as const, label: 'Saved', color: 'var(--pfm-green-strong)', prop: 'growth' as const },
 ];
 
 const NwgDonut: React.FC<NwgDonutProps> = ({ needs, wants, growth, onSegmentTap }) => {

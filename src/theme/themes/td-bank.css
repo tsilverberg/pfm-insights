@@ -56,5 +56,6 @@
 
   /* Status */
   --pfm-status-success: #006400;
+  --pfm-status-success-vivid: #34A853;
   --pfm-change-positive: #006400;
 }

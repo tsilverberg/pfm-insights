@@ -1,8 +1,8 @@
-/* Ionic variable overrides */
+/* Ionic variable overrides — use PFM tokens for header/content continuity */
 :root {
   --ion-font-family: var(--pfm-font-family);
-  --ion-background-color: #FFFFFF;
-  --ion-text-color: #061223;
+  --ion-background-color: var(--pfm-surface-background);
+  --ion-text-color: var(--pfm-text-primary);
   --ion-toolbar-background: transparent;
   --ion-tab-bar-background: transparent;
 }
@@ -10,8 +10,8 @@
 /* Force light mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --ion-background-color: #FFFFFF;
-    --ion-text-color: #061223;
+    --ion-background-color: var(--pfm-surface-background);
+    --ion-text-color: var(--pfm-text-primary);
   }
 }
 

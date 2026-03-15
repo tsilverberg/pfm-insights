@@ -146,7 +146,7 @@ export const coachNudges: CoachNudge[] = [
     insightType: 'celebration',
     title: 'Savings milestone reached!',
     body: "You've saved €578 this month — that's 83% of your goal! You're building great habits.",
-    accentColor: '#1BA97F',
+    accentColor: 'var(--pfm-status-success-vivid)',
     priority: 4,
     tab: 'plan',
     ctaLabel: 'See progress',

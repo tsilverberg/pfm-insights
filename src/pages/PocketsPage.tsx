@@ -47,7 +47,7 @@ const PocketsPage: React.FC = () => {
       </IonContent>
 
       <BottomSheet isOpen={sheetOpen} onClose={() => setSheetOpen(false)} title="Add money">
-        <div style={{ padding: '16px 0' }}>
+        <div style={{ padding: '8px 0 16px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <div className="typo-footnote" style={{ color: 'var(--pfm-text-secondary)', marginBottom: 4 }}>
               {pocketsListData.find(p => p.id === selectedPocket)?.name}

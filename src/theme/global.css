@@ -12,6 +12,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Page content — use PFM surface for header/content continuity */
+ion-content {
+  --background: var(--pfm-surface-background);
+}
+
 /* Page content area with bottom padding for floating tab bar */
 .page-content {
   padding-bottom: calc(140px + env(safe-area-inset-bottom, 0px));

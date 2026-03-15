@@ -25,7 +25,7 @@
 
 .pillar-detail__trend-badge--improving {
   background: rgba(27, 169, 127, 0.12);
-  color: #1BA97F;
+  color: var(--pfm-status-success-vivid);
 }
 
 .pillar-detail__trend-badge--stable {
@@ -164,7 +164,7 @@
 
 .pillar-detail__impact-badge--high {
   background: rgba(27, 169, 127, 0.12);
-  color: #1BA97F;
+  color: var(--pfm-status-success-vivid);
 }
 
 .pillar-detail__impact-badge--medium {

@@ -16,11 +16,11 @@
 }
 
 .cashflow-summary__stat--received {
-  border-color: #1BA97F;
+  border-color: var(--pfm-status-success-vivid);
 }
 
 .cashflow-summary__stat--spent {
-  border-color: #ED5EA6;
+  border-color: var(--pfm-pink-base);
 }
 
 .cashflow-summary__stat--upcoming {
@@ -54,11 +54,11 @@
 }
 
 .cashflow-summary__bar-segment--received {
-  background: #1BA97F;
+  background: var(--pfm-status-success-vivid);
 }
 
 .cashflow-summary__bar-segment--spent {
-  background: #ED5EA6;
+  background: var(--pfm-pink-base);
 }
 
 .cashflow-summary__bar-segment--upcoming {

@@ -51,7 +51,7 @@ const MonthlyGoalsTab: React.FC = () => {
                   {formatPercent(snapshot.needs.goalPercent)} of income
                 </span>
               </div>
-              <ProgressBar value={snapshot.needs.spent} max={snapshot.needs.budget} color="#ED5EA6" height={12} />
+              <ProgressBar value={snapshot.needs.spent} max={snapshot.needs.budget} color="var(--pfm-pink-base)" height={12} />
               <div className="goals__snapshot-captions">
                 <span className="typo-footnote color-secondary">{formatEuro(snapshot.needs.spent)} spent</span>
                 <span className="typo-footnote color-secondary">{formatEuro(snapshot.needs.budget)} budget</span>
@@ -66,7 +66,7 @@ const MonthlyGoalsTab: React.FC = () => {
                   {formatPercent(snapshot.wants.goalPercent)} of income
                 </span>
               </div>
-              <ProgressBar value={snapshot.wants.spent} max={snapshot.wants.budget} color="#3A8C8C" height={12} />
+              <ProgressBar value={snapshot.wants.spent} max={snapshot.wants.budget} color="var(--pfm-turquoise-extra-strong)" height={12} />
               <div className="goals__snapshot-captions">
                 <span className="typo-footnote color-secondary">{formatEuro(snapshot.wants.spent)} spent</span>
                 <span className="typo-footnote color-secondary">{formatEuro(snapshot.wants.budget)} budget</span>
@@ -81,7 +81,7 @@ const MonthlyGoalsTab: React.FC = () => {
                   {formatPercent(snapshot.security.goalPercent)} of income
                 </span>
               </div>
-              <ProgressBar value={snapshot.security.spent} max={snapshot.security.budget} color="#0A5A2B" height={12} />
+              <ProgressBar value={snapshot.security.spent} max={snapshot.security.budget} color="var(--pfm-green-strong)" height={12} />
               <div className="goals__snapshot-captions">
                 <span className="typo-footnote color-secondary">{formatEuro(snapshot.security.spent)} spent</span>
                 <span className="typo-footnote color-secondary">{formatEuro(snapshot.security.budget)} budget</span>
@@ -104,7 +104,7 @@ const MonthlyGoalsTab: React.FC = () => {
         </div>
         <div className="section-module__content">
           <div className="mt-16">
-            <ProgressBar value={needsData.totalSpent} max={needsBudget} color="#ED5EA6" height={4} />
+            <ProgressBar value={needsData.totalSpent} max={needsBudget} color="var(--pfm-pink-base)" height={4} />
           </div>
           <div className="goals__bar-captions">
             <span className="typo-footnote color-secondary">{formatEuro(needsData.totalSpent)} spent</span>
@@ -137,7 +137,7 @@ const MonthlyGoalsTab: React.FC = () => {
         </div>
         <div className="section-module__content">
           <div className="mt-16">
-            <ProgressBar value={wantsData.totalSpent} max={wantsBudget} color="#3A8C8C" height={4} />
+            <ProgressBar value={wantsData.totalSpent} max={wantsBudget} color="var(--pfm-turquoise-extra-strong)" height={4} />
           </div>
           <div className="goals__bar-captions">
             <span className="typo-footnote color-secondary">{formatEuro(wantsData.totalSpent)} spent</span>

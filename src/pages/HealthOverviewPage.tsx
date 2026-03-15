@@ -21,14 +21,14 @@ const PILLAR_ICONS: Record<string, string> = {
 };
 
 const RATING_COLORS: Record<string, string> = {
-  excellent: '#1BA97F',
+  excellent: 'var(--pfm-status-success-vivid)',
   good: '#295EFF',
   building: '#F5A623',
   'needs-attention': '#E5553B',
 };
 
 const IMPACT_COLORS: Record<string, string> = {
-  high: '#1BA97F',
+  high: 'var(--pfm-status-success-vivid)',
   medium: '#F5A623',
   low: '#295EFF',
 };
@@ -40,7 +40,7 @@ const TREND_ARROWS: Record<string, string> = {
 };
 
 const TREND_COLORS: Record<string, string> = {
-  improving: '#1BA97F',
+  improving: 'var(--pfm-status-success-vivid)',
   stable: 'var(--pfm-text-tertiary)',
   declining: '#E5553B',
 };
