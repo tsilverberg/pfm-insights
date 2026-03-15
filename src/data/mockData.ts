@@ -427,6 +427,7 @@ export const moreActionsSections: MoreActionsSection[] = [
     section: 'Account',
     items: [
       { icon: 'description', title: 'Account details', description: 'View info, documents, and limits', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
+      { icon: 'settings', title: 'Account settings', description: 'Personalise, notifications, and preferences', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
       { icon: 'receipt_long', title: 'Statements & documents', description: 'Download statements and confirmations', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
       { icon: 'credit_card', title: 'Cards & payment methods', description: 'Manage cards linked to this account', iconBg: 'var(--pfm-palette-blue-extra-soft)' },
     ],

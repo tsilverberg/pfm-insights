@@ -23,7 +23,7 @@ const MoreActionsPage: React.FC = () => {
       <ScreenHeader
         title="More actions"
         rightIcon={SearchIcon}
-        onBackAction={() => history.replace(`/account/${id}`)}
+        onBackAction={() => history.replace('/home')}
       />
       <IonContent className="page-content">
         <div className="more-actions">
@@ -44,6 +44,8 @@ const MoreActionsPage: React.FC = () => {
                       history.push(item.route);
                     } else if (item.title === 'Account details') {
                       history.replace(`/account/${id}`);
+                    } else if (item.title === 'Account settings') {
+                      history.push(`/account/${id}/settings`);
                     } else if (item.title === 'Sharing & permissions') {
                       history.push(`/account/${id}/access`);
                     } else {
