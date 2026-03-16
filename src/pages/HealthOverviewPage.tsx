@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import ScreenHeader from '../components/shared/ScreenHeader';
@@ -7,9 +7,12 @@ import ProgressBar from '../components/shared/ProgressBar';
 import HealthScoreRing from '../components/shared/HealthScoreRing';
 import SpotlightCard from '../components/shared/SpotlightCard';
 import CoachMomentCard from '../components/shared/CoachMomentCard';
+import CoachSheet from '../components/shared/CoachSheet';
 import TrendLineChart from '../components/charts/TrendLineChart';
-import { healthScoreData } from '../data/pfmData';
+import { healthScoreData, calculateRhythmImpact, cashflowData } from '../data/pfmData';
 import { coachNudges } from '../data/coachData';
+import { formatEuroShort } from '../data/formatters';
+import { useRhythm } from '../hooks/useRhythm';
 import { PILLAR_WEIGHTS, PILLAR_LABELS } from '../data/constants';
 import type { PillarScore, ImprovementAction } from '../data/types';
 import './HealthOverviewPage.css';
@@ -50,7 +53,22 @@ const TREND_COLORS: Record<string, string> = {
 const HealthOverviewPage: React.FC = () => {
   const history = useHistory();
   const [showCoach, setShowCoach] = useState(true);
+  const [coachOpen, setCoachOpen] = useState(false);
+  const { rhythmTarget, rhythmImpact, priorities, totalMonthlyContribution } = useRhythm();
   const nudge = coachNudges.find(n => n.insightType === 'nudge');
+
+  // Teaser impact for users without a rhythm (show what Balanced would do)
+  const teaserImpact = useMemo(
+    () => calculateRhythmImpact({ needs: 50, wants: 30, growth: 20 }),
+    []
+  );
+
+  // Priority status counts
+  const monthlyGrowthBudget = rhythmTarget
+    ? cashflowData.received * (rhythmTarget.growth / 100)
+    : 0;
+  const onTrackCount = priorities.filter(p => (p.monthlyContribution || 0) <= monthlyGrowthBudget).length;
+  const behindCount = priorities.length - onTrackCount;
   const handleBack = () => history.push('/insights');
 
   // Compute delta from history
@@ -111,6 +129,7 @@ const HealthOverviewPage: React.FC = () => {
                   title={nudge.title}
                   body={nudge.body}
                   ctaLabel={nudge.ctaLabel}
+                  onCta={() => setCoachOpen(true)}
                   onClose={() => setShowCoach(false)}
                 />
               </SectionModule>
@@ -207,54 +226,115 @@ const HealthOverviewPage: React.FC = () => {
             </div>
           </SectionModule>
 
-          {/* Section 3b: Rhythm & Score Connection */}
-          <SectionModule title="Your rhythm & your score">
+          {/* Section 3b: What's Driving Your Score */}
+          <SectionModule title="What's driving your score">
             <div className="health-overview__rhythm-section card-raised">
-              <p className="health-overview__rhythm-intro typo-callout-regular color-secondary">
-                Your spending rhythm directly influences 50% of your health score
-                through the Spending and Savings pillars.
-              </p>
+              {!rhythmTarget ? (
+                /* ── No rhythm set: teaser ── */
+                <>
+                  <p className="health-overview__rhythm-intro typo-callout-regular color-secondary">
+                    Your spending rhythm influences 50% of your health score through
+                    the Spending and Savings pillars.
+                  </p>
 
-              <div className="health-overview__rhythm-rows">
-                <div className="health-overview__rhythm-row">
-                  <span className="material-symbols-rounded health-overview__rhythm-icon" aria-hidden="true">
-                    shopping_cart
-                  </span>
-                  <div className="health-overview__rhythm-row-text">
-                    <span className="typo-callout-semibold color-primary">Spending control (25%)</span>
-                    <span className="typo-footnote color-secondary">
-                      How well your Needs and Lifestyle spending match your targets
+                  <div className="health-overview__score-teaser">
+                    <div className="health-overview__score-teaser-row">
+                      <span className="typo-callout-semibold">{teaserImpact.currentScore}</span>
+                      <span className="material-symbols-rounded" style={{ fontSize: 16, color: 'var(--pfm-text-tertiary)' }}>arrow_forward</span>
+                      <span className="typo-callout-semibold" style={{ color: 'var(--pfm-status-success)' }}>
+                        {teaserImpact.projectedScore}
+                      </span>
+                      <span className="typo-footnote" style={{ color: 'var(--pfm-status-success)' }}>
+                        +{teaserImpact.delta} pts in ~{teaserImpact.timelineWeeks} weeks
+                      </span>
+                    </div>
+                    <span className="typo-footnote color-tertiary">
+                      Based on a Balanced (50/30/20) rhythm
                     </span>
                   </div>
-                </div>
-                <div className="health-overview__rhythm-row">
-                  <span className="material-symbols-rounded health-overview__rhythm-icon" aria-hidden="true">
-                    savings
-                  </span>
-                  <div className="health-overview__rhythm-row-text">
-                    <span className="typo-callout-semibold color-primary">Savings rate (25%)</span>
-                    <span className="typo-footnote color-secondary">
-                      How close your actual savings rate is to your growth target
+
+                  {priorities.length > 0 && (
+                    <div className="health-overview__stat-row">
+                      <span className="material-symbols-rounded" style={{ fontSize: 18, color: 'var(--pfm-text-secondary)' }}>flag</span>
+                      <span className="typo-footnote color-secondary">
+                        {priorities.length} {priorities.length === 1 ? 'priority' : 'priorities'} set — {formatEuroShort(totalMonthlyContribution)}/mo needed
+                      </span>
+                    </div>
+                  )}
+
+                  <button
+                    className="health-overview__rhythm-cta"
+                    onClick={() => history.push('/insights?tab=plan')}
+                  >
+                    Set your rhythm
+                  </button>
+                </>
+              ) : (
+                /* ── Rhythm active ── */
+                <>
+                  {/* Rhythm bar */}
+                  <div className="health-overview__rhythm-active-header">
+                    <span className="typo-footnote color-secondary" style={{ fontWeight: 600 }}>Your rhythm</span>
+                    <span className="typo-footnote">
+                      <span style={{ color: 'var(--pfm-pink-base)' }}>{rhythmTarget.needs}</span>
+                      <span className="color-tertiary"> / </span>
+                      <span style={{ color: 'var(--pfm-turquoise-strong)' }}>{rhythmTarget.wants}</span>
+                      <span className="color-tertiary"> / </span>
+                      <span style={{ color: 'var(--pfm-status-success)' }}>{rhythmTarget.growth}</span>
                     </span>
                   </div>
-                </div>
-              </div>
+                  <div className="health-overview__rhythm-bar">
+                    <div style={{ width: `${rhythmTarget.needs}%`, background: 'var(--pfm-pink-base)', height: 8, borderRadius: 2 }} />
+                    <div style={{ width: `${rhythmTarget.wants}%`, background: 'var(--pfm-turquoise-strong)', height: 8, borderRadius: 2 }} />
+                    <div style={{ width: `${rhythmTarget.growth}%`, background: 'var(--pfm-status-success)', height: 8, borderRadius: 2 }} />
+                  </div>
 
-              <div className="health-overview__rhythm-prompt">
-                <span className="material-symbols-rounded" style={{ fontSize: 20, color: 'var(--pfm-action-primary-bg)' }} aria-hidden="true">
-                  tune
-                </span>
-                <span className="typo-footnote color-secondary">
-                  Set a spending rhythm to unlock personalised score improvement projections
-                </span>
-              </div>
+                  {/* Score projection */}
+                  {rhythmImpact && rhythmImpact.delta > 0 && (
+                    <div className="health-overview__stat-row">
+                      <span className="material-symbols-rounded" style={{ fontSize: 18, color: 'var(--pfm-status-success)' }}>trending_up</span>
+                      <span className="typo-footnote color-secondary">
+                        Score projection: {rhythmImpact.currentScore} → {rhythmImpact.projectedScore}{' '}
+                        <span style={{ color: 'var(--pfm-status-success)', fontWeight: 600 }}>
+                          (+{rhythmImpact.delta} pts in ~{rhythmImpact.timelineWeeks} weeks)
+                        </span>
+                      </span>
+                    </div>
+                  )}
 
-              <button
-                className="health-overview__rhythm-cta"
-                onClick={() => history.push('/insights?tab=plan')}
-              >
-                Set your rhythm
-              </button>
+                  {/* Pillar impacts */}
+                  {rhythmImpact && rhythmImpact.pillarImpacts
+                    .filter(p => p.delta > 0)
+                    .map(p => (
+                      <div key={p.pillarId} className="health-overview__stat-row health-overview__stat-row--indent">
+                        <span className="typo-footnote color-tertiary">
+                          {PILLAR_LABELS[p.pillarId]}: {p.currentScore} → {p.projectedScore} (+{p.delta})
+                        </span>
+                      </div>
+                    ))
+                  }
+
+                  {/* Priorities summary */}
+                  {priorities.length > 0 && (
+                    <div className="health-overview__stat-row">
+                      <span className="material-symbols-rounded" style={{ fontSize: 18, color: 'var(--pfm-text-secondary)' }}>flag</span>
+                      <span className="typo-footnote color-secondary">
+                        {priorities.length} {priorities.length === 1 ? 'priority' : 'priorities'}
+                        {onTrackCount > 0 && <> · <span style={{ color: 'var(--pfm-status-success)' }}>{onTrackCount} on track</span></>}
+                        {behindCount > 0 && <> · <span style={{ color: 'var(--pfm-status-warning, #F5A623)' }}>{behindCount} behind</span></>}
+                        {' '}· {formatEuroShort(totalMonthlyContribution)}/mo
+                      </span>
+                    </div>
+                  )}
+
+                  <button
+                    className="health-overview__rhythm-cta health-overview__rhythm-cta--ghost"
+                    onClick={() => history.push('/insights?tab=plan')}
+                  >
+                    View & adjust in Plan
+                  </button>
+                </>
+              )}
             </div>
           </SectionModule>
 
@@ -309,6 +389,7 @@ const HealthOverviewPage: React.FC = () => {
           <div className="bottom-spacer" />
         </div>
       </IonContent>
+      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/insights/health" />
     </IonPage>
   );
 };

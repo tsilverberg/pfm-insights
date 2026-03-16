@@ -253,3 +253,58 @@
 .health-overview__rhythm-cta:active {
   opacity: 0.8;
 }
+
+.health-overview__rhythm-cta--ghost {
+  background: transparent;
+  color: var(--pfm-action-primary-bg);
+  border: 1.5px solid var(--pfm-border-subtle);
+}
+
+/* ─── Score Teaser (no rhythm set) ────────────────────────── */
+
+.health-overview__score-teaser {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: var(--pfm-surface-subtle);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.health-overview__score-teaser-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── Active Rhythm Section ───────────────────────────────── */
+
+.health-overview__rhythm-active-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.health-overview__rhythm-bar {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.health-overview__stat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.health-overview__stat-row--indent {
+  padding-left: 26px;
+  padding-top: 0;
+  padding-bottom: 2px;
+}
