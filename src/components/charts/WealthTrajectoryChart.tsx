@@ -15,36 +15,50 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, 
 
 interface WealthTrajectoryChartProps {
   ages: number[];
+  /** The main solid line — "Your path" (rhythm-adjusted when set, otherwise current) */
   currentPath: number[];
-  recommendedPath: number[];
+  /** The secondary dashed line — "Recommended" or "Without changes" */
+  comparisonPath: number[];
+  /** Label for the comparison line */
+  comparisonLabel?: string;
+  /** Use green accent for the main line (when rhythm is active) */
+  rhythmActive?: boolean;
 }
 
-const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, currentPath, recommendedPath }) => {
+const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({
+  ages,
+  currentPath,
+  comparisonPath,
+  comparisonLabel = 'Recommended',
+  rhythmActive = false,
+}) => {
   const t = getTokens();
+  const mainColor = rhythmActive ? '#34C759' : t.wantsColor;
+  const datasets = [
+    {
+      label: comparisonLabel,
+      data: comparisonPath,
+      borderColor: t.textTertiary + '80',
+      borderDash: [6, 4],
+      borderWidth: 1.5,
+      fill: false,
+      pointRadius: 0,
+      tension: 0.3,
+    },
+    {
+      label: 'Your path',
+      data: currentPath,
+      borderColor: mainColor,
+      backgroundColor: mainColor + '1A',
+      borderWidth: 2,
+      fill: true,
+      pointRadius: 0,
+      tension: 0.3,
+    },
+  ];
   const data = {
     labels: ages,
-    datasets: [
-      {
-        label: 'Recommended',
-        data: recommendedPath,
-        borderColor: t.wantsColor,
-        borderDash: [6, 4],
-        borderWidth: 2,
-        fill: false,
-        pointRadius: 0,
-        tension: 0.3,
-      },
-      {
-        label: 'Your path',
-        data: currentPath,
-        borderColor: t.wantsColor,
-        backgroundColor: t.wantsColor + '26',
-        borderWidth: 2,
-        fill: true,
-        pointRadius: 0,
-        tension: 0.3,
-      },
-    ],
+    datasets,
   };
 
   const options = {
@@ -83,7 +97,7 @@ const WealthTrajectoryChart: React.FC<WealthTrajectoryChartProps> = ({ ages, cur
       },
       y: {
         min: 0,
-        max: 500000,
+        max: Math.ceil(Math.max(...comparisonPath, ...currentPath) / 100000) * 100000,
         grid: { display: false },
         border: {
           display: true,

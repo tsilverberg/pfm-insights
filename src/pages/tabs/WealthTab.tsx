@@ -1,12 +1,15 @@
 import React, { useState, lazy, Suspense } from 'react';
 import SectionModule from '../../components/shared/SectionModule';
+import CoachIcon from '../../components/shared/CoachIcon';
 import MonthPicker from '../../components/shared/MonthPicker';
 import TimePeriodPills from '../../components/shared/TimePeriodPills';
 import DottedLeaderRow from '../../components/shared/DottedLeaderRow';
 import AnimatedNumber from '../../components/shared/AnimatedNumber';
 import SkeletonLoader from '../../components/shared/SkeletonLoader';
 import { useMonthNavigation } from '../../hooks/useMonthNavigation';
-import { formatEuro, formatEuroK } from '../../data/formatters';
+import { useRhythm } from '../../hooks/useRhythm';
+import { formatEuro, formatEuroK, formatEuroShort } from '../../data/formatters';
+import { conversationStarters } from '../../data/coachData';
 import {
   netWealthData,
   spendingHeatmapData,
@@ -19,9 +22,16 @@ const SpendingHeatmap = lazy(() => import('../../components/charts/SpendingHeatm
 const WealthTrajectoryChart = lazy(() => import('../../components/charts/WealthTrajectoryChart'));
 const DonutChart = lazy(() => import('../../components/charts/DonutChart'));
 
-const WealthTab: React.FC = () => {
+interface WealthTabProps {
+  onOpenCoach?: (starterText?: string) => void;
+}
+
+const wealthStarters = conversationStarters.filter(s => s.tab === 'wealth' && s.personaId === 'family');
+
+const WealthTab: React.FC<WealthTabProps> = ({ onOpenCoach }) => {
   const [timePeriod, setTimePeriod] = useState('6M');
   const monthNav = useMonthNavigation();
+  const { rhythmTarget, wealthProjection } = useRhythm();
 
   return (
     <div>
@@ -50,15 +60,19 @@ const WealthTab: React.FC = () => {
         <Suspense fallback={<SkeletonLoader variant="chart" />}>
           <WealthTrajectoryChart
             ages={wealthTrajectoryData.ages}
-            currentPath={wealthTrajectoryData.currentPath}
-            recommendedPath={wealthTrajectoryData.recommendedPath}
+            currentPath={wealthProjection ? wealthProjection.rhythmPathByAge : wealthTrajectoryData.currentPath}
+            comparisonPath={wealthTrajectoryData.recommendedPath}
+            comparisonLabel="Recommended"
+            rhythmActive={!!wealthProjection}
           />
         </Suspense>
         <div className="flex-col gap-8 mt-16">
           <DottedLeaderRow
-            label="Your path"
-            value={formatEuroK(wealthTrajectoryData.currentPath[wealthTrajectoryData.currentPath.length - 1])}
-            labelIcon={<span className="wealth__legend-line" />}
+            label={wealthProjection ? 'My rhythm' : 'Your path'}
+            value={formatEuroK(wealthProjection
+              ? wealthProjection.rhythmPathByAge[wealthProjection.rhythmPathByAge.length - 1]
+              : wealthTrajectoryData.currentPath[wealthTrajectoryData.currentPath.length - 1])}
+            labelIcon={<span className={`wealth__legend-line${wealthProjection ? ' wealth__legend-line--rhythm' : ''}`} />}
           />
           <DottedLeaderRow
             label="Recommended"
@@ -66,6 +80,54 @@ const WealthTab: React.FC = () => {
             labelIcon={<span className="wealth__legend-dashed" />}
           />
         </div>
+
+        {/* Gap callout when rhythm is set */}
+        {wealthProjection && wealthProjection.lifetimeGap > 0 && (
+          <div className="wealth__gap-callout">
+            <div className="wealth__gap-callout-header">
+              <span className="material-symbols-rounded" style={{ fontSize: 18, color: 'var(--pfm-status-success-vivid, #34C759)' }}>
+                trending_up
+              </span>
+              <span className="typo-callout-semibold">Wealth at 65</span>
+            </div>
+            <div className="wealth__gap-callout-body">
+              <div className="wealth__gap-callout-row">
+                <span className="typo-footnote color-tertiary">Recommended</span>
+                <span className="typo-callout-regular">
+                  {formatEuroK(wealthTrajectoryData.recommendedPath[29])}
+                </span>
+              </div>
+              <div className="wealth__gap-callout-row">
+                <span className="typo-footnote" style={{ color: 'var(--pfm-status-success-vivid, #34C759)' }}>My rhythm</span>
+                <span className="typo-callout-semibold" style={{ color: 'var(--pfm-status-success-vivid, #34C759)' }}>
+                  {formatEuroShort(wealthProjection.wealthAt65Rhythm)}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Coach Q&A starters */}
+        {onOpenCoach && (
+          <div className="wealth__coach-qa">
+            <div className="wealth__coach-qa-header">
+              <CoachIcon size={18} color="var(--pfm-action-primary-bg)" />
+              <span className="typo-footnote color-secondary">Ask your coach</span>
+            </div>
+            <div className="wealth__coach-qa-pills">
+              {wealthStarters.map(s => (
+                <button
+                  key={s.id}
+                  className="wealth__coach-qa-pill typo-footnote"
+                  onClick={() => onOpenCoach(s.text)}
+                >
+                  {s.text}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="mt-16">
           <TimePeriodPills
             options={['1M', '3M', '6M', '12M', 'YTD', 'All']}

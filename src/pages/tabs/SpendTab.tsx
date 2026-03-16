@@ -13,7 +13,11 @@ import { monthlyNwgData, monthlyTopSpending } from '../../data/mockData';
 import { coachNudges } from '../../data/coachData';
 import './SpendTab.css';
 
-const SpendTab: React.FC = () => {
+interface SpendTabProps {
+  onOpenCoach?: () => void;
+}
+
+const SpendTab: React.FC<SpendTabProps> = ({ onOpenCoach }) => {
   const history = useHistory();
   const monthNav = useMonthNavigation();
   const { showToast } = useToast();
@@ -65,7 +69,7 @@ const SpendTab: React.FC = () => {
             title={nudge.title}
             body={nudge.body}
             ctaLabel={nudge.ctaLabel}
-            onCta={() => showToast({ type: 'info', message: 'Transfer feature coming soon' })}
+            onCta={() => onOpenCoach?.() ?? showToast({ type: 'info', message: 'Transfer feature coming soon' })}
             isAction
             onClose={() => setShowCoach(false)}
           />

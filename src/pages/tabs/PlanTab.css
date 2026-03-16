@@ -190,6 +190,16 @@
   margin-top: 4px;
 }
 
+.plan__wealth-callout--tappable {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease;
+}
+
+.plan__wealth-callout--tappable:active {
+  opacity: 0.7;
+}
+
 .plan__wealth-callout-row {
   display: flex;
   align-items: center;

@@ -4,16 +4,19 @@ import { useHistory } from 'react-router-dom';
 import SettingsMenuItem from '../components/shared/SettingsMenuItem';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import ThemeSelectorSheet from '../components/shared/ThemeSelectorSheet';
-import { profileData } from '../data/mockData';
+import { profileData, pocketsListData } from '../data/mockData';
 import { useToast } from '../hooks/useToast';
 import { useTheme } from '../hooks/useTheme';
+import { useRhythm } from '../hooks/useRhythm';
 import './ProfilePage.css';
 
 const ProfilePage: React.FC = () => {
   const history = useHistory();
   const { showToast } = useToast();
   const { theme } = useTheme();
+  const { setRhythmTarget, setPriorities } = useRhythm();
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [showThemeSheet, setShowThemeSheet] = useState(false);
 
   const sections = [
@@ -98,6 +101,19 @@ const ProfilePage: React.FC = () => {
 
           {/* Log out */}
           <button className="profile-logout" onClick={() => setShowLogoutConfirm(true)}>Log out</button>
+
+          {/* Reset demo */}
+          <div style={{ marginTop: 24, paddingTop: 24, borderTop: '1px solid var(--pfm-divider-default)' }}>
+            <div className="typo-footnote" style={{ color: 'var(--pfm-text-secondary)', marginBottom: 8, fontWeight: 600 }}>
+              Demo
+            </div>
+            <button
+              className="profile-reset-demo"
+              onClick={() => setShowResetConfirm(true)}
+            >
+              Reset demo
+            </button>
+          </div>
         </div>
 
         <div className="bottom-spacer" />
@@ -117,6 +133,26 @@ const ProfilePage: React.FC = () => {
             history.push('/home');
           }}
           onCancel={() => setShowLogoutConfirm(false)}
+        />
+
+        <ConfirmDialog
+          isOpen={showResetConfirm}
+          title="Reset demo"
+          message="This will clear your rhythm targets and reset priorities to the default demo state."
+          confirmLabel="Reset"
+          cancelLabel="Cancel"
+          onConfirm={() => {
+            setShowResetConfirm(false);
+            setRhythmTarget(null);
+            const resetPriorities = [...pocketsListData];
+            setPriorities(resetPriorities);
+            try {
+              localStorage.setItem('pfm-priorities', JSON.stringify(resetPriorities));
+            } catch { /* ignore */ }
+            showToast({ type: 'success', message: 'Demo reset successfully' });
+            history.push('/insights?tab=plan');
+          }}
+          onCancel={() => setShowResetConfirm(false)}
         />
       </IonContent>
     </IonPage>

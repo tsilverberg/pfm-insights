@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import SectionModule from '../../components/shared/SectionModule';
 import HealthScoreMiniCard from '../../components/shared/HealthScoreMiniCard';
 import TuneRhythmModal from '../../components/shared/TuneRhythmModal';
@@ -20,7 +21,12 @@ const CATEGORY_LABEL: Record<string, string> = {
   lifestyle: 'Lifestyle',
 };
 
-const PlanTab: React.FC = () => {
+interface PlanTabProps {
+  onOpenCoach?: () => void;
+}
+
+const PlanTab: React.FC<PlanTabProps> = ({ onOpenCoach }) => {
+  const history = useHistory();
   const { showToast } = useToast();
   const {
     rhythmTarget, setRhythmTarget,
@@ -193,12 +199,19 @@ const PlanTab: React.FC = () => {
               </div>
             )}
 
-            {/* Wealth projection callout */}
+            {/* Wealth projection callout — tappable → wealth tab */}
             {wealthProjection && wealthProjection.lifetimeGap > 0 && (
-              <div className="plan__wealth-callout">
+              <div
+                className="plan__wealth-callout plan__wealth-callout--tappable"
+                role="button"
+                tabIndex={0}
+                onClick={() => history.push('/insights?tab=wealth')}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); history.push('/insights?tab=wealth'); } }}
+              >
                 <div className="plan__wealth-callout-row">
                   <span className="material-symbols-rounded" style={{ fontSize: 16, color: 'var(--pfm-status-success)' }}>trending_up</span>
                   <span className="typo-footnote color-secondary">Wealth at 65</span>
+                  <span className="material-symbols-rounded plan__wealth-callout-chevron" style={{ fontSize: 14, color: 'var(--pfm-text-tertiary)', marginLeft: 'auto' }}>chevron_right</span>
                 </div>
                 <div className="plan__wealth-callout-values">
                   <span className="typo-footnote color-tertiary">
@@ -233,6 +246,7 @@ const PlanTab: React.FC = () => {
             title={nudge.title}
             body={nudge.body}
             ctaLabel={nudge.ctaLabel}
+            onCta={() => onOpenCoach?.()}
             onClose={() => setShowCoach(false)}
           />
         </SectionModule>

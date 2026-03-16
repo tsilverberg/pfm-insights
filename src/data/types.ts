@@ -512,7 +512,7 @@ export interface CohortProfile {
 
 // ─── Coach Types ──────────────────────────────────────────────
 
-export type CoachTab = 'home' | 'spend' | 'plan' | 'more';
+export type CoachTab = 'home' | 'spend' | 'plan' | 'wealth' | 'more';
 
 export interface ConversationStarter {
   id: string;

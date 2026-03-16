@@ -25,11 +25,21 @@ const InsightsPage: React.FC = () => {
     }
   }, [location.search]);
   const [coachOpen, setCoachOpen] = useState(false);
+  const [coachQuestion, setCoachQuestion] = useState<string | undefined>();
   const history = useHistory();
+
+  const openCoach = (starterText?: string) => {
+    setCoachQuestion(starterText);
+    setCoachOpen(true);
+  };
+  const closeCoach = () => {
+    setCoachOpen(false);
+    setCoachQuestion(undefined);
+  };
 
   const headerActions = [
     { label: 'Cards', icon: <span className="material-symbols-rounded" style={{ fontSize: 22 }}>credit_card</span>, onClick: () => history.push('/cards') },
-    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => setCoachOpen(true) },
+    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => openCoach() },
   ];
 
   return (
@@ -42,12 +52,12 @@ const InsightsPage: React.FC = () => {
         <div className="insights-sub-nav-sticky">
           <SubNavTabs active={activeTab} onChange={setActiveTab} />
         </div>
-        {activeTab === 'overview' && <OverviewTab />}
-        {activeTab === 'spend' && <SpendTab />}
-        {activeTab === 'plan' && <PlanTab />}
-        {activeTab === 'wealth' && <WealthTab />}
+        {activeTab === 'overview' && <OverviewTab onOpenCoach={() => openCoach()} />}
+        {activeTab === 'spend' && <SpendTab onOpenCoach={() => openCoach()} />}
+        {activeTab === 'plan' && <PlanTab onOpenCoach={() => openCoach()} />}
+        {activeTab === 'wealth' && <WealthTab onOpenCoach={openCoach} />}
       </IonContent>
-      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/insights" />
+      <CoachSheet isOpen={coachOpen} onClose={closeCoach} context={`/insights?tab=${activeTab}`} initialQuestion={coachQuestion} />
     </IonPage>
   );
 };

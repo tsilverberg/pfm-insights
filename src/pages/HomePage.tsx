@@ -14,6 +14,7 @@ import ChildAccountCard from '../components/shared/ChildAccountCard';
 import DotIndicator from '../components/shared/DotIndicator';
 import AccountSelectorSheet from '../components/shared/AccountSelectorSheet';
 import {
+  profileData,
   homeQuickActions,
   homeTransactionsData,
   homePocketsData,
@@ -54,7 +55,7 @@ const HomePage: React.FC = () => {
           <IonRefresherContent />
         </IonRefresher>
         <div className="pt-16" ref={revealRef}>
-          <UserAvatarHeader onCoachPress={() => setCoachOpen(true)} />
+          <UserAvatarHeader avatarUrl={profileData.avatarUrl} onCoachPress={() => setCoachOpen(true)} />
 
           {/* Account Selector */}
           <div className="page-pad">
@@ -94,6 +95,7 @@ const HomePage: React.FC = () => {
                       title={nudge.title}
                       body={nudge.body}
                       ctaLabel={nudge.ctaLabel}
+                      onCta={() => setCoachOpen(true)}
                       onClose={() => setShowCoach(false)}
                     />
                   )}

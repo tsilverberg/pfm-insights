@@ -9,6 +9,7 @@ interface CoachSheetProps {
   isOpen: boolean;
   onClose: () => void;
   context?: string; // current route path
+  initialQuestion?: string; // auto-send this question when opening
 }
 
 interface Message {
@@ -20,11 +21,20 @@ interface Message {
 
 function getTabFromPath(path: string): string {
   if (path.startsWith('/home') || path === '/') return 'home';
-  if (path.startsWith('/insights')) return 'spend';
-  if (path.startsWith('/invest')) return 'plan';
-  if (path.startsWith('/explore')) return 'more';
   if (path.includes('health') || path.includes('pillar')) return 'plan';
   if (path.includes('category') || path.includes('nwg')) return 'spend';
+  if (path.startsWith('/insights')) {
+    const match = path.match(/[?&]tab=(\w+)/);
+    if (match) {
+      const tab = match[1];
+      if (tab === 'overview') return 'spend';
+      if (tab === 'wealth') return 'wealth';
+      if (['spend', 'plan'].includes(tab)) return tab;
+    }
+    return 'spend';
+  }
+  if (path.startsWith('/invest')) return 'plan';
+  if (path.startsWith('/explore')) return 'more';
   return 'home';
 }
 
@@ -45,7 +55,7 @@ function getContextNudge(path: string): { title: string; body: string; quickRepl
   return { title: nudge.title, body: nudge.body, quickReplies: nudge.quickReplies };
 }
 
-const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose, context = '/home' }) => {
+const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose, context = '/home', initialQuestion }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
   const [starters, setStarters] = useState<ConversationStarter[]>([]);
@@ -59,7 +69,7 @@ const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose, context = '/ho
       const nudge = getContextNudge(context);
       const initialMessages: Message[] = [];
 
-      if (nudge) {
+      if (nudge && !initialQuestion) {
         initialMessages.push({
           id: nextIdRef.current++,
           text: `**${nudge.title}**\n\n${nudge.body}`,
@@ -70,9 +80,28 @@ const CoachSheet: React.FC<CoachSheetProps> = ({ isOpen, onClose, context = '/ho
 
       setMessages(initialMessages);
       setStarters(getContextStarters(context));
-      setShowStarters(true);
+      setShowStarters(!initialQuestion);
+
+      // Auto-send initial question if provided
+      if (initialQuestion) {
+        const userMsg: Message = { id: nextIdRef.current++, text: initialQuestion, sender: 'user' };
+        setMessages([userMsg]);
+        setTimeout(() => {
+          const response = getCannedResponse('family', initialQuestion);
+          const newStarters = getContextStarters(context);
+          setMessages(prev => [
+            ...prev,
+            {
+              id: nextIdRef.current++,
+              text: response,
+              sender: 'coach',
+              quickReplies: newStarters.slice(0, 3).map(s => s.text),
+            },
+          ]);
+        }, 600);
+      }
     }
-  }, [isOpen, context]);
+  }, [isOpen, context, initialQuestion]);
 
   const scrollToBottom = () => {
     setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);

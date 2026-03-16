@@ -19,7 +19,7 @@ const CoachMomentCard: React.FC<CoachMomentCardProps> = ({ title, body, ctaLabel
         <div className="coach-card__text">{body}</div>
         {ctaLabel && (
           <div className="coach-card__cta">
-            <button className="btn-outline" onClick={onCta}>{ctaLabel}</button>
+            <button className="btn-outline" onClick={() => onCta?.()}>{ctaLabel}</button>
           </div>
         )}
       </div>

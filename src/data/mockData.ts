@@ -340,7 +340,7 @@ export const accountTransactionsData: TransactionGroup[] = [
 export const profileData = {
   name: 'Thomas S.',
   email: 'thomas@example.com',
-  avatarUrl: '/assets/icons/avatar-profile.jpg',
+  avatarUrl: '/assets/icons/avatar-user.png',
 };
 
 export const profileMenuItems: { section: string; items: SettingsMenuItemData[] }[] = [

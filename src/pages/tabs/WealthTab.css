@@ -52,3 +52,84 @@
   flex-shrink: 0;
   align-self: center;
 }
+
+/* Legend variant when rhythm is active */
+.wealth__legend-line--rhythm {
+  background-color: var(--pfm-status-success-vivid, #34C759);
+}
+
+.wealth__legend-dashed--muted {
+  border-top-color: var(--pfm-text-tertiary);
+  opacity: 0.5;
+}
+
+/* Gap Callout */
+.wealth__gap-callout {
+  margin-top: 16px;
+  background: var(--pfm-surface-subtle);
+  border-radius: var(--pfm-card-radius, 12px);
+  padding: 14px 16px;
+}
+
+.wealth__gap-callout-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.wealth__gap-callout-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wealth__gap-callout-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wealth__gap-callout-divider {
+  height: 1px;
+  background: var(--pfm-divider-default, #e0e0e0);
+  margin: 4px 0;
+}
+
+/* Coach Q&A */
+.wealth__coach-qa {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: var(--pfm-surface-subtle);
+  border-radius: var(--pfm-card-radius, 12px);
+}
+
+.wealth__coach-qa-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.wealth__coach-qa-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wealth__coach-qa-pill {
+  background: var(--pfm-bg-primary);
+  border: 1px solid var(--pfm-border-subtle, #e0e0e0);
+  border-radius: 20px;
+  padding: 10px 14px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--pfm-text-primary);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.wealth__coach-qa-pill:active {
+  opacity: 0.7;
+  background: var(--pfm-surface-subtle);
+}

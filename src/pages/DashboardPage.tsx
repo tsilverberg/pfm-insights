@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
+import CoachSheet from '../components/shared/CoachSheet';
 import { useToast } from '../hooks/useToast';
 import QuickActionsRow from '../components/shared/QuickActionsRow';
 import AccountListItem from '../components/shared/AccountListItem';
@@ -31,6 +32,7 @@ const DashboardPage: React.FC = () => {
   const { showToast } = useToast();
   const [txTab, setTxTab] = useState('Latest');
   const [showCoach, setShowCoach] = useState(true);
+  const [coachOpen, setCoachOpen] = useState(false);
   const [childIdx, setChildIdx] = useState(0);
   const nudge = coachNudges.find(n => n.tab === 'home' && n.insightType === 'nudge');
 
@@ -92,6 +94,7 @@ const DashboardPage: React.FC = () => {
                 title={nudge.title}
                 body={nudge.body}
                 ctaLabel={nudge.ctaLabel}
+                onCta={() => setCoachOpen(true)}
                 onClose={() => setShowCoach(false)}
               />
             )}
@@ -159,6 +162,7 @@ const DashboardPage: React.FC = () => {
 
         <div className="bottom-spacer" />
       </IonContent>
+      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/home" />
     </IonPage>
   );
 };

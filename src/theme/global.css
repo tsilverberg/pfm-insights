@@ -47,9 +47,19 @@ ion-content::part(scroll)::-webkit-scrollbar {
   padding: var(--pfm-section-padding) var(--pfm-page-padding);
 }
 
-/* Section with no title — no bottom border to avoid redundant lines */
+/* Section with no title — no bottom border, tighter vertical padding */
 .section-module.section-module--no-border {
   border-bottom: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.section-module.section-module--no-border .section-module__title {
+  display: none;
+}
+
+.section-module.section-module--no-border .section-module__content {
+  margin-top: 0;
 }
 
 .section-module__title {

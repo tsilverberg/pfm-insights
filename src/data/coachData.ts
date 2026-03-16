@@ -68,6 +68,12 @@ export const conversationStarters: ConversationStarter[] = [
   { id: 'fm-p2', text: 'How much are we saving for the kids?', tab: 'plan', personaId: 'family', intentTag: 'kids-savings' },
   { id: 'fm-p3', text: 'Rebalance our budget', tab: 'plan', personaId: 'family', intentTag: 'rebalance' },
   { id: 'fm-p4', text: "What's our household health score?", tab: 'plan', personaId: 'family', intentTag: 'health-score' },
+  // ── Family (Chen) — Wealth ──
+  { id: 'fm-w1', text: 'What is the wealth trajectory?', tab: 'wealth', personaId: 'family', intentTag: 'wealth-explain' },
+  { id: 'fm-w2', text: 'How is the recommended line calculated?', tab: 'wealth', personaId: 'family', intentTag: 'wealth-recommended' },
+  { id: 'fm-w3', text: 'How does my rhythm affect my wealth?', tab: 'wealth', personaId: 'family', intentTag: 'wealth-rhythm' },
+  { id: 'fm-w4', text: 'What can I do to close the gap?', tab: 'wealth', personaId: 'family', intentTag: 'wealth-gap' },
+
   { id: 'fm-m1', text: 'When should we overpay the mortgage?', tab: 'more', personaId: 'family', intentTag: 'mortgage' },
   { id: 'fm-m2', text: "What's the best savings plan for the kids?", tab: 'more', personaId: 'family', intentTag: 'kids-isa' },
   { id: 'fm-m3', text: 'How are irregular costs looking?', tab: 'more', personaId: 'family', intentTag: 'irregular-costs' },
@@ -546,6 +552,29 @@ export const cannedResponses: Record<string, CoachMessage> = {
     text: "Here's my advice on asking for a raise:\n\nYour case:\n- You've been managing your money for 3 months\n- You've completed 60% of chores on average\n- You've saved €121 total (headset + festival goals)\n\nTo make it stronger:\n- Hit 100% chore completion for 2 weeks straight\n- Show your savings goals and progress\n- Stay under your spending target\n\nOnce you've done that, you could ask for €14/week (a 17% raise). Show your parents this savings progress — it proves you're responsible!",
     quickReplies: ['Set a 2-week chore challenge', 'Show my savings progress', 'Draft a case for my parents'],
   },
+
+  // ══ WEALTH TRAJECTORY (Q&A) ══
+
+  'wealth-explain': {
+    id: 'r-wealth-explain', role: 'coach', timestamp: ts(),
+    text: "**Your wealth trajectory** shows how your net wealth is projected to grow over time — from today until retirement.\n\nIt uses your current income, savings rate, and an assumed 5% annual return (a balanced investment portfolio). Think of it as your financial GPS: it shows where you're heading and where you could be.\n\nThe **solid line** is your path — based on the rhythm you've set (or your current savings rate if you haven't set one yet).\n\nThe **dashed line** is the recommended path, based on people in your life stage, income bracket, and family situation. It's a benchmark, not a target — but it's a useful compass.\n\nThe gap between the two lines is the opportunity. That's what your rhythm and priorities are designed to close.",
+    quickReplies: ['How is recommended calculated?', 'How does my rhythm affect this?', 'What can I do to close the gap?'],
+  },
+  'wealth-recommended': {
+    id: 'r-wealth-rec', role: 'coach', timestamp: ts(),
+    text: "**The recommended line** is built from cohort analysis — people with a similar profile to yours:\n\n- **Age bracket**: 35–40\n- **Household type**: Family with children\n- **Income level**: €6.000/mo range\n- **Region**: Western Europe\n\nWe look at the top 30% of savers in this cohort — not the average, but what's achievable with good habits. Their typical savings rate is around 20% of income, invested in a balanced portfolio.\n\nThis isn't about keeping up with others. It's about showing what's **realistically possible** for someone in your situation. Your rhythm lets you decide how close you want to get.",
+    quickReplies: ['What is the wealth trajectory?', 'How does my rhythm affect this?', 'What can I do to close the gap?'],
+  },
+  'wealth-rhythm': {
+    id: 'r-wealth-rhythm', role: 'coach', timestamp: ts(),
+    text: "**Your rhythm directly drives your wealth trajectory.**\n\nWhen you set a rhythm like 50/30/20 (Needs/Lifestyle/Growth), that 20% growth allocation is what fuels the projection. Here's how it works:\n\n1. **Growth %** → determines how much of your income goes toward saving and investing each month\n2. **Monthly contribution** → that amount gets compounded at ~5% annually\n3. **Time** → compound interest does the heavy lifting over decades\n\nFor example, going from 10% to 20% growth on €6.000/mo income means an extra €600/mo invested. Over 29 years to age 65, that's roughly **€150k+ extra** in wealth.\n\nYour priorities (car, house, holiday) come out of this growth allocation too — so the rhythm balances your life goals with long-term wealth building.",
+    quickReplies: ['What is the wealth trajectory?', 'How is recommended calculated?', 'What can I do to close the gap?'],
+  },
+  'wealth-gap': {
+    id: 'r-wealth-gap', role: 'coach', timestamp: ts(),
+    text: "**Here's how to close the gap** between your path and the recommended line:\n\n1. **Increase your growth %** — Even 2–3% more makes a big difference over decades. Go to your Plan tab and adjust your rhythm.\n\n2. **Prioritise wisely** — Your life priorities (car, house, holiday) compete for the same growth budget. Focus on the essential ones first, and the lifestyle ones will follow.\n\n3. **Automate it** — Set up automatic transfers on payday so the money moves before you can spend it. Out of sight, out of mind.\n\n4. **Review quarterly** — Life changes. A raise, a promotion, kids growing up — each is a chance to nudge your rhythm up.\n\nThe best time to start was yesterday. The second best time is right now.",
+    quickReplies: ['Adjust my rhythm', 'Review my priorities', 'What is the wealth trajectory?'],
+  },
 };
 
 // ─── Health Score Helpers ────────────────────────────────────────
@@ -637,6 +666,10 @@ export function getCannedResponse(personaId: PersonaId, userText: string): strin
     'learn-budget': ['50/30/20', 'rule', 'learn'],
     'chore-list': ['chore', 'chores'],
     'earn-tips': ['earn', 'more money'],
+    'wealth-explain': ['wealth trajectory', 'what is wealth', 'what is the trajectory', 'explain the chart'],
+    'wealth-recommended': ['recommended line', 'recommended calculated', 'cohort', 'benchmark line', 'dashed line'],
+    'wealth-rhythm': ['rhythm affect', 'rhythm wealth', 'growth affect', 'how does my rhythm'],
+    'wealth-gap': ['close the gap', 'gap', 'catch up', 'improve my wealth', 'what can i do'],
   };
 
   for (const [intentTag, keywords] of Object.entries(keywordMap)) {
