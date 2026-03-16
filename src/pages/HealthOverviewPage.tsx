@@ -24,7 +24,7 @@ const PILLAR_ICONS: Record<string, string> = {
 
 const RATING_COLORS: Record<string, string> = {
   excellent: 'var(--pfm-status-success-vivid)',
-  good: '#295EFF',
+  good: 'var(--pfm-status-success-vivid)',
   building: '#F5A623',
   'needs-attention': '#E5553B',
 };
@@ -93,7 +93,7 @@ const HealthOverviewPage: React.FC = () => {
             />
             <p
               className="health-overview__hero-label typo-body-regular"
-              style={{ color: RATING_COLORS[healthScoreData.rating] || '#295EFF' }}
+              style={{ color: RATING_COLORS[healthScoreData.rating] || 'var(--pfm-status-success-vivid)' }}
             >
               Your financial health is{' '}
               {healthScoreData.rating.replace(/-/g, ' ')}
@@ -105,14 +105,16 @@ const HealthOverviewPage: React.FC = () => {
 
           {/* Coach Nudge */}
           {showCoach && nudge && (
-            <SectionModule title="">
-              <CoachMomentCard
-                title={nudge.title}
-                body={nudge.body}
-                ctaLabel={nudge.ctaLabel}
-                onClose={() => setShowCoach(false)}
-              />
-            </SectionModule>
+            <div className="health-overview__coach-wrap">
+              <SectionModule title="">
+                <CoachMomentCard
+                  title={nudge.title}
+                  body={nudge.body}
+                  ctaLabel={nudge.ctaLabel}
+                  onClose={() => setShowCoach(false)}
+                />
+              </SectionModule>
+            </div>
           )}
 
           {/* Section 2: Score Trend */}
@@ -249,11 +251,7 @@ const HealthOverviewPage: React.FC = () => {
 
               <button
                 className="health-overview__rhythm-cta"
-                onClick={() => {
-                  // Navigate to Plan tab — use tab switch via Ionic router
-                  const planTab = document.querySelector('ion-tab-button[tab="plan"]') as HTMLElement | null;
-                  if (planTab) planTab.click();
-                }}
+                onClick={() => history.push('/insights?tab=plan')}
               >
                 Set your rhythm
               </button>

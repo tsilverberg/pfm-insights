@@ -1,0 +1,28 @@
+/* ── Priority Summary Bar ───────────────────────────────────── */
+.priority-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--pfm-divider-default);
+  background: var(--pfm-surface-card);
+}
+
+.priority-summary__line1 {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.priority-summary__line2 {
+  line-height: 1.4;
+}
+
+.priority-summary__covered {
+  color: var(--pfm-status-success);
+}
+
+.priority-summary__warning {
+  color: var(--pfm-status-warning);
+}

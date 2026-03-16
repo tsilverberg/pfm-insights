@@ -38,6 +38,7 @@ import FloatingTabBar from './components/layout/FloatingTabBar';
 import ErrorBoundary from './components/shared/ErrorBoundary';
 import { ToastProvider } from './hooks/useToast';
 import { ThemeProvider } from './hooks/useTheme';
+import { RhythmProvider } from './hooks/useRhythm';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -71,6 +72,7 @@ setupIonicReact({
 const App: React.FC = () => (
   <ErrorBoundary>
   <ThemeProvider>
+  <RhythmProvider>
   <ToastProvider>
   <IonApp>
     <IonReactRouter>
@@ -112,6 +114,7 @@ const App: React.FC = () => (
     </IonReactRouter>
   </IonApp>
   </ToastProvider>
+  </RhythmProvider>
   </ThemeProvider>
   </ErrorBoundary>
 );

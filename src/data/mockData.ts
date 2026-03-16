@@ -380,6 +380,9 @@ export const pocketsListData: Pocket[] = [
     currentAmount: 7460,
     targetAmount: 10000,
     targetDate: 'Nov 10, 2025',
+    category: 'milestone',
+    priority: 2,
+    monthlyContribution: 200,
   },
   {
     id: 'pocket-2',
@@ -390,6 +393,9 @@ export const pocketsListData: Pocket[] = [
     currentAmount: 2570,
     targetAmount: 5000,
     targetDate: 'Jan 1, 2027',
+    category: 'lifestyle',
+    priority: 3,
+    monthlyContribution: 200,
   },
   {
     id: 'pocket-3',
@@ -400,6 +406,9 @@ export const pocketsListData: Pocket[] = [
     currentAmount: 8200,
     targetAmount: 15000,
     targetDate: 'Jun 1, 2026',
+    category: 'essential',
+    priority: 1,
+    monthlyContribution: 300,
   },
 ];
 

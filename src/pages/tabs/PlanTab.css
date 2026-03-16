@@ -179,9 +179,33 @@
   color: var(--pfm-text-secondary);
 }
 
+/* ── Wealth Projection Callout ─────────────────────────────── */
+.plan__wealth-callout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  background: var(--pfm-surface-subtle);
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.plan__wealth-callout-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plan__wealth-callout-values {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 /* ── Goals ─────────────────────────────────────────────────── */
 .plan__goals {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 12px;
 }

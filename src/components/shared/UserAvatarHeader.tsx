@@ -1,16 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import CoachIcon from './CoachIcon';
-import { useToast } from '../../hooks/useToast';
 import './UserAvatarHeader.css';
 
 interface UserAvatarHeaderProps {
   avatarUrl?: string;
+  onCoachPress?: () => void;
 }
 
-const UserAvatarHeader: React.FC<UserAvatarHeaderProps> = ({ avatarUrl }) => {
+const UserAvatarHeader: React.FC<UserAvatarHeaderProps> = ({ avatarUrl, onCoachPress }) => {
   const history = useHistory();
-  const { showToast } = useToast();
 
   return (
     <div className="user-header">
@@ -32,7 +31,7 @@ const UserAvatarHeader: React.FC<UserAvatarHeaderProps> = ({ avatarUrl }) => {
             <path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
           </svg>
         </button>
-        <button className="user-header__icon-btn" aria-label="Coach" onClick={() => showToast({ type: 'info', message: 'Coach coming soon' })}>
+        <button className="user-header__icon-btn" aria-label="Coach" onClick={onCoachPress}>
           <CoachIcon size={24} />
         </button>
       </div>

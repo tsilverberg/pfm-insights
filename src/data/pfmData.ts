@@ -928,3 +928,78 @@ export function getCategoryCohortAverage(categoryName: string, profile?: CohortP
 
   return Math.round(base * multiplier);
 }
+
+// ─── Life Priority Helpers ──────────────────────────────────
+
+export interface WealthProjection {
+  currentPathByAge: number[];
+  rhythmPathByAge: number[];
+  ages: number[];
+  wealthAt65Current: number;
+  wealthAt65Rhythm: number;
+  lifetimeGap: number;
+  monthlyRedirect: number;
+}
+
+/**
+ * Calculate wealth projection comparing current savings rate vs rhythm target.
+ * Uses compound growth: W(t) = W0 * (1+r)^t + C * ((1+r)^t - 1) / r
+ */
+export function calculateWealthProjection(target: RhythmTarget): WealthProjection {
+  const monthlyIncome = cashflowData.received; // 6000
+  const annualIncome = monthlyIncome * 12;
+  const currentSavingsRate = 0.10; // 10% actual
+  const rhythmSavingsRate = target.growth / 100;
+
+  const currentMonthlySavings = monthlyIncome * currentSavingsRate;
+  const rhythmMonthlySavings = monthlyIncome * rhythmSavingsRate;
+  const monthlyRedirect = rhythmMonthlySavings - currentMonthlySavings;
+
+  const r = 0.05; // 5% annual return (balanced)
+  const W0 = 100864; // current net wealth
+  const startAge = 36;
+  const endAge = 84;
+  const years = endAge - startAge;
+
+  const ages: number[] = [];
+  const currentPathByAge: number[] = [];
+  const rhythmPathByAge: number[] = [];
+
+  for (let t = 0; t <= years; t++) {
+    ages.push(startAge + t);
+    const currentAnnualC = annualIncome * currentSavingsRate;
+    const rhythmAnnualC = annualIncome * rhythmSavingsRate;
+
+    const currentWealth = W0 * Math.pow(1 + r, t) + currentAnnualC * (Math.pow(1 + r, t) - 1) / r;
+    const rhythmWealth = W0 * Math.pow(1 + r, t) + rhythmAnnualC * (Math.pow(1 + r, t) - 1) / r;
+
+    currentPathByAge.push(Math.round(currentWealth));
+    rhythmPathByAge.push(Math.round(rhythmWealth));
+  }
+
+  const idx65 = 65 - startAge; // index for age 65
+  const wealthAt65Current = currentPathByAge[idx65] || currentPathByAge[currentPathByAge.length - 1];
+  const wealthAt65Rhythm = rhythmPathByAge[idx65] || rhythmPathByAge[rhythmPathByAge.length - 1];
+
+  return {
+    currentPathByAge,
+    rhythmPathByAge,
+    ages,
+    wealthAt65Current,
+    wealthAt65Rhythm,
+    lifetimeGap: wealthAt65Rhythm - wealthAt65Current,
+    monthlyRedirect,
+  };
+}
+
+/**
+ * Calculate the required Growth % to fund all priorities on time.
+ */
+export function calculateRequiredGrowthPct(priorities: import('./types').Pocket[]): number {
+  const monthlyIncome = cashflowData.received;
+  const totalMonthlyNeeded = priorities.reduce((sum, p) => {
+    const contribution = p.monthlyContribution || 0;
+    return sum + contribution;
+  }, 0);
+  return Math.ceil((totalMonthlyNeeded / monthlyIncome) * 100);
+}

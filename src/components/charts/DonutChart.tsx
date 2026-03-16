@@ -11,6 +11,17 @@ import getTokens from '../../theme/chartTokens';
 
 ChartJS.register(ArcElement, Tooltip);
 
+/** Resolve CSS var(--pfm-xyz) to computed hex – Chart.js cannot read CSS variables */
+function resolveColor(color: string): string {
+  if (typeof document === 'undefined') return color;
+  const match = color.match(/var\((--[\w-]+)\)/);
+  if (match) {
+    const resolved = getComputedStyle(document.documentElement).getPropertyValue(match[1]).trim();
+    return resolved || color;
+  }
+  return color;
+}
+
 interface DonutSegment {
   label: string;
   value: number;
@@ -24,12 +35,13 @@ interface DonutChartProps {
 
 const DonutChart: React.FC<DonutChartProps> = ({ segments, title }) => {
   const t = getTokens();
+  const resolvedColors = segments.map((s) => resolveColor(s.color));
   const data = {
     labels: segments.map((s) => s.label),
     datasets: [
       {
         data: segments.map((s) => s.value),
-        backgroundColor: segments.map((s) => s.color),
+        backgroundColor: resolvedColors,
         borderWidth: 0,
         cutout: '65%',
       },

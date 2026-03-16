@@ -1,41 +1,74 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import SectionModule from '../../components/shared/SectionModule';
 import HealthScoreMiniCard from '../../components/shared/HealthScoreMiniCard';
 import TuneRhythmModal from '../../components/shared/TuneRhythmModal';
 import PocketGoalCard from '../../components/shared/PocketGoalCard';
-import RaisedButton from '../../components/shared/RaisedButton';
+import PrioritySummaryBar from '../../components/shared/PrioritySummaryBar';
+import AddPrioritySheet from '../../components/shared/AddPrioritySheet';
 import CoachMomentCard from '../../components/shared/CoachMomentCard';
-import { pocketsListData } from '../../data/mockData';
-import { nwgBreakdownData, cashflowData, calculateRhythmImpact } from '../../data/pfmData';
+import { nwgBreakdownData, cashflowData } from '../../data/pfmData';
 import { coachNudges } from '../../data/coachData';
 import { formatEuroShort } from '../../data/formatters';
 import { useToast } from '../../hooks/useToast';
-import type { RhythmTarget } from '../../data/types';
+import { useRhythm } from '../../hooks/useRhythm';
+import type { RhythmTarget, Pocket } from '../../data/types';
 import './PlanTab.css';
+
+const CATEGORY_LABEL: Record<string, string> = {
+  essential: 'Essential',
+  milestone: 'Milestone',
+  lifestyle: 'Lifestyle',
+};
 
 const PlanTab: React.FC = () => {
   const { showToast } = useToast();
+  const {
+    rhythmTarget, setRhythmTarget,
+    priorities, addPriority, removePriority, updatePriority,
+    rhythmImpact, wealthProjection,
+    requiredGrowthPct, totalMonthlyContribution,
+  } = useRhythm();
+
   const [showCoach, setShowCoach] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+  const [addSheetOpen, setAddSheetOpen] = useState(false);
+  const [editingPriority, setEditingPriority] = useState<Pocket | null>(null);
   const nudge = coachNudges.find(n => n.tab === 'plan');
-  const [rhythmTarget, setRhythmTarget] = useState<RhythmTarget | null>(null);
 
   const actuals = nwgBreakdownData;
   const monthlyIncome = cashflowData.received;
 
-  // Score impact of the active rhythm target
-  const rhythmImpact = useMemo(
-    () => (rhythmTarget ? calculateRhythmImpact(rhythmTarget) : null),
-    [rhythmTarget],
-  );
-  // Unallocated percentage (income not tracked in NWG categories)
   const allocatedPct = actuals.needs.percentage + actuals.wants.percentage + actuals.growth.percentage;
   const _unallocatedPct = 100 - allocatedPct;
+
+  const monthlyGrowthBudget = rhythmTarget
+    ? monthlyIncome * (rhythmTarget.growth / 100)
+    : monthlyIncome * (actuals.growth.percentage / 100);
 
   const handleConfirm = (target: RhythmTarget) => {
     setRhythmTarget(target);
     setModalOpen(false);
     showToast({ type: 'success', message: 'Rhythm set! Your targets are now active.' });
+  };
+
+  const handleSavePriority = (p: Pocket) => {
+    if (editingPriority) {
+      updatePriority(p.id, p);
+    } else {
+      addPriority({ ...p, priority: priorities.length + 1 });
+    }
+    setEditingPriority(null);
+    setAddSheetOpen(false);
+    showToast({ type: 'success', message: editingPriority ? 'Priority updated' : 'Priority added' });
+  };
+
+  const handleDeletePriority = () => {
+    if (editingPriority) {
+      removePriority(editingPriority.id);
+      setEditingPriority(null);
+      setAddSheetOpen(false);
+      showToast({ type: 'info', message: 'Priority removed' });
+    }
   };
 
   const getStatus = (actualPct: number, targetPct: number): 'on-track' | 'over' | 'under' => {
@@ -58,7 +91,7 @@ const PlanTab: React.FC = () => {
 
   return (
     <div>
-      {/* Health score: mini card + My rhythm (rhythm is part of health score) */}
+      {/* Health score: mini card + My rhythm */}
       <SectionModule title="Health score">
         <div className="plan-health-section card-bordered">
           <HealthScoreMiniCard />
@@ -72,7 +105,6 @@ const PlanTab: React.FC = () => {
             </p>
 
         {!rhythmTarget ? (
-          /* Before activation */
           <div className="rhythm-card rhythm-card--nested">
             <div className="rhythm-card__actuals">
               {([
@@ -87,7 +119,6 @@ const PlanTab: React.FC = () => {
                 </div>
               ))}
             </div>
-            {/* NWG bar */}
             <div className="rhythm-card__bar">
               <div className="rhythm-card__bar-seg rhythm-card__bar-seg--needs" style={{ width: `${actuals.needs.percentage}%` }} />
               <div className="rhythm-card__bar-seg rhythm-card__bar-seg--wants" style={{ width: `${actuals.wants.percentage}%` }} />
@@ -107,9 +138,7 @@ const PlanTab: React.FC = () => {
             </button>
           </div>
         ) : (
-          /* After activation */
           <div className="rhythm-card rhythm-card--nested">
-            {/* Target vs Actual comparison */}
             <div className="rhythm-card__compare">
               {([
                 { label: 'Needs', actualPct: actuals.needs.percentage, targetPct: rhythmTarget.needs, color: 'var(--pfm-pink-base)' },
@@ -137,7 +166,6 @@ const PlanTab: React.FC = () => {
                 );
               })}
             </div>
-            {/* Dual bar: target + actual */}
             <div className="rhythm-card__dual-bars">
               <div className="rhythm-card__bar-label typo-footnote color-tertiary">Target</div>
               <div className="rhythm-card__bar">
@@ -164,6 +192,28 @@ const PlanTab: React.FC = () => {
                 (+{rhythmImpact.delta} pts in ~{rhythmImpact.timelineWeeks} {rhythmImpact.timelineWeeks === 1 ? 'week' : 'weeks'})
               </div>
             )}
+
+            {/* Wealth projection callout */}
+            {wealthProjection && wealthProjection.lifetimeGap > 0 && (
+              <div className="plan__wealth-callout">
+                <div className="plan__wealth-callout-row">
+                  <span className="material-symbols-rounded" style={{ fontSize: 16, color: 'var(--pfm-status-success)' }}>trending_up</span>
+                  <span className="typo-footnote color-secondary">Wealth at 65</span>
+                </div>
+                <div className="plan__wealth-callout-values">
+                  <span className="typo-footnote color-tertiary">
+                    Current: {formatEuroShort(wealthProjection.wealthAt65Current)}
+                  </span>
+                  <span className="typo-footnote" style={{ color: 'var(--pfm-status-success)' }}>
+                    With rhythm: {formatEuroShort(wealthProjection.wealthAt65Rhythm)}
+                  </span>
+                </div>
+                <span className="typo-footnote" style={{ color: 'var(--pfm-status-success)', fontWeight: 600 }}>
+                  +{formatEuroShort(wealthProjection.lifetimeGap)} difference
+                </span>
+              </div>
+            )}
+
             <button
               className="rhythm-card__adjust typo-callout-semibold"
               onClick={() => setModalOpen(true)}
@@ -188,15 +238,45 @@ const PlanTab: React.FC = () => {
         </SectionModule>
       )}
 
-      {/* Section: Savings Goals */}
-      <SectionModule title="Savings goals">
+      {/* Life Priorities */}
+      <SectionModule title="Your priorities">
+        <PrioritySummaryBar
+          totalMonthlyContribution={totalMonthlyContribution}
+          monthlyGrowthBudget={monthlyGrowthBudget}
+          requiredGrowthPct={requiredGrowthPct}
+          currentGrowthPct={rhythmTarget?.growth ?? actuals.growth.percentage}
+        />
         <div className="plan__goals">
-          {pocketsListData.map((pocket) => (
-            <PocketGoalCard key={pocket.id} pocket={pocket} />
+          {priorities
+            .sort((a, b) => (a.priority || 99) - (b.priority || 99))
+            .map((pocket) => (
+            <PocketGoalCard
+              key={pocket.id}
+              pocket={pocket}
+              subtitle={
+                [
+                  pocket.monthlyContribution ? `€${pocket.monthlyContribution}/mo` : null,
+                  pocket.category ? CATEGORY_LABEL[pocket.category] : null,
+                  pocket.targetDate,
+                ].filter(Boolean).join(' · ')
+              }
+              onClick={() => {
+                setEditingPriority(pocket);
+                setAddSheetOpen(true);
+              }}
+            />
           ))}
         </div>
         <div style={{ marginTop: 16 }}>
-          <RaisedButton label="+ Add a goal" onClick={() => showToast({ type: 'info', message: 'Goal creator coming soon' })} />
+          <button
+            className="btn-raised rhythm-card__cta"
+            onClick={() => {
+              setEditingPriority(null);
+              setAddSheetOpen(true);
+            }}
+          >
+            + Add a priority
+          </button>
         </div>
       </SectionModule>
 
@@ -205,6 +285,16 @@ const PlanTab: React.FC = () => {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         onConfirm={handleConfirm}
+        priorities={priorities}
+      />
+
+      {/* Add/Edit Priority Sheet */}
+      <AddPrioritySheet
+        isOpen={addSheetOpen}
+        onClose={() => { setAddSheetOpen(false); setEditingPriority(null); }}
+        onSave={handleSavePriority}
+        onDelete={editingPriority ? handleDeletePriority : undefined}
+        editingPriority={editingPriority}
       />
     </div>
   );

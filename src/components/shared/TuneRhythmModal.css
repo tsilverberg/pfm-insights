@@ -53,26 +53,9 @@
   color: var(--pfm-text-primary);
 }
 
-.tune-rhythm__step-dots {
-  display: flex;
-  gap: 6px;
+.tune-rhythm__step-label {
   flex-shrink: 0;
-}
-
-.tune-rhythm__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--pfm-support-subtle);
-  transition: background 0.2s;
-}
-
-.tune-rhythm__dot--active {
-  background: var(--pfm-action-primary-bg);
-}
-
-.tune-rhythm__dot--done {
-  background: var(--pfm-status-success);
+  white-space: nowrap;
 }
 
 /* ── Body ──────────────────────────────────────────────────── */
@@ -86,6 +69,47 @@
 .tune-rhythm__intro {
   margin: 0;
   line-height: 1.5;
+}
+
+/* ── Step 1: Current vs New ──────────────────────────────────── */
+.tune-rhythm__current-vs-new {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+}
+
+.tune-rhythm__compare-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.tune-rhythm__step1-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tune-rhythm__cta--secondary {
+  padding: 12px 16px;
+  border-radius: var(--pfm-card-radius);
+  border: 1.5px solid var(--pfm-border-subtle);
+  background: var(--pfm-surface-subtle);
+  color: var(--pfm-text-secondary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.tune-rhythm__cta--secondary:active {
+  background: var(--pfm-border-subtle);
+}
+
+.tune-rhythm__hint {
+  margin: 0;
+  text-align: center;
 }
 
 /* ── Presets ────────────────────────────────────────────────── */
@@ -399,4 +423,49 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
+}
+
+/* ── Priority Funding Section ─────────────────────────────── */
+.tune-rhythm__priorities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+}
+
+.tune-rhythm__priorities-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.tune-rhythm__priority-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tune-rhythm__priority-row > :first-child {
+  flex: 1;
+}
+
+.tune-rhythm__priority-summary {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--pfm-border-subtle);
+}
+
+/* ── Wealth Projection Section ────────────────────────────── */
+.tune-rhythm__wealth {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+}
+
+.tune-rhythm__wealth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

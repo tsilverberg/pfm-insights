@@ -55,6 +55,10 @@ export interface Pocket {
   currentAmount: number;
   targetAmount: number;
   targetDate: string;
+  // Life Priority fields
+  category?: 'essential' | 'milestone' | 'lifestyle';
+  monthlyContribution?: number;
+  priority?: number;
 }
 
 export interface Contact {

@@ -15,24 +15,40 @@ interface NwgBreakdownBarProps {
 }
 
 const NwgBreakdownBar: React.FC<NwgBreakdownBarProps> = ({ needs, wants, growth, onSegmentTap }) => {
+  const handleSegmentClick = (type: 'need' | 'want' | 'growth') => {
+    if (onSegmentTap) onSegmentTap(type);
+  };
+
   return (
     <div className="nwg-breakdown">
       <div
         className="nwg-breakdown__track"
-        role="img"
-        aria-label={`Spending split: Needs ${needs.percentage}%, Lifestyle ${wants.percentage}%, Saved ${growth.percentage}%`}
+        role="group"
+        aria-label="Spending split by category"
       >
-        <div
+        <button
+          type="button"
           className="nwg-breakdown__segment nwg-breakdown__segment--needs"
           style={{ width: `${needs.percentage}%` }}
+          onClick={() => handleSegmentClick('need')}
+          aria-label={`Needs: ${needs.percentage}%, ${formatEuro(needs.amount)}. Tap to view details.`}
+          disabled={!onSegmentTap}
         />
-        <div
+        <button
+          type="button"
           className="nwg-breakdown__segment nwg-breakdown__segment--wants"
           style={{ width: `${wants.percentage}%` }}
+          onClick={() => handleSegmentClick('want')}
+          aria-label={`Lifestyle: ${wants.percentage}%, ${formatEuro(wants.amount)}. Tap to view details.`}
+          disabled={!onSegmentTap}
         />
-        <div
+        <button
+          type="button"
           className="nwg-breakdown__segment nwg-breakdown__segment--growth"
           style={{ width: `${growth.percentage}%` }}
+          onClick={() => handleSegmentClick('growth')}
+          aria-label={`Saved: ${growth.percentage}%, ${formatEuro(growth.amount)}. Tap to view details.`}
+          disabled={!onSegmentTap}
         />
       </div>
       <div className="nwg-breakdown__labels">

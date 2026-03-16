@@ -47,6 +47,11 @@ ion-content::part(scroll)::-webkit-scrollbar {
   padding: var(--pfm-section-padding) var(--pfm-page-padding);
 }
 
+/* Section with no title — no bottom border to avoid redundant lines */
+.section-module.section-module--no-border {
+  border-bottom: none;
+}
+
 .section-module__title {
   font-family: var(--pfm-font-family);
   font-weight: 600;
@@ -65,7 +70,7 @@ ion-content::part(scroll)::-webkit-scrollbar {
 }
 
 .section-module__content {
-  margin-top: 16px;
+  margin-top: var(--pfm-section-content-gap);
 }
 
 .section-module__content--large-gap {

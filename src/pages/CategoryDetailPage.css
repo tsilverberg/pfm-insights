@@ -96,13 +96,14 @@
 .cat-detail__bar {
   width: 100%;
   border-radius: 4px 4px 0 0;
-  background: var(--pfm-surface-subtle);
+  background: var(--pfm-action-primary-bg);
   transition: height 0.3s ease;
   min-height: 4px;
 }
 
 .cat-detail__bar--current {
-  background: var(--pfm-action-primary-bg);
+  /* Slightly brighter to emphasize current month; all months now show data */
+  filter: brightness(1.05);
 }
 
 .cat-detail__bar-label {

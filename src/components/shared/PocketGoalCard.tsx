@@ -5,6 +5,7 @@ import './PocketGoalCard.css';
 
 interface PocketGoalCardProps {
   pocket: Pocket;
+  subtitle?: string;
   onClick?: () => void;
 }
 
@@ -37,7 +38,7 @@ const PocketIcon: React.FC<{ icon: string; bg: string }> = ({ icon, bg }) => {
   );
 };
 
-const PocketGoalCard: React.FC<PocketGoalCardProps> = ({ pocket, onClick }) => {
+const PocketGoalCard: React.FC<PocketGoalCardProps> = ({ pocket, subtitle, onClick }) => {
   const pct = Math.round((pocket.currentAmount / pocket.targetAmount) * 100);
   const formatAmount = (n: number) => `€${n.toLocaleString('nl-NL')}`;
 
@@ -70,9 +71,12 @@ const PocketGoalCard: React.FC<PocketGoalCardProps> = ({ pocket, onClick }) => {
         <ProgressBar value={pocket.currentAmount} max={pocket.targetAmount} color={pocket.progressColor} />
         <div className="pocket-card__captions">
           <span className="pocket-card__pct">{pct}% Completed</span>
-          <span className="pocket-card__date">Target date {pocket.targetDate}</span>
+          {!subtitle && <span className="pocket-card__date">Target date {pocket.targetDate}</span>}
         </div>
       </div>
+      {subtitle && (
+        <div className="pocket-card__subtitle typo-footnote color-secondary">{subtitle}</div>
+      )}
     </div>
   );
 };

@@ -8,6 +8,7 @@ import QuickActionsRow from '../components/shared/QuickActionsRow';
 import TabPills from '../components/shared/TabPills';
 import TransactionList from '../components/shared/TransactionList';
 import CoachMomentCard from '../components/shared/CoachMomentCard';
+import CoachSheet from '../components/shared/CoachSheet';
 import PocketGoalCard from '../components/shared/PocketGoalCard';
 import ChildAccountCard from '../components/shared/ChildAccountCard';
 import DotIndicator from '../components/shared/DotIndicator';
@@ -30,6 +31,7 @@ const HomePage: React.FC = () => {
   const [childIdx, setChildIdx] = useState(0);
   const [showAccountSheet, setShowAccountSheet] = useState(false);
   const [selectedAccountId, setSelectedAccountId] = useState('acc-1');
+  const [coachOpen, setCoachOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const revealRef = useScrollReveal();
 
@@ -52,7 +54,7 @@ const HomePage: React.FC = () => {
           <IonRefresherContent />
         </IonRefresher>
         <div className="pt-16" ref={revealRef}>
-          <UserAvatarHeader />
+          <UserAvatarHeader onCoachPress={() => setCoachOpen(true)} />
 
           {/* Account Selector */}
           <div className="page-pad">
@@ -142,6 +144,7 @@ const HomePage: React.FC = () => {
         </div>
       </IonContent>
 
+      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/home" />
       <AccountSelectorSheet
         isOpen={showAccountSheet}
         onDismiss={() => setShowAccountSheet(false)}

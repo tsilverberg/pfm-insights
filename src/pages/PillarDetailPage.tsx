@@ -12,7 +12,7 @@ import './PillarDetailPage.css';
 
 const RATING_COLORS: Record<string, string> = {
   excellent: 'var(--pfm-status-success-vivid)',
-  good: '#295EFF',
+  good: 'var(--pfm-status-success-vivid)',
   building: '#F5A623',
   'needs-attention': '#E5553B',
 };
@@ -75,7 +75,7 @@ const PillarDetailPage: React.FC = () => {
     );
   }
 
-  const ratingColor = RATING_COLORS[pillar.rating] || '#295EFF';
+  const ratingColor = RATING_COLORS[pillar.rating] || 'var(--pfm-status-success-vivid)';
   const weight = PILLAR_WEIGHTS[pillar.id] ?? pillar.weight;
   const explainer = PILLAR_EXPLAINERS[pillar.id];
 

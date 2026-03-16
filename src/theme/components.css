@@ -2,7 +2,7 @@
 
 /* Coach Moment Card */
 .coach-card {
-  border: 2px solid var(--pfm-pink-base);
+  border: 1px solid var(--pfm-category-pink-border);
   border-radius: var(--pfm-card-radius);
   padding: var(--pfm-card-padding);
   background: var(--pfm-surface-card);
@@ -146,16 +146,16 @@
   opacity: 0.7;
 }
 
-/* Raised Button */
+/* Raised Button – secondary style with visible border, respects theme */
 .btn-raised {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   width: 100%;
-  background: var(--pfm-button-secondary-bg);
-  border: 1px solid var(--pfm-button-secondary-border);
-  color: var(--pfm-button-secondary-text);
+  background: var(--pfm-action-secondary-bg);
+  border: 1.5px solid var(--pfm-action-secondary-border);
+  color: var(--pfm-action-secondary-text);
   border-radius: 99px;
   height: 44px;
   padding: 0 24px;
@@ -164,7 +164,11 @@
   font-size: 15px;
   line-height: 22.5px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.btn-raised:hover {
+  background: var(--pfm-surface-subtle);
 }
 
 .btn-raised--sm {
