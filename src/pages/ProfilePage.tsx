@@ -8,6 +8,7 @@ import { profileData, pocketsListData } from '../data/mockData';
 import { useToast } from '../hooks/useToast';
 import { useTheme } from '../hooks/useTheme';
 import { useRhythm } from '../hooks/useRhythm';
+import { useDisplayMode } from '../hooks/useDisplayMode';
 import './ProfilePage.css';
 
 const ProfilePage: React.FC = () => {
@@ -15,6 +16,7 @@ const ProfilePage: React.FC = () => {
   const { showToast } = useToast();
   const { theme } = useTheme();
   const { setRhythmTarget, setPriorities } = useRhythm();
+  const { displayMode, setDisplayMode } = useDisplayMode();
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [showThemeSheet, setShowThemeSheet] = useState(false);
@@ -98,6 +100,26 @@ const ProfilePage: React.FC = () => {
               ))}
             </div>
           ))}
+
+          {/* Stress-free mode toggle */}
+          <div className="profile-mode-toggle">
+            <div className="profile-mode-toggle__icon" style={{ background: 'var(--pfm-palette-blue-extra-soft)' }}>
+              <span className="material-symbols-rounded" style={{ fontSize: 20, color: 'var(--pfm-action-primary-bg)' }}>spa</span>
+            </div>
+            <div className="profile-mode-toggle__info">
+              <span className="profile-mode-toggle__title">Stress-free mode</span>
+              <span className="profile-mode-toggle__desc">Hide scores, show qualitative progress</span>
+            </div>
+            <button
+              className={`profile-mode-toggle__switch ${displayMode === 'stress-free' ? 'profile-mode-toggle__switch--on' : ''}`}
+              onClick={() => setDisplayMode(displayMode === 'points' ? 'stress-free' : 'points')}
+              role="switch"
+              aria-checked={displayMode === 'stress-free'}
+              aria-label="Toggle stress-free mode"
+            >
+              <span className="profile-mode-toggle__thumb" />
+            </button>
+          </div>
 
           {/* Log out */}
           <button className="profile-logout" onClick={() => setShowLogoutConfirm(true)}>Log out</button>

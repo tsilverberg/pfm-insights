@@ -93,3 +93,77 @@
 .profile-reset-demo:active {
   opacity: 0.7;
 }
+
+/* ── Stress-free mode toggle ─────────────────────────────── */
+.profile-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--pfm-divider-default);
+}
+
+.profile-mode-toggle__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-mode-toggle__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.profile-mode-toggle__title {
+  font-family: var(--pfm-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pfm-text-primary);
+}
+
+.profile-mode-toggle__desc {
+  font-family: var(--pfm-font-family);
+  font-size: 12px;
+  color: var(--pfm-text-tertiary);
+}
+
+.profile-mode-toggle__switch {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  background: var(--pfm-support-subtle);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+  padding: 0;
+}
+
+.profile-mode-toggle__switch--on {
+  background: var(--pfm-action-primary-bg);
+}
+
+.profile-mode-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.profile-mode-toggle__switch--on .profile-mode-toggle__thumb {
+  transform: translateX(20px);
+}
