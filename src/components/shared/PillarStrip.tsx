@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDisplayMode } from '../../hooks/useDisplayMode';
+import { STRESS_FREE_RATINGS, STRESS_FREE_TRENDS } from '../../data/constants';
 import './PillarStrip.css';
 
 interface Pillar {
@@ -30,10 +32,14 @@ const TREND_SYMBOLS: Record<string, string> = {
 };
 
 const PillarStrip: React.FC<PillarStripProps> = ({ pillars, onPillarTap }) => {
+  const { showPoints } = useDisplayMode();
+
   return (
     <div className="pillar-strip" role="list">
       {pillars.map((pillar) => {
         const tierColor = RATING_COLORS[pillar.rating.toLowerCase()] || 'var(--pfm-action-primary-bg)';
+        const sfRating = STRESS_FREE_RATINGS[pillar.rating.toLowerCase()] || pillar.rating;
+        const sfTrend = STRESS_FREE_TRENDS[pillar.trend] || '';
         return (
           <button
             key={pillar.id}
@@ -41,12 +47,15 @@ const PillarStrip: React.FC<PillarStripProps> = ({ pillars, onPillarTap }) => {
             style={{ '--ps-tier-color': tierColor } as React.CSSProperties}
             onClick={() => onPillarTap?.(pillar.id)}
             role="listitem"
-            aria-label={`${pillar.label}: score ${pillar.score}, trending ${pillar.trend}`}
+            aria-label={showPoints
+              ? `${pillar.label}: score ${pillar.score}, trending ${pillar.trend}`
+              : `${pillar.label}: ${sfRating}, ${sfTrend}`
+            }
           >
             <span className="pillar-strip__icon material-symbols-rounded" aria-hidden="true">
               {pillar.icon}
             </span>
-            <span className="pillar-strip__score">{pillar.score}</span>
+            <span className="pillar-strip__score">{showPoints ? pillar.score : sfRating}</span>
             <span className="pillar-strip__label">{pillar.label}</span>
             <span className={`pillar-strip__trend pillar-strip__trend--${pillar.trend}`}>
               {TREND_SYMBOLS[pillar.trend]}

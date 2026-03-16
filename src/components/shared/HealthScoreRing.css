@@ -82,3 +82,9 @@
 .health-score-ring__delta--neutral {
   color: var(--pfm-text-tertiary);
 }
+
+.health-score-ring__rating--large {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pfm-text-primary);
+}

@@ -39,6 +39,7 @@ import ErrorBoundary from './components/shared/ErrorBoundary';
 import { ToastProvider } from './hooks/useToast';
 import { ThemeProvider } from './hooks/useTheme';
 import { RhythmProvider } from './hooks/useRhythm';
+import { DisplayModeProvider } from './hooks/useDisplayMode';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -72,6 +73,7 @@ setupIonicReact({
 const App: React.FC = () => (
   <ErrorBoundary>
   <ThemeProvider>
+  <DisplayModeProvider>
   <RhythmProvider>
   <ToastProvider>
   <IonApp>
@@ -115,6 +117,7 @@ const App: React.FC = () => (
   </IonApp>
   </ToastProvider>
   </RhythmProvider>
+  </DisplayModeProvider>
   </ThemeProvider>
   </ErrorBoundary>
 );

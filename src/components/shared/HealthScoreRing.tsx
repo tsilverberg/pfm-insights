@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDisplayMode } from '../../hooks/useDisplayMode';
+import { STRESS_FREE_RATINGS } from '../../data/constants';
 import './HealthScoreRing.css';
 
 interface HealthScoreRingProps {
@@ -22,13 +24,14 @@ function getRatingLabel(rating: string): string {
     .replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
-function getDeltaInfo(delta: number): { text: string; direction: string } {
-  if (delta > 0) return { text: `\u25B2 +${delta} pts`, direction: 'positive' };
-  if (delta < 0) return { text: `\u25BC ${delta} pts`, direction: 'negative' };
-  return { text: '\u2014 0 pts', direction: 'neutral' };
+function getDeltaInfo(delta: number, showPoints: boolean): { text: string; direction: string } {
+  if (delta > 0) return { text: showPoints ? `\u25B2 +${delta} pts` : 'Trending up', direction: 'positive' };
+  if (delta < 0) return { text: showPoints ? `\u25BC ${delta} pts` : 'Needs focus', direction: 'negative' };
+  return { text: showPoints ? '\u2014 0 pts' : 'Steady', direction: 'neutral' };
 }
 
 const HealthScoreRing: React.FC<HealthScoreRingProps> = ({ score, rating, delta, onClick }) => {
+  const { showPoints } = useDisplayMode();
   const size = 160;
   const strokeWidth = 10;
   const radius = (size - strokeWidth) / 2;
@@ -38,11 +41,14 @@ const HealthScoreRing: React.FC<HealthScoreRingProps> = ({ score, rating, delta,
 
   const strokeColor = RATING_COLORS[rating.toLowerCase()] || 'var(--pfm-action-primary-bg)';
   const ratingLabel = getRatingLabel(rating);
-  const deltaInfo = getDeltaInfo(delta);
+  const stressFreeLabel = STRESS_FREE_RATINGS[rating.toLowerCase()] || ratingLabel;
+  const deltaInfo = getDeltaInfo(delta, showPoints);
 
-  const ariaLabel = `Financial Health Score: ${score} out of 100, rated ${ratingLabel}. ${
-    delta !== 0 ? (delta > 0 ? `Up ${delta} from last month` : `Down ${Math.abs(delta)} from last month`) : 'No change from last month'
-  }`;
+  const ariaLabel = showPoints
+    ? `Financial Health Score: ${score} out of 100, rated ${ratingLabel}. ${
+        delta !== 0 ? (delta > 0 ? `Up ${delta} from last month` : `Down ${Math.abs(delta)} from last month`) : 'No change from last month'
+      }`
+    : `Financial Health: ${stressFreeLabel}. ${deltaInfo.text}.`;
 
   return (
     <div
@@ -80,8 +86,14 @@ const HealthScoreRing: React.FC<HealthScoreRingProps> = ({ score, rating, delta,
           />
         </svg>
         <div className="health-score-ring__center">
-          <span className="health-score-ring__score">{score}</span>
-          <span className="health-score-ring__rating">{ratingLabel}</span>
+          {showPoints ? (
+            <>
+              <span className="health-score-ring__score">{score}</span>
+              <span className="health-score-ring__rating">{ratingLabel}</span>
+            </>
+          ) : (
+            <span className="health-score-ring__rating health-score-ring__rating--large">{stressFreeLabel}</span>
+          )}
         </div>
       </div>
       <span className={`health-score-ring__delta health-score-ring__delta--${deltaInfo.direction}`}>

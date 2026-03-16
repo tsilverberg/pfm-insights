@@ -1,16 +1,25 @@
 import React, { useState, useRef, useCallback, useMemo } from 'react';
 import { IonModal } from '@ionic/react';
 import { cashflowData, nwgBreakdownData, calculateRhythmImpact, calculateWealthProjection } from '../../data/pfmData';
-import { PILLAR_LABELS } from '../../data/constants';
+import { PILLAR_LABELS, STRESS_FREE_RATINGS } from '../../data/constants';
 import { formatEuroShort } from '../../data/formatters';
+import { useDisplayMode } from '../../hooks/useDisplayMode';
 import type { RhythmTarget, RhythmScoreImpact, Pocket } from '../../data/types';
 import './TuneRhythmModal.css';
 
+function scoreToRating(score: number): string {
+  if (score >= 80) return 'excellent';
+  if (score >= 60) return 'good';
+  if (score >= 40) return 'building';
+  return 'needs-attention';
+}
+
 /** Small SVG score ring used in the impact preview */
-const ScoreRing: React.FC<{ score: number; size?: number; projected?: boolean }> = ({
+const ScoreRing: React.FC<{ score: number; size?: number; projected?: boolean; hideNumber?: boolean }> = ({
   score,
   size = 40,
   projected = false,
+  hideNumber = false,
 }) => {
   const strokeWidth = 3.5;
   const radius = (size - strokeWidth) / 2;
@@ -52,7 +61,7 @@ const ScoreRing: React.FC<{ score: number; size?: number; projected?: boolean }>
           style={{ transition: 'stroke-dashoffset 0.3s ease' }}
         />
       </svg>
-      <span className="tune-rhythm__score-ring-value typo-footnote">{score}</span>
+      {!hideNumber && <span className="tune-rhythm__score-ring-value typo-footnote">{score}</span>}
     </div>
   );
 };
@@ -69,36 +78,56 @@ const ScoreImpactPreview: React.FC<{ impact: RhythmScoreImpact; compact?: boolea
   impact,
   compact = false,
 }) => {
+  const { showPoints } = useDisplayMode();
   const positivePillars = impact.pillarImpacts.filter(p => p.delta > 0);
+
+  const currentRating = STRESS_FREE_RATINGS[scoreToRating(impact.currentScore)] || 'Building';
+  const projectedRating = STRESS_FREE_RATINGS[scoreToRating(impact.projectedScore)] || 'Good';
 
   return (
     <div className={`tune-rhythm__score-impact ${compact ? 'tune-rhythm__score-impact--compact' : ''}`}>
       <div className="tune-rhythm__score-rings">
-        <ScoreRing score={impact.currentScore} />
+        <ScoreRing score={impact.currentScore} hideNumber={!showPoints} />
         <span className="tune-rhythm__score-arrow material-symbols-rounded">arrow_forward</span>
-        <ScoreRing score={impact.projectedScore} projected />
+        <ScoreRing score={impact.projectedScore} projected hideNumber={!showPoints} />
       </div>
       {impact.delta > 0 ? (
-        <>
+        showPoints ? (
+          <>
+            <span className="tune-rhythm__score-delta typo-callout-semibold">
+              +{impact.delta} points
+            </span>
+            <span className="tune-rhythm__score-timeline typo-footnote color-secondary">
+              in ~{impact.timelineWeeks} {impact.timelineWeeks === 1 ? 'week' : 'weeks'}
+            </span>
+          </>
+        ) : (
           <span className="tune-rhythm__score-delta typo-callout-semibold">
-            +{impact.delta} points
+            {currentRating} → {projectedRating}
+            <span className="tune-rhythm__score-timeline typo-footnote color-secondary">
+              {' '}in ~{impact.timelineWeeks} {impact.timelineWeeks === 1 ? 'week' : 'weeks'}
+            </span>
           </span>
-          <span className="tune-rhythm__score-timeline typo-footnote color-secondary">
-            in ~{impact.timelineWeeks} {impact.timelineWeeks === 1 ? 'week' : 'weeks'}
-          </span>
-        </>
+        )
       ) : (
         <span className="tune-rhythm__score-delta typo-footnote color-tertiary">
-          No score change
+          {showPoints ? 'No score change' : 'No change expected'}
         </span>
       )}
       {!compact && positivePillars.length > 0 && (
         <div className="tune-rhythm__score-pillars">
-          {positivePillars.map(p => (
-            <div key={p.pillarId} className="tune-rhythm__score-pillar typo-footnote color-secondary">
-              {PILLAR_LABELS[p.pillarId] ?? p.pillarId}: {p.currentScore} → {p.projectedScore} (+{p.delta})
-            </div>
-          ))}
+          {positivePillars.map(p => {
+            const fromRating = STRESS_FREE_RATINGS[scoreToRating(p.currentScore)] || '';
+            const toRating = STRESS_FREE_RATINGS[scoreToRating(p.projectedScore)] || '';
+            return (
+              <div key={p.pillarId} className="tune-rhythm__score-pillar typo-footnote color-secondary">
+                {showPoints
+                  ? `${PILLAR_LABELS[p.pillarId] ?? p.pillarId}: ${p.currentScore} → ${p.projectedScore} (+${p.delta})`
+                  : `${PILLAR_LABELS[p.pillarId] ?? p.pillarId}: ${fromRating} → ${toRating}`
+                }
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

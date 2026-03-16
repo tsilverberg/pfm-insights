@@ -6,7 +6,8 @@ import SectionModule from '../components/shared/SectionModule';
 import HealthScoreRing from '../components/shared/HealthScoreRing';
 import TrendLineChart from '../components/charts/TrendLineChart';
 import { healthScoreData, nwgBreakdownData, cashflowData } from '../data/pfmData';
-import { PILLAR_WEIGHTS } from '../data/constants';
+import { PILLAR_WEIGHTS, STRESS_FREE_RATINGS, STRESS_FREE_IMPACT, STRESS_FREE_TRENDS } from '../data/constants';
+import { useDisplayMode } from '../hooks/useDisplayMode';
 import type { PillarId } from '../data/types';
 import './PillarDetailPage.css';
 
@@ -55,6 +56,7 @@ const PILLAR_EXPLAINERS: Record<string, { description: string; factors: string[]
 const PillarDetailPage: React.FC = () => {
   const { pillarId } = useParams<{ pillarId: string }>();
   const history = useHistory();
+  const { showPoints } = useDisplayMode();
   const handleBack = () => history.goBack();
   const pillar = healthScoreData.pillars.find(p => p.id === pillarId);
   const pillarHistory = healthScoreData.history.map(h => ({
@@ -79,7 +81,8 @@ const PillarDetailPage: React.FC = () => {
   const weight = PILLAR_WEIGHTS[pillar.id] ?? pillar.weight;
   const explainer = PILLAR_EXPLAINERS[pillar.id];
 
-  const trendLabel = pillar.trend === 'improving' ? 'Improving' : pillar.trend === 'declining' ? 'Declining' : 'Stable';
+  const trendLabelPoints = pillar.trend === 'improving' ? 'Improving' : pillar.trend === 'declining' ? 'Declining' : 'Stable';
+  const trendLabel = showPoints ? trendLabelPoints : (STRESS_FREE_TRENDS[pillar.trend] || trendLabelPoints);
   const trendArrow = pillar.trend === 'improving' ? 'trending_up' : pillar.trend === 'declining' ? 'trending_down' : 'trending_flat';
 
   return (
@@ -198,7 +201,9 @@ const PillarDetailPage: React.FC = () => {
                 </div>
 
                 <p className="pillar-detail__rhythm-cta-hint typo-footnote color-tertiary">
-                  Set a spending rhythm to see how closing the gap could add up to +15 points
+                  {showPoints
+                    ? 'Set a spending rhythm to see how closing the gap could add up to +15 points'
+                    : 'Set a spending rhythm to see how closing the gap could improve your rating'}
                 </p>
               </div>
             </SectionModule>
@@ -234,7 +239,7 @@ const PillarDetailPage: React.FC = () => {
                     <span
                       className={`pillar-detail__impact-badge pillar-detail__impact-badge--${action.impact}`}
                     >
-                      +{action.estimatedPoints} pts
+                      {showPoints ? `+${action.estimatedPoints} pts` : STRESS_FREE_IMPACT[action.impact] || action.impact}
                     </span>
                     <div className="pillar-detail__impact-dots">
                       {[0, 1, 2].map(dotIdx => (
@@ -258,9 +263,11 @@ const PillarDetailPage: React.FC = () => {
             <SectionModule title="How this is calculated">
               <div className="pillar-detail__calc card-raised">
                 <p className="pillar-detail__calc-desc">{explainer.description}</p>
-                <p className="pillar-detail__calc-weight">
-                  Weight: {Math.round(weight * 100)}% of your overall score
-                </p>
+                {showPoints && (
+                  <p className="pillar-detail__calc-weight">
+                    Weight: {Math.round(weight * 100)}% of your overall score
+                  </p>
+                )}
                 <div className="pillar-detail__factors">
                   <span className="pillar-detail__factors-label">Factors:</span>
                   {explainer.factors.map((factor, i) => (

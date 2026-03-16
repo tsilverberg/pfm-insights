@@ -510,6 +510,9 @@ export interface CohortProfile {
   spendingPersonality: 'saver' | 'balanced' | 'spender' | null;
 }
 
+// ─── Display Mode Types ──────────────────────────────────────
+export type DisplayMode = 'points' | 'stress-free';
+
 // ─── Coach Types ──────────────────────────────────────────────
 
 export type CoachTab = 'home' | 'spend' | 'plan' | 'wealth' | 'more';

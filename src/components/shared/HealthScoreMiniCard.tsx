@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { healthScoreData } from '../../data/pfmData';
+import { useDisplayMode } from '../../hooks/useDisplayMode';
+import { STRESS_FREE_RATINGS } from '../../data/constants';
 import './HealthScoreMiniCard.css';
 
 const RATING_COLORS: Record<string, string> = {
@@ -18,6 +20,7 @@ function getRatingLabel(rating: string): string {
 
 const HealthScoreMiniCard: React.FC = () => {
   const history = useHistory();
+  const { showPoints } = useDisplayMode();
 
   const { overall, rating, history: scoreHistory } = healthScoreData;
   const delta =
@@ -46,7 +49,10 @@ const HealthScoreMiniCard: React.FC = () => {
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') history.push('/insights/health');
       }}
-      aria-label={`Health Score ${overall}, ${ratingLabel}. Tap to view details.`}
+      aria-label={showPoints
+        ? `Health Score ${overall}, ${ratingLabel}. Tap to view details.`
+        : `Financial health: ${STRESS_FREE_RATINGS[rating] || ratingLabel}. Tap to view details.`
+      }
     >
       <div className="health-mini__ring-wrap">
         <svg
@@ -77,22 +83,36 @@ const HealthScoreMiniCard: React.FC = () => {
             strokeDashoffset={dashOffset}
           />
         </svg>
-        <span className="health-mini__score">{overall}</span>
+        {showPoints && <span className="health-mini__score">{overall}</span>}
       </div>
 
       <div className="health-mini__text">
-        <span className="health-mini__label typo-callout-semibold">{ratingLabel}</span>
+        <span className="health-mini__label typo-callout-semibold">
+          {showPoints ? ratingLabel : (STRESS_FREE_RATINGS[rating] || ratingLabel)}
+        </span>
         <span className="health-mini__sublabel typo-footnote color-secondary">
           Financial health
         </span>
       </div>
 
       <div className="health-mini__right">
-        <span
-          className={`health-mini__delta ${delta > 0 ? 'health-mini__delta--positive' : delta < 0 ? 'health-mini__delta--negative' : ''}`}
-        >
-          {delta > 0 ? `+${delta}` : delta === 0 ? '--' : `${delta}`}
-        </span>
+        {showPoints ? (
+          <span
+            className={`health-mini__delta ${delta > 0 ? 'health-mini__delta--positive' : delta < 0 ? 'health-mini__delta--negative' : ''}`}
+          >
+            {delta > 0 ? `+${delta}` : delta === 0 ? '--' : `${delta}`}
+          </span>
+        ) : (
+          <span
+            className="material-symbols-rounded"
+            style={{
+              fontSize: 18,
+              color: delta > 0 ? 'var(--pfm-change-positive)' : delta < 0 ? 'var(--pfm-change-negative)' : 'var(--pfm-text-tertiary)',
+            }}
+          >
+            {delta > 0 ? 'trending_up' : delta < 0 ? 'trending_down' : 'trending_flat'}
+          </span>
+        )}
         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" aria-hidden="true">
           <path
             d="M1 1l5 5-5 5"

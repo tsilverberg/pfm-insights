@@ -53,3 +53,28 @@ export const HEALTH_TIERS = {
   GOOD: 60,
   EXCELLENT: 80,
 } as const;
+
+// ─── Stress-Free Mode Labels ─────────────────────────────────
+
+export const STRESS_FREE_RATINGS: Record<string, string> = {
+  excellent: 'Thriving',
+  good: 'Good',
+  building: 'Growing',
+  'needs-attention': 'Getting Started',
+  'needs attention': 'Getting Started',
+};
+
+export const STRESS_FREE_TRENDS: Record<string, string> = {
+  improving: 'Trending up',
+  up: 'Trending up',
+  stable: 'Steady',
+  flat: 'Steady',
+  declining: 'Needs focus',
+  down: 'Needs focus',
+};
+
+export const STRESS_FREE_IMPACT: Record<string, string> = {
+  high: 'High impact',
+  medium: 'Medium impact',
+  low: 'Quick win',
+};

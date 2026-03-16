@@ -15,7 +15,8 @@ import { coachNudges } from '../data/coachData';
 import { formatEuroShort } from '../data/formatters';
 import { useRhythm } from '../hooks/useRhythm';
 import { useToast } from '../hooks/useToast';
-import { PILLAR_WEIGHTS, PILLAR_LABELS } from '../data/constants';
+import { useDisplayMode } from '../hooks/useDisplayMode';
+import { PILLAR_WEIGHTS, PILLAR_LABELS, STRESS_FREE_RATINGS, STRESS_FREE_TRENDS } from '../data/constants';
 import type { PillarScore, ImprovementAction, RhythmTarget } from '../data/types';
 import './HealthOverviewPage.css';
 
@@ -59,6 +60,7 @@ const HealthOverviewPage: React.FC = () => {
   const [coachOpen, setCoachOpen] = useState(false);
   const [rhythmModalOpen, setRhythmModalOpen] = useState(false);
   const { rhythmTarget, setRhythmTarget, rhythmImpact, priorities, totalMonthlyContribution } = useRhythm();
+  const { showPoints } = useDisplayMode();
   const nudge = coachNudges.find(n => n.insightType === 'nudge');
 
   // Teaser impact for users without a rhythm (show what Balanced would do)
@@ -202,18 +204,24 @@ const HealthOverviewPage: React.FC = () => {
                         height={4}
                       />
                       <div className="health-overview__pillar-meta typo-footnote">
-                        <span className="color-secondary">{pillar.score}/100</span>
+                        <span className="color-secondary">
+                          {showPoints ? `${pillar.score}/100` : STRESS_FREE_RATINGS[pillar.rating]}
+                        </span>
                         <span style={{ color: trendColor }}>
-                          {trendArrow}{' '}
-                          {pillar.delta > 0 ? `+${pillar.delta}` : pillar.delta}
+                          {showPoints
+                            ? <>{trendArrow}{' '}{pillar.delta > 0 ? `+${pillar.delta}` : pillar.delta}</>
+                            : STRESS_FREE_TRENDS[pillar.trend]
+                          }
                         </span>
                       </div>
                     </div>
 
                     <div className="health-overview__pillar-right">
-                      <span className="health-overview__weight-badge">
-                        {weightPct}%
-                      </span>
+                      {showPoints && (
+                        <span className="health-overview__weight-badge">
+                          {weightPct}%
+                        </span>
+                      )}
                       <svg
                         width="7"
                         height="12"
@@ -248,19 +256,32 @@ const HealthOverviewPage: React.FC = () => {
                   </p>
 
                   <div className="health-overview__score-teaser">
-                    <div className="health-overview__score-teaser-row">
-                      <span className="typo-callout-semibold">{teaserImpact.currentScore}</span>
-                      <span className="material-symbols-rounded" style={{ fontSize: 16, color: 'var(--pfm-text-tertiary)' }}>arrow_forward</span>
-                      <span className="typo-callout-semibold" style={{ color: 'var(--pfm-status-success)' }}>
-                        {teaserImpact.projectedScore}
-                      </span>
-                      <span className="typo-footnote" style={{ color: 'var(--pfm-status-success)' }}>
-                        +{teaserImpact.delta} pts in ~{teaserImpact.timelineWeeks} weeks
-                      </span>
-                    </div>
-                    <span className="typo-footnote color-tertiary">
-                      Based on a Balanced (50/30/20) rhythm
-                    </span>
+                    {showPoints ? (
+                      <>
+                        <div className="health-overview__score-teaser-row">
+                          <span className="typo-callout-semibold">{teaserImpact.currentScore}</span>
+                          <span className="material-symbols-rounded" style={{ fontSize: 16, color: 'var(--pfm-text-tertiary)' }}>arrow_forward</span>
+                          <span className="typo-callout-semibold" style={{ color: 'var(--pfm-status-success)' }}>
+                            {teaserImpact.projectedScore}
+                          </span>
+                          <span className="typo-footnote" style={{ color: 'var(--pfm-status-success)' }}>
+                            +{teaserImpact.delta} pts in ~{teaserImpact.timelineWeeks} weeks
+                          </span>
+                        </div>
+                        <span className="typo-footnote color-tertiary">
+                          Based on a Balanced (50/30/20) rhythm
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="typo-callout-semibold" style={{ color: 'var(--pfm-status-success)' }}>
+                          Could strengthen your financial health in ~{teaserImpact.timelineWeeks} weeks
+                        </span>
+                        <span className="typo-footnote color-tertiary">
+                          Based on a Balanced (50/30/20) rhythm
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   {priorities.length > 0 && (
@@ -304,10 +325,16 @@ const HealthOverviewPage: React.FC = () => {
                     <div className="health-overview__stat-row">
                       <span className="material-symbols-rounded" style={{ fontSize: 18, color: 'var(--pfm-status-success)' }}>trending_up</span>
                       <span className="typo-footnote color-secondary">
-                        Score projection: {rhythmImpact.currentScore} → {rhythmImpact.projectedScore}{' '}
-                        <span style={{ color: 'var(--pfm-status-success)', fontWeight: 600 }}>
-                          (+{rhythmImpact.delta} pts in ~{rhythmImpact.timelineWeeks} weeks)
-                        </span>
+                        {showPoints ? (
+                          <>
+                            Score projection: {rhythmImpact.currentScore} → {rhythmImpact.projectedScore}{' '}
+                            <span style={{ color: 'var(--pfm-status-success)', fontWeight: 600 }}>
+                              (+{rhythmImpact.delta} pts in ~{rhythmImpact.timelineWeeks} weeks)
+                            </span>
+                          </>
+                        ) : (
+                          <>On track to strengthen in ~{rhythmImpact.timelineWeeks} weeks</>
+                        )}
                       </span>
                     </div>
                   )}
@@ -318,7 +345,10 @@ const HealthOverviewPage: React.FC = () => {
                     .map(p => (
                       <div key={p.pillarId} className="health-overview__stat-row health-overview__stat-row--indent">
                         <span className="typo-footnote color-tertiary">
-                          {PILLAR_LABELS[p.pillarId]}: {p.currentScore} → {p.projectedScore} (+{p.delta})
+                          {showPoints
+                            ? <>{PILLAR_LABELS[p.pillarId]}: {p.currentScore} → {p.projectedScore} (+{p.delta})</>
+                            : <>{PILLAR_LABELS[p.pillarId]}: improving</>
+                          }
                         </span>
                       </div>
                     ))
@@ -349,7 +379,7 @@ const HealthOverviewPage: React.FC = () => {
           </SectionModule>
 
           {/* Section 4: Top Actions */}
-          <SectionModule title="Top recommendations">
+          <SectionModule title={showPoints ? "Top recommendations" : "Your next steps"}>
             <div className="health-overview__actions">
               {topActions.map((action) => (
                 <SpotlightCard
