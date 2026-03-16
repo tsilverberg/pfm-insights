@@ -73,7 +73,7 @@ const TransferPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Transfer" closeButton onBackAction={() => history.push('/home')} />
+      <ScreenHeader title="Transfer" closeButton onBackAction={() => history.goBack()} />
       <IonContent className="page-content">
 
         {/* Amount Display */}

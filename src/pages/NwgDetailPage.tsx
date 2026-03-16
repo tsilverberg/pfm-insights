@@ -45,7 +45,7 @@ const NwgDetailPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title={title} onBackAction={() => history.push('/insights')} />
+      <ScreenHeader title={title} onBackAction={() => history.goBack()} />
       <IonContent className="page-content">
         <div className="nwg-detail">
 

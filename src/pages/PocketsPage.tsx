@@ -16,7 +16,7 @@ const PocketsPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Pockets" onBackAction={() => history.push('/home')} rightLabel="New pocket" rightVariant="pill" onRightAction={() => showToast({ type: 'info', message: 'Pocket creator coming soon' })} />
+      <ScreenHeader title="Pockets" onBackAction={() => history.goBack()} rightLabel="New pocket" rightVariant="pill" onRightAction={() => showToast({ type: 'info', message: 'Pocket creator coming soon' })} />
       <IonContent className="page-content">
         <div className="pockets-page">
           <div className="pockets-page__list">

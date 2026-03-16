@@ -11,7 +11,7 @@ const AccessPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Access" onBackAction={() => history.push(`/account/${id}`)} />
+      <ScreenHeader title="Access" onBackAction={() => history.goBack()} />
       <IonContent className="page-content">
         <div className="access-page">
 

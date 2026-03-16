@@ -12,7 +12,7 @@ const CardPointsPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Card Points" onBackAction={() => history.push('/cards')} />
+      <ScreenHeader title="Card Points" onBackAction={() => history.goBack()} />
       <IonContent className="page-content">
         <div>
 

@@ -8,13 +8,15 @@ import HealthScoreRing from '../components/shared/HealthScoreRing';
 import SpotlightCard from '../components/shared/SpotlightCard';
 import CoachMomentCard from '../components/shared/CoachMomentCard';
 import CoachSheet from '../components/shared/CoachSheet';
+import TuneRhythmModal from '../components/shared/TuneRhythmModal';
 import TrendLineChart from '../components/charts/TrendLineChart';
 import { healthScoreData, calculateRhythmImpact, cashflowData } from '../data/pfmData';
 import { coachNudges } from '../data/coachData';
 import { formatEuroShort } from '../data/formatters';
 import { useRhythm } from '../hooks/useRhythm';
+import { useToast } from '../hooks/useToast';
 import { PILLAR_WEIGHTS, PILLAR_LABELS } from '../data/constants';
-import type { PillarScore, ImprovementAction } from '../data/types';
+import type { PillarScore, ImprovementAction, RhythmTarget } from '../data/types';
 import './HealthOverviewPage.css';
 
 const PILLAR_ICONS: Record<string, string> = {
@@ -52,9 +54,11 @@ const TREND_COLORS: Record<string, string> = {
 
 const HealthOverviewPage: React.FC = () => {
   const history = useHistory();
+  const { showToast } = useToast();
   const [showCoach, setShowCoach] = useState(true);
   const [coachOpen, setCoachOpen] = useState(false);
-  const { rhythmTarget, rhythmImpact, priorities, totalMonthlyContribution } = useRhythm();
+  const [rhythmModalOpen, setRhythmModalOpen] = useState(false);
+  const { rhythmTarget, setRhythmTarget, rhythmImpact, priorities, totalMonthlyContribution } = useRhythm();
   const nudge = coachNudges.find(n => n.insightType === 'nudge');
 
   // Teaser impact for users without a rhythm (show what Balanced would do)
@@ -69,7 +73,13 @@ const HealthOverviewPage: React.FC = () => {
     : 0;
   const onTrackCount = priorities.filter(p => (p.monthlyContribution || 0) <= monthlyGrowthBudget).length;
   const behindCount = priorities.length - onTrackCount;
-  const handleBack = () => history.push('/insights');
+  const handleBack = () => history.goBack();
+
+  const handleRhythmConfirm = (target: RhythmTarget) => {
+    setRhythmTarget(target);
+    setRhythmModalOpen(false);
+    showToast({ type: 'success', message: 'Rhythm set! Your targets are now active.' });
+  };
 
   // Compute delta from history
   const historyEntries = healthScoreData.history;
@@ -264,7 +274,7 @@ const HealthOverviewPage: React.FC = () => {
 
                   <button
                     className="health-overview__rhythm-cta"
-                    onClick={() => history.push('/insights?tab=plan')}
+                    onClick={() => setRhythmModalOpen(true)}
                   >
                     Set your rhythm
                   </button>
@@ -389,6 +399,12 @@ const HealthOverviewPage: React.FC = () => {
           <div className="bottom-spacer" />
         </div>
       </IonContent>
+      <TuneRhythmModal
+        isOpen={rhythmModalOpen}
+        onClose={() => setRhythmModalOpen(false)}
+        onConfirm={handleRhythmConfirm}
+        priorities={priorities}
+      />
       <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/insights/health" />
     </IonPage>
   );

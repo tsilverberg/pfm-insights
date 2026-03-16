@@ -19,7 +19,7 @@ const ChildAccountPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Child's Account" onBackAction={() => history.push('/home')} />
+      <ScreenHeader title="Child's Account" onBackAction={() => history.goBack()} />
       <IonContent className="page-content">
         <div className="child-account">
 

@@ -62,7 +62,7 @@ const SelectPermissionsPage: React.FC = () => {
 
   return (
     <IonPage>
-      <ScreenHeader title="Select permissions" closeButton onBackAction={() => history.push(`/account/${id}/share`)} />
+      <ScreenHeader title="Select permissions" closeButton onBackAction={() => history.goBack()} />
       <IonContent className="page-content">
         <div className="select-perms">
 

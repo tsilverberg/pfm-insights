@@ -55,7 +55,7 @@ const PILLAR_EXPLAINERS: Record<string, { description: string; factors: string[]
 const PillarDetailPage: React.FC = () => {
   const { pillarId } = useParams<{ pillarId: string }>();
   const history = useHistory();
-  const handleBack = () => history.push('/insights/health');
+  const handleBack = () => history.goBack();
   const pillar = healthScoreData.pillars.find(p => p.id === pillarId);
   const pillarHistory = healthScoreData.history.map(h => ({
     label: h.month.split(' ')[0],

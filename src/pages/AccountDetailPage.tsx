@@ -40,7 +40,7 @@ const AccountDetailPage: React.FC = () => {
     <IonPage>
       <ScreenHeader
         title="Account"
-        onBackAction={() => history.push('/home')}
+        onBackAction={() => history.goBack()}
         rightIcon={GearIcon}
         onRightAction={() => history.push(`/account/${id}/settings`)}
       />

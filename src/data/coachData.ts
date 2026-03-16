@@ -129,11 +129,11 @@ export const coachNudges: CoachNudge[] = [
     id: 'n1',
     insightType: 'proximity',
     title: 'Dining budget at 85%',
-    body: "I noticed your dining spending is climbing — you're at €196 of €230 with 10 days left. Want me to suggest ways to finish the month on track?",
+    body: "€196 of €230 spent, 10 days left. You averaged €8/day this week on dining — about €2 above your usual. I can suggest a few tweaks to stay on track.",
     accentColor: '#E5553B',
     priority: 2,
     tab: 'home',
-    ctaLabel: "Let's fix it",
+    ctaLabel: 'Show me how to fix it',
     quickReplies: ['Show budget breakdown', 'Suggest savings', 'Adjust my limit'],
   },
   {

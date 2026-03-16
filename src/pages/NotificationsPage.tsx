@@ -18,7 +18,7 @@ const NotificationsPage: React.FC = () => {
   const { showToast } = useToast();
   return (
     <IonPage>
-      <ScreenHeader title="Notifications" onBackAction={() => history.push('/home')} rightIcon={GearIcon} onRightAction={() => showToast({ type: 'info', message: 'Notification settings coming soon' })} />
+      <ScreenHeader title="Notifications" onBackAction={() => history.goBack()} rightIcon={GearIcon} onRightAction={() => showToast({ type: 'info', message: 'Notification settings coming soon' })} />
       <IonContent className="page-content">
         <div className="notifications-page">
 
