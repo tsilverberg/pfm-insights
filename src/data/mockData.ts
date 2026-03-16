@@ -774,19 +774,19 @@ export const investLatestActivity: InvestActivity[] = [
 export const investLatestNews: NewsArticle[] = [
   {
     id: 'news-1',
-    imageUrl: '/assets/icons/news-1.jpg',
+    imageUrl: '/assets/icons/news-1.svg',
     title: 'Intelligence fabric: Orchestrating AI-driven customers journeys',
     description: 'AI agents enhance customer journeys by reacting in real-time with personalised responses.',
   },
   {
     id: 'news-2',
-    imageUrl: '/assets/icons/news-2.jpg',
+    imageUrl: '/assets/icons/news-2.svg',
     title: 'Backbase AI factory: Turning AI ambition into action',
     description: 'The AI Factory helps banks move from ideas to execution with an enterprise grade AI foundation.',
   },
   {
     id: 'news-3',
-    imageUrl: '/assets/icons/news-3.jpg',
+    imageUrl: '/assets/icons/news-3.svg',
     title: 'The future of wealth management in a digital world',
     description: 'How digital platforms are reshaping the way we invest and manage our portfolios.',
   },
