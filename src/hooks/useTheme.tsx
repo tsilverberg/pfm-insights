@@ -52,7 +52,7 @@ function applyThemeClass(id: ThemeId) {
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [themeId, setThemeId] = useState<ThemeId>(() => {
-    return (localStorage.getItem('pfm-theme') as ThemeId) || 'default';
+    return (localStorage.getItem('pfm-theme') as ThemeId) || 'everbank';
   });
 
   const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
