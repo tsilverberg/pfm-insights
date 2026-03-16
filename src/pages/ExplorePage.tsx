@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonPage, IonRefresher, IonRefresherContent } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import AppHeader from '../components/layout/AppHeader';
 import CoachIcon from '../components/shared/CoachIcon';
+import CoachSheet from '../components/shared/CoachSheet';
 import { useToast } from '../hooks/useToast';
 import './ExplorePage.css';
 
 const ExplorePage: React.FC = () => {
   const history = useHistory();
   const { showToast } = useToast();
+  const [coachOpen, setCoachOpen] = useState(false);
 
   const headerActions = [
     { label: 'Cards', icon: <span className="material-symbols-rounded" style={{ fontSize: 22 }}>credit_card</span>, onClick: () => history.push('/cards') },
-    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => showToast({ type: 'info', message: 'Coach coming soon' }) },
+    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => setCoachOpen(true) },
   ];
 
   return (
@@ -79,6 +81,7 @@ const ExplorePage: React.FC = () => {
         <div className="bottom-spacer" />
       </div>
     </IonContent>
+    <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/explore" />
   </IonPage>
   );
 };

@@ -35,7 +35,6 @@ import CategoryDetailPage from './pages/CategoryDetailPage';
 import HealthOverviewPage from './pages/HealthOverviewPage';
 import PillarDetailPage from './pages/PillarDetailPage';
 import FloatingTabBar from './components/layout/FloatingTabBar';
-import CoachFAB from './components/shared/CoachFAB';
 import ErrorBoundary from './components/shared/ErrorBoundary';
 import { ToastProvider } from './hooks/useToast';
 import { ThemeProvider } from './hooks/useTheme';
@@ -109,7 +108,6 @@ const App: React.FC = () => (
           <Redirect to="/home" />
         </Route>
       </IonRouterOutlet>
-      <CoachFAB />
       <FloatingTabBar />
     </IonReactRouter>
   </IonApp>

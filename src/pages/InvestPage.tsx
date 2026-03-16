@@ -20,6 +20,7 @@ import SegmentedBar from '../components/shared/SegmentedBar';
 import DottedLeaderRow from '../components/shared/DottedLeaderRow';
 import DotIndicator from '../components/shared/DotIndicator';
 import CoachIcon from '../components/shared/CoachIcon';
+import CoachSheet from '../components/shared/CoachSheet';
 import AnimatedNumber from '../components/shared/AnimatedNumber';
 import { useToast } from '../hooks/useToast';
 import { formatEuro, formatPercent } from '../data/formatters';
@@ -42,6 +43,7 @@ const TIME_PERIODS = ['1M', '3M', '6M', '12M', 'YTD', 'All'];
 const InvestPage: React.FC = () => {
   const [activePeriod, setActivePeriod] = useState('All');
   const [activeNewsIndex, setActiveNewsIndex] = useState(0);
+  const [coachOpen, setCoachOpen] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const revealRef = useScrollReveal();
   const history = useHistory();
@@ -91,7 +93,7 @@ const InvestPage: React.FC = () => {
 
   const headerActions = [
     { label: 'Cards', icon: <span className="material-symbols-rounded" style={{ fontSize: 22 }}>credit_card</span>, onClick: () => history.push('/cards') },
-    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => showToast({ type: 'info', message: 'Coach coming soon' }) },
+    { label: 'Coach', icon: <CoachIcon size={22} />, onClick: () => setCoachOpen(true) },
   ];
 
   return (
@@ -247,6 +249,7 @@ const InvestPage: React.FC = () => {
           <div className="bottom-spacer" />
         </div>
       </IonContent>
+      <CoachSheet isOpen={coachOpen} onClose={() => setCoachOpen(false)} context="/invest" />
     </IonPage>
   );
 };
